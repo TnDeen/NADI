@@ -38,12 +38,12 @@ namespace MVC5.Models
 
             }
 
-            context.SaveChanges();
+          
 
             var enrollment = new List<Enrollment>{
 
-            new Enrollment {StudentId = 1,CourseId=1,Grade=4,CreateDate=DateTime.Now,LastUpdated=DateTime.Now},
-            new Enrollment {StudentId = 1,CourseId=2,Grade=6,CreateDate=DateTime.Now,LastUpdated=DateTime.Now}
+            new Enrollment {CourseId=1,Grade=4,CreateDate=DateTime.Now,LastUpdated=DateTime.Now},
+            new Enrollment {CourseId=2,Grade=6,CreateDate=DateTime.Now,LastUpdated=DateTime.Now}
            
             };
 
