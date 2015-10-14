@@ -1,0 +1,19 @@
+﻿@model  MVC5.Models.VM.Course_Student
+@{
+    ViewBag.Title = "Student";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.header</h2>
+@if (@Model.course.CourseName != null)
+{
+    <h4> @Model.course.CourseName</h4>
+}
+
+
+    @foreach (var stdn in @Model.StudentList)
+    {
+
+    <p> @stdn.Name</p>
+    }
+
