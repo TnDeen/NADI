@@ -45,3 +45,7 @@ Student ->Index-> onExecuting 	21/10/2015 02:47:20
 Student ->Index-> onExecuted 	21/10/2015 02:47:20
 Student ->Index-> onResultExecuting 	21/10/2015 02:47:20
 Student ->Index-> onResultExecuted 	21/10/2015 02:47:24----------------------------
+Exception ->NotFound-> onExecuting 	21/10/2015 03:15:37
+Exception ->NotFound-> onExecuted 	21/10/2015 03:15:37
+Exception ->NotFound-> onResultExecuting 	21/10/2015 03:15:37
+Exception ->NotFound-> onResultExecuted 	21/10/2015 03:15:42----------------------------

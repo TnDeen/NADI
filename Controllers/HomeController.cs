@@ -13,6 +13,7 @@ namespace MVC5.Controllers
             return View();
         }
 
+        [RequireHttps]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
