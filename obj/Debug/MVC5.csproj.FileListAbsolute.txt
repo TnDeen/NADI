@@ -108,3 +108,6 @@ D:\Projects\MVC5\MVC5\bin\Microsoft.Owin.Security.Twitter.xml
 D:\Projects\MVC5\MVC5\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\Projects\MVC5\MVC5\obj\Debug\MVC5.pdb
 D:\Projects\MVC5\MVC5\obj\Debug\MVC5.csprojResolveAssemblyReference.cache
+D:\Projects\MVC5\MVC5\obj\Debug\MVC5.Migrations.InitialCreate.resources
+D:\Projects\MVC5\MVC5\obj\Debug\MVC5.csproj.GenerateResource.Cache
+D:\Projects\MVC5\MVC5\obj\Debug\MVC5.Migrations.Init.resources
