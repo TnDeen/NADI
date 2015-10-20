@@ -6,20 +6,25 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using MVC5.Common;
 
 namespace MVC5.Controllers
 {
+    [Authorize]
     public class StudentController : Controller
     {
-
+        
         private SchoolContext db = new SchoolContext();  
         // GET: Student
+        [ActionLog]
+        [OutputCache(CacheProfile = "1minute")]
         public ActionResult Index()
         {
             return View(db.Students.ToList());
         }
 
         // GET: Student/Details/5
+        [PartialCache("30seconds")]
         public ActionResult Details(int? id)
         {
             if (id == null) 

@@ -1,0 +1,47 @@
+﻿
+Student ->Index-> onExecuting 	21/10/2015 01:10:49
+Student ->Index-> onExecuted 	21/10/2015 01:10:55
+Student ->Index-> onResultExecuting 	21/10/2015 01:10:55
+Student ->Index-> onResultExecuted 	21/10/2015 01:11:00
+Student ->Index-> onExecuting 	21/10/2015 01:11:53
+Student ->Index-> onExecuted 	21/10/2015 01:11:53
+Student ->Index-> onResultExecuting 	21/10/2015 01:11:53
+Student ->Index-> onResultExecuted 	21/10/2015 01:11:53
+Student ->Index-> onExecuting 	21/10/2015 01:11:57
+Student ->Index-> onExecuted 	21/10/2015 01:11:57
+Student ->Index-> onResultExecuting 	21/10/2015 01:11:57
+Student ->Index-> onResultExecuted 	21/10/2015 01:11:57
+Student ->Index-> onExecuting 	21/10/2015 01:22:27
+Student ->Index-> onExecuted 	21/10/2015 01:22:28
+Student ->Index-> onResultExecuting 	21/10/2015 01:22:28
+Student ->Index-> onResultExecuted 	21/10/2015 01:22:28----------------------------
+Exception ->Index-> onExecuting 	21/10/2015 02:01:28
+Exception ->Index-> onExecuted 	21/10/2015 02:01:28
+exception ->Index-> onException 	Something went wrong21/10/2015 02:01:28----------------------------
+Exception ->NotFound-> onExecuting 	21/10/2015 02:03:20
+Exception ->NotFound-> onExecuted 	21/10/2015 02:03:20
+Exception ->NotFound-> onResultExecuting 	21/10/2015 02:03:20
+Exception ->NotFound-> onResultExecuted 	21/10/2015 02:03:23----------------------------
+Exception ->NotFound-> onExecuting 	21/10/2015 02:05:44
+Exception ->NotFound-> onExecuted 	21/10/2015 02:05:44
+Exception ->NotFound-> onResultExecuting 	21/10/2015 02:05:44
+Exception ->NotFound-> onResultExecuted 	21/10/2015 02:05:45----------------------------
+Exception ->Index-> onExecuting 	21/10/2015 02:05:52
+Exception ->Index-> onExecuted 	21/10/2015 02:05:52
+Exception ->Index-> onException 	Something went wrong21/10/2015 02:05:53----------------------------
+Student ->Index-> onExecuting 	21/10/2015 02:08:41
+Student ->Index-> onExecuted 	21/10/2015 02:08:41
+Student ->Index-> onResultExecuting 	21/10/2015 02:08:41
+Student ->Index-> onResultExecuted 	21/10/2015 02:08:42----------------------------
+Student ->Index-> onExecuting 	21/10/2015 02:13:15
+Student ->Index-> onExecuted 	21/10/2015 02:13:19
+Student ->Index-> onResultExecuting 	21/10/2015 02:13:19
+Student ->Index-> onResultExecuted 	21/10/2015 02:13:23----------------------------
+Student ->Index-> onExecuting 	21/10/2015 02:13:27
+Student ->Index-> onExecuted 	21/10/2015 02:13:27
+Student ->Index-> onResultExecuting 	21/10/2015 02:13:27
+Student ->Index-> onResultExecuted 	21/10/2015 02:13:27----------------------------
+Student ->Index-> onExecuting 	21/10/2015 02:47:20
+Student ->Index-> onExecuted 	21/10/2015 02:47:20
+Student ->Index-> onResultExecuting 	21/10/2015 02:47:20
+Student ->Index-> onResultExecuted 	21/10/2015 02:47:24----------------------------
