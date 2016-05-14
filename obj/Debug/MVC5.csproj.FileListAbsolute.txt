@@ -173,3 +173,8 @@ D:\Projects\NADI_ENGINE\MVC5\bin\SendGridMail.dll
 D:\Projects\NADI_ENGINE\MVC5\bin\System.Net.Http.Formatting.dll
 D:\Projects\NADI_ENGINE\MVC5\bin\System.Net.Http.Formatting.xml
 D:\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.Migrations.updateUser.resources
+D:\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.Migrations.addTransaction.resources
+D:\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.Migrations.changecolumntransaction.resources
+D:\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.Migrations.updateTransac.resources
+D:\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.Migrations.updateTransac2.resources
+D:\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.Migrations.updateTransac3.resources

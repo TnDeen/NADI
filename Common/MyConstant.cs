@@ -10,5 +10,8 @@ namespace MVC5.Common
         public const String localeFR = "fr-FR";
         public const String slash = "/";
         public const String ConfirmCusCode = "CCC";
+        public const String Role_Admin = "Admin";
+        public const String Role_Vendor = "Vendor";
+        public const String Role_User = "User";
     }
 }

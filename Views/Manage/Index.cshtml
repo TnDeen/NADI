@@ -101,7 +101,9 @@
     <h4>Customer List</h4>
 
     <p>
-        @Html.ActionLink("Add New", "CreateCus")
+        @Html.ActionLink("Add New", "CreateCus") |
+        @Html.ActionLink("Add Transac", "Create", "Transaction") |
+        @Html.ActionLink("Show Transac", "Index", "Transaction")
     </p>
     <table class="table">
         <tr>
