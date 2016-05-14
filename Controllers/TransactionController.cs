@@ -32,7 +32,8 @@ namespace MVC5.Controllers
         public ActionResult Index()
         {
             ApplicationUser user = UserManager.FindByEmail(User.Identity.Name);
-            Boolean vendor = UserManager.GetRoles(user.Id).Equals(MyConstant.Role_Vendor);
+            string role = UserManager.GetRoles(user.Id).First();
+            Boolean vendor = role.Equals(MyConstant.Role_Vendor);
             return View(vendor ? db.Transactions.ToList().Where(c => c.VendorID.Equals(user.Id))
                 : db.Transactions.ToList().Where(c => c.CustomerID.Equals(user.Id)));
         }
