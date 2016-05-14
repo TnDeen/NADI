@@ -176,12 +176,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Employee\Controllers\AccountController.cs" />
     <Compile Include="Areas\Employee\Controllers\HomeController.cs" />
     <Compile Include="Areas\Employee\EmployeeAreaRegistration.cs" />
     <Compile Include="Areas\Employer\Controllers\HomeController.cs" />
     <Compile Include="Areas\Employer\EmployerAreaRegistration.cs" />
     <Compile Include="Common\ActionLog.cs" />
+    <Compile Include="Common\BaseController.cs" />
     <Compile Include="Common\PartialCacheAttribute.cs" />
     <Compile Include="Context\StudentContext.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -292,8 +295,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Account\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Employee\Models\" />
+    <Folder Include="Areas\Employee\Views\Account\" />
     <Folder Include="Areas\Employee\Views\Shared\" />
     <Folder Include="Areas\Employer\Models\" />
     <Folder Include="Areas\Employer\Views\Shared\" />

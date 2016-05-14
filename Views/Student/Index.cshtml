@@ -19,7 +19,13 @@
             @Html.DisplayNameFor(model => model.CreateDate)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.CreateBy)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.LastUpdated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastUpdatedBy)
         </th>
         <th></th>
     </tr>
@@ -33,7 +39,13 @@
             @Html.DisplayFor(modelItem => item.CreateDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.LastUpdated)
+            @Html.DisplayFor(modelItem => item.CreateBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastUpdatedBy)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

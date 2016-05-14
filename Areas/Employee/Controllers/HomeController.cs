@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace MVC5.Areas.Employee.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         // GET: Employee/Home

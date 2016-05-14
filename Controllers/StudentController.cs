@@ -17,7 +17,6 @@ namespace MVC5.Controllers
         private SchoolContext db = new SchoolContext();  
         // GET: Student
         [ActionLog]
-        [OutputCache(CacheProfile = "1minute")]
         public ActionResult Index()
         {
             return View(db.Students.ToList());
@@ -52,7 +51,9 @@ namespace MVC5.Controllers
                 if (ModelState.IsValid)
                 {
                     student.CreateDate = DateTime.Now;
+                    student.CreateBy = User.Identity.Name;
                     student.LastUpdated = DateTime.Now;
+                    student.LastUpdatedBy = User.Identity.Name;
                     db.Students.Add(student);
                     db.SaveChanges();
                     return RedirectToAction("Index");
@@ -89,6 +90,8 @@ namespace MVC5.Controllers
                 {
                    
                     db.Entry(student).State = System.Data.Entity.EntityState.Modified;
+                    student.LastUpdatedBy = User.Identity.Name;
+                    student.LastUpdated = DateTime.Now;
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
