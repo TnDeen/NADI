@@ -302,6 +302,7 @@
     <Content Include="Views\Exception\NotFound.cshtml" />
     <Content Include="Views\Account\Success.cshtml" />
     <Content Include="Views\Shared\_BlogListPartial.cshtml" />
+    <Content Include="Views\Manage\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />

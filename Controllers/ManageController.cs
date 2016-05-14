@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MVC5.Models;
+using System.Net;
 
 namespace MVC5.Controllers
 {
@@ -66,11 +67,15 @@ namespace MVC5.Controllers
             var userId = User.Identity.GetUserId();
             var model = new IndexViewModel
             {
+
                 HasPassword = HasPassword(),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
-                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
+                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
+
+                CurrentUser = UserManager.FindById(userId)
+
             };
             return View(model);
         }
@@ -329,6 +334,41 @@ namespace MVC5.Controllers
             }
 
             base.Dispose(disposing);
+        }
+
+        // GET: Student/Edit/5
+        public ActionResult Edit(string id)
+        {
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            ApplicationUser student = UserManager.FindById(id);
+
+            if (student == null)
+                return new HttpNotFoundResult();
+            return View(student);
+        }
+
+        // POST: Student/Edit/5
+        [HttpPost]
+        public ActionResult Edit(ApplicationUser student)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    ApplicationUser curstudent = UserManager.FindById(student.Id);
+                    curstudent.HomeTown = student.HomeTown;
+                    curstudent.BirthDate = student.BirthDate;
+                    curstudent.PhoneNumber = student.PhoneNumber;
+                    UserManager.Update(curstudent);
+                    return RedirectToAction("Index", "Manage"); ;
+                }
+                return View(student);
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
         }
 
 #region Helpers
