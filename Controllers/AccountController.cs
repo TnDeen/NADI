@@ -13,11 +13,12 @@ using System.Net.Mail;
 using System.Net.Mime;
 using System.Web.Services.Description;
 using System.Net;
+using MVC5.Common;
 
 namespace MVC5.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
@@ -186,7 +187,7 @@ namespace MVC5.Controllers
                      //sendMail("Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
                     string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account");
 
-
+                    
                     ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
                                     + "before you can log in.";
                     return View("Success");
@@ -421,16 +422,6 @@ namespace MVC5.Controllers
         }
 
         //
-        // POST: /Account/LogOff
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult LogOff()
-        {
-            AuthenticationManager.SignOut();
-            return RedirectToAction("Index", "Home");
-        }
-
-        //
         // GET: /Account/ExternalLoginFailure
         [AllowAnonymous]
         public ActionResult ExternalLoginFailure()
@@ -514,16 +505,6 @@ namespace MVC5.Controllers
                 }
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
-        }
-
-        void sendMail(string subject, string body)
-        {
-            var client = new SmtpClient("smtp.mail.yahoo.com", 587)
-            {
-                Credentials = new NetworkCredential("aleyh1102@yahoo.com", "ciko89"),
-                EnableSsl = true
-            };
-            client.Send("aleyh1102@yahoo.com", "frankeykoko@gmail.com", subject, body);
         }
 
         private async Task<string> SendEmailConfirmationTokenAsync(string userID, string subject)

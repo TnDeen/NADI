@@ -363,7 +363,7 @@ namespace MVC5.Controllers
                     curstudent.BirthDate = student.BirthDate;
                     curstudent.PhoneNumber = student.PhoneNumber;
                     UserManager.Update(curstudent);
-                    return RedirectToAction("Index", "Manage"); ;
+                    return RedirectToAction("Index", "Manage");
                 }
                 return View(student);
             }
@@ -371,6 +371,64 @@ namespace MVC5.Controllers
             {
                 throw (ex);
             }
+        }
+
+        // GET: Department/Create
+        public ActionResult CreateCus()
+        {
+            IndexViewModel ivm = new IndexViewModel(); 
+            ViewBag.ParentID = new SelectList(idb.Users, "Id", "Email");
+            return View(ivm);
+        }
+
+        // POST: Department/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        public async Task<ActionResult> CreateCus(string ParentID)
+        {
+            if (ParentID != null)
+            {
+                string callbackUrl = await SendCustomerConfirmationTokenAsync(ParentID, "Add You As Custmoer");
+                ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
+                                    + "before you can log in.";
+                return View("Success");
+            }
+            return RedirectToAction("Error");
+        }
+
+        private async Task<string> SendCustomerConfirmationTokenAsync(string userID, string subject)
+        {
+            string code = await UserManager.GenerateEmailConfirmationTokenAsync(userID);
+            var callbackUrl = Url.Action("ConfirmCustomer", "Manage",
+               new { userId = userID, code = code }, protocol: Request.Url.Scheme);
+            //await UserManager.SendEmailAsync(userID, subject,
+            //   "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+            sendMail(subject, "Please confirm to be a customer by clik here <a href=\"" + callbackUrl + "\">here</a>");
+            return callbackUrl;
+        }
+
+        //
+        // GET: /Account/ConfirmCustomer
+        public async Task<ActionResult> ConfirmCustomer(string userId, string code)
+        {
+            if (userId == null || code == null)
+            {
+                return View("Error");
+            }
+            // confirm customer here
+            var result = await UserManager.ConfirmEmailAsync(userId, code);
+            if (result.Succeeded)
+            {
+                ApplicationUser curstudent = UserManager.FindById(userId);
+                ApplicationUser vendor = UserManager.FindByEmail(User.Identity.Name);
+                curstudent.ParentId = vendor.Id;
+                UserManager.Update(curstudent);
+                ViewBag.Message = "Success Add Customer";
+                return View("Success");
+            }
+            return View("Error");
+            
         }
 
 #region Helpers

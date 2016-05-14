@@ -187,6 +187,8 @@
     <Compile Include="Areas\Employer\EmployerAreaRegistration.cs" />
     <Compile Include="Common\ActionLog.cs" />
     <Compile Include="Common\BaseController.cs" />
+    <Compile Include="Common\DateUtil.cs" />
+    <Compile Include="Common\MyConstant.cs" />
     <Compile Include="Common\PartialCacheAttribute.cs" />
     <Compile Include="Context\StudentContext.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -307,6 +309,8 @@
     <Content Include="Views\Account\Success.cshtml" />
     <Content Include="Views\Shared\_BlogListPartial.cshtml" />
     <Content Include="Views\Manage\Edit.cshtml" />
+    <Content Include="Views\Manage\CreateCus.cshtml" />
+    <Content Include="Views\Manage\Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
