@@ -11,10 +11,9 @@ using MVC5.Common;
 namespace MVC5.Controllers
 {
     [Authorize]
-    public class StudentController : Controller
+    public class StudentController : BaseController
     {
-        
-        private SchoolContext db = new SchoolContext();  
+          
         // GET: Student
         [ActionLog]
         public ActionResult Index()

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Owin.Security;
+using MVC5.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,8 @@ namespace MVC5.Common
 {
     public class BaseController : Controller
     {
+        protected IdentityContext idb = new IdentityContext();
+        protected SchoolContext db = new SchoolContext();
         //
         // POST: /Account/LogOff
         [HttpPost]
