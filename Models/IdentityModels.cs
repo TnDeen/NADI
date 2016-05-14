@@ -5,6 +5,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Net.Mail;
 using System.Net;
+using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
 
 namespace MVC5.Models
 {
@@ -13,7 +16,14 @@ namespace MVC5.Models
     {
 
         public string HomeTown { get; set; }
-        public System.DateTime? BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; }
+
+        [ForeignKey("Parent")]
+        public string ParentId { get; set; }
+        public virtual ApplicationUser Parent { get; set; }
+
+        [InverseProperty("Parent")]
+        public ICollection<ApplicationUser> ChildList { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

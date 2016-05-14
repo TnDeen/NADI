@@ -172,3 +172,4 @@ D:\Projects\NADI_ENGINE\MVC5\bin\SendGrid.SmtpApi.dll
 D:\Projects\NADI_ENGINE\MVC5\bin\SendGridMail.dll
 D:\Projects\NADI_ENGINE\MVC5\bin\System.Net.Http.Formatting.dll
 D:\Projects\NADI_ENGINE\MVC5\bin\System.Net.Http.Formatting.xml
+D:\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.Migrations.updateUser.resources

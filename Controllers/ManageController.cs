@@ -8,11 +8,12 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MVC5.Models;
 using System.Net;
+using MVC5.Common;
 
 namespace MVC5.Controllers
 {
     [Authorize]
-    public class ManageController : Controller
+    public class ManageController : BaseController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
@@ -64,7 +65,7 @@ namespace MVC5.Controllers
                 : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
                 : "";
 
-            var userId = User.Identity.GetUserId();
+            var userId = User.Identity.GetUserId();;
             var model = new IndexViewModel
             {
 
@@ -74,7 +75,8 @@ namespace MVC5.Controllers
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
 
-                CurrentUser = UserManager.FindById(userId)
+                CurrentUser = UserManager.FindById(userId),
+                ChildList = idb.Users.Where(a => a.ParentId.Equals(userId)).ToList()
 
             };
             return View(model);

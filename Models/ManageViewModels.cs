@@ -14,6 +14,7 @@ namespace MVC5.Models
         public bool BrowserRemembered { get; set; }
 
         public ApplicationUser CurrentUser { get; set; }
+        public ICollection<ApplicationUser> ChildList { get; set; }
     }
 
     public class ManageLoginsViewModel
