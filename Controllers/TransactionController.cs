@@ -9,6 +9,11 @@ using Microsoft.AspNet.Identity.Owin;
 using System.Web;
 using System.Web.Mvc;
 using System.Collections;
+using Gma.QrCodeNet.Encoding;
+using Gma.QrCodeNet.Encoding.Windows.Render;
+using System.IO;
+using System.Drawing.Imaging;
+using System.Drawing;
 
 namespace MVC5.Controllers
 {
@@ -48,7 +53,28 @@ namespace MVC5.Controllers
                new { userId = curstudent.Id, code = code }, protocol: Request.Url.Scheme);
             ViewBag.Message = "Please Copy This Link and scan with vendor To Get Point"
                                 + " Link <a href=\"" + callbackUrl + "\">here</a>";
+            ViewBag.callbackUrl = callbackUrl;
             return View("Success");
+        }
+
+        public ActionResult BarcodeImage(String barcodeText)
+        {
+            // generating a barcode here. Code is taken from QrCode.Net library
+            QrEncoder qrEncoder = new QrEncoder(ErrorCorrectionLevel.H);
+            QrCode qrCode = new QrCode();
+            qrEncoder.TryEncode(barcodeText, out qrCode);
+            GraphicsRenderer renderer = new GraphicsRenderer(new FixedModuleSize(4, QuietZoneModules.Four), Brushes.Black, Brushes.White);
+
+            Stream memoryStream = new MemoryStream();
+            renderer.WriteToStream(qrCode.Matrix, ImageFormat.Png, memoryStream);
+
+            // very important to reset memory stream to a starting position, otherwise you would get 0 bytes returned
+            memoryStream.Position = 0;
+
+            var resultStream = new FileStreamResult(memoryStream, "image/png");
+            resultStream.FileDownloadName = String.Format("{0}.png", barcodeText);
+
+            return resultStream;
         }
 
         // POST: Student/Create
