@@ -45,10 +45,10 @@ namespace MVC5.Controllers
 
         // GET: Student/Create
         [Authorize(Roles="User")]
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
             ApplicationUser curstudent = UserManager.FindByEmail(User.Identity.Name);
-            string code = MyConstant.ConfirmCusCode;
+            string code = await UserManager.GenerateUserTokenAsync(MyConstant.ConfirmCusCode, curstudent.Id);
             var callbackUrl = Url.Action("CreateTransac", "Transaction",
                new { userId = curstudent.Id, code = code }, protocol: Request.Url.Scheme);
             ViewBag.Message = "Please Copy This Link and scan with vendor To Get Point"
@@ -79,13 +79,15 @@ namespace MVC5.Controllers
 
         // POST: Student/Create
         [Authorize(Roles = "Vendor")]
-        public ActionResult CreateTransac(string userId, string code)
+        public async Task<ActionResult> CreateTransac(string userId, string code)
         {
             if (userId == null || code == null)
             {
                 return View("Error");
             }
-            if (code.Equals(MyConstant.ConfirmCusCode))
+             // confirm customer here
+            var result = await UserManager.VerifyUserTokenAsync(userId, MyConstant.ConfirmCusCode, code);
+            if (result)
             {
                 Transaction tran = new Transaction();
                 ApplicationUser vendor = UserManager.FindByEmail(User.Identity.Name);
