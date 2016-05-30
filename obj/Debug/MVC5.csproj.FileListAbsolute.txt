@@ -180,4 +180,3 @@ D:\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.Migrations.updateTransac2.resources
 D:\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.Migrations.updateTransac3.resources
 D:\Projects\NADI_ENGINE\MVC5\bin\Gma.QrCodeNet.Encoding.dll
 D:\Projects\NADI_ENGINE\MVC5\bin\Gma.QrCodeNet.Encoding.pdb
-D:\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.csprojResolveAssemblyReference.cache
