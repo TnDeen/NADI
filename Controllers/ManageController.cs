@@ -65,12 +65,13 @@ namespace MVC5.Controllers
                 : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
                 : "";
 
-            var userId = User.Identity.GetUserId();;
+            var userId = User.Identity.GetUserId();
             var model = new IndexViewModel
             {
 
                 HasPassword = HasPassword(),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
+                wallet = db.Transactions.Where(a => a.VendorID.Equals(userId)).Select(a => a.point).Sum(),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),

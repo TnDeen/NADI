@@ -13,6 +13,9 @@ namespace MVC5.Models
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
 
+        [Display(Name="Wallet (RM)")]
+        public decimal? wallet { get; set; }
+
         public ApplicationUser CurrentUser { get; set; }
         public ICollection<ApplicationUser> ChildList { get; set; }
     }
