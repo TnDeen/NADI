@@ -183,7 +183,8 @@ namespace MVC5.Controllers
                 UserManager.AddToRole(user.Id, MyConstant.Role_User);
                 if (result.Succeeded)
                 {
-                    AddTransaction(model.Introducer, user.Id);
+                    ApplicationUser introducer = UserManager.FindById(model.Introducer);
+                    AddTransaction(introducer, user);
                     //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
@@ -423,7 +424,7 @@ namespace MVC5.Controllers
                 if (result.Succeeded)
                 {
                     UserManager.AddToRole(user.Id, MyConstant.Role_User);
-                    AddTransaction(parent.Id, user.Id);
+                    AddTransaction(parent, user);
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {

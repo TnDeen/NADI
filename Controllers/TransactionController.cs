@@ -90,7 +90,8 @@ namespace MVC5.Controllers
             if (result)
             {
                 ApplicationUser vendor = UserManager.FindByEmail(User.Identity.Name);
-                AddTransaction(vendor.Id, userId);
+                ApplicationUser user = UserManager.FindById(userId);
+                AddTransaction(vendor, user);
                 ViewBag.Message = "Success Add Transaction";
                 return View("Success");
             }
