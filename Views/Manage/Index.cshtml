@@ -63,21 +63,24 @@
             </p>
             <hr />
             <dl class="dl-horizontal">
-                <dt>@Html.DisplayNameFor(model => model.CurrentUser.HomeTown)</dt>
+                <dt>@Html.DisplayNameFor(model => model.CurrentUser.ParentId) :</dt>
+                <dd>@Html.DisplayFor(model => model.CurrentUser.ParentId)</dd>
+
+                <dt>@Html.DisplayNameFor(model => model.CurrentUser.HomeTown) :</dt>
                 <dd>@Html.DisplayFor(model => model.CurrentUser.HomeTown)</dd>
 
-                <dt>@Html.DisplayNameFor(model => model.CurrentUser.BirthDate)</dt>
+                <dt>@Html.DisplayNameFor(model => model.CurrentUser.BirthDate) :</dt>
                 <dd>@Html.DisplayFor(model => model.CurrentUser.BirthDate)</dd>
 
-                <dt>@Html.DisplayNameFor(model => model.CurrentUser.PhoneNumber)</dt>
+                <dt>@Html.DisplayNameFor(model => model.CurrentUser.PhoneNumber) :</dt>
                 <dd>@Html.DisplayFor(model => model.CurrentUser.PhoneNumber)</dd>
             </dl>
 
-            <h4>Customer List</h4>
+            <h4>Register List</h4>
 
             <p>
-                @Html.ActionLink("Add New", "CreateCus") |
-                @Html.ActionLink("Add Transac", "Create", "Transaction") |
+                @*@Html.ActionLink("Add New", "CreateCus") |*@
+                @Html.ActionLink("Generate QR Code", "Create", "Transaction") |
                 @Html.ActionLink("Show Transac", "Index", "Transaction")
             </p>
             <table class="table">

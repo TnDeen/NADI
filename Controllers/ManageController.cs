@@ -362,6 +362,7 @@ namespace MVC5.Controllers
                     curstudent.HomeTown = student.HomeTown;
                     curstudent.BirthDate = student.BirthDate;
                     curstudent.PhoneNumber = student.PhoneNumber;
+                    curstudent.ParentId = student.ParentId;
                     UserManager.Update(curstudent);
                     return RedirectToAction("Index", "Manage");
                 }

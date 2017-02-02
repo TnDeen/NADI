@@ -173,11 +173,12 @@ namespace MVC5.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, ParentId = model.Introducer };
                 var result = await UserManager.CreateAsync(user, model.Password);
-                UserManager.AddToRole(user.Id, "User");
+                UserManager.AddToRole(user.Id, MyConstant.Role_User);
                 if (result.Succeeded)
                 {
+                    AddTransaction(model.Introducer, user.Id);
                     //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
@@ -397,9 +398,17 @@ namespace MVC5.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
+                var parent = UserManager.FindById(model.Introducer);
+                string introducer = null;
+                if (parent != null)
+                {
+                    introducer = parent.Id;
+
+                }
                 var user = new ApplicationUser
                 {
                     UserName = model.Email,
+                    ParentId = introducer,
                     Email = model.Email,
                     BirthDate = model.BirthDate,
                     HomeTown = model.HomeTown
@@ -408,6 +417,8 @@ namespace MVC5.Controllers
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
+                    UserManager.AddToRole(user.Id, MyConstant.Role_User);
+                    AddTransaction(parent.Id, user.Id);
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {

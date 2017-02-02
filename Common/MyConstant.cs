@@ -14,5 +14,9 @@ namespace MVC5.Common
         public const String Role_Vendor = "Vendor";
         public const String Role_User = "User";
         public const String Base_Url = "https://localhost:44300/Home";
+
+        public const decimal Point_1 = 150;
+        public const decimal Point_2 = 200;
+        public const decimal Point_3 = 300;
     }
 }

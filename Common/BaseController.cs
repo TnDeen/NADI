@@ -41,5 +41,19 @@ namespace MVC5.Common
             };
             client.Send("nadikebangsaan@yahoo.com", recipient, subject, body);
         }
+
+        public void AddTransaction(string parentId, string userId)
+        {
+            Transaction tran = new Transaction();
+            tran.CustomerID = userId;
+            tran.VendorID = parentId;
+            tran.point = MyConstant.Point_1;
+            tran.CreateBy = User.Identity.Name;
+            tran.CreateDate = DateTime.Now;
+            tran.LastUpdated = DateTime.Now;
+            tran.LastUpdatedBy = User.Identity.Name;
+            db.Transactions.Add(tran);
+            db.SaveChanges();
+        }
     }
 }

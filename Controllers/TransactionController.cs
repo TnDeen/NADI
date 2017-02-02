@@ -38,9 +38,7 @@ namespace MVC5.Controllers
         {
             ApplicationUser user = UserManager.FindByEmail(User.Identity.Name);
             string role = UserManager.GetRoles(user.Id).First();
-            Boolean vendor = role.Equals(MyConstant.Role_Vendor);
-            return View(vendor ? db.Transactions.ToList().Where(c => c.VendorID.Equals(user.Id))
-                : db.Transactions.ToList().Where(c => c.CustomerID.Equals(user.Id)));
+            return View(db.Transactions.ToList().Where(c => c.VendorID.Equals(user.Id)));
         }
 
         // GET: Student/Create
@@ -89,18 +87,8 @@ namespace MVC5.Controllers
             var result = await UserManager.VerifyUserTokenAsync(userId, MyConstant.ConfirmCusCode, code);
             if (result)
             {
-                Transaction tran = new Transaction();
                 ApplicationUser vendor = UserManager.FindByEmail(User.Identity.Name);
-                ApplicationUser customer = UserManager.FindById(userId);
-                tran.CustomerID = userId;
-                tran.VendorID = vendor.Id;
-                tran.point = 200;
-                tran.CreateBy = User.Identity.Name;
-                tran.CreateDate = DateTime.Now;
-                tran.LastUpdated = DateTime.Now;
-                tran.LastUpdatedBy = User.Identity.Name;
-                db.Transactions.Add(tran);
-                db.SaveChanges();
+                AddTransaction(vendor.Id, userId);
                 ViewBag.Message = "Success Add Transaction";
                 return View("Success");
             }
