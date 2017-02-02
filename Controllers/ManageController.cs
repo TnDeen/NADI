@@ -399,12 +399,13 @@ namespace MVC5.Controllers
 
         private async Task<string> SendCustomerConfirmationTokenAsync(string userID, string subject)
         {
+            var user =  UserManager.FindById(userID);
             string code = await UserManager.GenerateEmailConfirmationTokenAsync(userID);
             var callbackUrl = Url.Action("ConfirmCustomer", "Manage",
                new { userId = userID, code = code }, protocol: Request.Url.Scheme);
             //await UserManager.SendEmailAsync(userID, subject,
             //   "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-            sendMail(subject, "Please confirm to be a customer by clik here <a href=\"" + callbackUrl + "\">here</a>");
+            sendMail(subject, "Please confirm to be a customer by clik here <a href=\"" + callbackUrl + "\">here</a>", user.Email);
             return callbackUrl;
         }
 

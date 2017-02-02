@@ -32,14 +32,14 @@ namespace MVC5.Common
             }
         }
 
-        public void sendMail(string subject, string body)
+        public void sendMail(string subject, string body, string recipient)
         {
             var client = new SmtpClient("smtp.mail.yahoo.com", 587)
             {
-                Credentials = new NetworkCredential("aleyh1102@yahoo.com", "ciko89"),
+                Credentials = new NetworkCredential("nadikebangsaan@yahoo.com", "nadiadmin123"),
                 EnableSsl = true
             };
-            client.Send("aleyh1102@yahoo.com", "frankeykoko@gmail.com", subject, body);
+            client.Send("nadikebangsaan@yahoo.com", recipient, subject, body);
         }
     }
 }

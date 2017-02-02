@@ -243,7 +243,7 @@ namespace MVC5.Controllers
                  string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
                  var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
                  //await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                 sendMail("Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                 sendMail("Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>", model.Email);
                 return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
@@ -510,12 +510,13 @@ namespace MVC5.Controllers
 
         private async Task<string> SendEmailConfirmationTokenAsync(string userID, string subject)
         {
+            var user =  UserManager.FindById(userID);
             string code = await UserManager.GenerateEmailConfirmationTokenAsync(userID);
             var callbackUrl = Url.Action("ConfirmEmail", "Account",
                new { userId = userID, code = code }, protocol: Request.Url.Scheme);
             //await UserManager.SendEmailAsync(userID, subject,
             //   "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-            sendMail(subject, "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+            sendMail(subject, "Please confirm your account by clicking <a href=\'" + callbackUrl + "\'>here</a>", user.Email);
             return callbackUrl;
         }
         #endregion
