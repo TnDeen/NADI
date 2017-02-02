@@ -159,9 +159,14 @@ namespace MVC5.Controllers
         //
         // GET: /Account/Register
         [AllowAnonymous]
-        public ActionResult Register()
+        public ActionResult Register(string userId)
         {
-            return View();
+            RegisterViewModel model = new RegisterViewModel();
+            if (userId != null)
+            {
+                model.Introducer = userId;
+            }
+            return View(model);
         }
 
         //

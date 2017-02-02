@@ -47,8 +47,10 @@ namespace MVC5.Controllers
         {
             ApplicationUser curstudent = UserManager.FindByEmail(User.Identity.Name);
             string code = await UserManager.GenerateUserTokenAsync(MyConstant.ConfirmCusCode, curstudent.Id);
-            var callbackUrl = Url.Action("CreateTransac", "Transaction",
-               new { userId = curstudent.Id, code = code }, protocol: Request.Url.Scheme);
+            //var callbackUrl = Url.Action("CreateTransac", "Transaction",
+            //   new { userId = curstudent.Id, code = code }, protocol: Request.Url.Scheme);
+            var callbackUrl = Url.Action("Register", "Account",
+               new { userId = curstudent.Id}, protocol: Request.Url.Scheme);
             ViewBag.Message = "Please Copy This Link and scan with vendor To Get Point"
                                 + " Link <a href=\"" + callbackUrl + "\">here</a>";
             ViewBag.callbackUrl = callbackUrl;
