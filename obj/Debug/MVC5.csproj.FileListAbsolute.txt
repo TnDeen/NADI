@@ -214,7 +214,6 @@ C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\bin\Sy
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\bin\System.Web.WebPages.dll
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\bin\System.Web.WebPages.Razor.dll
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\bin\WebGrease.dll
-C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\bin\Gma.QrCodeNet.Encoding.pdb
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\bin\Newtonsoft.Json.xml
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\bin\System.Net.Http.Formatting.xml
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\bin\System.Web.Helpers.xml
