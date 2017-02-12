@@ -1,5 +1,7 @@
 namespace MVC5.Migrations
 {
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -27,6 +29,15 @@ namespace MVC5.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            if (!context.Roles.Any(r => r.Name == "User"))
+            {
+                var store = new RoleStore<IdentityRole>(context);
+                var manager = new RoleManager<IdentityRole>(store);
+                var role = new IdentityRole { Name = "User" };
+
+                manager.Create(role);
+            }
         }
     }
 }
