@@ -2,6 +2,7 @@ namespace MVC5.Migrations
 {
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
+    using Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -46,6 +47,16 @@ namespace MVC5.Migrations
                 var Adminrole = new IdentityRole { Name = "Admin" };
 
                 manager.Create(Adminrole);
+            }
+
+            if (!context.Users.Any(u => u.UserName == "admin@nadikebangsaan.com"))
+            {
+                var userstore = new UserStore<ApplicationUser>(context);
+                var usermanager = new UserManager<ApplicationUser>(userstore);
+                var user = new ApplicationUser { UserName = "admin@nadikebangsaan.com", Email = "admin@nadikebangsaan.com" };
+
+                usermanager.Create(user, "Ciko8989@");
+                usermanager.AddToRole(user.Id, "Admin");
             }
         }
     }
