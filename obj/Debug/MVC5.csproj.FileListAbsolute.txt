@@ -257,3 +257,4 @@ C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\obj\De
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.Migrations.addlevelcol.resources
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.Migrations.addstatusactivecol.resources
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.Migrations.uploadfile.resources
+C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.Migrations.alterfilecol.resources

@@ -258,6 +258,10 @@
     <Compile Include="Migrations\201702122102194_uploadfile.Designer.cs">
       <DependentUpon>201702122102194_uploadfile.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702122155178_alterfilecol.cs" />
+    <Compile Include="Migrations\201702122155178_alterfilecol.Designer.cs">
+      <DependentUpon>201702122155178_alterfilecol.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseEntity.cs" />
@@ -422,6 +426,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702122102194_uploadfile.resx">
       <DependentUpon>201702122102194_uploadfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702122155178_alterfilecol.resx">
+      <DependentUpon>201702122155178_alterfilecol.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -2,7 +2,7 @@
 
 namespace MVC5.Models
 {
-    public class File 
+    public class File : BaseEntity
     {
         public int FileId { get; set; }
         [StringLength(255)]
