@@ -237,6 +237,14 @@
     <Compile Include="Migrations\201605142055326_updateTransac3.Designer.cs">
       <DependentUpon>201605142055326_updateTransac3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702121814443_addcolstatus.cs" />
+    <Compile Include="Migrations\201702121814443_addcolstatus.Designer.cs">
+      <DependentUpon>201702121814443_addcolstatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702121830333_addcolsttustrans.cs" />
+    <Compile Include="Migrations\201702121830333_addcolsttustrans.Designer.cs">
+      <DependentUpon>201702121830333_addcolsttustrans.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseEntity.cs" />
@@ -382,6 +390,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605142055326_updateTransac3.resx">
       <DependentUpon>201605142055326_updateTransac3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702121814443_addcolstatus.resx">
+      <DependentUpon>201702121814443_addcolstatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702121830333_addcolsttustrans.resx">
+      <DependentUpon>201702121830333_addcolsttustrans.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -13,7 +13,7 @@ namespace MVC5.Common
     public class BaseController : Controller
     {
         protected IdentityContext idb = new IdentityContext();
-        protected SchoolContext db = new SchoolContext();
+        protected ApplicationDbContext db = new ApplicationDbContext();
         //
         // POST: /Account/LogOff
         [HttpPost]

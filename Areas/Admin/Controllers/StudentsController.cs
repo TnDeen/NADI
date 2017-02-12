@@ -12,7 +12,7 @@ namespace MVC5.Areas.Admin.Controllers
 {
     public class StudentsController : Controller
     {
-        private SchoolContext db = new SchoolContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Admin/Students
         public ActionResult Index()

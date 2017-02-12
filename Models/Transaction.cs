@@ -13,6 +13,7 @@ namespace MVC5.Models
         public int Id { get; set; }
         public string CustomerID { get; set; }
         public string VendorID { get; set; }
+        public string TranStatus { get; set; }
         public decimal? point { get; set; }
 
     }

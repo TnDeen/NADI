@@ -14,14 +14,6 @@ namespace MVC5.Models
         {
         }
 
-        public DbSet <Student> Students { get; set; }
-        public DbSet <Course> Courses { get; set; }
-        public DbSet <Enrollment> Enrollments { get; set; }
-        public DbSet<Transaction> Transactions { get; set; }
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-           modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-        }
+        
     }
 }

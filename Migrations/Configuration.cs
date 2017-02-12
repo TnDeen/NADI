@@ -11,7 +11,7 @@ namespace MVC5.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "MVC5.Models.ApplicationDbContext";
         }
 
