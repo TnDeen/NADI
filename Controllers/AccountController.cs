@@ -80,20 +80,20 @@ namespace MVC5.Controllers
             }
 
             // Require the user to have a confirmed email before they can log on.
-            var user = await UserManager.FindByNameAsync(model.Email);
-            if (user != null)
-            {
-                if (!await UserManager.IsEmailConfirmedAsync(user.Id))
-                {
-                    string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account-Resend");
+            //var user = await UserManager.FindByNameAsync(model.Email);
+            //if (user != null)
+            //{
+            //    if (!await UserManager.IsEmailConfirmedAsync(user.Id))
+            //    {
+            //        string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account-Resend");
 
-                    // Uncomment to debug locally  
-                    // ViewBag.Link = callbackUrl;
-                    ViewBag.errorMessage = "You must have a confirmed email to log on. "
-                                         + "The confirmation token has been resent to your email account.";
-                    return View("Error");
-                }
-            }
+            //        // Uncomment to debug locally  
+            //        // ViewBag.Link = callbackUrl;
+            //        ViewBag.errorMessage = "You must have a confirmed email to log on. "
+            //                             + "The confirmation token has been resent to your email account.";
+            //        return View("Error");
+            //    }
+            //}
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
@@ -180,27 +180,17 @@ namespace MVC5.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email, ParentId = model.Introducer };
                 var result = await UserManager.CreateAsync(user, model.Password);
-                UserManager.AddToRole(user.Id, MyConstant.Role_User);
+                
                 if (result.Succeeded)
                 {
+                    UserManager.AddToRole(user.Id, MyConstant.Role_User);
                     ApplicationUser introducer = UserManager.FindById(model.Introducer);
                     AddTransaction(introducer, user);
-                    //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                     //string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                     //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                     //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                     //sendMail("Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                    string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account");
+                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
-                    
-                    ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
-                                    + "before you can log in.";
-                    return View("Success");
+
+                    return Redirect("/Home");
                 }
-                AddErrors(result);
             }
 
             // If we got this far, something failed, redisplay form

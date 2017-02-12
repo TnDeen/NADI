@@ -250,5 +250,3 @@ C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\obj\De
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.csproj.GenerateResource.Cache
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.dll
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.pdb
-C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\bin\Gma.QrCodeNet.Encoding.pdb
-C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\bin\Gma.QrCodeNet.Encoding.xml
