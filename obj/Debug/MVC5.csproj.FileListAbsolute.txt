@@ -255,3 +255,4 @@ C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\bin\Gm
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.Migrations.addcolstatus.resources
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.Migrations.addcolsttustrans.resources
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.Migrations.addlevelcol.resources
+C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.Migrations.addstatusactivecol.resources
