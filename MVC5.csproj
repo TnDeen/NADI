@@ -245,6 +245,10 @@
     <Compile Include="Migrations\201702121830333_addcolsttustrans.Designer.cs">
       <DependentUpon>201702121830333_addcolsttustrans.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702121850080_addlevelcol.cs" />
+    <Compile Include="Migrations\201702121850080_addlevelcol.Designer.cs">
+      <DependentUpon>201702121850080_addlevelcol.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseEntity.cs" />
@@ -396,6 +400,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702121830333_addcolsttustrans.resx">
       <DependentUpon>201702121830333_addcolsttustrans.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702121850080_addlevelcol.resx">
+      <DependentUpon>201702121850080_addlevelcol.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -16,7 +16,12 @@ namespace MVC5.Common
         public const String Base_Url = "https://localhost:44300/Home";
 
         public const decimal Point_1 = 150;
-        public const decimal Point_2 = 200;
-        public const decimal Point_3 = 300;
+        public const decimal Point_2 = 100;
+        public const decimal Point_3 = 50;
+        public const decimal Point_4 = 25;
+        public const decimal Point_5 = 10;
+        public const decimal Point_6 = 5;
+        public const decimal Point_7 = 2;
+        public const decimal Point_8 = 1;
     }
 }

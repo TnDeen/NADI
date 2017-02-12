@@ -238,7 +238,6 @@ C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\bin\Mi
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.csprojResolveAssemblyReference.cache
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.Migrations.InitialCreate.resources
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.Migrations.Init.resources
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.Migrations.updateUser.resources
@@ -255,3 +254,4 @@ C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\bin\Gm
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\bin\Gma.QrCodeNet.Encoding.xml
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.Migrations.addcolstatus.resources
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.Migrations.addcolsttustrans.resources
+C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.Migrations.addlevelcol.resources
