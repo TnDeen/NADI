@@ -27,6 +27,9 @@ namespace MVC5.Models
         [InverseProperty("Parent")]
         public ICollection<ApplicationUser> ChildList { get; set; }
 
+        public virtual ICollection<File> Files { get; set; }
+        public virtual ICollection<FilePath> FilePaths { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -47,6 +50,8 @@ namespace MVC5.Models
         public DbSet<Course> Courses { get; set; }
         public DbSet<Enrollment> Enrollments { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<File> Files { get; set; }
+        public DbSet<FilePath> FilePaths { get; set; }
 
         public static ApplicationDbContext Create()
         {

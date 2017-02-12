@@ -9,6 +9,7 @@ using Microsoft.Owin.Security;
 using MVC5.Models;
 using System.Net;
 using MVC5.Common;
+using System.Collections.Generic;
 
 namespace MVC5.Controllers
 {
@@ -434,7 +435,73 @@ namespace MVC5.Controllers
             
         }
 
-#region Helpers
+
+        public ActionResult ApplyMembership()
+        {
+            ApplicationUser user = UserManager.FindByEmail(User.Identity.Name);
+            return View(user);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> ApplyMembership(ApplicationUser curuser, HttpPostedFileBase ic, HttpPostedFileBase resit)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    ApplicationUser user = UserManager.FindById(curuser.Id);
+                    if (ic != null && ic.ContentLength > 0 && user != null)
+                    {
+                        var avatar = new File
+                        {
+                            FileName = System.IO.Path.GetFileName(ic.FileName),
+                            FileType = FileType.Avatar,
+                            ContentType = ic.ContentType
+                        };
+                        using (var reader = new System.IO.BinaryReader(ic.InputStream))
+                        {
+                            avatar.Content = reader.ReadBytes(ic.ContentLength);
+                        }
+                        user.Files = new List<File> { avatar };
+                    }
+                    UserManager.Update(user);
+                    return RedirectToAction("Index", "Manage");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+
+            
+
+            if (!await UserManager.IsEmailConfirmedAsync(User.Identity.GetUserId()))
+            {
+                string callbackUrl = await SendEmailApplyMembership(User.Identity.GetUserId(), "Membership Application");
+
+                // Uncomment to debug locally  
+                // ViewBag.Link = callbackUrl;
+                ViewBag.Message = "Thank You for your membership application. We will inform once your application has been Approve.";
+                return View("Success");
+            }
+            return View();
+        }
+
+        private async Task<string> SendEmailApplyMembership(string userID, string subject)
+        {
+            var user = UserManager.FindById(userID);
+            string code = await UserManager.GenerateEmailConfirmationTokenAsync(userID);
+            var callbackUrl = Url.Action("ConfirmEmail", "Account",
+               new { userId = userID, code = code }, protocol: Request.Url.Scheme);
+            //await UserManager.SendEmailAsync(userID, subject,
+            //   "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+            sendMail(subject, "Please confirm your account by clicking <a href=\'" + callbackUrl + "\'>here</a>", MyConstant.app_admin_email);
+            return callbackUrl;
+        }
+
+
+
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 

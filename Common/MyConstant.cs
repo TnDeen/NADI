@@ -14,6 +14,7 @@ namespace MVC5.Common
         public const String Role_Vendor = "Vendor";
         public const String Role_User = "User";
         public const String Base_Url = "https://localhost:44300/Home";
+        public const String app_admin_email = "salehuddin.ptsb@gmail.com";
 
         public const decimal Point_1 = 150;
         public const decimal Point_2 = 100;

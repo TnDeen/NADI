@@ -198,6 +198,7 @@
     <Compile Include="Context\StudentContext.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ExceptionController.cs" />
+    <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
@@ -253,12 +254,19 @@
     <Compile Include="Migrations\201702121951087_addstatusactivecol.Designer.cs">
       <DependentUpon>201702121951087_addstatusactivecol.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702122102194_uploadfile.cs" />
+    <Compile Include="Migrations\201702122102194_uploadfile.Designer.cs">
+      <DependentUpon>201702122102194_uploadfile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Enrollment.cs" />
+    <Compile Include="Models\File.cs" />
+    <Compile Include="Models\FilePath.cs" />
+    <Compile Include="Models\FileType.cs" />
     <Compile Include="Models\IdentityContext.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -356,6 +364,7 @@
     <Content Include="Views\Manage\Success.cshtml" />
     <Content Include="Views\Transaction\Index.cshtml" />
     <Content Include="Views\Transaction\Success.cshtml" />
+    <Content Include="Views\Manage\ApplyMembership.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
@@ -410,6 +419,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702121951087_addstatusactivecol.resx">
       <DependentUpon>201702121951087_addstatusactivecol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702122102194_uploadfile.resx">
+      <DependentUpon>201702122102194_uploadfile.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
