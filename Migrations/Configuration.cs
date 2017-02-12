@@ -30,13 +30,22 @@ namespace MVC5.Migrations
             //    );
             //
 
+            var store = new RoleStore<IdentityRole>(context);
+            var manager = new RoleManager<IdentityRole>(store);
+
             if (!context.Roles.Any(r => r.Name == "User"))
             {
-                var store = new RoleStore<IdentityRole>(context);
-                var manager = new RoleManager<IdentityRole>(store);
-                var role = new IdentityRole { Name = "User" };
+                
+                var userRole = new IdentityRole { Name = "User" };
 
-                manager.Create(role);
+                manager.Create(userRole);
+            }
+
+            if (!context.Roles.Any(r => r.Name == "Admin"))
+            {
+                var Adminrole = new IdentityRole { Name = "Admin" };
+
+                manager.Create(Adminrole);
             }
         }
     }
