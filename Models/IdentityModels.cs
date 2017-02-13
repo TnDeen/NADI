@@ -18,6 +18,7 @@ namespace MVC5.Models
 
         public string HomeTown { get; set; }
         public string AccStatus { get; set; }
+        public string AccStatus2 { get; set; }
         public DateTime? BirthDate { get; set; }
 
         [ForeignKey("Parent")]

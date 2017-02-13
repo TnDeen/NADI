@@ -42,6 +42,12 @@ namespace MVC5.Common
             client.Send("nadikebangsaan@yahoo.com", recipient, subject, body);
         }
 
+        public void UpdateTransaction(ApplicationUser user, Boolean status)
+        {
+            db.Transactions.Where(t => t.CustomerID.Equals(user.Id)).ToList().ForEach(x => x.statusActive = true);
+            db.SaveChanges();
+        }
+
         public void AddTransaction(ApplicationUser parent, ApplicationUser user)
         {
             if (user != null && parent != null)

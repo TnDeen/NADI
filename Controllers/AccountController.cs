@@ -14,6 +14,7 @@ using System.Net.Mime;
 using System.Web.Services.Description;
 using System.Net;
 using MVC5.Common;
+using System.Collections.Generic;
 
 namespace MVC5.Controllers
 {
@@ -197,10 +198,10 @@ namespace MVC5.Controllers
             return View(model);
         }
 
-        
+
         //
         // GET: /Account/ConfirmEmail
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)
         {
             if (userId == null || code == null)
@@ -208,6 +209,10 @@ namespace MVC5.Controllers
                 return View("Error");
             }
             var result = await UserManager.ConfirmEmailAsync(userId, code);
+            var user = UserManager.FindById(userId);
+            UpdateTransaction(user, true);
+            sendMail("Nadi Kebangsaan Membership Approve", "Congratulation! Your Membership has been Accpeted.", user.Email);
+            sendMail("Nadi Kebangsaan Membership Added", "admin approve membership of user " + user.Email, MyConstant.app_admin_email);
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 
