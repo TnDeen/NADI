@@ -107,6 +107,70 @@ namespace MVC5.Common
                             tran4.LastUpdatedBy = User.Identity.Name;
                             db.Transactions.Add(tran4);
 
+                            if (parent4.ParentId != null)
+                            {
+                                var parent5 = idb.Users.Find(parent4.ParentId);
+                                Transaction tran5 = new Transaction();
+                                tran5.CustomerID = user.Id;
+                                tran5.VendorID = parent5.Id;
+                                tran5.point = MyConstant.Point_5;
+                                tran5.level = 5;
+                                tran5.CreateBy = User.Identity.Name;
+                                tran5.CreateDate = DateTime.Now;
+                                tran5.LastUpdated = DateTime.Now;
+                                tran5.LastUpdatedBy = User.Identity.Name;
+                                db.Transactions.Add(tran5);
+
+                                if (parent5.ParentId != null)
+                                {
+                                    var parent6 = idb.Users.Find(parent5.ParentId);
+                                    Transaction tran6 = new Transaction();
+                                    tran6.CustomerID = user.Id;
+                                    tran6.VendorID = parent6.Id;
+                                    tran6.point = MyConstant.Point_6;
+                                    tran6.level = 6;
+                                    tran6.CreateBy = User.Identity.Name;
+                                    tran6.CreateDate = DateTime.Now;
+                                    tran6.LastUpdated = DateTime.Now;
+                                    tran6.LastUpdatedBy = User.Identity.Name;
+                                    db.Transactions.Add(tran6);
+
+                                    if (parent6.ParentId != null)
+                                    {
+                                        var parent7 = idb.Users.Find(parent6.ParentId);
+                                        Transaction tran7 = new Transaction();
+                                        tran7.CustomerID = user.Id;
+                                        tran7.VendorID = parent7.Id;
+                                        tran7.point = MyConstant.Point_7;
+                                        tran7.level = 7;
+                                        tran7.CreateBy = User.Identity.Name;
+                                        tran7.CreateDate = DateTime.Now;
+                                        tran7.LastUpdated = DateTime.Now;
+                                        tran7.LastUpdatedBy = User.Identity.Name;
+                                        db.Transactions.Add(tran7);
+
+                                        if (parent7.ParentId != null)
+                                        {
+                                            var parent8 = idb.Users.Find(parent7.ParentId);
+                                            Transaction tran8 = new Transaction();
+                                            tran8.CustomerID = user.Id;
+                                            tran8.VendorID = parent8.Id;
+                                            tran8.point = MyConstant.Point_8;
+                                            tran8.level = 8;
+                                            tran8.CreateBy = User.Identity.Name;
+                                            tran8.CreateDate = DateTime.Now;
+                                            tran8.LastUpdated = DateTime.Now;
+                                            tran8.LastUpdatedBy = User.Identity.Name;
+                                            db.Transactions.Add(tran8);
+
+                                        }
+
+                                    }
+
+                                }
+
+                            }
+
                         }
                     } 
                 }
