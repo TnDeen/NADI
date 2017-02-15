@@ -19,7 +19,6 @@ using System.Collections.Generic;
 namespace MVC5.Controllers
 {
     [Authorize]
-    [RequireHttps]
     public class AccountController : BaseController
     {
         private ApplicationSignInManager _signInManager;

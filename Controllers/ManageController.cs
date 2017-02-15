@@ -67,12 +67,28 @@ namespace MVC5.Controllers
                 : "";
 
             var userId = User.Identity.GetUserId();
+            var userlink = Url.Action("Register", "Account",
+               new { userId = userId }, protocol: Request.Url.Scheme);
+            ApplicationUser curuser = UserManager.FindById(userId);
+            decimal? p = 0;
+            decimal? w = 0;
+            if (curuser.EmailConfirmed)
+            {
+                p = db.Transactions.Where(a => a.VendorID.Equals(userId) && !a.statusActive).Select(a => a.point).Sum();
+                w = db.Transactions.Where(a => a.VendorID.Equals(userId) && a.statusActive).Select(a => a.point).Sum();
+            } else
+            {
+                p = db.Transactions.Where(a => a.VendorID.Equals(userId)).Select(a => a.point).Sum();
+            }
+            
             var model = new IndexViewModel
             {
 
                 HasPassword = HasPassword(),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
-                wallet = db.Transactions.Where(a => a.VendorID.Equals(userId)).Select(a => a.point).Sum(),
+                userLink = userlink,
+                potentialPoint = p,
+                wallet = w,
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),

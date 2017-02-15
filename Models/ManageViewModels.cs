@@ -13,8 +13,13 @@ namespace MVC5.Models
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
 
-        [Display(Name="Wallet (RM)")]
+        [Display(Name="Potential Point(RM)")]
+        public decimal? potentialPoint { get; set; }
+
+        [Display(Name = "Wallet (RM)")]
         public decimal? wallet { get; set; }
+
+        public string userLink { get; set; }
 
         public ApplicationUser CurrentUser { get; set; }
         public ICollection<ApplicationUser> ChildList { get; set; }
