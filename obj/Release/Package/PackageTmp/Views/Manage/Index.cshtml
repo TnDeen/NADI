@@ -1,134 +1,179 @@
 ﻿@model MVC5.Models.IndexViewModel
-@{
-    ViewBag.Title = "Manage";
-}
+@using MVC5.Common
+
+<script src="~/Scripts/clipboard.min.js"></script>
+<script>
+    var btn = document.getElementById('btn');
+    var clipboard = new Clipboard('.btn');
+    clipboard.on('success', function(e) {
+        console.log(e);
+    });
+    clipboard.on('error', function(e) {
+        console.log(e);
+    });
+</script>
+
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+        <div class="content-page">
+
+            <div class="note note-success">
+                <h4 class="block">Terms and conditions</h4>
+                <p>
+                    In the frontend theme you can use nearly all the features from <a href="http://keenthemes.com/preview/metronic_admin/" target="_blanl">Metronic Admin Theme</a>. First you will just need to include 2 below global css files:
+                </p>
+                <p>
+                    And selected plugin's css and js files accordingly.
+                </p>
+            </div>
+
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Nota Tambahan</h3>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        <li>
+                            The maximum file size for uploads in this demo is <strong>5 MB</strong> (default file size is unlimited).
+                        </li>
+                        <li>
+                            Only image files (<strong>JPG, GIF, PNG</strong>) are allowed in this demo (by default there is no file type restriction).
+                        </li>
+                        <li>
+                            Uploaded files will be deleted automatically after <strong>5 minutes</strong> (demo setting).
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="blog-tags margin-bottom-20">
+                <h2>My Account</h2>
+                <ul>
+                    <li><a href="@MyConstant.Base_Url/Manage/Edit/@Model.CurrentUser.Id"><i class="fa fa-tags"></i>Edit Profiles</a></li>
+                    <li><a href="@MyConstant.Base_Url/Manage/ApplyMembership"><i class="fa fa-tags"></i>Apply Membership</a></li>
 
 
-
-        <h2>@ViewBag.Title.</h2>
-        <p class="text-success">@ViewBag.StatusMessage</p>
-        <div>
-            <h4>Change your account settings</h4>
-            <hr />
-            <dl class="dl-horizontal">
-                <dt>Password:</dt>
-                <dd>
-                    [
+                    
                     @if (Model.HasPassword)
-            {
-            @Html.ActionLink("Change your password", "ChangePassword")
-            }
-            else
-            {
-            @Html.ActionLink("Create", "SetPassword")
-            }
-                    ]
-                </dd>
-                <dt>External Logins:</dt>
-                <dd>
-                    @Model.Logins.Count [
-                    @Html.ActionLink("Manage", "ManageLogins") ]
-                </dd>
-                @*
-                    Phone Numbers can used as a second factor of verification in a two-factor authentication system.
+                    {
+                        <li><a href="@MyConstant.Base_Url/Manage/ChangePassword"><i class="fa fa-tags"></i>Change your password</a></li>                    }
+                    else
+                    {
+                        <li><a href="@MyConstant.Base_Url/Manage/SetPassword"><i class="fa fa-tags"></i>Create Password</a></li>
+                    }
+                    
+                    <li><a href="@MyConstant.Base_Url/Manage/ManageLogins"><i class="fa fa-tags"></i>Manage Login</a></li>
 
-                     See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                        for details on setting up this ASP.NET application to support two-factor authentication using SMS.
+                    
+                </ul>
+            </div>
 
-                     Uncomment the following block after you have set up two-factor authentication
-                *@
-                @*
-                    <dt>Phone Number:</dt>
-                    <dd>
-                        @(Model.PhoneNumber ?? "None") [
-                        @if (Model.PhoneNumber != null)
-                        {
-                            @Html.ActionLink("Change", "AddPhoneNumber")
-                            @: &nbsp;|&nbsp;
-                            @Html.ActionLink("Remove", "RemovePhoneNumber")
-                        }
-                        else
-                        {
-                            @Html.ActionLink("Add", "AddPhoneNumber")
-                        }
-                        ]
-                    </dd>
-                *@
-                
-            </dl>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="dashboard-stat blue-madison">
+                    <div class="visual">
+                        <i class="fa fa-comments"></i>
+                    </div>
+                    <div class="details">
+                        <div class="number">
+                            @Html.DisplayFor(model => model.potentialPoint)
+                        </div>
+                        <div class="desc">
+                            Potential Points
+                        </div>
+                    </div>
+                    <a class="more" href="#">
+                        View more <i class="m-icon-swapright m-icon-white"></i>
+                    </a>
+                </div>
+            </div>
 
-            <h4>Change your account profiles</h4>
-            <p>
-                @Html.ActionLink("Edit Profiles", "Edit", new { id = Model.CurrentUser.Id })
-            </p>
-            <p>
-                @Html.ActionLink("Apply Membership", "ApplyMembership")
-            </p>
-            <hr />
-            <dl class="dl-horizontal">
-                <dt>@Html.DisplayNameFor(model => model.wallet) :</dt>
-                <dd>@Html.DisplayFor(model => model.wallet)</dd>
-
-                <dt>@Html.DisplayNameFor(model => model.CurrentUser.ParentId) :</dt>
-                <dd>@Html.DisplayFor(model => model.CurrentUser.ParentId)</dd>
-
-                <dt>@Html.DisplayNameFor(model => model.CurrentUser.HomeTown) :</dt>
-                <dd>@Html.DisplayFor(model => model.CurrentUser.HomeTown)</dd>
-
-                <dt>@Html.DisplayNameFor(model => model.CurrentUser.BirthDate) :</dt>
-                <dd>@Html.DisplayFor(model => model.CurrentUser.BirthDate)</dd>
-
-                <dt>@Html.DisplayNameFor(model => model.CurrentUser.PhoneNumber) :</dt>
-                <dd>@Html.DisplayFor(model => model.CurrentUser.PhoneNumber)</dd>
-            </dl>
-
-            <h4>Register List</h4>
-
-            <p>
-                @*@Html.ActionLink("Add New", "CreateCus") |*@
-                @Html.ActionLink("Generate QR Code", "Create", "Transaction") |
-                @Html.ActionLink("Show Transac", "Index", "Transaction")
-            </p>
-            <table class="table">
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CurrentUser.Email)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CurrentUser.PhoneNumber)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CurrentUser.HomeTown)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CurrentUser.BirthDate)
-                    </th>
-                    <th></th>
-                </tr>
-
-
-                @foreach (var item in Model.ChildList)
-        {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhoneNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HomeTown)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BirthDate)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
-        </tr>
-        }
-
-            </table>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="dashboard-stat red-intense">
+                    <div class="visual">
+                        <i class="fa fa-bar-chart-o"></i>
+                    </div>
+                    <div class="details">
+                        <div class="number">
+                            @Html.DisplayFor(model => model.wallet)
+                        </div>
+                        <div class="desc">
+                            Current Points
+                        </div>
+                    </div>
+                    <a class="more" href="#">
+                        View more <i class="m-icon-swapright m-icon-white"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="dashboard-stat green-haze">
+                    <div class="visual">
+                        <i class="fa fa-shopping-cart"></i>
+                    </div>
+                    <div class="details">
+                        <div class="number">
+                            @Html.DisplayFor(model => model.totalChild)
+                        </div>
+                        <div class="desc">
+                            Registerer
+                        </div>
+                    </div>
+                    <a class="more" href="@MyConstant.Base_Url/Transaction/Index">
+                        View more <i class="m-icon-swapright m-icon-white"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="dashboard-stat purple-plum">
+                    <div class="visual">
+                        <i class="fa fa-globe"></i>
+                    </div>
+                    <div class="details">
+                        <div class="number">
+                            @Html.DisplayFor(model => model.accstatus)
+                        </div>
+                        <div class="desc">
+                            Account Status
+                        </div>
+                    </div>
+                    <a class="more" href="#">
+                        View more <i class="m-icon-swapright m-icon-white"></i>
+                    </a>
+                </div>
+            </div>
         </div>
+
+
+
+    </div>
+    </div>
+
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+        <div class="content-page">
+            <!-- BEGIN SAMPLE TABLE PORTLET-->
+            <div class="portlet box red">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-cogs"></i>User Link
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button id="btn" class="btn red" data-clipboard-target="#foo">Copy Link</button>
+                        </span>
+                        <input id="foo" type="text" class="form-control" value="@Model.userLink">
+                    </div>
+                    
+                   
+                        <img src="/Manage/BarcodeImage" />
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    

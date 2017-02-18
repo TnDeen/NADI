@@ -22,6 +22,8 @@ namespace MVC5
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js",
+                      "~/Scripts/clipboard.js",
+                      "~/Scripts/clipboard.min.js",
                       "~/Content/assets/global/plugins/jquery.min.js",
                       "~/Content/assets/global/plugins/jquery-migrate.min.js",
                       "~/Content/assets/global/plugins/bootstrap/js/bootstrap.min.js",

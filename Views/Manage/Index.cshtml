@@ -1,7 +1,17 @@
 ﻿@model MVC5.Models.IndexViewModel
 @using MVC5.Common
 
-
+<script src="~/Scripts/clipboard.min.js"></script>
+<script>
+    var btn = document.getElementById('btn');
+    var clipboard = new Clipboard('.btn');
+    clipboard.on('success', function(e) {
+        console.log(e);
+    });
+    clipboard.on('error', function(e) {
+        console.log(e);
+    });
+</script>
 
 <div class="row">
     <div class="col-md-12 col-sm-12">
@@ -11,10 +21,6 @@
                 <h4 class="block">Terms and conditions</h4>
                 <p>
                     In the frontend theme you can use nearly all the features from <a href="http://keenthemes.com/preview/metronic_admin/" target="_blanl">Metronic Admin Theme</a>. First you will just need to include 2 below global css files:
-                </p>
-                <p>
-                    <code>../../assets/global/css/components.css</code><br>
-                    <code>../../assets/global/css/plugins.css</code>
                 </p>
                 <p>
                     And selected plugin's css and js files accordingly.
@@ -153,10 +159,16 @@
                     </div>
                 </div>
                 <div class="portlet-body">
-                    <p>@Model.userLink</p>
-                    <div class="table-scrollable">
-                        <img src="/Manage/BarcodeImage" />
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button id="btn" class="btn red" data-clipboard-target="#foo">Copy Link</button>
+                        </span>
+                        <input id="foo" type="text" class="form-control" value="@Model.userLink">
                     </div>
+                    
+                   
+                        <img src="/Manage/BarcodeImage" />
+                   
                 </div>
             </div>
         </div>
