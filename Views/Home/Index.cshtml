@@ -1,581 +1,412 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿
+    @using MVC5.Common
+    <!-- BEGIN TOP BAR -->
+    <div class="pre-header">
+        <div class="container">
+            <div class="row">
+                <!-- BEGIN TOP BAR LEFT PART -->
+                <div class="col-md-6 col-sm-6 additional-shop-info">
+                    <ul class="list-unstyled list-inline">
+                        <li><i class="fa fa-phone"></i><span>+60 10862 0466</span></li>
+                        <li><i class="fa fa-envelope-o"></i><span>info@nadikebangsaan.com</span></li>
+                    </ul>
+                </div>
+                <!-- END TOP BAR LEFT PART -->
+                <!-- BEGIN TOP BAR MENU -->
+                @Html.Partial("_LoginPartial")
+                <!-- END TOP BAR MENU -->
+            </div>
+        </div>
+    </div>
+    <!-- END TOP BAR -->
+    <!-- Promo block BEGIN -->
+    <div class="promo-block" id="promo-block">
+        <div class="tp-banner-container">
+            <div class="tp-banner">
+                <ul>
+                    <li data-transition="fade" data-slotamount="5" data-masterspeed="700" data-delay="9400" class="slider-item-1">
+                        <img src="~/Content/assets/frontend/onepage/img/silder/slide1.jpg" alt="" data-bgfit="cover" style="opacity:0.4 !important;" data-bgposition="center center" data-bgrepeat="no-repeat">
+                        <div class="tp-caption large_text customin customout start"
+                             data-x="center"
+                             data-hoffset="0"
+                             data-y="center"
+                             data-voffset="60"
+                             data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+                             data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                             data-speed="1000"
+                             data-start="500"
+                             data-easing="Back.easeInOut"
+                             data-endspeed="300">
+                            <div class="promo-like"><i class="fa fa-thumbs-up"></i></div>
+                            <div class="promo-like-text">
+                                <h2>Let's just do it</h2>
+                                <p>Portal<br> menjana pendapatan <a href="@MyConstant.Base_Url/Account/Register">DAFTAR</a></p>
+                            </div>
+                        </div>
+                        <div class="tp-caption large_bold_white fade"
+                             data-x="center"
+                             data-y="center"
+                             data-voffset="-110"
+                             data-speed="300"
+                             data-start="1700"
+                             data-easing="Power4.easeOut"
+                             data-endspeed="500"
+                             data-endeasing="Power1.easeIn"
+                             data-captionhidden="off"
+                             style="z-index: 6">
+                            <span>NadiKebangsaan.com</span>
+                        </div>
+                    </li>
+                    
+                    <li data-transition="fade" data-slotamount="5" data-masterspeed="700" data-delay="9400" class="slider-item-3">
+                        <img src="http://themepunch.com/revolution/wp-content/uploads/2014/05/video_woman_cover3.jpg" alt="video_woman_cover3" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
 
-<!-- BEGIN SLIDER -->
-<div class="page-slider margin-bottom-40">
-    <div class="fullwidthbanner-container revolution-slider">
-        <div class="fullwidthabnner">
-            <ul id="revolutionul">
-                <!-- THE NEW SLIDE -->
-                <li data-transition="fade" data-slotamount="8" data-masterspeed="700" data-delay="9400" data-thumb="Content/assets/frontend/pages/img/revolutionslider/thumbs/thumb2.jpg">
-                    <!-- THE MAIN IMAGE IN THE FIRST SLIDE -->
-                    <img src="~/Content/assets/frontend/pages/img/revolutionslider/bg9.jpg" alt="">
-
-                    <div class="caption lft slide_title_white slide_item_left"
-                         data-x="30"
-                         data-y="90"
-                         data-speed="400"
-                         data-start="1500"
-                         data-easing="easeOutExpo">
-                        Explore the Power<br><span class="slide_title_white_bold">of Metronic</span>
+                        <div class="tp-caption tp-fade fadeout fullscreenvideo"
+                             data-x="0"
+                             data-y="0"
+                             data-speed="1000"
+                             data-start="1100"
+                             data-easing="Power4.easeOut"
+                             data-endspeed="1500"
+                             data-endeasing="Power4.easeIn"
+                             data-autoplay="true"
+                             data-autoplayonlyfirsttime="false"
+                             data-nextslideatend="true"
+                             data-forceCover="1"
+                             data-dottedoverlay="twoxtwo"
+                             data-aspectratio="16:9"
+                             data-forcerewind="on"
+                             style="z-index: 2">
+                            <video class="video-js vjs-default-skin" preload="none" width="100%" height="100%">
+                                <source src='https://www.dropbox.com/s/6t2y0xx2x6wos06/Show1.mp4' type='video/mp4'>
+                            </video>
+                        </div>
+                        <div class="tp-caption large_bold_white_25 customin customout tp-resizeme"
+                             data-x="center" data-hoffset="0"
+                             data-y="170"
+                             data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:5;scaleY:5;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                             data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                             data-speed="600"
+                             data-start="1400"
+                             data-easing="Power4.easeOut"
+                             data-endspeed="600"
+                             data-endeasing="Power0.easeIn"
+                             style="z-index: 3">
+                            The clearest way into the Universe<br />is through a forest wilderness.
+                        </div>
+                        <div class="tp-caption medium_text_shadow customin customout tp-resizeme"
+                             data-x="center" data-hoffset="0"
+                             data-y="bottom" data-voffset="-140"
+                             data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:5;scaleY:5;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                             data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                             data-speed="600"
+                             data-start="1700"
+                             data-easing="Power4.easeOut"
+                             data-endspeed="600"
+                             data-endeasing="Power0.easeIn"
+                             style="z-index: 4">
+                            John Muir
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Promo block END -->
+    
+    
+    
+    
+   
+    
+    <!-- Checkout block BEGIN -->
+    <div class="checkout-block content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <h2>Seramai @ViewBag.totalregister orang telah mendaftar! <em>Klik untuk sertai kami</em></h2>
+                </div>
+                <div class="col-md-2 text-right">
+                    <a href="@MyConstant.Base_Url/Account/Login" target="_blank" class="btn btn-primary">DAFTAR SEKARANG</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Checkout block END -->
+    <!-- Facts block BEGIN -->
+    <div class="facts-block content content-center" id="facts-block">
+        <h2>Badan Pertubuhan Yang Berdaftar!</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-3 col-xs-6">
+                    <div class="item">
+                        <strong>39</strong>
+                        Projects Completed
                     </div>
-                    <div class="caption lft slide_subtitle_white slide_item_left"
-                         data-x="87"
-                         data-y="245"
-                         data-speed="400"
-                         data-start="2000"
-                         data-easing="easeOutExpo">
-                        This is what you were looking for
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-6">
+                    <div class="item">
+                        <strong>14</strong>
+                        Team Members
                     </div>
-                    <a class="caption lft btn dark slide_btn slide_item_left" href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes"
-                       data-x="187"
-                       data-y="315"
-                       data-speed="400"
-                       data-start="3000"
-                       data-easing="easeOutExpo">
-                        Purchase Now!
-                    </a>
-                    <div class="caption lfb"
-                         data-x="640"
-                         data-y="0"
-                         data-speed="700"
-                         data-start="1000"
-                         data-easing="easeOutExpo">
-                        <img src="~/Content/assets/frontend/pages/img/revolutionslider/lady.png" alt="Image 1">
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-6">
+                    <div class="item">
+                        <strong>29k+</strong>
+                        Products Sold
                     </div>
-                </li>
-                <!-- THE FIRST SLIDE -->
-                <li data-transition="fade" data-slotamount="8" data-masterspeed="700" data-delay="9400" data-thumb="Content/assets/frontend/pages/img/revolutionslider/thumbs/thumb2.jpg">
-                    <!-- THE MAIN IMAGE IN THE FIRST SLIDE -->
-                    <img src="~/Content/assets/frontend/pages/img/revolutionslider/bg1.jpg" alt="">
-
-                    <div class="caption lft slide_title slide_item_left"
-                         data-x="30"
-                         data-y="105"
-                         data-speed="400"
-                         data-start="1500"
-                         data-easing="easeOutExpo">
-                        Need a website design?
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-6">
+                    <div class="item">
+                        <strong>500</strong>
+                        Weekly Sales
                     </div>
-                    <div class="caption lft slide_subtitle slide_item_left"
-                         data-x="30"
-                         data-y="180"
-                         data-speed="400"
-                         data-start="2000"
-                         data-easing="easeOutExpo">
-                        This is what you were looking for
-                    </div>
-                    <div class="caption lft slide_desc slide_item_left"
-                         data-x="30"
-                         data-y="220"
-                         data-speed="400"
-                         data-start="2500"
-                         data-easing="easeOutExpo">
-                        Lorem ipsum dolor sit amet, dolore eiusmod<br> quis tempor incididunt. Sed unde omnis iste.
-                    </div>
-                    <a class="caption lft btn green slide_btn slide_item_left" href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes"
-                       data-x="30"
-                       data-y="290"
-                       data-speed="400"
-                       data-start="3000"
-                       data-easing="easeOutExpo">
-                        Purchase Now!
-                    </a>
-                    <div class="caption lfb"
-                         data-x="640"
-                         data-y="55"
-                         data-speed="700"
-                         data-start="1000"
-                         data-easing="easeOutExpo">
-                        <img src="~/Content/assets/frontend/pages/img/revolutionslider/man-winner.png" alt="Image 1">
-                    </div>
-                </li>
-                <!-- THE SECOND SLIDE -->
-                <li data-transition="fade" data-slotamount="7" data-masterspeed="300" data-delay="9400" data-thumb="Content/assets/frontend/pages/img/revolutionslider/thumbs/thumb2.jpg">
-                    <img src="~/Content/assets/frontend/pages/img/revolutionslider/bg2.jpg" alt="">
-                    <div class="caption lfl slide_title slide_item_left"
-                         data-x="30"
-                         data-y="125"
-                         data-speed="400"
-                         data-start="3500"
-                         data-easing="easeOutExpo">
-                        Powerfull &amp; Clean
-                    </div>
-                    <div class="caption lfl slide_subtitle slide_item_left"
-                         data-x="30"
-                         data-y="200"
-                         data-speed="400"
-                         data-start="4000"
-                         data-easing="easeOutExpo">
-                        Responsive Admin &amp; Website Theme
-                    </div>
-                    <div class="caption lfl slide_desc slide_item_left"
-                         data-x="30"
-                         data-y="245"
-                         data-speed="400"
-                         data-start="4500"
-                         data-easing="easeOutExpo">
-                        Lorem ipsum dolor sit amet, consectetuer elit sed diam<br> nonummy amet euismod dolore.
-                    </div>
-                    <div class="caption lfr slide_item_right"
-                         data-x="635"
-                         data-y="105"
-                         data-speed="1200"
-                         data-start="1500"
-                         data-easing="easeOutBack">
-                        <img src="~/Content/assets/frontend/pages/img/revolutionslider/mac.png" alt="Image 1">
-                    </div>
-                    <div class="caption lfr slide_item_right"
-                         data-x="580"
-                         data-y="245"
-                         data-speed="1200"
-                         data-start="2000"
-                         data-easing="easeOutBack">
-                        <img src="~/Content/assets/frontend/pages/img/revolutionslider/ipad.png" alt="Image 1">
-                    </div>
-                    <div class="caption lfr slide_item_right"
-                         data-x="735"
-                         data-y="290"
-                         data-speed="1200"
-                         data-start="2500"
-                         data-easing="easeOutBack">
-                        <img src="~/Content/assets/frontend/pages/img/revolutionslider/iphone.png" alt="Image 1">
-                    </div>
-                    <div class="caption lfr slide_item_right"
-                         data-x="835"
-                         data-y="230"
-                         data-speed="1200"
-                         data-start="3000"
-                         data-easing="easeOutBack">
-                        <img src="~/Content/assets/frontend/pages/img/revolutionslider/macbook.png" alt="Image 1">
-                    </div>
-                    <div class="caption lft slide_item_right"
-                         data-x="865"
-                         data-y="45"
-                         data-speed="500"
-                         data-start="5000"
-                         data-easing="easeOutBack">
-                        <img src="~/Content/assets/frontend/pages/img/revolutionslider/hint1-red.png" id="rev-hint1" alt="Image 1">
-                    </div>
-                    <div class="caption lfb slide_item_right"
-                         data-x="355"
-                         data-y="355"
-                         data-speed="500"
-                         data-start="5500"
-                         data-easing="easeOutBack">
-                        <img src="~/Content/assets/frontend/pages/img/revolutionslider/hint2-red.png" id="rev-hint2" alt="Image 1">
-                    </div>
-                </li>
-
-                <!-- THE THIRD SLIDE -->
-                <li data-transition="fade" data-slotamount="8" data-masterspeed="700" data-delay="9400" data-thumb="Content/assets/frontend/pages/img/revolutionslider/thumbs/thumb2.jpg">
-                    <img src="~/Content/assets/frontend/pages/img/revolutionslider/bg3.jpg" alt="">
-                    <div class="caption lfl slide_item_left"
-                         data-x="30"
-                         data-y="95"
-                         data-speed="400"
-                         data-start="1500"
-                         data-easing="easeOutBack">
-
-                    </div>
-                    <div class="caption lfr slide_title"
-                         data-x="470"
-                         data-y="100"
-                         data-speed="400"
-                         data-start="2000"
-                         data-easing="easeOutExpo">
-                        Responsive Video Support
-                    </div>
-                    <div class="caption lfr slide_subtitle"
-                         data-x="470"
-                         data-y="170"
-                         data-speed="400"
-                         data-start="2500"
-                         data-easing="easeOutExpo">
-                        Youtube, Vimeo and others.
-                    </div>
-                    <div class="caption lfr slide_desc"
-                         data-x="470"
-                         data-y="220"
-                         data-speed="400"
-                         data-start="3000"
-                         data-easing="easeOutExpo">
-                        Lorem ipsum dolor sit amet, consectetuer elit sed diam<br> nonummy amet euismod dolore.
-                    </div>
-                    <a class="caption lfr btn yellow slide_btn" href=""
-                       data-x="470"
-                       data-y="280"
-                       data-speed="400"
-                       data-start="3500"
-                       data-easing="easeOutExpo">
-                        Watch more Videos!
-                    </a>
-                </li>
-
-                <!-- THE FORTH SLIDE -->
-                <li data-transition="fade" data-slotamount="8" data-masterspeed="700" data-delay="9400" data-thumb="Content/assets/frontend/pages/img/revolutionslider/thumbs/thumb2.jpg">
-                    <!-- THE MAIN IMAGE IN THE FIRST SLIDE -->
-                    <img src="~/Content/assets/frontend/pages/img/revolutionslider/bg4.jpg" alt="">
-                    <div class="caption lft slide_title"
-                         data-x="30"
-                         data-y="105"
-                         data-speed="400"
-                         data-start="1500"
-                         data-easing="easeOutExpo">
-                        What else included ?
-                    </div>
-                    <div class="caption lft slide_subtitle"
-                         data-x="30"
-                         data-y="180"
-                         data-speed="400"
-                         data-start="2000"
-                         data-easing="easeOutExpo">
-                        The Most Complete Admin Theme
-                    </div>
-                    <div class="caption lft slide_desc"
-                         data-x="30"
-                         data-y="225"
-                         data-speed="400"
-                         data-start="2500"
-                         data-easing="easeOutExpo">
-                        Lorem ipsum dolor sit amet, consectetuer elit sed diam<br> nonummy amet euismod dolore.
-                    </div>
-                    <a class="caption lft slide_btn btn red slide_item_left" href="http://www.keenthemes.com/preview/index.php?theme=metronic_admin" target="_blank"
-                       data-x="30"
-                       data-y="300"
-                       data-speed="400"
-                       data-start="3000"
-                       data-easing="easeOutExpo">
-                        Learn More!
-                    </a>
-                    <div class="caption lft start"
-                         data-x="670"
-                         data-y="55"
-                         data-speed="400"
-                         data-start="2000"
-                         data-easing="easeOutBack">
-                        <img src="~/Content/assets/frontend/pages/img/revolutionslider/iphone_left.png" alt="Image 2">
-                    </div>
-
-                    <div class="caption lft start"
-                         data-x="850"
-                         data-y="55"
-                         data-speed="400"
-                         data-start="2400"
-                         data-easing="easeOutBack">
-                        <img src="~/Content/assets/frontend/pages/img/revolutionslider/iphone_right.png" alt="Image 3">
-                    </div>
-                </li>
-            </ul>
-            <div class="tp-bannertimer tp-bottom"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Facts block END -->
+<!-- Testimonials block BEGIN -->
+<div class="testimonials-block content content-center margin-bottom-65">
+    <div class="container">
+        <h2>Customer <strong>testimonials</strong></h2>
+        <h4>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</h4>
+        <div class="carousel slide" data-ride="carousel" id="testimonials-block">
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <!-- Carousel items -->
+                <div class="active item">
+                    <blockquote>
+                        <p>This is the most awesome, full featured, easy, costomizeble theme. It’s extremely responsive and very helpful to all suggestions.</p>
+                    </blockquote>
+                    <span class="testimonials-name">Mark Doe</span>
+                </div>
+                <!-- Carousel items -->
+                <div class="item">
+                    <blockquote>
+                        <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse.</p>
+                    </blockquote>
+                    <span class="testimonials-name">Joe Smith</span>
+                </div>
+                <!-- Carousel items -->
+                <div class="item">
+                    <blockquote>
+                        <p>Williamsburg carles vegan helvetica. Cosby sweater eu banh mi, qui irure terry richardson ex squid Aliquip placeat salvia cillum iphone.</p>
+                    </blockquote>
+                    <span class="testimonials-name">Linda Adams</span>
+                </div>
+            </div>
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#testimonials-block" data-slide-to="0" class="active"></li>
+                <li data-target="#testimonials-block" data-slide-to="1"></li>
+                <li data-target="#testimonials-block" data-slide-to="2"></li>
+            </ol>
         </div>
     </div>
 </div>
-<!-- END SLIDER -->
-
-
-
-        <!-- BEGIN SERVICE BOX -->
-        <div class="row service-box margin-bottom-40">
-            <div class="col-md-4 col-sm-4">
-                <div class="service-box-heading">
-                    <em><i class="fa fa-location-arrow blue"></i></em>
-                    <span>Multipurpose Template</span>
-                </div>
-                <p>Lorem ipsum dolor sit amet, dolore eiusmod quis tempor incididunt ut et dolore Ut veniam unde nostrudlaboris. Sed unde omnis iste natus error sit voluptatem.</p>
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <div class="service-box-heading">
-                    <em><i class="fa fa-check red"></i></em>
-                    <span>Well Documented</span>
-                </div>
-                <p>Lorem ipsum dolor sit amet, dolore eiusmod quis tempor incididunt ut et dolore Ut veniam unde nostrudlaboris. Sed unde omnis iste natus error sit voluptatem.</p>
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <div class="service-box-heading">
-                    <em><i class="fa fa-compress green"></i></em>
-                    <span>Responsive Design</span>
-                </div>
-                <p>Lorem ipsum dolor sit amet, dolore eiusmod quis tempor incididunt ut et dolore Ut veniam unde nostrudlaboris. Sed unde omnis iste natus error sit voluptatem.</p>
-            </div>
-        </div>
-        <!-- END SERVICE BOX -->
-        <!-- BEGIN BLOCKQUOTE BLOCK -->
-        <div class="row quote-v1 margin-bottom-30">
-            <div class="col-md-9">
-                <span>Metronic - The Most Complete &amp; Popular Admin &amp; Frontend Theme</span>
-            </div>
-            <div class="col-md-3 text-right">
-                <a class="btn-transparent" href="http://www.keenthemes.com/preview/index.php?theme=metronic_admin" target="_blank"><i class="fa fa-rocket margin-right-10"></i>Preview Admin</a>
-            </div>
-        </div>
-        <!-- END BLOCKQUOTE BLOCK -->
-        <!-- BEGIN RECENT WORKS -->
-        <div class="row recent-work margin-bottom-40">
-            <div class="col-md-3">
-                <h2><a href="portfolio.html">Recent Works</a></h2>
-                <p>Lorem ipsum dolor sit amet, dolore eiusmod quis tempor incididunt ut et dolore Ut veniam unde voluptatem. Sed unde omnis iste natus error sit voluptatem.</p>
-            </div>
-            <div class="col-md-9">
-                <div class="owl-carousel owl-carousel3">
-                    <div class="recent-work-item">
-                        <em>
-                            <img src="~/Content/assets/frontend/pages/img/works/img1.jpg" alt="Amazing Project" class="img-responsive">
-                            <a href="portfolio-item.html"><i class="fa fa-link"></i></a>
-                            <a href="~/Content/assets/frontend/pages/img/works/img1.jpg" class="fancybox-button" title="Project Name #1" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
-                        </em>
-                        <a class="recent-work-description" href="#">
-                            <strong>Amazing Project</strong>
-                            <b>Agenda corp.</b>
-                        </a>
-                    </div>
-                    <div class="recent-work-item">
-                        <em>
-                            <img src="~/Content/assets/frontend/pages/img/works/img2.jpg" alt="Amazing Project" class="img-responsive">
-                            <a href="portfolio-item.html"><i class="fa fa-link"></i></a>
-                            <a href="~/Content/assets/frontend/pages/img/works/img2.jpg" class="fancybox-button" title="Project Name #2" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
-                        </em>
-                        <a class="recent-work-description" href="#">
-                            <strong>Amazing Project</strong>
-                            <b>Agenda corp.</b>
-                        </a>
-                    </div>
-                    <div class="recent-work-item">
-                        <em>
-                            <img src="~/Content/assets/frontend/pages/img/works/img3.jpg" alt="Amazing Project" class="img-responsive">
-                            <a href="portfolio-item.html"><i class="fa fa-link"></i></a>
-                            <a href="~/Content/assets/frontend/pages/img/works/img3.jpg" class="fancybox-button" title="Project Name #3" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
-                        </em>
-                        <a class="recent-work-description" href="#">
-                            <strong>Amazing Project</strong>
-                            <b>Agenda corp.</b>
-                        </a>
-                    </div>
-                    <div class="recent-work-item">
-                        <em>
-                            <img src="~/Content/assets/frontend/pages/img/works/img4.jpg" alt="Amazing Project" class="img-responsive">
-                            <a href="portfolio-item.html"><i class="fa fa-link"></i></a>
-                            <a href="~/Content/assets/frontend/pages/img/works/img4.jpg" class="fancybox-button" title="Project Name #4" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
-                        </em>
-                        <a class="recent-work-description" href="#">
-                            <strong>Amazing Project</strong>
-                            <b>Agenda corp.</b>
-                        </a>
-                    </div>
-                    <div class="recent-work-item">
-                        <em>
-                            <img src="~/Content/assets/frontend/pages/img/works/img5.jpg" alt="Amazing Project" class="img-responsive">
-                            <a href="portfolio-item.html"><i class="fa fa-link"></i></a>
-                            <a href="~/Content/assets/frontend/pages/img/works/img5.jpg" class="fancybox-button" title="Project Name #5" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
-                        </em>
-                        <a class="recent-work-description" href="#">
-                            <strong>Amazing Project</strong>
-                            <b>Agenda corp.</b>
-                        </a>
-                    </div>
-                    <div class="recent-work-item">
-                        <em>
-                            <img src="~/Content/assets/frontend/pages/img/works/img6.jpg" alt="Amazing Project" class="img-responsive">
-                            <a href="portfolio-item.html"><i class="fa fa-link"></i></a>
-                            <a href="~/Content/assets/frontend/pages/img/works/img6.jpg" class="fancybox-button" title="Project Name #6" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
-                        </em>
-                        <a class="recent-work-description" href="#">
-                            <strong>Amazing Project</strong>
-                            <b>Agenda corp.</b>
-                        </a>
-                    </div>
-                    <div class="recent-work-item">
-                        <em>
-                            <img src="~/Content/assets/frontend/pages/img/works/img3.jpg" alt="Amazing Project" class="img-responsive">
-                            <a href="portfolio-item.html"><i class="fa fa-link"></i></a>
-                            <a href="~/Content/assets/frontend/pages/img/works/img3.jpg" class="fancybox-button" title="Project Name #3" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
-                        </em>
-                        <a class="recent-work-description" href="#">
-                            <strong>Amazing Project</strong>
-                            <b>Agenda corp.</b>
-                        </a>
-                    </div>
-                    <div class="recent-work-item">
-                        <em>
-                            <img src="~/Content/assets/frontend/pages/img/works/img4.jpg" alt="Amazing Project" class="img-responsive">
-                            <a href="portfolio-item.html"><i class="fa fa-link"></i></a>
-                            <a href="~/Content/assets/frontend/pages/img/works/img4.jpg" class="fancybox-button" title="Project Name #4" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
-                        </em>
-                        <a class="recent-work-description" href="#">
-                            <strong>Amazing Project</strong>
-                            <b>Agenda corp.</b>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- END RECENT WORKS -->
-        <!-- BEGIN TABS AND TESTIMONIALS -->
-        <div class="row mix-block margin-bottom-40">
-            <!-- TABS -->
-            <div class="col-md-7 tab-style-1">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#tab-1" data-toggle="tab">Multipurpose</a></li>
-                    <li><a href="#tab-2" data-toggle="tab">Documented</a></li>
-                    <li><a href="#tab-3" data-toggle="tab">Responsive</a></li>
-                    <li><a href="#tab-4" data-toggle="tab">Clean & Fresh</a></li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane row fade in active" id="tab-1">
-                        <div class="col-md-3 col-sm-3">
-                            <a href="assets/temp/photos/img7.jpg" class="fancybox-button" title="Image Title" data-rel="fancybox-button">
-                                <img class="img-responsive" src="~/Content/assets/frontend/pages/img/photos/img7.jpg" alt="">
-                            </a>
+<!-- Testimonials block END -->
+    <!-- Prices block BEGIN -->
+    <div class="prices-block content content-center" id="prices">
+        <div class="container">
+            <h2 class="margin-bottom-50"><strong>Pricing</strong> Tables</h2>
+            <div class="row">
+                <!-- Pricing item BEGIN -->
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="pricing-item">
+                        <div class="pricing-head">
+                            <h3>Beginner</h3>
+                            <p>Lorem ipsum dolor</p>
                         </div>
-                        <div class="col-md-9 col-sm-9">
-                            <p class="margin-bottom-10">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Cosby sweater eu banh mi, qui irure terry richardson ex squid Aliquip placeat salvia cillum iphone.</p>
-                            <p><a class="more" href="#">Read more <i class="icon-angle-right"></i></a></p>
-                        </div>
-                    </div>
-                    <div class="tab-pane row fade" id="tab-2">
-                        <div class="col-md-9 col-sm-9">
-                            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia..</p>
-                        </div>
-                        <div class="col-md-3 col-sm-3">
-                            <a href="assets/temp/photos/img10.jpg" class="fancybox-button" title="Image Title" data-rel="fancybox-button">
-                                <img class="img-responsive" src="~/Content/assets/frontend/pages/img/photos/img10.jpg" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="tab-3">
-                        <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
-                    </div>
-                    <div class="tab-pane fade" id="tab-4">
-                        <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- END TABS -->
-            <!-- TESTIMONIALS -->
-            <div class="col-md-5 testimonials-v1">
-                <div id="myCarousel" class="carousel slide">
-                    <!-- Carousel items -->
-                    <div class="carousel-inner">
-                        <div class="active item">
-                            <blockquote><p>Denim you probably haven't heard of. Lorem ipsum dolor met consectetur adipisicing sit amet, consectetur adipisicing elit, of them jean shorts sed magna aliqua. Lorem ipsum dolor met.</p></blockquote>
-                            <div class="carousel-info">
-                                <img class="pull-left" src="~/Content/assets/frontend/pages/img/people/img1-small.jpg" alt="">
-                                <div class="pull-left">
-                                    <span class="testimonials-name">Lina Mars</span>
-                                    <span class="testimonials-post">Commercial Director</span>
-                                </div>
+                        <div class="pricing-content">
+                            <div class="pi-price">
+                                <strong>$<em>19</em></strong>
+                                <p>Per Month</p>
                             </div>
+                            <ul class="list-unstyled">
+                                <li><i class="fa fa-circle"></i> Lorem ipsum dolor</li>
+                                <li><i class="fa fa-circle"></i> Lorem ipsum dolor</li>
+                                <li><i class="fa fa-circle"></i> Lorem ipsum dolor</li>
+                            </ul>
                         </div>
-                        <div class="item">
-                            <blockquote><p>Raw denim you Mustache cliche tempor, williamsburg carles vegan helvetica probably haven't heard of them jean shorts austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.</p></blockquote>
-                            <div class="carousel-info">
-                                <img class="pull-left" src="~/Content/assets/frontend/pages/img/people/img5-small.jpg" alt="">
-                                <div class="pull-left">
-                                    <span class="testimonials-name">Kate Ford</span>
-                                    <span class="testimonials-post">Commercial Director</span>
-                                </div>
+                        <div class="pricing-footer">
+                            <a class="btn btn-default" href="javascript:void(0);">DAFTAR SEKARANG</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pricing item END -->
+                <!-- Pricing item BEGIN -->
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="pricing-item">
+                        <div class="pricing-head">
+                            <h3>Pro</h3>
+                            <p>Lorem ipsum dolor</p>
+                        </div>
+                        <div class="pricing-content">
+                            <div class="pi-price">
+                                <strong>$<em>25</em></strong>
+                                <p>Per Month</p>
                             </div>
+                            <ul class="list-unstyled">
+                                <li><i class="fa fa-circle"></i> Lorem ipsum dolor</li>
+                                <li><i class="fa fa-circle"></i> Lorem ipsum dolor</li>
+                                <li><i class="fa fa-circle"></i> Lorem ipsum dolor</li>
+                            </ul>
                         </div>
-                        <div class="item">
-                            <blockquote><p>Reprehenderit butcher stache cliche tempor, williamsburg carles vegan helvetica.retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid Aliquip placeat salvia cillum iphone.</p></blockquote>
-                            <div class="carousel-info">
-                                <img class="pull-left" src="~/Content/assets/frontend/pages/img/people/img2-small.jpg" alt="">
-                                <div class="pull-left">
-                                    <span class="testimonials-name">Jake Witson</span>
-                                    <span class="testimonials-post">Commercial Director</span>
-                                </div>
+                        <div class="pricing-footer">
+                            <a class="btn btn-default" href="javascript:void(0);">DAFTAR SEKARANG</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pricing item END -->
+                <!-- Pricing item BEGIN -->
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="pricing-item">
+                        <div class="pricing-head">
+                            <h3>Expert</h3>
+                            <p>Lorem ipsum dolor</p>
+                        </div>
+                        <div class="pricing-content">
+                            <div class="pi-price">
+                                <strong>$<em>59</em></strong>
+                                <p>Per Month</p>
                             </div>
+                            <ul class="list-unstyled">
+                                <li><i class="fa fa-circle"></i> Lorem ipsum dolor</li>
+                                <li><i class="fa fa-circle"></i> Lorem ipsum dolor</li>
+                                <li><i class="fa fa-circle"></i> Lorem ipsum dolor</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-footer">
+                            <a class="btn btn-default" href="javascript:void(0);">DAFTAR SEKARANG</a>
                         </div>
                     </div>
-                    <!-- Carousel nav -->
-                    <a class="left-btn" href="#myCarousel" data-slide="prev"></a>
-                    <a class="right-btn" href="#myCarousel" data-slide="next"></a>
                 </div>
-            </div>
-            <!-- END TESTIMONIALS -->
-        </div>
-        <!-- END TABS AND TESTIMONIALS -->
-        <!-- BEGIN STEPS -->
-        <div class="row margin-bottom-40 front-steps-wrapper front-steps-count-3">
-            <div class="col-md-4 col-sm-4 front-step-col">
-                <div class="front-step front-step1">
-                    <h2>Goal definition</h2>
-                    <p>Lorem ipsum dolor sit amet sit consectetur adipisicing eiusmod tempor.</p>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-4 front-step-col">
-                <div class="front-step front-step2">
-                    <h2>Analyse</h2>
-                    <p>Lorem ipsum dolor sit amet sit consectetur adipisicing eiusmod tempor.</p>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-4 front-step-col">
-                <div class="front-step front-step3">
-                    <h2>Implementation</h2>
-                    <p>Lorem ipsum dolor sit amet sit consectetur adipisicing eiusmod tempor.</p>
-                </div>
-            </div>
-        </div>
-        <!-- END STEPS -->
-        <!-- BEGIN CLIENTS -->
-        <div class="row margin-bottom-40 our-clients">
-            <div class="col-md-3">
-                <h2><a href="#">Our Clients</a></h2>
-                <p>Lorem dipsum folor margade sitede lametep eiusmod psumquis dolore.</p>
-            </div>
-            <div class="col-md-9">
-                <div class="owl-carousel owl-carousel6-brands">
-                    <div class="client-item">
-                        <a href="#">
-                            <img src="~/Content/assets/frontend/pages/img/clients/client_1_gray.png" class="img-responsive" alt="">
-                            <img src="~/Content/assets/frontend/pages/img/clients/client_1.png" class="color-img img-responsive" alt="">
-                        </a>
-                    </div>
-                    <div class="client-item">
-                        <a href="#">
-                            <img src="~/Content/assets/frontend/pages/img/clients/client_2_gray.png" class="img-responsive" alt="">
-                            <img src="~/Content/assets/frontend/pages/img/clients/client_2.png" class="color-img img-responsive" alt="">
-                        </a>
-                    </div>
-                    <div class="client-item">
-                        <a href="#">
-                            <img src="~/Content/assets/frontend/pages/img/clients/client_3_gray.png" class="img-responsive" alt="">
-                            <img src="~/Content/assets/frontend/pages/img/clients/client_3.png" class="color-img img-responsive" alt="">
-                        </a>
-                    </div>
-                    <div class="client-item">
-                        <a href="#">
-                            <img src="~/Content/assets/frontend/pages/img/clients/client_4_gray.png" class="img-responsive" alt="">
-                            <img src="~/Content/assets/frontend/pages/img/clients/client_4.png" class="color-img img-responsive" alt="">
-                        </a>
-                    </div>
-                    <div class="client-item">
-                        <a href="#">
-                            <img src="~/Content/assets/frontend/pages/img/clients/client_5_gray.png" class="img-responsive" alt="">
-                            <img src="~/Content/assets/frontend/pages/img/clients/client_5.png" class="color-img img-responsive" alt="">
-                        </a>
-                    </div>
-                    <div class="client-item">
-                        <a href="#">
-                            <img src="~/Content/assets/frontend/pages/img/clients/client_6_gray.png" class="img-responsive" alt="">
-                            <img src="~/Content/assets/frontend/pages/img/clients/client_6.png" class="color-img img-responsive" alt="">
-                        </a>
-                    </div>
-                    <div class="client-item">
-                        <a href="#">
-                            <img src="~/Content/assets/frontend/pages/img/clients/client_7_gray.png" class="img-responsive" alt="">
-                            <img src="~/Content/assets/frontend/pages/img/clients/client_7.png" class="color-img img-responsive" alt="">
-                        </a>
-                    </div>
-                    <div class="client-item">
-                        <a href="#">
-                            <img src="~/Content/assets/frontend/pages/img/clients/client_8_gray.png" class="img-responsive" alt="">
-                            <img src="~/Content/assets/frontend/pages/img/clients/client_8.png" class="color-img img-responsive" alt="">
-                        </a>
+                <!-- Pricing item END -->
+                <!-- Pricing item BEGIN -->
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="pricing-item">
+                        <div class="pricing-head">
+                            <h3>Hi-Tech</h3>
+                            <p>Lorem ipsum dolor</p>
+                        </div>
+                        <div class="pricing-content">
+                            <div class="pi-price">
+                                <strong>$<em>98</em></strong>
+                                <p>Per Month</p>
+                            </div>
+                            <ul class="list-unstyled">
+                                <li><i class="fa fa-circle"></i> Lorem ipsum dolor</li>
+                                <li><i class="fa fa-circle"></i> Lorem ipsum dolor</li>
+                                <li><i class="fa fa-circle"></i> Lorem ipsum dolor</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-footer">
+                            <a class="btn btn-default" href="javascript:void(0);">DAFTAR SEKARANG</a>
+                        </div>
                     </div>
                 </div>
+                <!-- Pricing item END -->
             </div>
         </div>
-        <!-- END CLIENTS -->
+    </div>
+    <!-- Prices block END -->
     
+    <!-- Partners block BEGIN -->
+    <div class="partners-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 col-sm-3 col-xs-6">
+                    <img src="~/Content/assets/frontend/onepage/img/partners/cisco.png" alt="cisco">
+                </div>
+                <div class="col-md-2 col-sm-3 col-xs-6">
+                    <img src="~/Content/assets/frontend/onepage/img/partners/walmart.png" alt="walmart">
+                </div>
+                <div class="col-md-2 col-sm-3 col-xs-6">
+                    <img src="~/Content/assets/frontend/onepage/img/partners/gamescast.png" alt="gamescast">
+                </div>
+                <div class="col-md-2 col-sm-3 col-xs-6">
+                    <img src="~/Content/assets/frontend/onepage/img/partners/spinwokrx.png" alt="spinwokrx">
+                </div>
+                <div class="col-md-2 col-sm-3 col-xs-6">
+                    <img src="~/Content/assets/frontend/onepage/img/partners/ngreen.png" alt="ngreen">
+                </div>
+                <div class="col-md-2 col-sm-3 col-xs-6">
+                    <img src="~/Content/assets/frontend/onepage/img/partners/vimeo.png" alt="vimeo">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Partners block END -->
+    <!-- BEGIN PRE-FOOTER -->
+    <div class="pre-footer" id="contact">
+        <div class="container">
+            <div class="row">
+                <!-- BEGIN BOTTOM ABOUT BLOCK -->
+                <div class="col-md-4 col-sm-6 pre-footer-col">
+                    <h2>About us</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam sit nonummy nibh euismod tincidunt ut laoreet dolore magna aliquarm erat sit volutpat. Nostrud exerci tation ullamcorper suscipit lobortis nisl aliquip  commodo consequat. </p>
+                    <p>Duis autem vel eum iriure dolor vulputate velit esse molestie at dolore.</p>
+                </div>
+                <!-- END BOTTOM ABOUT BLOCK -->
+               
+                <div class="col-md-4 col-sm-6 pre-footer-col">
+                    <!-- BEGIN BOTTOM CONTACTS -->
+                    <h2>Our Contacts</h2>
+                    <address class="margin-bottom-20">
+                        35, Lorem Lis Street, Park Ave<br>
+                        California, US<br>
+                        Phone: 300 323 3456<br>
+                        Fax: 300 323 1456<br>
+                        Email: <a href="mailto:info@metronic.com">info@metronic.com</a><br>
+                        Skype: <a href="skype:metronic">metronic</a>
+                    </address>
+                    <!-- END BOTTOM CONTACTS -->
+                    <div class="pre-footer-subscribe-box">
+                        <h2>Newsletter</h2>
+                        <form action="javascript:void(0);">
+                            <div class="input-group">
+                                <input type="text" placeholder="youremail@mail.com" class="form-control">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="submit">Subscribe</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END PRE-FOOTER -->
+    <!-- BEGIN FOOTER -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <!-- BEGIN COPYRIGHT -->
+                <div class="col-md-6 col-sm-6">
+                    <div class="copyright">2014 © Metronic One Page. ALL Rights Reserved.</div>
+                </div>
+                <!-- END COPYRIGHT -->
+                <!-- BEGIN SOCIAL ICONS -->
+                <div class="col-md-6 col-sm-6 pull-right">
+                    <ul class="social-icons">
+                        <li><a class="rss" data-original-title="rss" href="javascript:void(0);"></a></li>
+                        <li><a class="facebook" data-original-title="facebook" href="javascript:void(0);"></a></li>
+                        <li><a class="twitter" data-original-title="twitter" href="javascript:void(0);"></a></li>
+                        <li><a class="googleplus" data-original-title="googleplus" href="javascript:void(0);"></a></li>
+                        <li><a class="linkedin" data-original-title="linkedin" href="javascript:void(0);"></a></li>
+                        <li><a class="youtube" data-original-title="youtube" href="javascript:void(0);"></a></li>
+                        <li><a class="vimeo" data-original-title="vimeo" href="javascript:void(0);"></a></li>
+                        <li><a class="skype" data-original-title="skype" href="javascript:void(0);"></a></li>
+                    </ul>
+                </div>
+                <!-- END SOCIAL ICONS -->
+            </div>
+        </div>
+    </div>
+    <!-- END FOOTER -->
+    <a href="#promo-block" class="go2top scroll"><i class="fa fa-arrow-up"></i></a>
+    <!--[if lt IE 9]>
+    <script src="~/Content/assets/global/plugins/respond.min.js"></script>
+    <![endif]-->
+   

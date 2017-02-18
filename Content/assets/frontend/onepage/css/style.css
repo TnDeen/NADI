@@ -895,7 +895,7 @@ a:hover {
 
 /* Pricing */
 .prices-block {
-  background: #F6F6F6;
+  background: #292F34 url(../img/quote.jpg) no-repeat fixed;
   padding: 60px 0 40px;
 }
 .pricing-item {
@@ -905,7 +905,7 @@ a:hover {
   margin-bottom: 30px;
 }
 .pricing-head {
-  background: #8695a1;
+  background: #E54A1A;
   color: #fff;
   font: 400 17px/1.2 "PT Sans Narrow", Arial, sans-serif;
   padding: 13px 15px 9px;
@@ -975,7 +975,7 @@ a:hover {
   padding: 15px;
 }
 .pricing-footer .btn-default {
-  background: #afb7be;
+  background: #E85425;
   color: #fff;
   display: block;
   font: 400 22px/22px "PT Sans Narrow", Arial, sans-serif;
@@ -1129,7 +1129,7 @@ a:hover {
 
 /* Checkout block */
 .checkout-block {
-  background: #292f34;
+  background: #000000;
   color: #c8ced4;
   padding: 25px 0;
 }
