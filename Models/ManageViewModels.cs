@@ -19,6 +19,12 @@ namespace MVC5.Models
         [Display(Name = "Wallet (RM)")]
         public decimal? wallet { get; set; }
 
+        [Display(Name = "Registered Child")]
+        public int totalChild { get; set; }
+
+        [Display(Name = "Account Status")]
+        public string accstatus { get; set; }
+
         public string userLink { get; set; }
 
         public ApplicationUser CurrentUser { get; set; }

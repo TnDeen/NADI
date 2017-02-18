@@ -10,6 +10,11 @@ using MVC5.Models;
 using System.Net;
 using MVC5.Common;
 using System.Collections.Generic;
+using Gma.QrCodeNet.Encoding;
+using Gma.QrCodeNet.Encoding.Windows.Render;
+using System.IO;
+using System.Drawing.Imaging;
+using System.Drawing;
 
 namespace MVC5.Controllers
 {
@@ -72,15 +77,18 @@ namespace MVC5.Controllers
             ApplicationUser curuser = UserManager.FindById(userId);
             decimal? p = 0;
             decimal? w = 0;
+            string status = "Not Active";
             if (curuser.EmailConfirmed)
             {
+                status = "Active";
                 p = db.Transactions.Where(a => a.VendorID.Equals(userId) && !a.statusActive).Select(a => a.point).Sum();
                 w = db.Transactions.Where(a => a.VendorID.Equals(userId) && a.statusActive).Select(a => a.point).Sum();
             } else
             {
                 p = db.Transactions.Where(a => a.VendorID.Equals(userId)).Select(a => a.point).Sum();
+                status = "Not Active";
             }
-            
+
             var model = new IndexViewModel
             {
 
@@ -89,6 +97,8 @@ namespace MVC5.Controllers
                 userLink = userlink,
                 potentialPoint = p,
                 wallet = w,
+                accstatus = status,
+                totalChild = db.Users.Where(a => a.ParentId.Equals(userId)).Count(),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
@@ -98,6 +108,34 @@ namespace MVC5.Controllers
 
             };
             return View(model);
+        }
+
+        public async Task<ActionResult> BarcodeImage()
+        {
+
+            ApplicationUser curstudent = UserManager.FindByEmail(User.Identity.Name);
+            string code = await UserManager.GenerateUserTokenAsync(MyConstant.ConfirmCusCode, curstudent.Id);
+            //var callbackUrl = Url.Action("CreateTransac", "Transaction",
+            //   new { userId = curstudent.Id, code = code }, protocol: Request.Url.Scheme);
+            var callbackUrl = Url.Action("Register", "Account",
+               new { userId = curstudent.Id }, protocol: Request.Url.Scheme);
+
+            // generating a barcode here. Code is taken from QrCode.Net library
+            QrEncoder qrEncoder = new QrEncoder(ErrorCorrectionLevel.H);
+            QrCode qrCode = new QrCode();
+            qrEncoder.TryEncode(callbackUrl, out qrCode);
+            GraphicsRenderer renderer = new GraphicsRenderer(new FixedModuleSize(4, QuietZoneModules.Four), Brushes.Black, Brushes.White);
+
+            Stream memoryStream = new MemoryStream();
+            renderer.WriteToStream(qrCode.Matrix, ImageFormat.Png, memoryStream);
+
+            // very important to reset memory stream to a starting position, otherwise you would get 0 bytes returned
+            memoryStream.Position = 0;
+
+            var resultStream = new FileStreamResult(memoryStream, "image/png");
+            resultStream.FileDownloadName = String.Format("{0}.png", callbackUrl);
+
+            return resultStream;
         }
 
         //
@@ -468,7 +506,7 @@ namespace MVC5.Controllers
                     ApplicationUser user = UserManager.FindById(curuser.Id);
                     if (ic != null && ic.ContentLength > 0 && user != null)
                     {
-                        var avatar = new File
+                        var avatar = new Models.File
                         {
                             FileName = System.IO.Path.GetFileName(ic.FileName),
                             FileType = FileType.Avatar,
@@ -478,7 +516,7 @@ namespace MVC5.Controllers
                         {
                             avatar.Content = reader.ReadBytes(ic.ContentLength);
                         }
-                        user.Files = new List<File> { avatar };
+                        user.Files = new List<Models.File> { avatar };
                     }
                     UserManager.Update(user);
                     if (!await UserManager.IsEmailConfirmedAsync(User.Identity.GetUserId()))

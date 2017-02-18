@@ -5,48 +5,77 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Transaction Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CustomerID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.point)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastUpdated)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastUpdatedBy)
-        </th>
-        <th></th>
-    </tr>
+<div class="col-md-6">
+    <!-- BEGIN SAMPLE TABLE PORTLET-->
+    <div class="portlet box red">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-cogs"></i>Transaksi Point
+            </div>
+            <div class="tools">
+                <a href="javascript:;" class="collapse">
+                </a>
+                <a href="#portlet-config" data-toggle="modal" class="config">
+                </a>
+                <a href="javascript:;" class="reload">
+                </a>
+                <a href="javascript:;" class="remove">
+                </a>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="table-scrollable">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            
+                            <th>
+                                Registerer ID
+                            </th>
+                            <th>
+                                point
+                            </th>
+                            <th>
+                                Status
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CustomerID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.point)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreateDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastUpdatedBy)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-        </td>
-    </tr>
-}
-
-</table>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CustomerID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.point)
+                                </td>
+                                <td>
+                                    @if (item.statusActive)
+                                    {
+                                        <span class="label label-sm label-success">
+                                            Active
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="label label-sm label-danger">
+                                            Not Active
+                                        </span>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                       
+                        
+                       
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- END SAMPLE TABLE PORTLET-->
+</div>
