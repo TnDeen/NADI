@@ -4243,6 +4243,7 @@
     <Content Include="Content\assets\global\scripts\metronic.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\favicon.ico" />
     <Content Include="Content\img\nadilogo.png" />
     <Content Include="Content\nadi.css" />
     <Content Include="favicon.ico" />

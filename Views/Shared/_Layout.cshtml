@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Nadikebangsaan.com</title>
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -17,7 +17,7 @@
     <meta property="og:type" content="website">
     <meta property="og:image" content="-CUSTOMER VALUE-"><!-- link to image for socio -->
     <meta property="og:url" content="-CUSTOMER VALUE-">
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="~/Content/img/favicon.ico">
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -87,7 +87,7 @@
             <div class="header-navigation pull-right font-transform-inherit">
                 <ul>
                     <li>
-                        @Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)
+                        @Html.ActionLink("Laman Utama", "Index", "Home", new { area = "" }, null)
                     </li>
 
 
@@ -100,7 +100,7 @@
                     @if (Request.IsAuthenticated)
                     {
                         <li>
-                            @Html.ActionLink("Member Area", "Index", "Manage", new { area = "" }, null)
+                            @Html.ActionLink("Laman Ahli", "Index", "Manage", new { area = "" }, null)
                         </li>
                     }
 
@@ -163,7 +163,7 @@
                         <div class="row">
                             <!-- BEGIN COPYRIGHT -->
                             <div class="col-md-6 col-sm-6 padding-top-10">
-                                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+                                <p>&copy; @DateTime.Now.Year - Nadikebangsaan.com</p>
                             </div>
                             <!-- END COPYRIGHT -->
                             <!-- BEGIN PAYMENTS -->

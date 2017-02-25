@@ -1,7 +1,7 @@
 ﻿@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    using (Html.BeginForm("Log Keluar", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
     @Html.AntiForgeryToken()
 
@@ -21,8 +21,8 @@ else
 
     <div class="col-md-6 col-sm-6 additional-nav">
         <ul class="list-unstyled list-inline pull-right">
-            <li>@Html.ActionLink("Register", "Register", "Account", new { area = "" }, htmlAttributes: new { id = "registerLink" })</li>
-            <li>@Html.ActionLink("Log in", "Login", "Account", new { area = "" }, htmlAttributes: new { id = "loginLink" })</li>
+            <li>@Html.ActionLink("Daftar Keahlian", "Register", "Account", new { area = "" }, htmlAttributes: new { id = "registerLink" })</li>
+            <li>@Html.ActionLink("Log Masuk", "Login", "Account", new { area = "" }, htmlAttributes: new { id = "loginLink" })</li>
         </ul>
     </div>
 }

@@ -1,7 +1,7 @@
 ﻿@model MVC5.Models.RegisterViewModel
 @using MVC5.Models
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "Daftar Keahlian";
 }
 
 <h2>@ViewBag.Title.</h2>
@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-md-12">
             @Html.AntiForgeryToken()
-            <h4>Create a new account.</h4>
+            <h4>Daftar Sebagai Ahli Pra-Aktif.</h4>
             <hr />
             @Html.ValidationSummary("", new { @class = "text-danger" })
             <div class="form-group">
