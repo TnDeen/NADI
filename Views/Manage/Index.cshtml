@@ -17,37 +17,10 @@
     <div class="col-md-12 col-sm-12">
         <div class="content-page">
 
-            <div class="note note-success">
-                <h4 class="block">Terms and conditions</h4>
-                <p>
-                    In the frontend theme you can use nearly all the features from <a href="http://keenthemes.com/preview/metronic_admin/" target="_blanl">Metronic Admin Theme</a>. First you will just need to include 2 below global css files:
-                </p>
-                <p>
-                    And selected plugin's css and js files accordingly.
-                </p>
-            </div>
-
-            <div class="panel panel-success">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Nota Tambahan</h3>
-                </div>
-                <div class="panel-body">
-                    <ul>
-                        <li>
-                            The maximum file size for uploads in this demo is <strong>5 MB</strong> (default file size is unlimited).
-                        </li>
-                        <li>
-                            Only image files (<strong>JPG, GIF, PNG</strong>) are allowed in this demo (by default there is no file type restriction).
-                        </li>
-                        <li>
-                            Uploaded files will be deleted automatically after <strong>5 minutes</strong> (demo setting).
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            
 
             <div class="blog-tags margin-bottom-20">
-                <h2>My Account</h2>
+                <h2>Akaun Ahli (@Model.CurrentUser.NomborAhli - @Model.accstatus)</h2>
                 <ul>
                     <li><a href="@MyConstant.Base_Url/Manage/Edit/@Model.CurrentUser.Id"><i class="fa fa-tags"></i>Edit Profiles</a></li>
                     <li><a href="@MyConstant.Base_Url/Manage/ApplyMembership"><i class="fa fa-tags"></i>Apply Membership</a></li>
@@ -62,7 +35,7 @@
                         <li><a href="@MyConstant.Base_Url/Manage/SetPassword"><i class="fa fa-tags"></i>Create Password</a></li>
                     }
                     
-                    <li><a href="@MyConstant.Base_Url/Manage/ManageLogins"><i class="fa fa-tags"></i>Manage Login</a></li>
+                    
 
                     
                 </ul>
@@ -147,6 +120,35 @@
 
     </div>
     </div>
+
+@*<div class="note note-success">
+    <h4 class="block">Terms and conditions</h4>
+    <p>
+        In the frontend theme you can use nearly all the features from <a href="http://keenthemes.com/preview/metronic_admin/" target="_blanl">Metronic Admin Theme</a>. First you will just need to include 2 below global css files:
+    </p>
+    <p>
+        And selected plugin's css and js files accordingly.
+    </p>
+</div>
+
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">Nota Tambahan</h3>
+    </div>
+    <div class="panel-body">
+        <ul>
+            <li>
+                The maximum file size for uploads in this demo is <strong>5 MB</strong> (default file size is unlimited).
+            </li>
+            <li>
+                Only image files (<strong>JPG, GIF, PNG</strong>) are allowed in this demo (by default there is no file type restriction).
+            </li>
+            <li>
+                Uploaded files will be deleted automatically after <strong>5 minutes</strong> (demo setting).
+            </li>
+        </ul>
+    </div>
+</div>*@
 
 <div class="row">
     <div class="col-md-12 col-sm-12">

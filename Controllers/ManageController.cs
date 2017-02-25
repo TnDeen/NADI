@@ -506,6 +506,9 @@ namespace MVC5.Controllers
                     ApplicationUser user = UserManager.FindById(curuser.Id);
                     if (ic != null && ic.ContentLength > 0 && user != null)
                     {
+                        List<Models.File> curFiles = db.Files.Where(a => a.userId.Equals(curuser.Id)).ToList();
+                        db.Files.RemoveRange(curFiles);
+                        db.SaveChanges();
                         var avatar = new Models.File
                         {
                             FileName = System.IO.Path.GetFileName(ic.FileName),

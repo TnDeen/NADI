@@ -94,9 +94,7 @@
                     @*<li>
                             @Html.ActionLink("Blog", "Index", "Student", new { area = "" }, null)
                         </li>*@
-                    @*<li>
-                            @Html.ActionLink("Admin", "Index", "Home", new { area = "Admin" }, null)
-                        </li>*@
+                    
                     @if (Request.IsAuthenticated)
                     {
                         <li>
@@ -104,6 +102,9 @@
                         </li>
                         <li>
                             @Html.ActionLink("Laman Ahli", "Index", "Manage", new { area = "" }, null)
+                        </li>
+                        <li>
+                            @Html.ActionLink("Admin", "Index", "Home", new { area = "" }, null)
                         </li>
                     }
 
