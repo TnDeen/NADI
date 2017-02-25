@@ -64,6 +64,11 @@ namespace MVC5.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index","Manage");
+
+            }
             return View();
         }
 
