@@ -16,6 +16,7 @@ namespace MVC5.Controllers
             return View("Index", "~/Views/Shared/_Layout2.cshtml");
         }
 
+        [Authorize]
         public ActionResult Tnc()
         {
             ViewBag.Title = "Terma Dan Syarat";

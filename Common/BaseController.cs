@@ -49,6 +49,20 @@ namespace MVC5.Common
             db.SaveChanges();
         }
 
+        public Boolean validateNoAhli(string noAhli)
+        {
+            Boolean result = false;
+            if (noAhli != null)
+            {
+                var user = db.Users.Where(a => a.NomborAhli.Equals(noAhli)).FirstOrDefault();
+                if (user != null)
+                {
+                    result = true;
+                }
+            }
+            return result;
+        }
+
         public string generateNoAhli()
         {
             SistemId counter = null;

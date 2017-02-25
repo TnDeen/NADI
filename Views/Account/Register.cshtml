@@ -13,6 +13,13 @@
             @Html.AntiForgeryToken()
             <h4>Daftar Sebagai Ahli Pra-Aktif.</h4>
             <hr />
+            @if (ViewBag.shownotification != null && ViewBag.shownotification == true)
+            {
+                <div class="alert alert-warning alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                    <strong>Amaran!</strong> @ViewBag.errormsg
+                </div>
+            }
             @Html.ValidationSummary("", new { @class = "text-danger" })
             <div class="form-group">
                 @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
@@ -39,9 +46,11 @@
                     @Html.ValidationMessageFor(m => m.Introducer)
                 </div>
             </div>
+            
+            
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" class="btn btn-default" value="Register" />
+                    <input type="submit" class="btn green btn-lg" value="Daftar Ahli" />
                 </div>
             </div>
 

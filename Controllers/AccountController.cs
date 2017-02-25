@@ -171,6 +171,7 @@ namespace MVC5.Controllers
             {
                 model.Introducer = userId;
             }
+            ViewBag.shownotification = false;
             return View(model);
         }
 
@@ -183,20 +184,32 @@ namespace MVC5.Controllers
         {
             if (ModelState.IsValid)
             {
-                string noAhli = generateNoAhli();
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, ParentId = model.Introducer, NomborAhli = noAhli };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                
-                if (result.Succeeded)
+                if (validateNoAhli(model.Introducer))
                 {
-                    UserManager.AddToRole(user.Id, MyConstant.Role_User);
-                    ApplicationUser introducer = UserManager.FindById(model.Introducer);
-                    AddTransaction(introducer, user);
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    string noAhli = generateNoAhli();
+                    var user = new ApplicationUser { UserName = model.Email, Email = model.Email, ParentId = model.Introducer, NomborAhli = noAhli };
+                    var result = await UserManager.CreateAsync(user, model.Password);
+
+                    if (result.Succeeded)
+                    {
+                        UserManager.AddToRole(user.Id, MyConstant.Role_User);
+                        ApplicationUser introducer = UserManager.FindById(model.Introducer);
+                        AddTransaction(introducer, user);
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
 
-                    return Redirect("/Home");
+                        return Redirect("/Home/Tnc");
+                    }
+
                 }
+                else
+                {
+                    ViewBag.errormsg = "Pencadang Tidak Wujud!";
+                    ViewBag.shownotification = true;
+                    return View(model);
+
+                }
+
             }
 
             // If we got this far, something failed, redisplay form
