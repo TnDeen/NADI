@@ -12,7 +12,14 @@ namespace MVC5.Controllers
         public ActionResult Index()
         {
             ViewBag.totalregister = db.Users.Count();
+            ViewBag.Title = "Laman Utama";
             return View("Index", "~/Views/Shared/_Layout2.cshtml");
+        }
+
+        public ActionResult Tnc()
+        {
+            ViewBag.Title = "Terma Dan Syarat";
+            return View("Tnc", "~/Views/Shared/_Layout2.cshtml");
         }
 
         public ActionResult About()

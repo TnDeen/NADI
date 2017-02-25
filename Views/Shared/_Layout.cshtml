@@ -100,6 +100,9 @@
                     @if (Request.IsAuthenticated)
                     {
                         <li>
+                            @Html.ActionLink("Terma dan Syarat", "Tnc", "Home", new { area = "" }, null)
+                        </li>
+                        <li>
                             @Html.ActionLink("Laman Ahli", "Index", "Manage", new { area = "" }, null)
                         </li>
                     }

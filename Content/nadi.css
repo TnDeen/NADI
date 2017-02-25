@@ -12,3 +12,11 @@
     font-size: 29px !important;
     line-height: 24px !important;
 }
+
+.nadi-row {
+    font-size:24px; 
+    font-weight:400; 
+    text-shadow: 2px 2px #000000;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding:20px;
+}
