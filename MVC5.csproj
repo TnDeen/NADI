@@ -267,6 +267,14 @@
     <Compile Include="Migrations\201702130320203_addcol2.Designer.cs">
       <DependentUpon>201702130320203_addcol2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702251005597_addnoahlicol.cs" />
+    <Compile Include="Migrations\201702251005597_addnoahlicol.Designer.cs">
+      <DependentUpon>201702251005597_addnoahlicol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702251030208_addsistemcounter.cs" />
+    <Compile Include="Migrations\201702251030208_addsistemcounter.Designer.cs">
+      <DependentUpon>201702251030208_addsistemcounter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseEntity.cs" />
@@ -281,6 +289,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\SchoolContext.cs" />
     <Compile Include="Models\SchoolInitializer.cs" />
+    <Compile Include="Models\SistemId.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Models\VM\Course_Student.cs" />
@@ -4639,6 +4648,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702130320203_addcol2.resx">
       <DependentUpon>201702130320203_addcol2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702251005597_addnoahlicol.resx">
+      <DependentUpon>201702251005597_addnoahlicol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702251030208_addsistemcounter.resx">
+      <DependentUpon>201702251030208_addsistemcounter.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -9,13 +9,15 @@ using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using System.ComponentModel.DataAnnotations;
 
 namespace MVC5.Models
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
-
+        
+        public string NomborAhli { get; set; }
         public string HomeTown { get; set; }
         public string AccStatus { get; set; }
         public string AccStatus2 { get; set; }
@@ -47,6 +49,7 @@ namespace MVC5.Models
         {
         }
 
+        public DbSet<SistemId> SistemCounter { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<Enrollment> Enrollments { get; set; }

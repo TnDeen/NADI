@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -46,6 +47,39 @@ namespace MVC5.Common
         {
             db.Transactions.Where(t => t.CustomerID.Equals(user.Id)).ToList().ForEach(x => x.statusActive = true);
             db.SaveChanges();
+        }
+
+        public string generateNoAhli()
+        {
+            SistemId counter = null;
+            string curnumber = null;
+
+            string year = DateTime.Now.Year.ToString();
+            StringBuilder sb = new StringBuilder();
+            sb.Append("ND");
+            sb.Append(year);
+            string kod = sb.ToString();
+            counter = db.SistemCounter.Where(a => a.Kod.Equals(kod)).FirstOrDefault();
+
+            if (counter != null)
+            {
+                int num = counter.runningNumber + 1;
+                counter.runningNumber = num;
+                curnumber = counter.runningNumber.ToString("D4");
+            } else
+            {
+                curnumber = 1.ToString("D4");
+                counter = new SistemId();
+                counter.Kod = kod;
+                counter.runningNumber = 1;
+                db.SistemCounter.Add(counter);
+
+            }
+            db.SaveChanges();
+            
+            
+            
+            return kod + curnumber;
         }
 
         public void AddTransaction(ApplicationUser parent, ApplicationUser user)
