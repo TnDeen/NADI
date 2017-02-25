@@ -42,6 +42,7 @@ namespace MVC5
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
+                      "~/Content/nadi.css",
                       "~/Content/assets/global/plugins/font-awesome/css/font-awesome.min.css",
                       "~/Content/assets/global/plugins/bootstrap/css/bootstrap.min.css",
                       "~/Content/assets/global/plugins/fancybox/source/jquery.fancybox.css",

@@ -9,7 +9,8 @@ namespace MVC5.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Display(Name = "Introducer")]
+        [Required]
+        [Display(Name = "Pencadang (No. Ahli)")]
         public string Introducer { get; set; }
 
         public string HomeTown { get; set; }
@@ -86,7 +87,8 @@ namespace MVC5.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        [Display(Name = "Introducer")]
+        [Required]
+        [Display(Name = "Pencadang (No. Ahli)")]
         public string Introducer { get; set; }
     }
 
