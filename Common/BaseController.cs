@@ -49,6 +49,20 @@ namespace MVC5.Common
             db.SaveChanges();
         }
 
+        public string findNoAhliById(string id)
+        {
+            string noAhli = null;
+            if (id != null)
+            {
+                var user = db.Users.Where(a => a.Id.Equals(id)).FirstOrDefault();
+                if (user != null)
+                {
+                    noAhli = user.NomborAhli;
+                }
+            }
+            return noAhli;
+        }
+
         public string finduserIdBynoAhli(string noAhli)
         {
             string parentId = null;

@@ -291,6 +291,10 @@
     <Compile Include="Migrations\201702260527386_addtarikhpenignapan.Designer.cs">
       <DependentUpon>201702260527386_addtarikhpenignapan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702260703234_changecoldateval.cs" />
+    <Compile Include="Migrations\201702260703234_changecoldateval.Designer.cs">
+      <DependentUpon>201702260703234_changecoldateval.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseEntity.cs" />
@@ -4688,6 +4692,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702260527386_addtarikhpenignapan.resx">
       <DependentUpon>201702260527386_addtarikhpenignapan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702260703234_changecoldateval.resx">
+      <DependentUpon>201702260703234_changecoldateval.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

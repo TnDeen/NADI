@@ -27,7 +27,7 @@ namespace MVC5.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Tarikh Penginapan")]
-        public DateTime tarikhPenginapan { get; set; }
+        public DateTime? tarikhPenginapan { get; set; }
 
         public DateTime? BirthDate { get; set; }
 
