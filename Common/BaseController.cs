@@ -136,7 +136,7 @@ namespace MVC5.Common
                 Transaction tran = new Transaction();
                 tran.CustomerID = user.Id;
                 tran.VendorID = parent.Id;
-                tran.point = MyConstant.Point_1;
+                tran.point = Convert.ToDecimal(MyConstant.Point_1);
                 tran.level = 1;
                 tran.CreateBy = User.Identity.Name;
                 tran.CreateDate = DateTime.Now;
@@ -151,7 +151,7 @@ namespace MVC5.Common
                     Transaction tran2 = new Transaction();
                     tran2.CustomerID = user.Id;
                     tran2.VendorID = parent2.Id;
-                    tran2.point = MyConstant.Point_2;
+                    tran2.point = Convert.ToDecimal(MyConstant.Point_2);
                     tran2.level = 2;
                     tran2.CreateBy = User.Identity.Name;
                     tran2.CreateDate = DateTime.Now;
@@ -166,7 +166,7 @@ namespace MVC5.Common
                         Transaction tran3 = new Transaction();
                         tran3.CustomerID = user.Id;
                         tran3.VendorID = parent3.Id;
-                        tran3.point = MyConstant.Point_3;
+                        tran3.point = Convert.ToDecimal(MyConstant.Point_3);
                         tran3.level = 3;
                         tran3.CreateBy = User.Identity.Name;
                         tran3.CreateDate = DateTime.Now;
@@ -180,7 +180,7 @@ namespace MVC5.Common
                             Transaction tran4 = new Transaction();
                             tran4.CustomerID = user.Id;
                             tran4.VendorID = parent4.Id;
-                            tran4.point = MyConstant.Point_4;
+                            tran4.point = Convert.ToDecimal(MyConstant.Point_4);
                             tran4.level = 4;
                             tran4.CreateBy = User.Identity.Name;
                             tran4.CreateDate = DateTime.Now;
@@ -194,7 +194,7 @@ namespace MVC5.Common
                                 Transaction tran5 = new Transaction();
                                 tran5.CustomerID = user.Id;
                                 tran5.VendorID = parent5.Id;
-                                tran5.point = MyConstant.Point_5;
+                                tran5.point = Convert.ToDecimal(MyConstant.Point_5);
                                 tran5.level = 5;
                                 tran5.CreateBy = User.Identity.Name;
                                 tran5.CreateDate = DateTime.Now;
@@ -208,7 +208,7 @@ namespace MVC5.Common
                                     Transaction tran6 = new Transaction();
                                     tran6.CustomerID = user.Id;
                                     tran6.VendorID = parent6.Id;
-                                    tran6.point = MyConstant.Point_6;
+                                    tran6.point = Convert.ToDecimal(MyConstant.Point_6);
                                     tran6.level = 6;
                                     tran6.CreateBy = User.Identity.Name;
                                     tran6.CreateDate = DateTime.Now;
@@ -222,7 +222,7 @@ namespace MVC5.Common
                                         Transaction tran7 = new Transaction();
                                         tran7.CustomerID = user.Id;
                                         tran7.VendorID = parent7.Id;
-                                        tran7.point = MyConstant.Point_7;
+                                        tran7.point = Convert.ToDecimal(MyConstant.Point_7);
                                         tran7.level = 7;
                                         tran7.CreateBy = User.Identity.Name;
                                         tran7.CreateDate = DateTime.Now;
@@ -236,7 +236,7 @@ namespace MVC5.Common
                                             Transaction tran8 = new Transaction();
                                             tran8.CustomerID = user.Id;
                                             tran8.VendorID = parent8.Id;
-                                            tran8.point = MyConstant.Point_8;
+                                            tran8.point = Convert.ToDecimal(MyConstant.Point_8);
                                             tran8.level = 8;
                                             tran8.CreateBy = User.Identity.Name;
                                             tran8.CreateDate = DateTime.Now;
