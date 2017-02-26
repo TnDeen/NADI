@@ -103,9 +103,14 @@
                         <li>
                             @Html.ActionLink("Laman Ahli", "Index", "Manage", new { area = "" }, null)
                         </li>
+                        
+                    }
+                    @if (User.IsInRole(MyConstant.Role_Admin))
+                    {
                         <li>
-                            @Html.ActionLink("Admin", "Index", "Home", new { area = "" }, null)
+                            @Html.ActionLink("Membership Request", "MembershipRequest", "Transaction", new { area = "" }, null)
                         </li>
+
                     }
 
 

@@ -14,5 +14,11 @@ namespace MVC5.Controllers
             var fileToRetrieve = db.Files.Find(id);
             return File(fileToRetrieve.Content, fileToRetrieve.ContentType);
         }
+
+        public FileResult Download(int id)
+        {
+            var fileToRetrieve = db.Files.Find(id);
+            return File(fileToRetrieve.Content, fileToRetrieve.ContentType);
+        }
     }
 }

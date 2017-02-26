@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using System;
 
 namespace MVC5.Models
 {
@@ -26,6 +27,9 @@ namespace MVC5.Models
         public string accstatus { get; set; }
 
         public string userLink { get; set; }
+        public string TarikhTamatKeahlian { get; set; }
+        
+        public string tarikhPenginapan { get; set; }
 
         public ApplicationUser CurrentUser { get; set; }
         public ICollection<ApplicationUser> ChildList { get; set; }

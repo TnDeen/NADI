@@ -187,7 +187,8 @@ namespace MVC5.Controllers
                 if (validateNoAhli(model.Introducer))
                 {
                     string noAhli = generateNoAhli();
-                    var user = new ApplicationUser { UserName = model.Email, Email = model.Email, ParentId = model.Introducer, NomborAhli = noAhli };
+                    string parentId = finduserIdBynoAhli(model.Introducer);
+                    var user = new ApplicationUser { UserName = model.Email, Email = model.Email, ParentId = parentId, NomborAhli = noAhli };
                     var result = await UserManager.CreateAsync(user, model.Password);
 
                     if (result.Succeeded)

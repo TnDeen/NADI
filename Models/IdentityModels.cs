@@ -20,8 +20,19 @@ namespace MVC5.Models
         public string NomborAhli { get; set; }
         public string HomeTown { get; set; }
         public string AccStatus { get; set; }
-        public string AccStatus2 { get; set; }
+        public string Nama { get; set; }
+        public DateTime? TarikhSahAhli { get; set; }
+        public DateTime? TarikhTamatAhli { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Tarikh Penginapan")]
+        public DateTime tarikhPenginapan { get; set; }
+
         public DateTime? BirthDate { get; set; }
+
+        public string NamaWaris { get; set; }
+        public string NomborTelefonWaris { get; set; }
 
         [ForeignKey("Parent")]
         public string ParentId { get; set; }

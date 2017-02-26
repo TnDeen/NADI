@@ -261,4 +261,7 @@ C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\obj\De
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.Migrations.addcol2.resources
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.Migrations.addnoahlicol.resources
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.Migrations.addsistemcounter.resources
-C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.csprojResolveAssemblyReference.cache
+C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.Migrations.addnamacol.resources
+C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.Migrations.addcolwaris.resources
+C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.Migrations.addtarikhtamanahli.resources
+C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.Migrations.addtarikhpenignapan.resources

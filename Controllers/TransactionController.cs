@@ -14,6 +14,7 @@ using Gma.QrCodeNet.Encoding.Windows.Render;
 using System.IO;
 using System.Drawing.Imaging;
 using System.Drawing;
+using MVC5.Models.VM;
 
 namespace MVC5.Controllers
 {
@@ -39,6 +40,66 @@ namespace MVC5.Controllers
             ApplicationUser user = UserManager.FindByEmail(User.Identity.Name);
             string role = UserManager.GetRoles(user.Id).First();
             return View(db.Transactions.ToList().Where(c => c.VendorID.Equals(user.Id)));
+        }
+
+        // GET: Transaction
+        [Authorize(Roles ="Admin")]
+        public ActionResult MembershipRequest()
+        {
+            FileVO vo = new FileVO();
+            ApplicationUser user = UserManager.FindByEmail(User.Identity.Name);
+            string role = UserManager.GetRoles(user.Id).First();
+
+            var btlRequest = from file in db.Files
+                                 join uuser in db.Users on file.userId equals uuser.Id
+                             where !uuser.EmailConfirmed
+                                 select new FileVO { curFile = file, CurrentUser = uuser };
+
+            var llsRequest = from file in db.Files
+                             join uuser in db.Users on file.userId equals uuser.Id
+                             where uuser.EmailConfirmed
+                             select new FileVO { curFile = file, CurrentUser = uuser };
+
+            vo.lulusList = llsRequest.ToList<FileVO>();
+            vo.batalList = btlRequest.ToList<FileVO>();
+            return View(vo);
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult ApproveMembershipRequest(string id, bool activate)
+        {
+            if  (id != null)
+            {
+                try
+                {
+                    if (ModelState.IsValid)
+                    {
+                        ApplicationUser user = findUserbyId(id);
+                        
+                        db.Entry(user).State = System.Data.Entity.EntityState.Modified;
+                        user.EmailConfirmed = activate;
+                        user.TarikhSahAhli = DateTime.Now;
+                        if (activate)
+                        {
+                            user.TarikhTamatAhli = DateTime.Now.AddYears(1);
+
+                        } else
+                        {
+                            user.TarikhTamatAhli = DateTime.Now;
+                        }
+                        
+                        db.SaveChanges();
+                        
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw (ex);
+                }
+                
+
+            }
+            return RedirectToAction("MembershipRequest");
         }
 
         // GET: Student/Create

@@ -275,6 +275,22 @@
     <Compile Include="Migrations\201702251030208_addsistemcounter.Designer.cs">
       <DependentUpon>201702251030208_addsistemcounter.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702260419040_addnamacol.cs" />
+    <Compile Include="Migrations\201702260419040_addnamacol.Designer.cs">
+      <DependentUpon>201702260419040_addnamacol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702260427553_addcolwaris.cs" />
+    <Compile Include="Migrations\201702260427553_addcolwaris.Designer.cs">
+      <DependentUpon>201702260427553_addcolwaris.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702260446296_addtarikhtamanahli.cs" />
+    <Compile Include="Migrations\201702260446296_addtarikhtamanahli.Designer.cs">
+      <DependentUpon>201702260446296_addtarikhtamanahli.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702260527386_addtarikhpenignapan.cs" />
+    <Compile Include="Migrations\201702260527386_addtarikhpenignapan.Designer.cs">
+      <DependentUpon>201702260527386_addtarikhpenignapan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseEntity.cs" />
@@ -294,6 +310,7 @@
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Models\VM\Course_Student.cs" />
     <Compile Include="Models\VM\EmailVO.cs" />
+    <Compile Include="Models\VM\FileVO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -4244,6 +4261,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\img\favicon.ico" />
+    <Content Include="Content\img\hilidayvoucher.jpg" />
+    <Content Include="Content\img\kadahli.jpg" />
     <Content Include="Content\img\nadilogo.png" />
     <Content Include="Content\nadi.css" />
     <Content Include="favicon.ico" />
@@ -4587,6 +4606,7 @@
     <Content Include="Views\Shared\_Layout2.cshtml" />
     <Content Include="Views\_ViewStart2.cshtml" />
     <Content Include="Views\Home\Tnc.cshtml" />
+    <Content Include="Views\Transaction\MembershipRequest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
@@ -4656,6 +4676,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702251030208_addsistemcounter.resx">
       <DependentUpon>201702251030208_addsistemcounter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702260419040_addnamacol.resx">
+      <DependentUpon>201702260419040_addnamacol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702260427553_addcolwaris.resx">
+      <DependentUpon>201702260427553_addcolwaris.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702260446296_addtarikhtamanahli.resx">
+      <DependentUpon>201702260446296_addtarikhtamanahli.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702260527386_addtarikhpenignapan.resx">
+      <DependentUpon>201702260527386_addtarikhpenignapan.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

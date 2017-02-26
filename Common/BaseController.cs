@@ -49,6 +49,20 @@ namespace MVC5.Common
             db.SaveChanges();
         }
 
+        public string finduserIdBynoAhli(string noAhli)
+        {
+            string parentId = null;
+            if (noAhli != null)
+            {
+                var user = db.Users.Where(a => a.NomborAhli.Equals(noAhli)).FirstOrDefault();
+                if (user != null)
+                {
+                    parentId = user.Id;
+                }
+            }
+            return parentId;
+        }
+
         public Boolean validateNoAhli(string noAhli)
         {
             Boolean result = false;
@@ -94,6 +108,11 @@ namespace MVC5.Common
             
             
             return kod + curnumber;
+        }
+
+        public ApplicationUser findUserbyId(string id)
+        {
+            return db.Users.Find(id);
         }
 
         public void AddTransaction(ApplicationUser parent, ApplicationUser user)

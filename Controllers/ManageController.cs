@@ -72,9 +72,9 @@ namespace MVC5.Controllers
                 : "";
 
             var userId = User.Identity.GetUserId();
-            var userlink = Url.Action("Register", "Account",
-               new { userId = userId }, protocol: Request.Url.Scheme);
             ApplicationUser curuser = UserManager.FindById(userId);
+            var userlink = Url.Action("Register", "Account",
+               new { userId = curuser.NomborAhli }, protocol: Request.Url.Scheme);
             decimal? p = 0;
             decimal? w = 0;
             string status = "Not Active";
@@ -98,6 +98,8 @@ namespace MVC5.Controllers
                 potentialPoint = p,
                 wallet = w,
                 accstatus = status,
+                tarikhPenginapan = String.Format("{0:M/d/yyyy}", curuser.tarikhPenginapan),
+                TarikhTamatKeahlian = String.Format("{0:M/d/yyyy}", curuser.TarikhTamatAhli),
                 totalChild = db.Users.Where(a => a.ParentId.Equals(userId)).Count(),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
@@ -419,6 +421,9 @@ namespace MVC5.Controllers
                     curstudent.BirthDate = student.BirthDate;
                     curstudent.PhoneNumber = student.PhoneNumber;
                     curstudent.ParentId = student.ParentId;
+                    curstudent.Nama = student.Nama;
+                    curstudent.NamaWaris = student.NamaWaris;
+                    curstudent.NomborTelefonWaris = student.NomborTelefonWaris;
                     UserManager.Update(curstudent);
                     return RedirectToAction("Index", "Manage");
                 }
@@ -521,6 +526,7 @@ namespace MVC5.Controllers
                         }
                         user.Files = new List<Models.File> { avatar };
                     }
+                    user.tarikhPenginapan = curuser.tarikhPenginapan;
                     UserManager.Update(user);
                     if (!await UserManager.IsEmailConfirmedAsync(User.Identity.GetUserId()))
                     {
