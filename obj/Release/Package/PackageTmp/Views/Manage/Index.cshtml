@@ -17,136 +17,224 @@
     <div class="col-md-12 col-sm-12">
         <div class="content-page">
 
-            <div class="note note-success">
-                <h4 class="block">Terms and conditions</h4>
-                <p>
-                    In the frontend theme you can use nearly all the features from <a href="http://keenthemes.com/preview/metronic_admin/" target="_blanl">Metronic Admin Theme</a>. First you will just need to include 2 below global css files:
-                </p>
-                <p>
-                    And selected plugin's css and js files accordingly.
-                </p>
-            </div>
-
-            <div class="panel panel-success">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Nota Tambahan</h3>
-                </div>
-                <div class="panel-body">
-                    <ul>
-                        <li>
-                            The maximum file size for uploads in this demo is <strong>5 MB</strong> (default file size is unlimited).
-                        </li>
-                        <li>
-                            Only image files (<strong>JPG, GIF, PNG</strong>) are allowed in this demo (by default there is no file type restriction).
-                        </li>
-                        <li>
-                            Uploaded files will be deleted automatically after <strong>5 minutes</strong> (demo setting).
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            
 
             <div class="blog-tags margin-bottom-20">
-                <h2>My Account</h2>
+                <h2>Akaun Ahli (@Model.CurrentUser.NomborAhli - @Model.accstatus)</h2>
                 <ul>
-                    <li><a href="@MyConstant.Base_Url/Manage/Edit/@Model.CurrentUser.Id"><i class="fa fa-tags"></i>Edit Profiles</a></li>
-                    <li><a href="@MyConstant.Base_Url/Manage/ApplyMembership"><i class="fa fa-tags"></i>Apply Membership</a></li>
+                    <li><a href="@MyConstant.Base_Url/Manage/Edit/@Model.CurrentUser.Id"><i class="fa fa-tags"></i>Kemaskini Maklumat</a></li>
+                    <li><a href="@MyConstant.Base_Url/Manage/ApplyMembership"><i class="fa fa-tags"></i>Permohonan Keahlian</a></li>
 
 
                     
                     @if (Model.HasPassword)
                     {
-                        <li><a href="@MyConstant.Base_Url/Manage/ChangePassword"><i class="fa fa-tags"></i>Change your password</a></li>                    }
+                        <li><a href="@MyConstant.Base_Url/Manage/ChangePassword"><i class="fa fa-tags"></i>Tukar Kata Laluan</a></li>                    }
                     else
                     {
-                        <li><a href="@MyConstant.Base_Url/Manage/SetPassword"><i class="fa fa-tags"></i>Create Password</a></li>
+                        <li><a href="@MyConstant.Base_Url/Manage/SetPassword"><i class="fa fa-tags"></i>Set Kata Laluan</a></li>
                     }
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-tags"></i>Notifikasi <span class="badge badge-danger">
+                                @Model.totalChild
+                            </span>
+                        </a>
+                    </li>
                     
-                    <li><a href="@MyConstant.Base_Url/Manage/ManageLogins"><i class="fa fa-tags"></i>Manage Login</a></li>
+                    
 
                     
                 </ul>
             </div>
 
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="dashboard-stat blue-madison">
-                    <div class="visual">
-                        <i class="fa fa-comments"></i>
-                    </div>
-                    <div class="details">
-                        <div class="number">
-                            @Html.DisplayFor(model => model.potentialPoint)
+            
+
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="dashboard-stat blue-madison">
+                        <div class="visual">
+                            <i class="fa fa-comments"></i>
                         </div>
-                        <div class="desc">
-                            Potential Points
+                        <div class="details">
+                            <div class="number">
+                                @Html.DisplayFor(model => model.potentialPoint)
+                            </div>
+                            <div class="desc">
+                                Potential Points
+                            </div>
                         </div>
+                        <a class="more" href="#">
+                            View more <i class="m-icon-swapright m-icon-white"></i>
+                        </a>
                     </div>
-                    <a class="more" href="#">
-                        View more <i class="m-icon-swapright m-icon-white"></i>
-                    </a>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="dashboard-stat red-intense">
+                        <div class="visual">
+                            <i class="fa fa-bar-chart-o"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number">
+                                @Html.DisplayFor(model => model.wallet)
+                            </div>
+                            <div class="desc">
+                                Current Points
+                            </div>
+                        </div>
+                        <a class="more" href="#">
+                            View more <i class="m-icon-swapright m-icon-white"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="dashboard-stat green-haze">
+                        <div class="visual">
+                            <i class="fa fa-shopping-cart"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number">
+                                @Html.DisplayFor(model => model.totalChild)
+                            </div>
+                            <div class="desc">
+                                Registerer
+                            </div>
+                        </div>
+                        <a class="more" href="@MyConstant.Base_Url/Transaction/Index">
+                            View more <i class="m-icon-swapright m-icon-white"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="dashboard-stat purple-plum">
+                        <div class="visual">
+                            <i class="fa fa-globe"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number">
+                                @Html.DisplayFor(model => model.accstatus)
+                            </div>
+                            <div class="desc">
+                                Account Status
+                            </div>
+                        </div>
+                        <a class="more" href="#">
+                            View more <i class="m-icon-swapright m-icon-white"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="dashboard-stat red-intense">
-                    <div class="visual">
-                        <i class="fa fa-bar-chart-o"></i>
-                    </div>
-                    <div class="details">
-                        <div class="number">
-                            @Html.DisplayFor(model => model.wallet)
-                        </div>
-                        <div class="desc">
-                            Current Points
-                        </div>
-                    </div>
-                    <a class="more" href="#">
-                        View more <i class="m-icon-swapright m-icon-white"></i>
-                    </a>
+
+
+    </div>
+    </div>
+
+
+
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+        <div class="content-page">
+            <!-- BEGIN SAMPLE TABLE PORTLET-->
+            <div class="portlet box red">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-cogs"></i>Manfaat Keahlian
+        </div>
+    </div>
+    @if (!Model.CurrentUser.EmailConfirmed)
+    {
+        <div class="portlet-body">
+            <div class="note note-success">
+                <h4 class="block">Manfaat Keahlian Hanya Bagi Ahli Sah Nadi Kebangsaan.</h4>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="dashboard-stat green-haze">
-                    <div class="visual">
-                        <i class="fa fa-shopping-cart"></i>
-                    </div>
-                    <div class="details">
-                        <div class="number">
-                            @Html.DisplayFor(model => model.totalChild)
+                }
+                @if (Model.CurrentUser.EmailConfirmed)
+                {
+
+                    <div class="portlet-body">
+                        <div class="note note-success">
+                            <h4 class="block">Kad Keahlian</h4>
+                            <p>
+                                Sah Sehingga : @Model.TarikhTamatKeahlian
+                            </p>
+                            <div class="tiles">
+                                <div class="tile image double selected">
+                                    <div class="tile-body">
+                                        <img src="~/Content/img/kadahli.jpg" alt="">
+                                    </div>
+                                    <div class="tile-object">
+                                        <div class="name" style="height:100px;">
+                                            <h4><strong>NADI MEMBER</strong> </h4>
+                                            <br />
+                                            @Model.CurrentUser.NomborAhli
+                                            <br />
+                                            @Model.CurrentUser.Nama
+                                        </div>
+                                        <div class="number">
+                                            @Model.TarikhTamatKeahlian
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="desc">
-                            Registerer
+
+                        <div class="note note-success">
+                            <h4 class="block">Voucher Penginapan</h4>
+                            <span class="label label-danger">
+                                NOTE!
+                            </span>
+                            Sila Pilih Tarikh Penginapan 3 bulan dari tarikh kelulusan. <a href="@MyConstant.Base_Url/Manage/ApplyMembership">Semak Tarikh.</a>
+
+                            <br />
+                            <br />
+                            <p>
+                                Tarikh Penginapan : @Model.tarikhPenginapan
+                            </p>
+                            <div class="tiles">
+                                <div class="tile image double selected">
+                                    <div class="tile-body">
+                                        <img src="~/Content/img/hilidayvoucher.jpg" alt="">
+                                    </div>
+                                    <div class="tile-object">
+                                        <div class="name">
+                                            Langkawi
+                                        </div>
+                                        <div class="number">
+                                            2 hari 1 malam
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <a class="more" href="@MyConstant.Base_Url/Transaction/Index">
-                        View more <i class="m-icon-swapright m-icon-white"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="dashboard-stat purple-plum">
-                    <div class="visual">
-                        <i class="fa fa-globe"></i>
-                    </div>
-                    <div class="details">
-                        <div class="number">
-                            @Html.DisplayFor(model => model.accstatus)
+
+                        <div class="note note-success">
+                            <h4 class="block">Khairat Kematian</h4>
+                            <span class="label label-danger">
+                                NOTE!
+                            </span>
+                            Sila Kemaskini Maklumat Waris. <a href="@MyConstant.Base_Url/Manage/Edit/@Model.CurrentUser.Id">Kemaskini  Maklumat</a>
+
+                            <br />
+                            <br />
+                            <p>
+                                Nama Waris : @Model.CurrentUser.NamaWaris
+                            </p>
+                            <p>
+                                No Telefon Waris : @Model.CurrentUser.NomborTelefonWaris
+                            </p>
                         </div>
-                        <div class="desc">
-                            Account Status
-                        </div>
+
                     </div>
-                    <a class="more" href="#">
-                        View more <i class="m-icon-swapright m-icon-white"></i>
-                    </a>
-                </div>
+
+                }
+
             </div>
         </div>
-
-
-
-    </div>
-    </div>
+        </div>
+</div>
 
 <div class="row">
     <div class="col-md-12 col-sm-12">

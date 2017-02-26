@@ -1,0 +1,182 @@
+﻿@model MVC5.Models.VM.FileVO
+@using MVC5.Common
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-page">
+    <div class="row">
+        <div class="col-md-6">
+            <!-- BEGIN SAMPLE TABLE PORTLET-->
+            <div class="portlet box red">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-cogs"></i>Permohonan Keahlian
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse">
+                        </a>
+                        <a href="#portlet-config" data-toggle="modal" class="config">
+                        </a>
+                        <a href="javascript:;" class="reload">
+                        </a>
+                        <a href="javascript:;" class="remove">
+                        </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="table-scrollable">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+
+                                    <th>
+                                        Nama Resit
+                                    </th>
+                                    <th>
+                                        User
+                                    </th>
+                                    <th>
+                                        Status
+                                    </th>
+                                    <th>
+                                        Tindakan
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+
+                                @foreach (var item in Model.batalList)
+                                {
+                                    <tr>
+                                        <td>
+                                           @Html.ActionLink(item.curFile.FileName, "Download", "File", new { area = "", id = item.curFile.FileId }, null)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CurrentUser.Email)
+                                        </td>
+                                        <td>
+                                            @if (item.CurrentUser.EmailConfirmed)
+                                            {
+                                                <span class="label label-sm label-success">
+                                                    Active
+                                                </span>
+                                            }
+                                            else
+                                            {
+                                                <span class="label label-sm label-danger">
+                                                    Not Active
+                                                </span>
+                                            }
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Lulus", "ApproveMembershipRequest", new { id = item.CurrentUser.Id, activate = true }) |
+                                            @Html.ActionLink("Batal", "ApproveMembershipRequest", new { id = item.CurrentUser.Id, activate = false })
+                                        </td>
+                                    </tr>
+                                }
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- END SAMPLE TABLE PORTLET-->
+
+        </div>
+
+        <div class="col-md-6">
+            <!-- BEGIN SAMPLE TABLE PORTLET-->
+            <div class="portlet box red">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-cogs"></i>Ahli Active
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse">
+                        </a>
+                        <a href="#portlet-config" data-toggle="modal" class="config">
+                        </a>
+                        <a href="javascript:;" class="reload">
+                        </a>
+                        <a href="javascript:;" class="remove">
+                        </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="table-scrollable">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+
+                                    <th>
+                                        Nama Resit
+                                    </th>
+                                    <th>
+                                        User
+                                    </th>
+                                    <th>
+                                        Status
+                                    </th>
+                                    <th>
+                                        Tindakan
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+
+                                @foreach (var item in Model.lulusList)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.ActionLink(item.curFile.FileName, "Download", "File", new { area = "", id = item.curFile.FileId },null)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CurrentUser.Email)
+                                        </td>
+                                        <td>
+                                            @if (item.CurrentUser.EmailConfirmed)
+                                            {
+                                                <span class="label label-sm label-success">
+                                                    Active
+                                                </span>
+                                            }
+                                            else
+                                            {
+                                                <span class="label label-sm label-danger">
+                                                    Not Active
+                                                </span>
+                                            }
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Lulus", "ApproveMembershipRequest", new { id = item.CurrentUser.Id, activate = true }) |
+                                            @Html.ActionLink("Batal", "ApproveMembershipRequest", new { id = item.CurrentUser.Id, activate = false })
+                                        </td>
+                                    </tr>
+                                }
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- END SAMPLE TABLE PORTLET-->
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <a href="@MyConstant.Base_Url/Manage/Index" class="btn blue">
+                Back to My Account
+            </a>
+        </div>
+    </div>
+    </div>

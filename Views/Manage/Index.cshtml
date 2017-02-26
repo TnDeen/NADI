@@ -138,11 +138,19 @@
         <div class="content-page">
             <!-- BEGIN SAMPLE TABLE PORTLET-->
             <div class="portlet box red">
-                <div class="portlet-title">
-                    <div class="caption">
-                        <i class="fa fa-cogs"></i>Manfaat Keahlian
-                    </div>
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-cogs"></i>Manfaat Keahlian
+        </div>
+    </div>
+    @if (!Model.CurrentUser.EmailConfirmed)
+    {
+        <div class="portlet-body">
+            <div class="note note-success">
+                <h4 class="block">Manfaat Keahlian Hanya Bagi Ahli Sah Nadi Kebangsaan.</h4>
                 </div>
+            </div>
+                }
                 @if (Model.CurrentUser.EmailConfirmed)
                 {
 
@@ -179,7 +187,7 @@
                                 NOTE!
                             </span>
                             Sila Pilih Tarikh Penginapan 3 bulan dari tarikh kelulusan. <a href="@MyConstant.Base_Url/Manage/ApplyMembership">Semak Tarikh.</a>
-                            
+
                             <br />
                             <br />
                             <p>
@@ -222,10 +230,10 @@
                     </div>
 
                 }
-                
+
             </div>
         </div>
-    </div>
+        </div>
 </div>
 
 <div class="row">
