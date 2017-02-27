@@ -53,7 +53,7 @@ namespace MVC5.Migrations
             {
                 var userstore = new UserStore<ApplicationUser>(context);
                 var usermanager = new UserManager<ApplicationUser>(userstore);
-                var user = new ApplicationUser { UserName = "admin@nadikebangsaan.com", Email = "admin@nadikebangsaan.com" };
+                var user = new ApplicationUser { UserName = "admin@nadikebangsaan.com", Email = "admin@nadikebangsaan.com", NomborAhli = "NDAD20170001" };
 
                 usermanager.Create(user, "Nadiadmin1@");
                 usermanager.AddToRole(user.Id, "Admin");
