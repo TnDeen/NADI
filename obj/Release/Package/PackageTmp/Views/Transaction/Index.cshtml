@@ -39,6 +39,9 @@
                                         point
                                     </th>
                                     <th>
+                                        Level
+                                    </th>
+                                    <th>
                                         Status
                                     </th>
                                 </tr>
@@ -54,6 +57,9 @@
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.point)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.level)
                                         </td>
                                         <td>
                                             @if (item.statusActive)
