@@ -60,6 +60,9 @@ namespace MVC5.Models
         {
         }
 
+        public DbSet<SAK> Sak { get; set; }
+        public DbSet<SK> Sk { get; set; }
+        public DbSet<Message> SystemMessage { get; set; }
         public DbSet<SistemId> SistemCounter { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Course> Courses { get; set; }

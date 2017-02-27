@@ -16,8 +16,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort>
-    </IISExpressSSLPort>
+    <IISExpressSSLPort>44300</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -295,6 +294,10 @@
     <Compile Include="Migrations\201702260703234_changecoldateval.Designer.cs">
       <DependentUpon>201702260703234_changecoldateval.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702270931403_addreftbl.cs" />
+    <Compile Include="Migrations\201702270931403_addreftbl.Designer.cs">
+      <DependentUpon>201702270931403_addreftbl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseEntity.cs" />
@@ -307,9 +310,13 @@
     <Compile Include="Models\IdentityContext.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\RefDataEntity.cs" />
+    <Compile Include="Models\SAK.cs" />
     <Compile Include="Models\SchoolContext.cs" />
     <Compile Include="Models\SchoolInitializer.cs" />
     <Compile Include="Models\SistemId.cs" />
+    <Compile Include="Models\SK.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Models\VM\Course_Student.cs" />
@@ -4695,6 +4702,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702260703234_changecoldateval.resx">
       <DependentUpon>201702260703234_changecoldateval.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702270931403_addreftbl.resx">
+      <DependentUpon>201702270931403_addreftbl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
