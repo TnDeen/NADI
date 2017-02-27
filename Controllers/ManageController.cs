@@ -75,18 +75,25 @@ namespace MVC5.Controllers
             ApplicationUser curuser = UserManager.FindById(userId);
             var userlink = Url.Action("Register", "Account",
                new { userId = curuser.NomborAhli }, protocol: Request.Url.Scheme);
-            decimal? p = 0;
-            decimal? w = 0;
+            decimal? acp = 0;
+            decimal? pap = 0;
+            decimal? ap = 0;
+
+            var aa = db.Transactions.Where(a => a.VendorID.Equals(userId) && !a.statusActive).Select(a => a.point).Sum();
+            if (aa != null)
+            {
+                pap = aa;
+            }
+            var bb = db.Transactions.Where(a => a.VendorID.Equals(userId) && a.statusActive).Select(a => a.point).Sum();
+            if (bb != null)
+            {
+                ap = bb;
+            }
+            acp = pap + ap;
             string status = "Not Active";
             if (curuser.EmailConfirmed)
             {
                 status = "Active";
-                p = db.Transactions.Where(a => a.VendorID.Equals(userId) && !a.statusActive).Select(a => a.point).Sum();
-                w = db.Transactions.Where(a => a.VendorID.Equals(userId) && a.statusActive).Select(a => a.point).Sum();
-            } else
-            {
-                p = db.Transactions.Where(a => a.VendorID.Equals(userId)).Select(a => a.point).Sum();
-                status = "Not Active";
             }
 
             var model = new IndexViewModel
@@ -95,8 +102,9 @@ namespace MVC5.Controllers
                 HasPassword = HasPassword(),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 userLink = userlink,
-                potentialPoint = p,
-                wallet = w,
+                accumulativePoint = acp,
+                potentialPoint = pap,
+                wallet = ap,
                 accstatus = status,
                 tarikhPenginapan = String.Format("{0:M/d/yyyy}", curuser.tarikhPenginapan),
                 TarikhTamatKeahlian = String.Format("{0:M/d/yyyy}", curuser.TarikhTamatAhli),

@@ -14,10 +14,13 @@ namespace MVC5.Models
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
 
-        [Display(Name="Potential Point(RM)")]
+        [Display(Name = "Accumulative Point (RM)")]
+        public decimal? accumulativePoint { get; set; }
+
+        [Display(Name="Pre Active Point (RM)")]
         public decimal? potentialPoint { get; set; }
 
-        [Display(Name = "Wallet (RM)")]
+        [Display(Name = "Active Point (RM)")]
         public decimal? wallet { get; set; }
 
         [Display(Name = "Registered Child")]

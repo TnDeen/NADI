@@ -58,17 +58,36 @@
                         </div>
                         <div class="details">
                             <div class="number">
-                                @Html.DisplayFor(model => model.potentialPoint)
+                                @Html.DisplayFor(model => model.accumulativePoint)
                             </div>
                             <div class="desc">
-                                Potential Points
+                                Accumulative Points
                             </div>
                         </div>
                         <a class="more" href="#">
-                            View more <i class="m-icon-swapright m-icon-white"></i>
+                            MYR
                         </a>
                     </div>
                 </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="dashboard-stat purple-plum">
+                    <div class="visual">
+                        <i class="fa fa-globe"></i>
+                    </div>
+                    <div class="details">
+                        <div class="number">
+                            @Html.DisplayFor(model => model.potentialPoint)
+                        </div>
+                        <div class="desc">
+                            Pre-Active Points
+                        </div>
+                    </div>
+                    <a class="more" href="#">
+                        MYR 
+                    </a>
+                </div>
+            </div>
 
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <div class="dashboard-stat red-intense">
@@ -80,11 +99,11 @@
                                 @Html.DisplayFor(model => model.wallet)
                             </div>
                             <div class="desc">
-                                Current Points
+                                Active Points
                             </div>
                         </div>
                         <a class="more" href="#">
-                            View more <i class="m-icon-swapright m-icon-white"></i>
+                           MYR
                         </a>
                     </div>
                 </div>
@@ -106,24 +125,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="dashboard-stat purple-plum">
-                        <div class="visual">
-                            <i class="fa fa-globe"></i>
-                        </div>
-                        <div class="details">
-                            <div class="number">
-                                @Html.DisplayFor(model => model.accstatus)
-                            </div>
-                            <div class="desc">
-                                Account Status
-                            </div>
-                        </div>
-                        <a class="more" href="#">
-                            View more <i class="m-icon-swapright m-icon-white"></i>
-                        </a>
-                    </div>
-                </div>
+               
             </div>
 
 
@@ -148,6 +150,7 @@
         <div class="portlet-body">
             <div class="note note-success">
                 <h4 class="block">Manfaat Keahlian Hanya Bagi Ahli Sah Nadi Kebangsaan.</h4>
+                <a href="@MyConstant.Base_Url/Manage/ApplyMembership"><i class="fa fa-tags"></i>Sila Klik Untuk Permohonan Keahlian</a>
                 </div>
             </div>
                 }
