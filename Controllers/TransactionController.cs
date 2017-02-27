@@ -18,6 +18,7 @@ using MVC5.Models.VM;
 
 namespace MVC5.Controllers
 {
+    [Authorize]
     public class TransactionController : BaseController
     {
         private ApplicationUserManager _userManager;
