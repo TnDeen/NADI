@@ -22,17 +22,17 @@
             <div class="blog-tags margin-bottom-20">
                 <h2>Akaun Ahli (@Model.CurrentUser.NomborAhli - @Model.accstatus)</h2>
                 <ul>
-                    <li><a href="@MyConstant.Base_Url/Manage/Edit/@Model.CurrentUser.Id"><i class="fa fa-tags"></i>Kemaskini Maklumat</a></li>
-                    <li><a href="@MyConstant.Base_Url/Manage/ApplyMembership"><i class="fa fa-tags"></i>Permohonan Keahlian</a></li>
+                    <li><a href="/Manage/Edit/@Model.CurrentUser.Id"><i class="fa fa-tags"></i>Kemaskini Maklumat</a></li>
+                    <li><a href="/Manage/ApplyMembership"><i class="fa fa-tags"></i>Permohonan Keahlian</a></li>
 
 
                     
                     @if (Model.HasPassword)
                     {
-                        <li><a href="@MyConstant.Base_Url/Manage/ChangePassword"><i class="fa fa-tags"></i>Tukar Kata Laluan</a></li>                    }
+                        <li><a href="/Manage/ChangePassword"><i class="fa fa-tags"></i>Tukar Kata Laluan</a></li>                    }
                     else
                     {
-                        <li><a href="@MyConstant.Base_Url/Manage/SetPassword"><i class="fa fa-tags"></i>Set Kata Laluan</a></li>
+                        <li><a href="/Manage/SetPassword"><i class="fa fa-tags"></i>Set Kata Laluan</a></li>
                     }
 
                     <li>
@@ -120,7 +120,7 @@
                                 Registerer
                             </div>
                         </div>
-                        <a class="more" href="@MyConstant.Base_Url/Transaction/Index">
+                        <a class="more" href="/Transaction/Index">
                             View more <i class="m-icon-swapright m-icon-white"></i>
                         </a>
                     </div>
@@ -150,7 +150,7 @@
         <div class="portlet-body">
             <div class="note note-success">
                 <h4 class="block">Manfaat Keahlian Hanya Bagi Ahli Sah Nadi Kebangsaan.</h4>
-                <a href="@MyConstant.Base_Url/Manage/ApplyMembership"><i class="fa fa-tags"></i>Sila Klik Untuk Permohonan Keahlian</a>
+                <a href="/Manage/ApplyMembership"><i class="fa fa-tags"></i>Sila Klik Untuk Permohonan Keahlian</a>
                 </div>
             </div>
                 }
@@ -189,7 +189,7 @@
                             <span class="label label-danger">
                                 NOTE!
                             </span>
-                            Sila Pilih Tarikh Penginapan 3 bulan dari tarikh kelulusan. <a href="@MyConstant.Base_Url/Manage/ApplyMembership">Semak Tarikh.</a>
+                            Sila Pilih Tarikh Penginapan 3 bulan dari tarikh kelulusan. <a href="/Manage/ApplyMembership">Semak Tarikh.</a>
 
                             <br />
                             <br />
@@ -218,7 +218,7 @@
                             <span class="label label-danger">
                                 NOTE!
                             </span>
-                            Sila Kemaskini Maklumat Waris. <a href="@MyConstant.Base_Url/Manage/Edit/@Model.CurrentUser.Id">Kemaskini  Maklumat</a>
+                            Sila Kemaskini Maklumat Waris. <a href="/Manage/Edit/@Model.CurrentUser.Id">Kemaskini  Maklumat</a>
 
                             <br />
                             <br />
