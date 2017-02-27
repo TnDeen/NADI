@@ -13,7 +13,7 @@ namespace MVC5.Models
         public int Id { get; set; }
 
         [ForeignKey("Parent")]
-        public int ParentId { get; set; }
+        public int? ParentId { get; set; }
         public virtual SAK Parent { get; set; }
 
         [InverseProperty("Parent")]

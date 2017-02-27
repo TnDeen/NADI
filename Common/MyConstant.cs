@@ -17,6 +17,24 @@ namespace MVC5.Common
         public const String Base_Url = "http://localhost:44300";
         public const String app_admin_email = "salehuddin.ptsb@gmail.com";
 
+        public const String SK_NEGERI = "NEGERI";
+        public const String NEGERI_JHR = "01";
+        public const String NEGERI_KDH = "02";
+        public const String NEGERI_KLT = "03";
+        public const String NEGERI_MLK = "04";
+        public const String NEGERI_NS = "05";
+        public const String NEGERI_PHG = "06";
+        public const String NEGERI_PP = "07";
+        public const String NEGERI_PRK = "08";
+        public const String NEGERI_PRS = "09";
+        public const String NEGERI_SEL = "10";
+        public const String NEGERI_TRG = "11";
+        public const String NEGERI_SBH = "12";
+        public const String NEGERI_SRW = "13";
+        public const String NEGERI_WP_KL = "14";
+        public const String NEGERI_WP_LB = "15";
+        public const String NEGERI_WP_PJ = "16";
+
         public const double Point_1 = 53.85;
         public const double Point_2 = 5.38;
         public const double Point_3 = 2.69;
