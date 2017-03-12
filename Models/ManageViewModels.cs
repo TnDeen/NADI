@@ -26,6 +26,9 @@ namespace MVC5.Models
         [Display(Name = "Registered Child")]
         public int totalChild { get; set; }
 
+        [Display(Name = "Message")]
+        public int totalMessage { get; set; }
+
         [Display(Name = "Account Status")]
         public string accstatus { get; set; }
 

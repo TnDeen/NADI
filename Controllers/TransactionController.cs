@@ -40,7 +40,20 @@ namespace MVC5.Controllers
         {
             ApplicationUser user = UserManager.FindByEmail(User.Identity.Name);
             string role = UserManager.GetRoles(user.Id).First();
-            return View(db.Transactions.ToList().Where(c => c.VendorID.Equals(user.Id)));
+            return View(db.Transactions.ToList().Where(c => c.VendorID.Equals(user.Id)).OrderBy(c => c.level));
+        }
+
+        public ActionResult MessageList()
+        {
+            ApplicationUser user = UserManager.FindByEmail(User.Identity.Name);
+            return View(db.SystemMessage.ToList().Where(c => c.Recipient.Equals(user.Id)).OrderBy(c => c.DateCreated));
+        }
+
+        public ActionResult ReadMessage(int id, bool activate)
+        {
+            db.SystemMessage.Where(t => t.Id.Equals(id)).ToList().ForEach(x => x.ReadStatus = true);
+            db.SaveChanges();
+            return View("MessageList");
         }
 
         // GET: Transaction
@@ -64,6 +77,59 @@ namespace MVC5.Controllers
             vo.lulusList = llsRequest.ToList<FileVO>();
             vo.batalList = btlRequest.ToList<FileVO>();
             return View(vo);
+        }
+
+        [Authorize]
+        public ActionResult claimRequest(int id, bool activate)
+        {
+            if (id > 0)
+            {
+                Transaction tran = db.Transactions.Find(id);
+                if (tran != null)
+                {
+                    tran.claimRequestSend = activate;
+                    db.Entry(tran).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                }
+            }
+            return RedirectToAction("Index");
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult ClaimRequestList()
+        {
+            FileVO vo = new FileVO();
+            var llsRequest = from tran in db.Transactions
+                             join uuser in db.Users on tran.VendorID equals uuser.Id
+                             where tran.claimRequestSend where tran.claimRequestApproval
+                             select new FileVO { transantion = tran, CurrentUser = uuser };
+            var btlRequest = from tran in db.Transactions
+                             join uuser in db.Users on tran.VendorID equals uuser.Id
+                             where tran.claimRequestSend
+                             where !tran.claimRequestApproval
+                             select new FileVO { transantion = tran, CurrentUser = uuser };
+            vo.lulusList = llsRequest.ToList<FileVO>();
+            vo.batalList = btlRequest.ToList<FileVO>();
+            return View(vo);
+        }
+
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult ApproveClaimRequest(int id, bool activate)
+        {
+            if (id > 0)
+            {
+                Transaction tran = db.Transactions.Find(id);
+                if (tran != null)
+                {
+                    tran.claimRequestApproval = activate;
+                    db.Entry(tran).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                    string mesage = "Your claim with amount of " + tran.point + "have been approved!";
+                    sendNotification(tran.VendorID, "Claim Approve", mesage);
+                }
+            }
+            return RedirectToAction("ClaimRequestList");
         }
 
         [Authorize(Roles = "Admin")]
@@ -90,7 +156,10 @@ namespace MVC5.Controllers
                         }
                         
                         db.SaveChanges();
-                        
+                        UpdateTransaction(user, true);
+                        string mesage = "Your membership application have been approved! membership is valid from " + user.TarikhSahAhli + " to " + user.TarikhTamatAhli;
+                        sendNotification(user.Id, "Membership application approved", mesage);
+
                     }
                 }
                 catch (Exception ex)

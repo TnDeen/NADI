@@ -269,3 +269,4 @@ C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\obj\De
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.Migrations.addreftbl.resources
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.Migrations.updaterftbl.resources
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.Migrations.addtarikhdaftarcol.resources
+C:\Users\salehudin\Documents\Visual Studio 2015\Projects\NADI_ENGINE\MVC5\obj\Debug\MVC5.Migrations.addclaimcolumntran.resources

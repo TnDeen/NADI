@@ -49,6 +49,19 @@ namespace MVC5.Common
             db.SaveChanges();
         }
 
+        public void sendNotification(string toUser, String subjext, String message)
+        {
+            ApplicationUser admin = findUserbyEmail(MyConstant.user_admin_email);
+            Message msg = new Message();
+            msg.Subject = subjext;
+            msg.Perihal = message;
+            msg.Sender = admin.Id;
+            msg.Recipient = toUser;
+            msg.ReadStatus = false;
+            db.SystemMessage.Add(msg);
+            db.SaveChanges();
+        }
+
         public string findNoAhliById(string id)
         {
             string noAhli = null;
@@ -127,6 +140,11 @@ namespace MVC5.Common
         public ApplicationUser findUserbyId(string id)
         {
             return db.Users.Find(id);
+        }
+
+        public ApplicationUser findUserbyEmail(string email)
+        {
+            return db.Users.Where(a => a.Email.Equals(email)).FirstOrDefault();
         }
 
         private Transaction createTransactionObj(string userId, string parentId, double point, int level)

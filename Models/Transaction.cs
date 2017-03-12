@@ -15,6 +15,9 @@ namespace MVC5.Models
         public string VendorID { get; set; }
         public string TranStatus { get; set; }
         public Boolean statusActive { get; set; }
+        public Boolean claimRequestSend { get; set; }
+        public Boolean claimRequestApproval { get; set; }
+        public string ulasan { get; set; }
         public int level { get; set; }
         public decimal? point { get; set; }
 

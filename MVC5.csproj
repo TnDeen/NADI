@@ -307,6 +307,10 @@
     <Compile Include="Migrations\201703120621007_addtarikhdaftarcol.Designer.cs">
       <DependentUpon>201703120621007_addtarikhdaftarcol.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703120904369_addclaimcolumntran.cs" />
+    <Compile Include="Migrations\201703120904369_addclaimcolumntran.Designer.cs">
+      <DependentUpon>201703120904369_addclaimcolumntran.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseEntity.cs" />
@@ -4627,6 +4631,9 @@
     <Content Include="Views\_ViewStart2.cshtml" />
     <Content Include="Views\Home\Tnc.cshtml" />
     <Content Include="Views\Transaction\MembershipRequest.cshtml" />
+    <Content Include="Views\Transaction\ClaimRequestList.cshtml" />
+    <Content Include="Views\Transaction\MessageList.cshtml" />
+    <Content Include="Views\Transaction\ReadMessage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
@@ -4720,6 +4727,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703120621007_addtarikhdaftarcol.resx">
       <DependentUpon>201703120621007_addtarikhdaftarcol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703120904369_addclaimcolumntran.resx">
+      <DependentUpon>201703120904369_addclaimcolumntran.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

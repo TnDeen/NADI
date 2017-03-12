@@ -106,6 +106,7 @@ namespace MVC5.Controllers
                 potentialPoint = pap,
                 wallet = ap,
                 accstatus = status,
+                totalMessage = db.SystemMessage.Where(t => t.Recipient.Equals(curuser.Id) && !t.ReadStatus).Count(),
                 tarikhPenginapan = String.Format("{0:M/d/yyyy}", curuser.tarikhPenginapan),
                 TarikhTamatKeahlian = String.Format("{0:M/d/yyyy}", curuser.TarikhTamatAhli),
                 totalChild = db.Users.Where(a => a.ParentId.Equals(userId)).Count(),
@@ -536,13 +537,19 @@ namespace MVC5.Controllers
                     }
                     user.tarikhPenginapan = curuser.tarikhPenginapan;
                     UserManager.Update(user);
+                    string mesage = "";
                     if (!await UserManager.IsEmailConfirmedAsync(User.Identity.GetUserId()))
                     {
                         string callbackUrl = await SendEmailApplyMembership(User.Identity.GetUserId(), "Membership Application Request");
-                        
-                        ViewBag.Message = "Thank You for your membership application. We will inform once your application has been Approve.";
+                        mesage = "Thank You for your membership application. We will inform once your application has been Approve.";
+                        ViewBag.Message = mesage;
                         return View("Success");
                     }
+                    
+                    sendNotification(user.Id, "membership application", mesage);
+                    string adminmsg = "User with " + user.NomborAhli + "Has request membership!";
+                    ApplicationUser admin = findUserbyEmail(MyConstant.user_admin_email);
+                    sendNotification(admin.Id, "membership application", adminmsg);
                     return RedirectToAction("Index", "Manage");
                 }
             }
