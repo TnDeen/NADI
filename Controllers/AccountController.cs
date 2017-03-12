@@ -203,7 +203,7 @@ namespace MVC5.Controllers
                     if (result.Succeeded)
                     {
                         UserManager.AddToRole(user.Id, MyConstant.Role_User);
-                        ApplicationUser introducer = UserManager.FindById(model.Introducer);
+                        ApplicationUser introducer = UserManager.FindById(parentId);
                         AddTransaction(introducer, user);
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
