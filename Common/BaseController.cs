@@ -129,121 +129,98 @@ namespace MVC5.Common
             return db.Users.Find(id);
         }
 
+        private Transaction createTransactionObj(string userId, string parentId, double point, int level)
+        {
+            Transaction tran = new Transaction();
+            tran.CustomerID = userId;
+            tran.VendorID = parentId;
+            tran.point = Convert.ToDecimal(point);
+            tran.level = level;
+            tran.CreateBy = User.Identity.Name;
+            tran.CreateDate = DateTime.Now;
+            tran.LastUpdated = DateTime.Now;
+            tran.LastUpdatedBy = User.Identity.Name;
+            return tran;
+        }
+
         public void AddTransaction(ApplicationUser parent, ApplicationUser user)
         {
             if (user != null && parent != null)
             {
-                Transaction tran = new Transaction();
-                tran.CustomerID = user.Id;
-                tran.VendorID = parent.Id;
-                tran.point = Convert.ToDecimal(MyConstant.Point_1);
-                tran.level = 1;
-                tran.CreateBy = User.Identity.Name;
-                tran.CreateDate = DateTime.Now;
-                tran.LastUpdated = DateTime.Now;
-                tran.LastUpdatedBy = User.Identity.Name;
+                Transaction tran = createTransactionObj(user.Id, parent.Id, MyConstant.Point_1, 1);
                 db.Transactions.Add(tran);
 
 
                 if (parent.ParentId != null)
                 {
                     var parent2 = idb.Users.Find(parent.ParentId);
-                    Transaction tran2 = new Transaction();
-                    tran2.CustomerID = user.Id;
-                    tran2.VendorID = parent2.Id;
-                    tran2.point = Convert.ToDecimal(MyConstant.Point_2);
-                    tran2.level = 2;
-                    tran2.CreateBy = User.Identity.Name;
-                    tran2.CreateDate = DateTime.Now;
-                    tran2.LastUpdated = DateTime.Now;
-                    tran2.LastUpdatedBy = User.Identity.Name;
+                    Transaction tran2 = createTransactionObj(user.Id, parent2.Id, MyConstant.Point_2, 2);
                     db.Transactions.Add(tran2);
 
                     
                     if (parent2.ParentId != null)
                     {
                         var parent3 = idb.Users.Find(parent2.ParentId);
-                        Transaction tran3 = new Transaction();
-                        tran3.CustomerID = user.Id;
-                        tran3.VendorID = parent3.Id;
-                        tran3.point = Convert.ToDecimal(MyConstant.Point_3);
-                        tran3.level = 3;
-                        tran3.CreateBy = User.Identity.Name;
-                        tran3.CreateDate = DateTime.Now;
-                        tran3.LastUpdated = DateTime.Now;
-                        tran3.LastUpdatedBy = User.Identity.Name;
+                        Transaction tran3 = createTransactionObj(user.Id, parent3.Id, MyConstant.Point_3, 3);
                         db.Transactions.Add(tran3);
 
                         if (parent3.ParentId != null)
                         {
                             var parent4 = idb.Users.Find(parent3.ParentId);
-                            Transaction tran4 = new Transaction();
-                            tran4.CustomerID = user.Id;
-                            tran4.VendorID = parent4.Id;
-                            tran4.point = Convert.ToDecimal(MyConstant.Point_4);
-                            tran4.level = 4;
-                            tran4.CreateBy = User.Identity.Name;
-                            tran4.CreateDate = DateTime.Now;
-                            tran4.LastUpdated = DateTime.Now;
-                            tran4.LastUpdatedBy = User.Identity.Name;
+                            Transaction tran4 = createTransactionObj(user.Id, parent4.Id, MyConstant.Point_4, 4);
                             db.Transactions.Add(tran4);
 
                             if (parent4.ParentId != null)
                             {
                                 var parent5 = idb.Users.Find(parent4.ParentId);
-                                Transaction tran5 = new Transaction();
-                                tran5.CustomerID = user.Id;
-                                tran5.VendorID = parent5.Id;
-                                tran5.point = Convert.ToDecimal(MyConstant.Point_5);
-                                tran5.level = 5;
-                                tran5.CreateBy = User.Identity.Name;
-                                tran5.CreateDate = DateTime.Now;
-                                tran5.LastUpdated = DateTime.Now;
-                                tran5.LastUpdatedBy = User.Identity.Name;
+                                Transaction tran5 = createTransactionObj(user.Id, parent5.Id, MyConstant.Point_5, 5);
                                 db.Transactions.Add(tran5);
 
                                 if (parent5.ParentId != null)
                                 {
                                     var parent6 = idb.Users.Find(parent5.ParentId);
-                                    Transaction tran6 = new Transaction();
-                                    tran6.CustomerID = user.Id;
-                                    tran6.VendorID = parent6.Id;
-                                    tran6.point = Convert.ToDecimal(MyConstant.Point_6);
-                                    tran6.level = 6;
-                                    tran6.CreateBy = User.Identity.Name;
-                                    tran6.CreateDate = DateTime.Now;
-                                    tran6.LastUpdated = DateTime.Now;
-                                    tran6.LastUpdatedBy = User.Identity.Name;
+                                    Transaction tran6 = createTransactionObj(user.Id, parent6.Id, MyConstant.Point_6, 6);
                                     db.Transactions.Add(tran6);
 
                                     if (parent6.ParentId != null)
                                     {
                                         var parent7 = idb.Users.Find(parent6.ParentId);
-                                        Transaction tran7 = new Transaction();
-                                        tran7.CustomerID = user.Id;
-                                        tran7.VendorID = parent7.Id;
-                                        tran7.point = Convert.ToDecimal(MyConstant.Point_7);
-                                        tran7.level = 7;
-                                        tran7.CreateBy = User.Identity.Name;
-                                        tran7.CreateDate = DateTime.Now;
-                                        tran7.LastUpdated = DateTime.Now;
-                                        tran7.LastUpdatedBy = User.Identity.Name;
+                                        Transaction tran7 = createTransactionObj(user.Id, parent7.Id, MyConstant.Point_7, 7);
                                         db.Transactions.Add(tran7);
 
                                         if (parent7.ParentId != null)
                                         {
                                             var parent8 = idb.Users.Find(parent7.ParentId);
-                                            Transaction tran8 = new Transaction();
-                                            tran8.CustomerID = user.Id;
-                                            tran8.VendorID = parent8.Id;
-                                            tran8.point = Convert.ToDecimal(MyConstant.Point_8);
-                                            tran8.level = 8;
-                                            tran8.CreateBy = User.Identity.Name;
-                                            tran8.CreateDate = DateTime.Now;
-                                            tran8.LastUpdated = DateTime.Now;
-                                            tran8.LastUpdatedBy = User.Identity.Name;
+                                            Transaction tran8 = createTransactionObj(user.Id, parent8.Id, MyConstant.Point_8, 8);
                                             db.Transactions.Add(tran8);
 
+                                            if (parent8.ParentId != null)
+                                            {
+                                                var parent9 = idb.Users.Find(parent8.ParentId);
+                                                Transaction tran9 = createTransactionObj(user.Id, parent9.Id, MyConstant.Point_9, 9);
+                                                db.Transactions.Add(tran9);
+
+                                                if (parent9.ParentId != null)
+                                                {
+                                                    var parent10 = idb.Users.Find(parent9.ParentId);
+                                                    Transaction tran10 = createTransactionObj(user.Id, parent10.Id, MyConstant.Point_10, 10);
+                                                    db.Transactions.Add(tran10);
+
+                                                    if (parent10.ParentId != null)
+                                                    {
+                                                        var parent11 = idb.Users.Find(parent10.ParentId);
+                                                        Transaction tran11 = createTransactionObj(user.Id, parent11.Id, MyConstant.Point_11, 11);
+                                                        db.Transactions.Add(tran11);
+
+                                                        if (parent11.ParentId != null)
+                                                        {
+                                                            var parent12 = idb.Users.Find(parent11.ParentId);
+                                                            Transaction tran12 = createTransactionObj(user.Id, parent12.Id, MyConstant.Point_12, 12);
+                                                            db.Transactions.Add(tran12);
+                                                        }
+                                                    }
+                                                }
+                                            }
                                         }
 
                                     }
