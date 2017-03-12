@@ -84,25 +84,32 @@ namespace MVC5.Controllers
                 return View(model);
             }
 
-            // Require the user to have a confirmed email before they can log on.
-            //var user = await UserManager.FindByNameAsync(model.Email);
-            //if (user != null)
-            //{
-            //    if (!await UserManager.IsEmailConfirmedAsync(user.Id))
-            //    {
-            //        string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account-Resend");
+            var user = await UserManager.FindByNameAsync(model.Email);
+            if (user != null && user.TarikhTamatAhli < DateTime.Now)
+            {
+                ModelState.AddModelError("", "Keahlian Sudah Tamat!");
+                return View(model);
+            } 
 
-            //        // Uncomment to debug locally  
-            //        // ViewBag.Link = callbackUrl;
-            //        ViewBag.errorMessage = "You must have a confirmed email to log on. "
-            //                             + "The confirmation token has been resent to your email account.";
-            //        return View("Error");
-            //    }
-            //}
+                // Require the user to have a confirmed email before they can log on.
+                //var user = await UserManager.FindByNameAsync(model.Email);
+                //if (user != null)
+                //{
+                //    if (!await UserManager.IsEmailConfirmedAsync(user.Id))
+                //    {
+                //        string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account-Resend");
 
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+                //        // Uncomment to debug locally  
+                //        // ViewBag.Link = callbackUrl;
+                //        ViewBag.errorMessage = "You must have a confirmed email to log on. "
+                //                             + "The confirmation token has been resent to your email account.";
+                //        return View("Error");
+                //    }
+                //}
+
+                // This doesn't count login failures towards account lockout
+                // To enable password failures to trigger account lockout, change to shouldLockout: true
+                var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -188,7 +195,9 @@ namespace MVC5.Controllers
                 {
                     string noAhli = generateNoAhli();
                     string parentId = finduserIdBynoAhli(model.Introducer);
-                    var user = new ApplicationUser { UserName = model.Email, Email = model.Email, ParentId = parentId, NomborAhli = noAhli };
+                    var user = new ApplicationUser { UserName = model.Email, Email = model.Email,
+                        ParentId = parentId, NomborAhli = noAhli,
+                        TarikhDaftarAhli = DateTime.Now, TarikhTamatAhli = DateTime.Now.AddMonths(3) };
                     var result = await UserManager.CreateAsync(user, model.Password);
 
                     if (result.Succeeded)

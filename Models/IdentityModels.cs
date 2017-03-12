@@ -21,6 +21,7 @@ namespace MVC5.Models
         public string HomeTown { get; set; }
         public string AccStatus { get; set; }
         public string Nama { get; set; }
+        public DateTime? TarikhDaftarAhli { get; set; }
         public DateTime? TarikhSahAhli { get; set; }
         public DateTime? TarikhTamatAhli { get; set; }
 

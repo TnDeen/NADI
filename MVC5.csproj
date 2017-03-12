@@ -303,6 +303,10 @@
     <Compile Include="Migrations\201702270946488_updaterftbl.Designer.cs">
       <DependentUpon>201702270946488_updaterftbl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703120621007_addtarikhdaftarcol.cs" />
+    <Compile Include="Migrations\201703120621007_addtarikhdaftarcol.Designer.cs">
+      <DependentUpon>201703120621007_addtarikhdaftarcol.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseEntity.cs" />
@@ -4713,6 +4717,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702270946488_updaterftbl.resx">
       <DependentUpon>201702270946488_updaterftbl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703120621007_addtarikhdaftarcol.resx">
+      <DependentUpon>201703120621007_addtarikhdaftarcol.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
