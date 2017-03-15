@@ -4288,6 +4288,7 @@
     <Content Include="Content\img\hilidayvoucher.jpg" />
     <Content Include="Content\img\kadahli.jpg" />
     <Content Include="Content\img\nadilogo.png" />
+    <Content Include="Content\img\nadilogoText.png" />
     <Content Include="Content\nadi.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -4634,6 +4635,7 @@
     <Content Include="Views\Transaction\ClaimRequestList.cshtml" />
     <Content Include="Views\Transaction\MessageList.cshtml" />
     <Content Include="Views\Transaction\ReadMessage.cshtml" />
+    <Content Include="Views\Shared\_MembershipFormPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />

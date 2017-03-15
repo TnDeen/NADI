@@ -173,6 +173,13 @@ namespace MVC5.Controllers
         [AllowAnonymous]
         public ActionResult Register(string userId)
         {
+
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Manage");
+
+            }
+
             RegisterViewModel model = new RegisterViewModel();
             if (userId != null)
             {

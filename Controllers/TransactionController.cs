@@ -53,7 +53,7 @@ namespace MVC5.Controllers
         {
             db.SystemMessage.Where(t => t.Id.Equals(id)).ToList().ForEach(x => x.ReadStatus = true);
             db.SaveChanges();
-            return View("MessageList");
+            return RedirectToAction("MessageList");
         }
 
         // GET: Transaction

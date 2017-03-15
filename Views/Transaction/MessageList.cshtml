@@ -58,7 +58,11 @@
                                             @Html.DisplayFor(modelItem => item.Perihal)
                                         </td>
                                         <td>
-                                            @Html.ActionLink("Baca", "ReadMessage", new { id = item.Id, activate = true })
+                                            @if (!item.ReadStatus)
+                                            {
+                                                @Html.ActionLink("Baca", "ReadMessage", new { id = item.Id, activate = true })
+                                            }
+                                            
                                         </td>
                                         
                                     </tr>

@@ -513,8 +513,20 @@ namespace MVC5.Controllers
         [HttpPost]
         public async Task<ActionResult> ApplyMembership(ApplicationUser curuser, HttpPostedFileBase ic, HttpPostedFileBase resit)
         {
+
+            DateTime threemonth = DateTime.Today.AddMonths(3);
+
+            if (curuser.tarikhPenginapan < threemonth)
+            {
+                ModelState.AddModelError("", "Tarikh penginapan mesti lebih 3 bulan.");
+                ApplicationUser user = UserManager.FindByEmail(User.Identity.Name);
+                return View(user);
+            }
+
             try
             {
+                
+
                 if (ModelState.IsValid)
                 {
                     ApplicationUser user = UserManager.FindById(curuser.Id);
