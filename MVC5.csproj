@@ -311,6 +311,18 @@
     <Compile Include="Migrations\201703120904369_addclaimcolumntran.Designer.cs">
       <DependentUpon>201703120904369_addclaimcolumntran.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703151651387_addmaklumatpemohon.cs" />
+    <Compile Include="Migrations\201703151651387_addmaklumatpemohon.Designer.cs">
+      <DependentUpon>201703151651387_addmaklumatpemohon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703151717409_addcoljawatan.cs" />
+    <Compile Include="Migrations\201703151717409_addcoljawatan.Designer.cs">
+      <DependentUpon>201703151717409_addcoljawatan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703151809254_addperakuanval.cs" />
+    <Compile Include="Migrations\201703151809254_addperakuanval.Designer.cs">
+      <DependentUpon>201703151809254_addperakuanval.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseEntity.cs" />
@@ -4732,6 +4744,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703120904369_addclaimcolumntran.resx">
       <DependentUpon>201703120904369_addclaimcolumntran.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703151651387_addmaklumatpemohon.resx">
+      <DependentUpon>201703151651387_addmaklumatpemohon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703151717409_addcoljawatan.resx">
+      <DependentUpon>201703151717409_addcoljawatan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703151809254_addperakuanval.resx">
+      <DependentUpon>201703151809254_addperakuanval.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

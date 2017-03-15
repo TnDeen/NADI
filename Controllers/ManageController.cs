@@ -506,20 +506,30 @@ namespace MVC5.Controllers
 
         public ActionResult ApplyMembership()
         {
+           
             ApplicationUser user = UserManager.FindByEmail(User.Identity.Name);
+            ViewBag.InstructorID = new SelectList(db.Sak.OrderBy(o => o.Nama), "Id", "Nama", user.NegeriId);
             return View(user);
         }
 
         [HttpPost]
-        public async Task<ActionResult> ApplyMembership(ApplicationUser curuser, HttpPostedFileBase ic, HttpPostedFileBase resit)
+        public async Task<ActionResult> ApplyMembership(ApplicationUser curuser, HttpPostedFileBase ic, HttpPostedFileBase resit, int? InstructorID)
         {
-
             DateTime threemonth = DateTime.Today.AddMonths(3);
 
             if (curuser.tarikhPenginapan < threemonth)
             {
                 ModelState.AddModelError("", "Tarikh penginapan mesti lebih 3 bulan.");
                 ApplicationUser user = UserManager.FindByEmail(User.Identity.Name);
+                ViewBag.InstructorID = new SelectList(db.Sak.OrderBy(o => o.Nama), "Id", "Nama", user.NegeriId);
+                return View(user);
+            }
+
+            if (!curuser.Perakuan)
+            {
+                ModelState.AddModelError("", "Ruang Perakuan Tidak Diisi!");
+                ApplicationUser user = UserManager.FindByEmail(User.Identity.Name);
+                ViewBag.InstructorID = new SelectList(db.Sak.OrderBy(o => o.Nama), "Id", "Nama", user.NegeriId);
                 return View(user);
             }
 
@@ -532,13 +542,13 @@ namespace MVC5.Controllers
                     ApplicationUser user = UserManager.FindById(curuser.Id);
                     if (ic != null && ic.ContentLength > 0 && user != null)
                     {
-                        List<Models.File> curFiles = db.Files.Where(a => a.userId.Equals(curuser.Id)).ToList();
+                        List<Models.File> curFiles = db.Files.Where(a => a.userId.Equals(curuser.Id) && a.FileType == FileType.ic).ToList();
                         db.Files.RemoveRange(curFiles);
                         db.SaveChanges();
                         var avatar = new Models.File
                         {
                             FileName = System.IO.Path.GetFileName(ic.FileName),
-                            FileType = FileType.Avatar,
+                            FileType = FileType.ic,
                             ContentType = ic.ContentType
                         };
                         using (var reader = new System.IO.BinaryReader(ic.InputStream))
@@ -547,8 +557,47 @@ namespace MVC5.Controllers
                         }
                         user.Files = new List<Models.File> { avatar };
                     }
-                    user.tarikhPenginapan = curuser.tarikhPenginapan;
+
+                    if (resit != null && resit.ContentLength > 0 && user != null)
+                    {
+                        List<Models.File> curFiles = db.Files.Where(a => a.userId.Equals(curuser.Id) && a.FileType == FileType.resit).ToList();
+                        db.Files.RemoveRange(curFiles);
+                        db.SaveChanges();
+                        var resitFile = new Models.File
+                        {
+                            FileName = System.IO.Path.GetFileName(resit.FileName),
+                            FileType = FileType.resit,
+                            ContentType = resit.ContentType
+                        };
+                        using (var reader = new System.IO.BinaryReader(resit.InputStream))
+                        {
+                            resitFile.Content = reader.ReadBytes(resit.ContentLength);
+                        }
+                        user.Files = new List<Models.File> { resitFile };
+                    }
+                    // copy object value
+                    user.Nama = curuser.Nama;
+                    user.Alamat = curuser.Alamat;
+                    user.NegeriId = InstructorID;
+                    user.NoTelRum = curuser.NoTelRum;
+                    user.NoTelBim = curuser.NoTelBim;
+                    user.BirthDate = curuser.BirthDate;
+                    user.TempatLahir = curuser.TempatLahir;
+
+                    user.NoPengenalan = curuser.NoPengenalan;
+                    user.Bangsa = curuser.Bangsa;
+                    user.Jantina = curuser.Jantina;
+                    user.Pekerjaan = curuser.Pekerjaan;
+                    user.Jawatan = curuser.Jawatan;
+                    user.maritalStatus = curuser.maritalStatus;
+
+                    user.NamaWaris = curuser.NamaWaris;
+                    user.NomborTelefonWaris = curuser.NomborTelefonWaris;
+                    user.NomborTelefonWarisHP = curuser.NomborTelefonWarisHP;
+
+
                     UserManager.Update(user);
+                    // end copy
                     string mesage = "";
                     if (!await UserManager.IsEmailConfirmedAsync(User.Identity.GetUserId()))
                     {

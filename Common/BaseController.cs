@@ -35,12 +35,18 @@ namespace MVC5.Common
 
         public void sendMail(string subject, string body, string recipient)
         {
-            var client = new SmtpClient("smtp.mail.yahoo.com", 587)
+            string vra = Request.Url.ToString();
+            if (!vra.Contains("localhost"))
+            {
+                var client = new SmtpClient("smtp.mail.yahoo.com", 587)
             {
                 Credentials = new NetworkCredential("nadikebangsaan@yahoo.com", "nadiadmin123"),
                 EnableSsl = true
             };
-            client.Send("nadikebangsaan@yahoo.com", recipient, subject, body);
+            
+                client.Send("nadikebangsaan@yahoo.com", recipient, subject, body);
+            }
+            
         }
 
         public void UpdateTransaction(ApplicationUser user, Boolean status)

@@ -20,7 +20,22 @@ namespace MVC5.Models
         public string NomborAhli { get; set; }
         public string HomeTown { get; set; }
         public string AccStatus { get; set; }
+        [Display(Name = "Nama Penuh")]
         public string Nama { get; set; }
+        public string Alamat { get; set; }
+        [Display(Name = "No. Telefon Rumah")]
+        public string NoTelRum { get; set; }
+        [Display(Name = "No. Telefon Bimbit")]
+        public string NoTelBim { get; set; }
+        public string TempatLahir { get; set; }
+        [Display(Name = "No. Kad Pengenalan")]
+        public string NoPengenalan { get; set; }
+        public string Bangsa { get; set; }
+        public string Jantina { get; set; }
+        public string Pekerjaan { get; set; }
+        public string Jawatan { get; set; }
+        [Display(Name = "Taraf Perkahwinan")]
+        public string maritalStatus { get; set; }
         public DateTime? TarikhDaftarAhli { get; set; }
         public DateTime? TarikhSahAhli { get; set; }
         public DateTime? TarikhTamatAhli { get; set; }
@@ -30,14 +45,26 @@ namespace MVC5.Models
         [Display(Name = "Tarikh Penginapan")]
         public DateTime? tarikhPenginapan { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Tarikh Lahir")]
         public DateTime? BirthDate { get; set; }
 
         public string NamaWaris { get; set; }
+        public string AlamatWaris { get; set; }
         public string NomborTelefonWaris { get; set; }
+        public string NomborTelefonWarisHP { get; set; }
+
+        [Required]
+        public Boolean Perakuan { get; set; }
 
         [ForeignKey("Parent")]
         public string ParentId { get; set; }
         public virtual ApplicationUser Parent { get; set; }
+
+        [ForeignKey("Negeri")]
+        public int? NegeriId { get; set; }
+        public virtual SAK Negeri { get; set; }
 
         [InverseProperty("Parent")]
         public ICollection<ApplicationUser> ChildList { get; set; }
