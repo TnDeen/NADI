@@ -608,11 +608,10 @@ namespace MVC5.Controllers
 
                     UserManager.Update(user);
                     // end copy
-                    string mesage = "";
+                    string mesage = "Thank You for your membership application. We will inform once your application has been Approve.";
                     if (!await UserManager.IsEmailConfirmedAsync(User.Identity.GetUserId()))
                     {
                         string callbackUrl = await SendEmailApplyMembership(User.Identity.GetUserId(), "Membership Application Request");
-                        mesage = "Thank You for your membership application. We will inform once your application has been Approve.";
                         ViewBag.Message = mesage;
                         return View("Success");
                     }
