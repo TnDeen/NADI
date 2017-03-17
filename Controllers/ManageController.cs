@@ -541,6 +541,7 @@ namespace MVC5.Controllers
                 if (ModelState.IsValid)
                 {
                     ApplicationUser user = UserManager.FindById(curuser.Id);
+                    List<Models.File> filelist = new List<Models.File>();
                     if (ic != null && ic.ContentLength > 0 && user != null)
                     {
                         List<Models.File> curFiles = db.Files.Where(a => a.userId.Equals(curuser.Id) && a.FileType == FileType.ic).ToList();
@@ -556,7 +557,7 @@ namespace MVC5.Controllers
                         {
                             avatar.Content = reader.ReadBytes(ic.ContentLength);
                         }
-                        user.Files = new List<Models.File> { avatar };
+                        filelist.Add(avatar);
                     }
 
                     if (resit != null && resit.ContentLength > 0 && user != null)
@@ -574,8 +575,14 @@ namespace MVC5.Controllers
                         {
                             resitFile.Content = reader.ReadBytes(resit.ContentLength);
                         }
-                        user.Files = new List<Models.File> { resitFile };
+                        filelist.Add(resitFile);
                     }
+
+                    if (filelist.Any())
+                    {
+                        user.Files = filelist;
+                    }
+                    
                     // copy object value
                     user.Nama = curuser.Nama;
                     user.Alamat = curuser.Alamat;
@@ -595,6 +602,8 @@ namespace MVC5.Controllers
                     user.NamaWaris = curuser.NamaWaris;
                     user.NomborTelefonWaris = curuser.NomborTelefonWaris;
                     user.NomborTelefonWarisHP = curuser.NomborTelefonWarisHP;
+
+                    user.tarikhPenginapan = curuser.tarikhPenginapan;
 
 
                     UserManager.Update(user);
