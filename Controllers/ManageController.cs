@@ -130,7 +130,7 @@ namespace MVC5.Controllers
             //var callbackUrl = Url.Action("CreateTransac", "Transaction",
             //   new { userId = curstudent.Id, code = code }, protocol: Request.Url.Scheme);
             var callbackUrl = Url.Action("Register", "Account",
-               new { userId = curstudent.Id }, protocol: Request.Url.Scheme);
+               new { userId = curstudent.NomborAhli }, protocol: Request.Url.Scheme);
 
             // generating a barcode here. Code is taken from QrCode.Net library
             QrEncoder qrEncoder = new QrEncoder(ErrorCorrectionLevel.H);

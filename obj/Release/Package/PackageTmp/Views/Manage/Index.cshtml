@@ -1,5 +1,8 @@
 ﻿@model MVC5.Models.IndexViewModel
 @using MVC5.Common
+@{
+    ViewBag.Title = "Profile";
+}
 
 <script src="~/Scripts/clipboard.min.js"></script>
 <script>
@@ -21,6 +24,11 @@
 
             <div class="blog-tags margin-bottom-20">
                 <h2>Akaun Ahli (@Model.CurrentUser.NomborAhli - @Model.accstatus)</h2>
+                @if (Model.Pencadang != null)
+                {
+                    <h4>Pencadang : @Model.Pencadang.NomborAhli - No. Tel : @Model.Pencadang.NoTelBim</h4>
+                }
+                
                 <ul>
                     <li><a href="/Manage/Edit/@Model.CurrentUser.Id"><i class="fa fa-tags"></i>Kemaskini Maklumat</a></li>
                     <li><a href="/Manage/ApplyMembership"><i class="fa fa-tags"></i>Permohonan Keahlian</a></li>
@@ -150,8 +158,10 @@
         <div class="portlet-body">
             <div class="note note-success">
                 <h4 class="block">Manfaat Keahlian Hanya Bagi Ahli Sah Nadi Kebangsaan.</h4>
+                <a href="/Manage/ApplyMembership" class="btn btn-primary" style="color:white;">BORANG PERMOHONAN KEAHLIAN</a>
                 <a href="/Manage/ApplyMembership"><i class="fa fa-tags"></i>Sila Klik Untuk Permohonan Keahlian</a>
                 </div>
+            @*@Html.Partial("_MembershipFormPartial")*@
             </div>
                 }
                 @if (Model.CurrentUser.EmailConfirmed)

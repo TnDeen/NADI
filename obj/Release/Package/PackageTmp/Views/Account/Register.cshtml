@@ -25,7 +25,15 @@
                 @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
                 <div class="col-md-10">
                     @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    <br />
+                    <span class="label label-danger">
+                        Sila gunakan alamat emel yang sah!
+                    </span>
+                    <br />
+                    <br />
+                    Tiada Emel? <a href="https://accounts.google.com/SignUp" target="_blank">Klik untuk daftar akaun emel di google</a>
                 </div>
+                
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
@@ -39,13 +47,7 @@
                     @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
                 </div>
             </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.Introducer, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.Introducer, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.Introducer)
-                </div>
-            </div>
+            @Html.HiddenFor(m => m.Introducer)
             
             
             <div class="form-group">
