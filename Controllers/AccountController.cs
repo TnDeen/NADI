@@ -196,6 +196,14 @@ namespace MVC5.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+
+            if (validateUserByEmail(model.Email))
+            {
+                
+                ModelState.AddModelError("", "Emel Telah Wujud! Sila Gunakan Emel Lain.");
+                return View(model);
+            }
+
             if (ModelState.IsValid)
             {
                 if (validateNoAhli(model.Introducer))
@@ -221,7 +229,7 @@ namespace MVC5.Controllers
                 }
                 else
                 {
-                    ViewBag.errormsg = "Pencadang Tidak Wujud!";
+                    ViewBag.errormsg = "Pencadang Tidak Wujud! Sila Daftar Meggunakan Link Yang Sah!";
                     ViewBag.shownotification = true;
                     return View(model);
 

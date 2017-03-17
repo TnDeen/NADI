@@ -110,6 +110,20 @@ namespace MVC5.Common
             return result;
         }
 
+        public Boolean validateUserByEmail(string email)
+        {
+            Boolean result = false;
+            if (email != null)
+            {
+                var user = db.Users.Where(a => a.UserName.Equals(email)).FirstOrDefault();
+                if (user != null)
+                {
+                    result = true;
+                }
+            }
+            return result;
+        }
+
         public string generateNoAhli()
         {
             SistemId counter = null;

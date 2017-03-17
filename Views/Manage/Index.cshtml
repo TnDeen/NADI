@@ -24,6 +24,11 @@
 
             <div class="blog-tags margin-bottom-20">
                 <h2>Akaun Ahli (@Model.CurrentUser.NomborAhli - @Model.accstatus)</h2>
+                @if (Model.Pencadang != null)
+                {
+                    <h4>Pencadang : @Model.Pencadang.NomborAhli - No. Tel : @Model.Pencadang.NoTelBim</h4>
+                }
+                
                 <ul>
                     <li><a href="/Manage/Edit/@Model.CurrentUser.Id"><i class="fa fa-tags"></i>Kemaskini Maklumat</a></li>
                     <li><a href="/Manage/ApplyMembership"><i class="fa fa-tags"></i>Permohonan Keahlian</a></li>

@@ -38,6 +38,7 @@ namespace MVC5.Models
         public string tarikhPenginapan { get; set; }
 
         public ApplicationUser CurrentUser { get; set; }
+        public ApplicationUser Pencadang { get; set; }
         public ICollection<ApplicationUser> ChildList { get; set; }
     }
 

@@ -114,7 +114,8 @@ namespace MVC5.Controllers
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
 
-                CurrentUser = UserManager.FindById(userId),
+                CurrentUser = curuser,
+                Pencadang = curuser.Parent,
                 ChildList = idb.Users.Where(a => a.ParentId.Equals(userId)).ToList()
 
             };
