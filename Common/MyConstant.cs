@@ -16,6 +16,7 @@ namespace MVC5.Common
         public const String Base_Url = "http://nadikebangsaan.com";
         //public const String Base_Url = "http://localhost:44300";
         public const String app_admin_email = "salehuddin.ptsb@gmail.com";
+        public const String app_admin_noTel = "010-862 0566";
         public const String user_admin_email = "admin@nadikebangsaan.com";
         
 

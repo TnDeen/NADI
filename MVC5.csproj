@@ -323,6 +323,10 @@
     <Compile Include="Migrations\201703151809254_addperakuanval.Designer.cs">
       <DependentUpon>201703151809254_addperakuanval.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703211741211_addbankinfocol.cs" />
+    <Compile Include="Migrations\201703211741211_addbankinfocol.Designer.cs">
+      <DependentUpon>201703211741211_addbankinfocol.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseEntity.cs" />
@@ -4753,6 +4757,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703151809254_addperakuanval.resx">
       <DependentUpon>201703151809254_addperakuanval.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703211741211_addbankinfocol.resx">
+      <DependentUpon>201703211741211_addbankinfocol.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

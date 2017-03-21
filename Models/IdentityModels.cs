@@ -55,6 +55,11 @@ namespace MVC5.Models
         public string NomborTelefonWaris { get; set; }
         public string NomborTelefonWarisHP { get; set; }
 
+        [Display(Name = "Nama Bank")]
+        public string NamaBank { get; set; }
+        [Display(Name = "Nombor Akaun Bank")]
+        public string NomborAkaunBank { get; set; }
+
         [Required]
         public Boolean Perakuan { get; set; }
 

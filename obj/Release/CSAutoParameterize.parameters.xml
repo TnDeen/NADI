@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=PJ-NB-149;Initial Catalog=NADI_ENGINE_4;Persist Security Info=True;User ID=sa;Password=p@ssw0rd" tags="SqlConnectionString">
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=tcp:s01.winhost.com;Initial Catalog=DB_110895_nadi;User ID=DB_110895_nadi_user;Password=ciko8989@;Integrated Security=False;" tags="SqlConnectionString">
     <parameterEntry kind="XmlFile" scope="C:\\Users\\salehudin\\Documents\\Visual\ Studio\ 2015\\Projects\\NADI_ENGINE\\MVC5\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
   </parameter>
   <parameter name="MVC5.Context.StudentContext-Web.config Connection String" description="MVC5.Context.StudentContext Connection String used in web.config by the application to access the database." defaultValue="MVC5.Context.StudentContext_ConnectionString" tags="SqlConnectionString">

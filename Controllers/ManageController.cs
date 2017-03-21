@@ -605,6 +605,9 @@ namespace MVC5.Controllers
 
                     user.tarikhPenginapan = curuser.tarikhPenginapan;
 
+                    user.NamaBank = curuser.NamaBank;
+                    user.NomborAkaunBank = curuser.NomborAkaunBank;
+
 
                     UserManager.Update(user);
                     // end copy
