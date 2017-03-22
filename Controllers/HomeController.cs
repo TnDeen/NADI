@@ -13,14 +13,14 @@ namespace MVC5.Controllers
         {
             ViewBag.totalregister = db.Users.Count();
             ViewBag.Title = "Laman Utama";
-            return View("Index", "~/Views/Shared/_Layout2.cshtml");
+            return View("Index", "~/Views/Shared/_LayoutHome.cshtml");
         }
 
         [Authorize]
         public ActionResult Tnc()
         {
             ViewBag.Title = "Terma Dan Syarat";
-            return View("Tnc", "~/Views/Shared/_Layout2.cshtml");
+            return View("Tnc", "~/Views/Shared/_LayoutHome.cshtml");
         }
 
         public ActionResult About()
@@ -35,6 +35,13 @@ namespace MVC5.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult Offline()
+        {
+            ViewBag.totalregister = db.Users.Count();
+            ViewBag.Title = "Site Offline";
+            return View("Offline", "~/Views/Shared/_LayoutOffline.cshtml");
         }
     }
 }
