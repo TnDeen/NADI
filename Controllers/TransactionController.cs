@@ -125,7 +125,7 @@ namespace MVC5.Controllers
                     tran.claimRequestApproval = activate;
                     db.Entry(tran).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
-                    string mesage = "Your claim with amount of " + tran.point + "have been approved!";
+                    string mesage = "Your claim with amount of " + tran.point + " have been approved!";
                     sendNotification(tran.VendorID, "Claim Approve", mesage);
                 }
             }

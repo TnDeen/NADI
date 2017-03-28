@@ -620,7 +620,7 @@ namespace MVC5.Controllers
                     }
                     
                     sendNotification(user.Id, "membership application", mesage);
-                    string adminmsg = "User with " + user.NomborAhli + "Has request membership!";
+                    string adminmsg = "User with " + user.NomborAhli + " Has request membership!";
                     ApplicationUser admin = findUserbyEmail(MyConstant.user_admin_email);
                     sendNotification(admin.Id, "membership application", adminmsg);
                     return RedirectToAction("Index", "Manage");
