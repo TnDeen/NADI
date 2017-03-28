@@ -4303,6 +4303,7 @@
     <Content Include="Content\img\favicon.ico" />
     <Content Include="Content\img\hilidayvoucher.jpg" />
     <Content Include="Content\img\kadahli.jpg" />
+    <Content Include="Content\img\Last-logo.png" />
     <Content Include="Content\img\nadilogo.png" />
     <Content Include="Content\img\nadilogoText.png" />
     <Content Include="Content\nadi.css" />

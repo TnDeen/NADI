@@ -131,7 +131,7 @@ namespace MVC5.Common
 
             string year = DateTime.Now.Year.ToString();
             StringBuilder sb = new StringBuilder();
-            sb.Append("ND");
+            sb.Append("NADI");
             sb.Append(year);
             string kod = sb.ToString();
             counter = db.SistemCounter.Where(a => a.Kod.Equals(kod)).FirstOrDefault();

@@ -38,17 +38,17 @@ namespace MVC5.Common
         public const String NEGERI_WP_LB = "15";
         public const String NEGERI_WP_PJ = "16";
 
-        public const double Point_1 = 53.85;
-        public const double Point_2 = 5.38;
-        public const double Point_3 = 2.69;
-        public const double Point_4 = 1.35;
-        public const double Point_5 = 0.673;
-        public const double Point_6 = 0.337;
-        public const double Point_7 = 0.168;
-        public const double Point_8 = 0.084;
-        public const double Point_9 = 0.042;
-        public const double Point_10 = 0.021;
-        public const double Point_11 = 0.011;
-        public const double Point_12 = 0.005;
+        public const double Point_1 = 50.4;
+        public const double Point_2 = 8.57;
+        public const double Point_3 = 4.28;
+        public const double Point_4 = 2.14;
+        public const double Point_5 = 1.071;
+        public const double Point_6 = 0.536;
+        public const double Point_7 = 0.268;
+        public const double Point_8 = 0.134;
+        public const double Point_9 = 0.067;
+        public const double Point_10 = 0.033;
+        public const double Point_11 = 0.017;
+        public const double Point_12 = 0.008;
     }
 }
