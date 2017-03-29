@@ -55,7 +55,7 @@ RM280 UNTUK SETIAP AHLI BARU YANG DIBAWA OLEH AHLI SEDIADA SELAKU PENCADANG">
 </head>
 <!--DOC: menu-always-on-top class to the body element to set menu on top -->
 <body>
-
+    @using MVC5.Common
     <!-- BEGIN TOP BAR -->
     <div class="pre-header">
         <div class="container">
@@ -63,8 +63,8 @@ RM280 UNTUK SETIAP AHLI BARU YANG DIBAWA OLEH AHLI SEDIADA SELAKU PENCADANG">
                 <!-- BEGIN TOP BAR LEFT PART -->
                 <div class="col-md-6 col-sm-6 additional-shop-info">
                     <ul class="list-unstyled list-inline">
-                        <li><i class="fa fa-phone"></i><span>+60 10862 0466</span></li>
-                        <li><i class="fa fa-envelope-o"></i><span>info@nadikebangsaan.com</span></li>
+                        <li><i class="fa fa-phone"></i><span>@MyConstant.last_office_noTel</span></li>
+                        <li><i class="fa fa-envelope-o"></i><span>@MyConstant.last_office_email</span></li>
                     </ul>
                 </div>
                 <!-- END TOP BAR LEFT PART -->
@@ -102,8 +102,8 @@ RM280 UNTUK SETIAP AHLI BARU YANG DIBAWA OLEH AHLI SEDIADA SELAKU PENCADANG">
                         Jalan LP 7/2, <br>
                         Bandar Putra Permai,<br>
                         43300, Seri Kembangan,<br>
-                        Email: <a href="mailto:info@nadikebangsaan.com">info@nadikebangsaan.com</a><br>
-                        Tel: <a href="#">0108620466</a>
+                        Email: <a href="mailto:info@nadikebangsaan.com">@MyConstant.last_office_email</a><br>
+                        Tel: <a href="#">@MyConstant.last_office_noTel</a>
                     </address>
                 </div>
             </div>
