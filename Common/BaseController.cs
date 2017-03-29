@@ -41,7 +41,7 @@ namespace MVC5.Common
                 var client = new SmtpClient("smtp.mail.yahoo.com", 587)
             {
                 Credentials = new NetworkCredential("nadikebangsaan@yahoo.com", "nadiadmin123"),
-                EnableSsl = true
+                EnableSsl = false
             };
             
                 client.Send("nadikebangsaan@yahoo.com", recipient, subject, body);

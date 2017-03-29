@@ -40,7 +40,36 @@ namespace MVC5.Controllers
         {
             ApplicationUser user = UserManager.FindByEmail(User.Identity.Name);
             string role = UserManager.GetRoles(user.Id).First();
-            return View(db.Transactions.ToList().Where(c => c.VendorID.Equals(user.Id)).OrderBy(c => c.level));
+            var alltran = db.Transactions.ToList().Where(c => c.VendorID.Equals(user.Id)).OrderBy(c => c.level);
+            TableVO tbvo = new TableVO
+            {
+                allTransaction = alltran.ToList(),
+                childMap = mapDataFromTransaction(user.Id, null),
+                childActiveMap = mapDataFromTransaction(user.Id, true),
+                childNonActiveMap = mapDataFromTransaction(user.Id, false)
+
+            };
+            return View(tbvo);
+        }
+
+        private Dictionary<string, string> mapDataFromTransaction(String userId, Boolean? active)
+        {
+            var all = MyConstant.allLevel.ToList();
+            var map = new Dictionary<string, string>();
+            foreach (int i in all)
+            {
+                var c = db.Transactions.Where(a => a.VendorID.Equals(userId) && a.level == i).Count();
+                if (active != null && active.Value)
+                {
+                     c = db.Transactions.Where(a => a.VendorID.Equals(userId) && a.level == i && a.statusActive).Count();
+                } else if (active != null && !active.Value)
+                {
+                    c = db.Transactions.Where(a => a.VendorID.Equals(userId) && a.level == i && !a.statusActive).Count();
+                }
+                
+                map.Add(i.ToString(), c.ToString());
+            }
+            return map;
         }
 
         public ActionResult MessageList()

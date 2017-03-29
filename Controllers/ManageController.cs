@@ -109,7 +109,7 @@ namespace MVC5.Controllers
                 totalMessage = db.SystemMessage.Where(t => t.Recipient.Equals(curuser.Id) && !t.ReadStatus).Count(),
                 tarikhPenginapan = String.Format("{0:M/d/yyyy}", curuser.tarikhPenginapan),
                 TarikhTamatKeahlian = String.Format("{0:M/d/yyyy}", curuser.TarikhTamatAhli),
-                totalChild = db.Users.Where(a => a.ParentId.Equals(userId)).Count(),
+                totalChild = db.Transactions.Where(a => a.VendorID.Equals(userId)).Count(),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),

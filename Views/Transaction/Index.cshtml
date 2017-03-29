@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MVC5.Models.Transaction>
+﻿@model MVC5.Models.VM.TableVO
 @using MVC5.Common
 
 @{
@@ -8,6 +8,135 @@
 
 <div class="content-page">
     <div class="row">
+        <div class="col-md-12">
+            <!-- BEGIN SAMPLE TABLE PORTLET-->
+            <div class="portlet box red">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-cogs"></i>Registerer Binary
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse">
+                        </a>
+                        <a href="#portlet-config" data-toggle="modal" class="config">
+                        </a>
+                        <a href="javascript:;" class="reload">
+                        </a>
+                        <a href="javascript:;" class="remove">
+                        </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="table-scrollable">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+
+                                    <th>
+                                       LEVEL :
+                                    </th>
+                                    <th>
+                                        1 (Direct)
+                                    </th>
+                                    <th>
+                                        2
+                                    </th>
+                                    <th>
+                                        3
+                                    </th>
+                                    <th>
+                                        4
+                                    </th>
+                                    <th>
+                                        5
+                                    </th>
+                                    <th>
+                                        6
+                                    </th>
+                                    <th>
+                                        7
+                                    </th>
+                                    <th>
+                                        8
+                                    </th>
+                                    <th>
+                                        9
+                                    </th>
+                                    <th>
+                                        10
+                                    </th>
+                                    <th>
+                                        11
+                                    </th>
+                                    <th>
+                                        12
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+
+                                <tr>
+                                    <td>Non Active Registerer :</td>
+                                    <td>@Model.childNonActiveMap["1"]</td>
+                                    <td>@Model.childNonActiveMap["2"]</td>
+                                    <td>@Model.childNonActiveMap["3"]</td>
+                                    <td>@Model.childNonActiveMap["4"]</td>
+                                    <td>@Model.childNonActiveMap["5"]</td>
+                                    <td>@Model.childNonActiveMap["6"]</td>
+                                    <td>@Model.childNonActiveMap["7"]</td>
+                                    <td>@Model.childNonActiveMap["8"]</td>
+                                    <td>@Model.childNonActiveMap["9"]</td>
+                                    <td>@Model.childNonActiveMap["10"]</td>
+                                    <td>@Model.childNonActiveMap["11"]</td>
+                                    <td>@Model.childNonActiveMap["12"]</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Active Registerer :</td>
+                                    <td>@Model.childActiveMap["1"]</td>
+                                    <td>@Model.childActiveMap["2"]</td>
+                                    <td>@Model.childActiveMap["3"]</td>
+                                    <td>@Model.childActiveMap["4"]</td>
+                                    <td>@Model.childActiveMap["5"]</td>
+                                    <td>@Model.childActiveMap["6"]</td>
+                                    <td>@Model.childActiveMap["7"]</td>
+                                    <td>@Model.childActiveMap["8"]</td>
+                                    <td>@Model.childActiveMap["9"]</td>
+                                    <td>@Model.childActiveMap["10"]</td>
+                                    <td>@Model.childActiveMap["11"]</td>
+                                    <td>@Model.childActiveMap["12"]</td>
+                                </tr>
+
+                                <tr style="background-color:beige">
+                                    <td>Total Registerer :</td>
+                                    <td>@Model.childMap["1"]</td>
+                                    <td>@Model.childMap["2"]</td>
+                                    <td>@Model.childMap["3"]</td>
+                                    <td>@Model.childMap["4"]</td>
+                                    <td>@Model.childMap["5"]</td>
+                                    <td>@Model.childMap["6"]</td>
+                                    <td>@Model.childMap["7"]</td>
+                                    <td>@Model.childMap["8"]</td>
+                                    <td>@Model.childMap["9"]</td>
+                                    <td>@Model.childMap["10"]</td>
+                                    <td>@Model.childMap["11"]</td>
+                                    <td>@Model.childMap["12"]</td>
+                                </tr>
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- END SAMPLE TABLE PORTLET-->
+
+        </div>
+    </div>
+
+    <div class="row" style="display:none;">
         <div class="col-md-6">
             <!-- BEGIN SAMPLE TABLE PORTLET-->
             <div class="portlet box red">
@@ -32,10 +161,10 @@
                             <thead>
                                 <tr>
 
-                                   
+
                                     @*<th>
-                                        point
-                                    </th>*@
+                                            point
+                                        </th>*@
                                     <th>
                                         Level
                                     </th>
@@ -50,53 +179,53 @@
                             <tbody>
 
 
-                                @foreach (var item in Model)
+                                @foreach (var item in Model.allTransaction)
                                 {
-                                    <tr>
-                                       
-                                        @*<td>
+                                <tr>
+
+                                    @*<td>
                                             @Html.DisplayFor(modelItem => item.point)
                                         </td>*@
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.level)
-                                        </td>
-                                        <td>
-                                            @if (item.statusActive)
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.level)
+                                    </td>
+                                    <td>
+                                        @if (item.statusActive)
                                             {
-                                                <span class="label label-sm label-success">
-                                                    Active
-                                                </span>
+                                            <span class="label label-sm label-success">
+                                                Active
+                                            </span>
                                             }
                                             else
                                             {
-                                                <span class="label label-sm label-danger">
-                                                    Not Active
-                                                </span>
+                                            <span class="label label-sm label-danger">
+                                                Not Active
+                                            </span>
                                             }
-                                        </td>
-                                        <td>
-                                            @if (item.claimRequestSend && item.statusActive && !item.claimRequestApproval)
+                                    </td>
+                                    <td>
+                                        @if (item.claimRequestSend && item.statusActive && !item.claimRequestApproval)
                                             {
-                                                <span class="label label-sm label-info">
-                                                    Penebusan Telah Dihantar
-                                                </span>
-                                                
+                                            <span class="label label-sm label-info">
+                                                Penebusan Telah Dihantar
+                                            </span>
+
                                             }
                                             else if (!item.claimRequestSend && item.statusActive && !item.claimRequestApproval)
                                             {
-                                                @Html.ActionLink("Tebus Point", "claimRequest", new { id = item.Id, activate = true })
+                                            @Html.ActionLink("Tebus Point", "claimRequest", new { id = item.Id, activate = true })
                                             }
 
-                                            @if (item.claimRequestApproval)
+                                        @if (item.claimRequestApproval)
                                             {
-                                                <span class="label label-sm label-success">
-                                                    Berjaya Ditebus
-                                                </span>
+                                            <span class="label label-sm label-success">
+                                                Berjaya Ditebus
+                                            </span>
 
                                             }
 
-                                        </td>
-                                    </tr>
+                                    </td>
+                                </tr>
                                 }
 
 
@@ -117,4 +246,4 @@
             </a>
         </div>
     </div>
-    </div>
+</div>

@@ -351,6 +351,7 @@
     <Compile Include="Models\VM\Course_Student.cs" />
     <Compile Include="Models\VM\EmailVO.cs" />
     <Compile Include="Models\VM\FileVO.cs" />
+    <Compile Include="Models\VM\TableVO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
