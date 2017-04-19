@@ -14,7 +14,7 @@ namespace MVC5
     {
         protected void Application_Start()
         {
-            Database.SetInitializer<SchoolContext>(new SchoolInitializer());
+            
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

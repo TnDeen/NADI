@@ -16,6 +16,7 @@ using System.Drawing.Imaging;
 using System.Drawing;
 using MVC5.Models.VM;
 using OfficeOpenXml;
+using PagedList;
 
 namespace MVC5.Controllers
 {
@@ -37,11 +38,54 @@ namespace MVC5.Controllers
         }
 
         // GET: Transaction
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
+
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var alltran = from t in db.Transactions
+                          select t;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                alltran = alltran.Where(s => s.CustomerID.Contains(searchString)
+                                       || s.VendorID.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    alltran = alltran.OrderByDescending(s => s.CustomerID);
+                    break;
+                case "Date":
+                    alltran = alltran.OrderBy(s => s.VendorID);
+                    break;
+                case "date_desc":
+                    alltran = alltran.OrderByDescending(s => s.VendorID);
+                    break;
+                default:  // Name ascending 
+                    alltran = alltran.OrderBy(s => s.CustomerID);
+                    break;
+            }
+
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+
             ApplicationUser user = UserManager.FindByEmail(User.Identity.Name);
             string role = UserManager.GetRoles(user.Id).First();
-            var alltran = db.Transactions.ToList();
+            
             TableVO tbvo = new TableVO
             {
                 allTransaction = alltran.ToList(),
@@ -50,7 +94,7 @@ namespace MVC5.Controllers
                 childNonActiveMap = mapDataFromTransaction(user.Id, false)
 
             };
-            return View(tbvo);
+            return View(alltran.ToPagedList(pageNumber, pageSize));
         }
 
         private Dictionary<string, string> mapDataFromTransaction(String userId, Boolean? active)

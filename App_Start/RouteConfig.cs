@@ -13,10 +13,17 @@ namespace MVC5
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+
+            //routes.MapRoute(
+            //    name: "Manage",
+            //    url: "Manage/{action}",
+            //    defaults: new { controller = "Manage", action = "Index"}
+            //);
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Offline", id = UrlParameter.Optional },
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                 namespaces: new []{"MVC5.Controllers"}
             );
         }

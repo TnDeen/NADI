@@ -28,7 +28,7 @@ namespace MVC5.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -40,9 +40,9 @@ namespace MVC5.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -66,7 +66,7 @@ namespace MVC5.Controllers
             ViewBag.ReturnUrl = returnUrl;
             if (User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("Index","Manage");
+                return RedirectToAction("Index", "Manage");
 
             }
             return View();
@@ -89,27 +89,27 @@ namespace MVC5.Controllers
             {
                 ModelState.AddModelError("", "Keahlian Sudah Tamat!");
                 return View(model);
-            } 
+            }
 
-                // Require the user to have a confirmed email before they can log on.
-                //var user = await UserManager.FindByNameAsync(model.Email);
-                //if (user != null)
-                //{
-                //    if (!await UserManager.IsEmailConfirmedAsync(user.Id))
-                //    {
-                //        string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account-Resend");
+            // Require the user to have a confirmed email before they can log on.
+            //var user = await UserManager.FindByNameAsync(model.Email);
+            //if (user != null)
+            //{
+            //    if (!await UserManager.IsEmailConfirmedAsync(user.Id))
+            //    {
+            //        string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account-Resend");
 
-                //        // Uncomment to debug locally  
-                //        // ViewBag.Link = callbackUrl;
-                //        ViewBag.errorMessage = "You must have a confirmed email to log on. "
-                //                             + "The confirmation token has been resent to your email account.";
-                //        return View("Error");
-                //    }
-                //}
+            //        // Uncomment to debug locally  
+            //        // ViewBag.Link = callbackUrl;
+            //        ViewBag.errorMessage = "You must have a confirmed email to log on. "
+            //                             + "The confirmation token has been resent to your email account.";
+            //        return View("Error");
+            //    }
+            //}
 
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, change to shouldLockout: true
-                var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            // This doesn't count login failures towards account lockout
+            // To enable password failures to trigger account lockout, change to shouldLockout: true
+            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -154,7 +154,7 @@ namespace MVC5.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -199,41 +199,36 @@ namespace MVC5.Controllers
 
             if (validateUserByEmail(model.Email))
             {
-                
+
                 ModelState.AddModelError("", "Emel Telah Wujud! Sila Gunakan Emel Lain.");
                 return View(model);
             }
 
             if (ModelState.IsValid)
             {
-                if (validateNoAhli(model.Introducer))
+
+                string noAhli = generateNoAhli();
+
+                var user = new ApplicationUser
                 {
-                    string noAhli = generateNoAhli();
-                    string parentId = finduserIdBynoAhli(model.Introducer);
-                    var user = new ApplicationUser { UserName = model.Email, Email = model.Email,
-                        ParentId = parentId, NomborAhli = noAhli,
-                        TarikhDaftarAhli = DateTime.Now, TarikhTamatAhli = DateTime.Now.AddMonths(3) };
-                    var result = await UserManager.CreateAsync(user, model.Password);
+                    UserName = model.Email,
+                    Email = model.Email,
+                    NomborAhli = noAhli,
+                    TarikhDaftarAhli = DateTime.Now,
+                    TarikhTamatAhli = DateTime.Now.AddMonths(3)
+                };
+                var result = await UserManager.CreateAsync(user, model.Password);
 
-                    if (result.Succeeded)
-                    {
-                        UserManager.AddToRole(user.Id, MyConstant.Role_User);
-                        ApplicationUser introducer = UserManager.FindById(parentId);
-                        AddTransaction(introducer, user);
-                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-
-
-                        return Redirect("/Home/Tnc");
-                    }
-
-                }
-                else
+                if (result.Succeeded)
                 {
-                    ViewBag.errormsg = "Pencadang Tidak Wujud! Sila Daftar Meggunakan Link Yang Sah!";
-                    ViewBag.shownotification = true;
-                    return View(model);
+                    UserManager.AddToRole(user.Id, MyConstant.Role_User);
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
+
+                    return Redirect("/Manage/Index");
                 }
+
+
 
             }
 
@@ -285,10 +280,10 @@ namespace MVC5.Controllers
 
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
-                 string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                 var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                 //await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                 sendMail("Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>", model.Email);
+                string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                //await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                sendMail("Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>", model.Email);
                 return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
@@ -457,7 +452,7 @@ namespace MVC5.Controllers
                     BirthDate = model.BirthDate,
                     HomeTown = model.HomeTown
                 };
-                 
+
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
@@ -565,7 +560,7 @@ namespace MVC5.Controllers
 
         private async Task<string> SendEmailConfirmationTokenAsync(string userID, string subject)
         {
-            var user =  UserManager.FindById(userID);
+            var user = UserManager.FindById(userID);
             string code = await UserManager.GenerateEmailConfirmationTokenAsync(userID);
             var callbackUrl = Url.Action("ConfirmEmail", "Account",
                new { userId = userID, code = code }, protocol: Request.Url.Scheme);

@@ -87,7 +87,6 @@ namespace MVC5.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        [Required]
         [Display(Name = "Pencadang (No. Ahli)")]
         public string Introducer { get; set; }
     }
