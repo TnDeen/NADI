@@ -6,9 +6,33 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+<h2>Upload Data Dari Excel</h2>
+
+<p>
+    @Html.ActionLink("Download Template", "DownloadFile")
+</p>
+
+@using (Html.BeginForm("Upload", "Transaction", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-horizontal">
+        <div class="form-group">
+            
+            <div class="col-md-10">
+                <input type="file" name="UploadedFile" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" name="Submit" value="Submit" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
 <div class="content-page">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12" style="display:none;">
             <!-- BEGIN SAMPLE TABLE PORTLET-->
             <div class="portlet box red">
                 <div class="portlet-title">
@@ -136,13 +160,13 @@
         </div>
     </div>
 
-    <div class="row" style="display:none;">
-        <div class="col-md-6">
+    <div class="row" >
+        <div class="col-md-12">
             <!-- BEGIN SAMPLE TABLE PORTLET-->
             <div class="portlet box red">
                 <div class="portlet-title">
                     <div class="caption">
-                        <i class="fa fa-cogs"></i>Transaksi Point
+                        <i class="fa fa-cogs"></i>Transaksi
                     </div>
                     <div class="tools">
                         <a href="javascript:;" class="collapse">
@@ -160,19 +184,17 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-
-
-                                    @*<th>
-                                            point
-                                        </th>*@
                                     <th>
-                                        Level
+                                        Nama
                                     </th>
                                     <th>
-                                        Status
+                                        Title
                                     </th>
                                     <th>
-                                        Claim
+                                        Content
+                                    </th>
+                                    <th>
+                                        Date
                                     </th>
                                 </tr>
                             </thead>
@@ -182,48 +204,17 @@
                                 @foreach (var item in Model.allTransaction)
                                 {
                                 <tr>
-
-                                    @*<td>
-                                            @Html.DisplayFor(modelItem => item.point)
-                                        </td>*@
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.level)
+                                        @Html.DisplayFor(modelItem => item.CustomerID)
                                     </td>
                                     <td>
-                                        @if (item.statusActive)
-                                            {
-                                            <span class="label label-sm label-success">
-                                                Active
-                                            </span>
-                                            }
-                                            else
-                                            {
-                                            <span class="label label-sm label-danger">
-                                                Not Active
-                                            </span>
-                                            }
+                                        @Html.DisplayFor(modelItem => item.VendorID)
                                     </td>
                                     <td>
-                                        @if (item.claimRequestSend && item.statusActive && !item.claimRequestApproval)
-                                            {
-                                            <span class="label label-sm label-info">
-                                                Penebusan Telah Dihantar
-                                            </span>
-
-                                            }
-                                            else if (!item.claimRequestSend && item.statusActive && !item.claimRequestApproval)
-                                            {
-                                            @Html.ActionLink("Tebus Point", "claimRequest", new { id = item.Id, activate = true })
-                                            }
-
-                                        @if (item.claimRequestApproval)
-                                            {
-                                            <span class="label label-sm label-success">
-                                                Berjaya Ditebus
-                                            </span>
-
-                                            }
-
+                                       @Html.DisplayFor(modelItem => item.CreateBy)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.LastUpdatedBy)
                                     </td>
                                 </tr>
                                 }

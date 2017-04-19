@@ -18,7 +18,7 @@ License: You must have a valid license purchased only from themeforest (the abov
 <!-- Head BEGIN -->
 <head>
     <meta charset="utf-8">
-    <title>@ViewBag.Title - Nadikebangsaan.com</title>
+    <title>@ViewBag.Title - @MyConstant.Web_Name</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta content="Metronic Shop UI description" name="description">
@@ -32,7 +32,7 @@ RM280 UNTUK SETIAP AHLI BARU YANG DIBAWA OLEH AHLI SEDIADA SELAKU PENCADANG">
     <meta property="og:type" content="website">
     <meta property="og:image" content="http://www.nadikebangsaan.com/Content/img/nadilogo.png"><!-- link to image for socio -->
     <meta property="og:url" content="http://www.nadikebangsaan.com/">
-    <link rel="shortcut icon" href="~/Content/img/favicon.ico">
+    <link rel="shortcut icon" href="~/Content/img/lelongpos.ico">
     <!-- Fonts START -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Pathway+Gothic+One|PT+Sans+Narrow:400+700|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
     <!-- Fonts END -->
@@ -75,44 +75,14 @@ RM280 UNTUK SETIAP AHLI BARU YANG DIBAWA OLEH AHLI SEDIADA SELAKU PENCADANG">
 
     @RenderBody()
 
-    <!-- BEGIN PRE-FOOTER -->
-    <div class="pre-footer" id="contact">
-        <div class="container">
-            <div class="row">
-                <!-- BEGIN BOTTOM ABOUT BLOCK -->
-                <div class="col-md-4 col-sm-6 pre-footer-col">
-                    <h2>About us</h2>
-                    <p>Pertubuhan Pembangunan Intergeriti Malaysia [PPM-018-10-27022016] (National Association Development Integrity) </p>
-                    <p>
-                        Dikenali sebagai  NADI Kebangsaan. Sebuah Pertubuhan
-                        (NGO) Berdaftar beroreantasikan aktiviti Keusahawan, Reakreasi, Latihan, Sukan dan Kebajikan.
-                    </p>
-                </div>
-                <!-- END BOTTOM ABOUT BLOCK -->
-
-                <div class="col-md-4 col-sm-6 pre-footer-col">
-                    <!-- BEGIN BOTTOM CONTACTS -->
-                    <h2>Our Contacts</h2>
-                    <address class="margin-bottom-20">
-                        No. 99-1,<br>
-                        Jalan LP 7/2, <br>
-                        Bandar Putra Permai,<br>
-                        43300, Seri Kembangan,<br>
-                        Email: <a href="mailto:info@nadikebangsaan.com">@MyConstant.last_office_email</a><br>
-                        Tel: <a href="#">@MyConstant.last_office_noTel</a>
-                    </address>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- END PRE-FOOTER -->
+    
     <!-- BEGIN FOOTER -->
     <div class="footer">
         <div class="container">
             <div class="row">
                 <!-- BEGIN COPYRIGHT -->
                 <div class="col-md-6 col-sm-6">
-                    <div class="copyright">© @DateTime.Now.Year - Nadikebangsaan.com</div>
+                    <div class="copyright">© @DateTime.Now.Year - @MyConstant.Web_Name</div>
                 </div>
                 <!-- END COPYRIGHT -->
                 <!-- BEGIN SOCIAL ICONS -->

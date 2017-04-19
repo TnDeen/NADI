@@ -15,6 +15,7 @@ using System.IO;
 using System.Drawing.Imaging;
 using System.Drawing;
 using MVC5.Models.VM;
+using OfficeOpenXml;
 
 namespace MVC5.Controllers
 {
@@ -40,7 +41,7 @@ namespace MVC5.Controllers
         {
             ApplicationUser user = UserManager.FindByEmail(User.Identity.Name);
             string role = UserManager.GetRoles(user.Id).First();
-            var alltran = db.Transactions.ToList().Where(c => c.VendorID.Equals(user.Id)).OrderBy(c => c.level);
+            var alltran = db.Transactions.ToList();
             TableVO tbvo = new TableVO
             {
                 allTransaction = alltran.ToList(),
@@ -256,6 +257,83 @@ namespace MVC5.Controllers
                 return View("Success");
             }
             return View("Error");
+        }
+
+        public FileResult DownloadFile()
+        {
+            string path = HttpContext.Server.MapPath("~/App_Data/uploads/DownloadFile.xlsx");
+            return File(path, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+        }
+
+
+        public ActionResult Upload(FormCollection formCollection)
+        {
+            if (Request != null)
+            {
+                HttpPostedFileBase file = Request.Files["UploadedFile"];
+                if ((file != null) && (file.ContentLength > 0) && !string.IsNullOrEmpty(file.FileName))
+                {
+
+                    string fileName = file.FileName;
+                    var basePath = Server.MapPath("~/App_Data/uploads");
+                    var path = Path.Combine(basePath, fileName);
+                    if (!Directory.Exists(basePath))
+                    {
+                        Directory.CreateDirectory(basePath);
+                    }
+                    file.SaveAs(path);
+
+                    string fileContentType = file.ContentType;
+                    byte[] fileBytes = new byte[file.ContentLength];
+                    var data = file.InputStream.Read(fileBytes, 0, Convert.ToInt32(file.ContentLength));
+
+
+                    using (var package = new ExcelPackage(file.InputStream))
+                    {
+                        var workSheet = package.Workbook.Worksheets["Pos"];
+                        var noOfCol = workSheet.Dimension.End.Column;
+                        var noOfRow = workSheet.Dimension.End.Row;
+
+                        for (int rowIterator = 2; rowIterator <= noOfRow; rowIterator++)
+                        {
+
+                            var nameraw = workSheet.Cells[rowIterator, 1].Value;
+
+                            if (nameraw == null)
+                            {
+                                break;
+                            }
+                            String nameVal = nameraw.ToString();
+                            String rawdtval = workSheet.Cells[rowIterator, 4].Value.ToString();
+                            String[] dtarray = rawdtval.Split('.');
+                            String kgVal = workSheet.Cells[rowIterator, 2].Value.ToString();
+                            String rmVal = workSheet.Cells[rowIterator, 3].Value.ToString();
+                            String dtVal = dtarray[0] + "/" + dtarray[1] + "/" + dtarray[2];
+
+                            
+
+                            Transaction tran = new Transaction();
+                            tran.CustomerID = nameVal;
+                            tran.VendorID = kgVal;
+                            tran.point = Convert.ToDecimal(1);
+                            tran.level = 1;
+                            tran.CreateBy = rmVal;
+                            tran.CreateDate = DateTime.Now;
+                            tran.LastUpdated = DateTime.Now;
+                            tran.LastUpdatedBy = dtVal;
+
+                            db.Transactions.Add(tran);
+                            db.SaveChanges();
+
+
+
+
+                        }
+                    }
+
+                }
+            }
+            return RedirectToAction("Index");
         }
     }
 }

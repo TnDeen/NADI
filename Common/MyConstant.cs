@@ -13,12 +13,13 @@ namespace MVC5.Common
         public const String Role_Admin = "Admin";
         public const String Role_Vendor = "Vendor";
         public const String Role_User = "User";
-        public const String Base_Url = "http://nadikebangsaan.com";
+        public const String Base_Url = "http://lelongpos.com";
+        public const String Web_Name = "lelongpos.com";
         //public const String Base_Url = "http://localhost:44300";
         public const String app_admin_email = "salehuddin.ptsb@gmail.com";
         public const String last_office_noTel = "03 8080 0524";
-        public const String last_office_email = "info@nadikebangsaan.com";
-        public const String user_admin_email = "admin@nadikebangsaan.com";
+        public const String last_office_email = "info@lelongpos.com";
+        public const String user_admin_email = "admin@lelongpos.com";
         
 
         public const String SK_NEGERI = "NEGERI";
