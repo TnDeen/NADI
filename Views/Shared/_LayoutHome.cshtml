@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html>
+@using MVC5.Common
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -6,10 +7,10 @@
     <meta name="description" content="Developed By M Abdur Rokib Promy">
     <meta name="author" content="cosmic">
     <meta name="keywords" content="Bootstrap 3, Template, Theme, Responsive, Corporate, Business">
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="~/Content/img/lelongpos.ico">
 
     <title>
-        Acme | Home
+        @ViewBag.Title - @MyConstant.Web_Name
     </title>
 
     <!-- Bootstrap core CSS -->
@@ -57,7 +58,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">A<span>cme</span></a>
+                <a class="navbar-brand" href="index.html"><strong style="color:black;">Jom </strong> <span>Rumah Lelong</span></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
