@@ -10,7 +10,7 @@ namespace MVC5.Models.VM
         protected ApplicationDbContext db = new ApplicationDbContext();
 
 
-        public List<Transaction> allTransaction { get; set; }
+        public List<Listing> allTransaction { get; set; }
         public Dictionary<string, string> childMap {get; set;}
         public Dictionary<string, string> childActiveMap { get; set; }
         public Dictionary<string, string> childNonActiveMap { get; set; }

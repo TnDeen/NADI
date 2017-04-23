@@ -7,19 +7,52 @@ using System.Web;
 
 namespace MVC5.Models
 {
-    public class Transaction : BaseEntity
+    public class Listing : BaseEntity
     {
         [Key]
         public int Id { get; set; }
-        public string CustomerID { get; set; }
-        public string VendorID { get; set; }
-        public string TranStatus { get; set; }
-        public Boolean statusActive { get; set; }
-        public Boolean claimRequestSend { get; set; }
-        public Boolean claimRequestApproval { get; set; }
-        public string ulasan { get; set; }
-        public int level { get; set; }
-        public decimal? point { get; set; }
+
+        [ForeignKey("PropertyType")]
+        public int? PropertyTypeId { get; set; }
+        public virtual SAK PropertyType { get; set; }
+
+        public string UnitNo { get; set; }
+        public string Address1 { get; set; }
+        public string Address2 { get; set; }
+        public string Address3 { get; set; }
+        public string Address4 { get; set; }
+
+        [ForeignKey("Bandar")]
+        public int? BandarId { get; set; }
+        public virtual SAK Bandar { get; set; }
+
+        [ForeignKey("Negeri")]
+        public int? NegeriId { get; set; }
+        public virtual SAK Negeri { get; set; }
+
+        public decimal? Size { get; set; }
+        public decimal? Price { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Auction Date")]
+        public DateTime? AuctionDate { get; set; }
+
+        public string AuctionTime { get; set; }
+
+        [ForeignKey("AuctionType")]
+        public int? AuctionTypeId { get; set; }
+        public virtual SAK AuctionType { get; set; }
+
+        [ForeignKey("AuctionBank")]
+        public int? AuctionBankId { get; set; }
+        public virtual SAK AuctionBank { get; set; }
+
+        public string AuctionVenue { get; set; }
+        public string AuctionNeer{ get; set; }
+        public string Lawyer { get; set; }
+        public string Assignor { get; set; }
+        
 
     }
 }

@@ -248,7 +248,6 @@ namespace MVC5.Controllers
             }
             var result = await UserManager.ConfirmEmailAsync(userId, code);
             var user = UserManager.FindById(userId);
-            UpdateTransaction(user, true);
             sendMail("Nadi Kebangsaan Membership Approve", "Congratulation! Your Membership has been Accpeted.", user.Email);
             sendMail("Nadi Kebangsaan Membership Added", "admin approve membership of user " + user.Email, MyConstant.app_admin_email);
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
@@ -457,7 +456,6 @@ namespace MVC5.Controllers
                 if (result.Succeeded)
                 {
                     UserManager.AddToRole(user.Id, MyConstant.Role_User);
-                    AddTransaction(parent, user);
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {

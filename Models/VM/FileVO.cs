@@ -9,7 +9,7 @@ namespace MVC5.Models.VM
     {
         public ApplicationUser CurrentUser { get; set; }
         public File curFile { get; set; }
-        public Transaction transantion { get; set; }
+        public Listing transantion { get; set; }
 
         public List<FileVO> lulusList { get; set; }
         public List<FileVO> batalList { get; set; }

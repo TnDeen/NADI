@@ -60,23 +60,23 @@ namespace MVC5.Controllers
                           select t;
             if (!String.IsNullOrEmpty(searchString))
             {
-                alltran = alltran.Where(s => s.CustomerID.Contains(searchString)
-                                       || s.VendorID.Contains(searchString));
+                alltran = alltran.Where(s => s.Address1.Contains(searchString)
+                                       || s.UnitNo.Contains(searchString));
             }
 
             switch (sortOrder)
             {
                 case "name_desc":
-                    alltran = alltran.OrderByDescending(s => s.CustomerID);
+                    alltran = alltran.OrderByDescending(s => s.Address1);
                     break;
                 case "Date":
-                    alltran = alltran.OrderBy(s => s.VendorID);
+                    alltran = alltran.OrderBy(s => s.AuctionDate);
                     break;
                 case "date_desc":
-                    alltran = alltran.OrderByDescending(s => s.VendorID);
+                    alltran = alltran.OrderByDescending(s => s.AuctionDate);
                     break;
                 default:  // Name ascending 
-                    alltran = alltran.OrderBy(s => s.CustomerID);
+                    alltran = alltran.OrderBy(s => s.Address1);
                     break;
             }
 
@@ -103,13 +103,13 @@ namespace MVC5.Controllers
             var map = new Dictionary<string, string>();
             foreach (int i in all)
             {
-                var c = db.Transactions.Where(a => a.VendorID.Equals(userId) && a.level == i).Count();
+                var c = db.Transactions.Where(a => a.Address1.Equals(userId) && a.Size == i).Count();
                 if (active != null && active.Value)
                 {
-                     c = db.Transactions.Where(a => a.VendorID.Equals(userId) && a.level == i && a.statusActive).Count();
+                     c = db.Transactions.Where(a => a.Address1.Equals(userId) && a.Size == i).Count();
                 } else if (active != null && !active.Value)
                 {
-                    c = db.Transactions.Where(a => a.VendorID.Equals(userId) && a.level == i && !a.statusActive).Count();
+                    c = db.Transactions.Where(a => a.Address1.Equals(userId) && a.Size == i).Count();
                 }
                 
                 map.Add(i.ToString(), c.ToString());
@@ -158,13 +158,7 @@ namespace MVC5.Controllers
         {
             if (id > 0)
             {
-                Transaction tran = db.Transactions.Find(id);
-                if (tran != null)
-                {
-                    tran.claimRequestSend = activate;
-                    db.Entry(tran).State = System.Data.Entity.EntityState.Modified;
-                    db.SaveChanges();
-                }
+               
             }
             return RedirectToAction("Index");
         }
@@ -174,13 +168,12 @@ namespace MVC5.Controllers
         {
             FileVO vo = new FileVO();
             var llsRequest = from tran in db.Transactions
-                             join uuser in db.Users on tran.VendorID equals uuser.Id
-                             where tran.claimRequestSend where tran.claimRequestApproval
+                             join uuser in db.Users on tran.Address1 equals uuser.Id
+                             where tran.Size == 1
                              select new FileVO { transantion = tran, CurrentUser = uuser };
             var btlRequest = from tran in db.Transactions
-                             join uuser in db.Users on tran.VendorID equals uuser.Id
-                             where tran.claimRequestSend
-                             where !tran.claimRequestApproval
+                             join uuser in db.Users on tran.Address1 equals uuser.Id
+                             where tran.Size == 1
                              select new FileVO { transantion = tran, CurrentUser = uuser };
             vo.lulusList = llsRequest.ToList<FileVO>();
             vo.batalList = btlRequest.ToList<FileVO>();
@@ -193,15 +186,7 @@ namespace MVC5.Controllers
         {
             if (id > 0)
             {
-                Transaction tran = db.Transactions.Find(id);
-                if (tran != null)
-                {
-                    tran.claimRequestApproval = activate;
-                    db.Entry(tran).State = System.Data.Entity.EntityState.Modified;
-                    db.SaveChanges();
-                    string mesage = "Your claim with amount of " + tran.point + " have been approved!";
-                    sendNotification(tran.VendorID, "Claim Approve", mesage);
-                }
+              
             }
             return RedirectToAction("ClaimRequestList");
         }
@@ -230,7 +215,7 @@ namespace MVC5.Controllers
                         }
                         
                         db.SaveChanges();
-                        UpdateTransaction(user, true);
+                       
                         string mesage = "Your membership application have been approved! membership is valid from " + user.TarikhSahAhli + " to " + user.TarikhTamatAhli;
                         sendNotification(user.Id, "Membership application approved", mesage);
 
@@ -296,7 +281,7 @@ namespace MVC5.Controllers
             {
                 ApplicationUser vendor = UserManager.FindByEmail(User.Identity.Name);
                 ApplicationUser user = UserManager.FindById(userId);
-                AddTransaction(vendor, user);
+                
                 ViewBag.Message = "Success Add Transaction";
                 return View("Success");
             }
@@ -356,11 +341,7 @@ namespace MVC5.Controllers
 
                             
 
-                            Transaction tran = new Transaction();
-                            tran.CustomerID = nameVal;
-                            tran.VendorID = kgVal;
-                            tran.point = Convert.ToDecimal(1);
-                            tran.level = 1;
+                            Listing tran = new Listing();
                             tran.CreateBy = rmVal;
                             tran.CreateDate = DateTime.Now;
                             tran.LastUpdated = DateTime.Now;

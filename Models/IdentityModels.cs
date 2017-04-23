@@ -97,7 +97,7 @@ namespace MVC5.Models
         public DbSet<SK> Sk { get; set; }
         public DbSet<Message> SystemMessage { get; set; }
         public DbSet<SistemId> SistemCounter { get; set; }
-        public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<Listing> Transactions { get; set; }
         public DbSet<File> Files { get; set; }
         public DbSet<FilePath> FilePaths { get; set; }
 

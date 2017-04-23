@@ -300,7 +300,6 @@ C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\SendGrid.dll
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\SendGrid.SmtpApi.dll
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\SendGridMail.dll
-C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\System.IO.Packaging.dll
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\System.Net.Http.Formatting.dll
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\System.Web.Helpers.dll
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\System.Web.Mvc.dll
@@ -375,3 +374,5 @@ C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\PagedList.Mvc.dll
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\PagedList.xml
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\PagedList.Mvc.xml
+C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.Migrations.resettransactiontbl.resources
+C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.csprojResolveAssemblyReference.cache

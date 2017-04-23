@@ -76,10 +76,6 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.IO.Packaging, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.IO.Packaging.4.0.0\lib\net46\System.IO.Packaging.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
       <Private>True</Private>
@@ -341,6 +337,10 @@
     <Compile Include="Migrations\201704171622308_cleanup.cs" />
     <Compile Include="Migrations\201704171622308_cleanup.Designer.cs">
       <DependentUpon>201704171622308_cleanup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704222319357_resettransactiontbl.cs" />
+    <Compile Include="Migrations\201704222319357_resettransactiontbl.Designer.cs">
+      <DependentUpon>201704222319357_resettransactiontbl.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -4449,6 +4449,14 @@
     <Content Include="Content\img\portfolios\web\4.jpg" />
     <Content Include="Content\img\product1.jpg" />
     <Content Include="Content\img\product2.jpg" />
+    <Content Include="Content\img\property-type\default\1.jpg" />
+    <Content Include="Content\img\property-type\default\2.jpg" />
+    <Content Include="Content\img\property-type\default\3.jpg" />
+    <Content Include="Content\img\property-type\default\4.jpg" />
+    <Content Include="Content\img\property-type\default\5.jpg" />
+    <Content Include="Content\img\property-type\default\6.jpg" />
+    <Content Include="Content\img\property-type\default\7.jpg" />
+    <Content Include="Content\img\property-type\default\8.jpg" />
     <Content Include="Content\img\search-icon.jpg" />
     <Content Include="Content\img\search-icon.png" />
     <Content Include="Content\img\seq-slider\abstract-16729_1920.jpg" />
@@ -5024,6 +5032,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704171622308_cleanup.resx">
       <DependentUpon>201704171622308_cleanup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704222319357_resettransactiontbl.resx">
+      <DependentUpon>201704222319357_resettransactiontbl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
