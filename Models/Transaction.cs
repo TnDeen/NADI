@@ -22,6 +22,8 @@ namespace MVC5.Models
         public string Address3 { get; set; }
         public string Address4 { get; set; }
 
+        public int Poskod { get; set; }
+
         [ForeignKey("Bandar")]
         public int? BandarId { get; set; }
         public virtual SAK Bandar { get; set; }

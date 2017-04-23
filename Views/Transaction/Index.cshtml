@@ -1,4 +1,4 @@
-﻿@model PagedList.IPagedList<MVC5.Models.Transaction>
+﻿@model PagedList.IPagedList<MVC5.Models.Listing>
 @using MVC5.Common
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
@@ -70,16 +70,16 @@
                                 {
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.CustomerID)
+                                        @Html.DisplayFor(modelItem => item.Address1)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.VendorID)
+                                        @Html.DisplayFor(modelItem => item.Address1)
                                     </td>
                                     <td>
-                                       @Html.DisplayFor(modelItem => item.CreateBy)
+                                       @Html.DisplayFor(modelItem => item.Address1)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.LastUpdatedBy)
+                                        @Html.DisplayFor(modelItem => item.Address1)
                                     </td>
                                 </tr>
                                 }

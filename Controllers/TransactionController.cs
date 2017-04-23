@@ -38,7 +38,7 @@ namespace MVC5.Controllers
         }
 
         // GET: Transaction
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page, SearchVO search)
         {
 
             ViewBag.CurrentSort = sortOrder;
@@ -326,26 +326,61 @@ namespace MVC5.Controllers
                         for (int rowIterator = 2; rowIterator <= noOfRow; rowIterator++)
                         {
 
-                            var nameraw = workSheet.Cells[rowIterator, 1].Value;
+                            var pTypeRaw = workSheet.Cells[rowIterator, 1].Value;
 
-                            if (nameraw == null)
+                            if (pTypeRaw == null)
                             {
                                 break;
                             }
-                            String nameVal = nameraw.ToString();
-                            String rawdtval = workSheet.Cells[rowIterator, 4].Value.ToString();
-                            String[] dtarray = rawdtval.Split('.');
-                            String kgVal = workSheet.Cells[rowIterator, 2].Value.ToString();
-                            String rmVal = workSheet.Cells[rowIterator, 3].Value.ToString();
-                            String dtVal = dtarray[0] + "/" + dtarray[1] + "/" + dtarray[2];
+                            String pType = pTypeRaw.ToString();
+                            String unitNo = workSheet.Cells[rowIterator, 2].Value.ToString();
+                            String Address1 = workSheet.Cells[rowIterator, 3].Value.ToString();
+                            String poskod = workSheet.Cells[rowIterator, 4].Value.ToString();
 
-                            
+                            String bandar = workSheet.Cells[rowIterator, 5].Value.ToString();
+                            String negeri = workSheet.Cells[rowIterator, 6].Value.ToString();
+
+                            String area = workSheet.Cells[rowIterator, 7].Value.ToString();
+                            String price = workSheet.Cells[rowIterator, 8].Value.ToString();
+
+                            String rawdtval = workSheet.Cells[rowIterator, 9].Value.ToString();
+                            String[] dtarray = rawdtval.Split('.');
+                            String aucDate = dtarray[0] + "/" + dtarray[1] + "/" + dtarray[2];
+
+                            String aucType = workSheet.Cells[rowIterator, 10].Value.ToString();
+                            String aucBank = workSheet.Cells[rowIterator, 11].Value.ToString();
+
+                            String venue = workSheet.Cells[rowIterator, 12].Value.ToString();
+                            String time = workSheet.Cells[rowIterator, 13].Value.ToString();
+                            String aucneer = workSheet.Cells[rowIterator, 14].Value.ToString();
+                            String lawyer = workSheet.Cells[rowIterator, 15].Value.ToString();
+                            String asignor = workSheet.Cells[rowIterator, 16].Value.ToString();
+
+
 
                             Listing tran = new Listing();
-                            tran.CreateBy = rmVal;
+
+                            tran.PropertyTypeId = db.Sak.Where(a => a.Kod.Equals(pType)).Select(a => a.Id).FirstOrDefault();
+                            tran.UnitNo = unitNo;
+                            tran.Address1 = Address1;
+                            tran.Poskod = Convert.ToInt32(poskod);
+                            tran.BandarId = db.Sak.Where(a => a.Nama.Equals(bandar)).Select(a => a.Id).FirstOrDefault();
+                            tran.NegeriId = db.Sak.Where(a => a.Nama.Equals(negeri)).Select(a => a.Id).FirstOrDefault();
+                            tran.Size = decimal.Parse(area);
+                            tran.Price = decimal.Parse(price);
+                            tran.AuctionDate = DateUtil.convertStringToDate(aucDate);
+                            tran.AuctionTypeId = db.Sak.Where(a => a.Kod.Equals(aucType)).Select(a => a.Id).FirstOrDefault();
+                            tran.AuctionBankId = db.Sak.Where(a => a.Kod.Equals(aucBank)).Select(a => a.Id).FirstOrDefault();
+                            tran.AuctionVenue = venue;
+                            tran.AuctionTime = time;
+                            tran.AuctionNeer = aucneer;
+                            tran.Lawyer = lawyer;
+                            tran.Assignor = asignor;
+
+                            tran.CreateBy = MyConstant.user_admin_email;
                             tran.CreateDate = DateTime.Now;
                             tran.LastUpdated = DateTime.Now;
-                            tran.LastUpdatedBy = dtVal;
+                            tran.LastUpdatedBy = MyConstant.user_admin_email;
 
                             db.Transactions.Add(tran);
                             db.SaveChanges();

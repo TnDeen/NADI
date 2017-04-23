@@ -375,3 +375,4 @@ C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\PagedList.xml
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\PagedList.Mvc.xml
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.Migrations.resettransactiontbl.resources
+C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.Migrations.chgecolposkod.resources

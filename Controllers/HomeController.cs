@@ -11,8 +11,10 @@ namespace MVC5.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.totalregister = db.Users.Count();
             ViewBag.Title = "Laman Utama";
+            ViewBag.PropertyTypeId = new SelectList(db.Sak.ToList().Where(a => a.SkId == 8).OrderBy(o => o.Nama), "Id", "Nama");
+            ViewBag.NegeriID = new SelectList(db.Sak.ToList().Where(a => a.SkId == 7).OrderBy(o => o.Nama), "Id", "Nama");
+            ViewBag.ListingTypeId = new SelectList(db.Sak.Where(a => a.SkId == 9).OrderBy(o => o.Nama), "Id", "Nama");
             return View("Index", "~/Views/Shared/_LayoutHome.cshtml");
         }
 
