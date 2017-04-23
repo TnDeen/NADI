@@ -3996,13 +3996,13 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .nav .caret {
-  border-top-color: #428bca;
-  border-bottom-color: #428bca;
+  border-top-color: #FFFFFF;
+  border-bottom-color: #FFFFFF;
 }
 
 .nav a:hover .caret {
-  border-top-color: #2a6496;
-  border-bottom-color: #2a6496;
+  border-top-color: #FFFFFF;
+  border-bottom-color: #FFFFFF;
 }
 
 .nav-tabs .dropdown-menu {

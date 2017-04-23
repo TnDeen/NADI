@@ -4919,6 +4919,7 @@
     <Content Include="Views\Shared\_MembershipFormPartial.cshtml" />
     <Content Include="Views\Home\Offline.cshtml" />
     <Content Include="Views\Shared\_LayoutOffline.cshtml" />
+    <Content Include="Views\Shared\_LoginPartialHome.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />

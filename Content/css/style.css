@@ -2582,7 +2582,7 @@ p { text-align: left }
     transition: all .3s ease;
 }
 .btn.btn-danger {
-    background-color: #E74c3c;
+    background-color: #d10c0c;
     border: none;
     -webkit-transition: all .3s ease;
     -moz-transition: all .3s ease;
