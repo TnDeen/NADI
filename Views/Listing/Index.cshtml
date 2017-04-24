@@ -89,7 +89,7 @@
 
             
 
-            <div class="row">
+            
 
 
 
@@ -97,47 +97,56 @@
                     <h2 id="forms-example">Auction Properties in Malaysia for "@ViewBag.enterLocation" (@Model.Count().ToString() Results Found)</h2>
                     @foreach (var item in Model)
                     {
-                        <div class="media">
-                         
+
+                        <div class="row">
                             <hr>
-                            <a class="pull-left" href="javascript:;">
-                                @if (item.listing.imageUrl == null)
-                                {
-                                    
-                                    <img class="media-object-large" src="@MyConstant.property_img_default_url@item.listing.PropertyTypeId@MyConstant.file_jpg" alt="">
-                                }
-                                else
-                                {
-                                    <img class="media-object-large" src="@item.listing.imageUrl" alt="">
-                                }
-                                
-                            </a>
-                            <div class="media-body">
-                                <h4 class="media-heading">
-                                    @item.listing.UnitNo @item.listing.Address1 @item.listing.Poskod @item.listing.Bandar.Nama @item.listing.Negeri.Nama
-                                </h4>
-                                <h2>RM @item.listing.Price</h2>
-                                <p>
-                                    @item.listing.Size (Sq.ft)
-                                </p>
-                                <p>
-                                    @item.listing.AuctionDate
-                                </p>
-                               <br />
-                                @Html.ActionLink("Read More", "Details", new { id = item.listing.Id, address = item.search.Address }, htmlAttributes: new { @class = "btn btn-danger right" })
-                               
+                            <div class="col-lg-5 col-sm-5">
+                                <div class="media">
+                                    <a class="pull-left" href="javascript:;">
+                                        @if (item.listing.imageUrl == null)
+                                        {
+
+                                            <img class="media-object-large" src="@MyConstant.property_img_default_url@item.listing.PropertyTypeId@MyConstant.file_jpg" alt="">
+                                        }
+                                        else
+                                        {
+                                            <img class="media-object-large" src="@item.listing.imageUrl" alt="">
+                                        }
+
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                    }
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <h4 class="media-heading">
+                                            @item.listing.UnitNo @item.listing.Address1 @item.listing.Poskod @item.listing.Bandar.Nama @item.listing.Negeri.Nama
+                                        </h4>
+                                        <h2>RM @item.listing.Price</h2>
+                                        <p>
+                                            @item.listing.Size (Sq.ft)
+                                        </p>
+                                        <p>
+                                            @item.listing.AuctionDate
+                                        </p>
+                                        <br />
+                                        @Html.ActionLink("Read More", "Details", new { id = item.listing.Id, address = item.search.Address }, htmlAttributes: new { @class = "btn btn-danger right" })
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            </div>
+                            }
 
 
-                    <br />
-                    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+                            <br />
+                            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-                    @Html.PagedListPager(Model, page => Url.Action("Index",
+                            @Html.PagedListPager(Model, page => Url.Action("Index",
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 
-                </div>
+                        </div>
 
                 <div class="col-lg-3">
                     <div class="blog-side-item">
@@ -330,7 +339,7 @@
 
                     </div>
                 </div>
-            </div>
+         
 
         </div>
     </div>
