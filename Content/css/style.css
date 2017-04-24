@@ -1206,6 +1206,14 @@ ul.tag li a {
     height: 80px;
     width: 80px;
 }
+
+.media img.media-object-large {
+    border-radius: 3%;
+    -moz-border-radius: 3%;
+    -webkit-border-radius: 3%;
+    height: 220px;
+    width: 282px;
+}
 /*footer*/
 .footer {
     background: #34495e;

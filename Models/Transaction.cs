@@ -54,7 +54,9 @@ namespace MVC5.Models
         public string AuctionNeer{ get; set; }
         public string Lawyer { get; set; }
         public string Assignor { get; set; }
-        
+
+        public string imageUrl { get; set; }
+
 
     }
 }

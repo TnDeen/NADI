@@ -209,6 +209,7 @@
     <Compile Include="Controllers\ExceptionController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ListingController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="Global.asax.cs">
@@ -346,6 +347,10 @@
     <Compile Include="Migrations\201704231844012_chgecolposkod.Designer.cs">
       <DependentUpon>201704231844012_chgecolposkod.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704232052565_addimgurlcol.cs" />
+    <Compile Include="Migrations\201704232052565_addimgurlcol.Designer.cs">
+      <DependentUpon>201704232052565_addimgurlcol.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseEntity.cs" />
@@ -363,6 +368,7 @@
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Models\VM\EmailVO.cs" />
     <Compile Include="Models\VM\FileVO.cs" />
+    <Compile Include="Models\VM\ListingVO.cs" />
     <Compile Include="Models\VM\SearchVO.cs" />
     <Compile Include="Models\VM\TableVO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -4925,6 +4931,8 @@
     <Content Include="Views\Home\Offline.cshtml" />
     <Content Include="Views\Shared\_LayoutOffline.cshtml" />
     <Content Include="Views\Shared\_LoginPartialHome.cshtml" />
+    <Content Include="Views\Listing\Index.cshtml" />
+    <Content Include="Views\Listing\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
@@ -5044,6 +5052,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704231844012_chgecolposkod.resx">
       <DependentUpon>201704231844012_chgecolposkod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704232052565_addimgurlcol.resx">
+      <DependentUpon>201704232052565_addimgurlcol.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -20,7 +20,11 @@ namespace MVC5.Common
         public const String last_office_noTel = "03 8080 0524";
         public const String last_office_email = "info@lelongpos.com";
         public const String user_admin_email = "admin@lelongpos.com";
-        
+
+        public const String property_img_base_url = "Content/img/property-type/";
+        public const String property_img_default_url = property_img_base_url + "default/";
+        public const String file_jpg = ".jpg";
+
 
         public const String SK_NEGERI = "NEGERI";
         public const String NEGERI_JHR = "01";

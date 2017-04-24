@@ -385,6 +385,16 @@ namespace MVC5.Controllers
                             db.Transactions.Add(tran);
                             db.SaveChanges();
 
+                            var id = tran.Id;
+                            if (id > 0)
+                            {
+                                string imgId = id.ToString();
+                                var imgBasePath = Server.MapPath("~/Content/img/property-type/" + imgId);
+                                if (!Directory.Exists(imgBasePath))
+                                {
+                                    Directory.CreateDirectory(imgBasePath);
+                                }
+                            }
 
 
 

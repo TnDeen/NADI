@@ -297,6 +297,8 @@ C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\Newtonsoft.Json.dll
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\Owin.dll
+C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\PagedList.dll
+C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\PagedList.Mvc.dll
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\SendGrid.dll
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\SendGrid.SmtpApi.dll
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\SendGridMail.dll
@@ -313,6 +315,8 @@ C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\Gma.QrCodeNet.Encoding.pdb
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\Gma.QrCodeNet.Encoding.xml
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\Newtonsoft.Json.xml
+C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\PagedList.xml
+C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\PagedList.Mvc.xml
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\System.Net.Http.Formatting.xml
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\System.Web.Helpers.xml
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\System.Web.Mvc.xml
@@ -367,12 +371,9 @@ C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.Migrations.addperakuanval.resources
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.Migrations.addbankinfocol.resources
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.Migrations.cleanup.resources
+C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.Migrations.resettransactiontbl.resources
+C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.Migrations.chgecolposkod.resources
+C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.Migrations.addimgurlcol.resources
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.csproj.GenerateResource.Cache
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.dll
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.pdb
-C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\PagedList.dll
-C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\PagedList.Mvc.dll
-C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\PagedList.xml
-C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\PagedList.Mvc.xml
-C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.Migrations.resettransactiontbl.resources
-C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.Migrations.chgecolposkod.resources

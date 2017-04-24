@@ -1,0 +1,337 @@
+﻿@model PagedList.IPagedList<MVC5.Models.VM.ListingVO>
+@using MVC5.Common
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<div class="component-bg">
+    <div class="container">
+        <!-- Forms
+        ================================================== -->
+        <div class="bs-docs-section mar-b-30">
+
+            <!-- Sequence Modern Slider -->
+            @using (Html.BeginForm("Index", "Listing", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+
+
+
+                <div class="bg-gray" style="padding-top:20px;">
+
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="form-group col-md-3 wow fadeInRight">
+
+                                @Html.DropDownList("PropertyTypeId", null, htmlAttributes: new { @class = "form-control newsletter-input" })
+
+
+                            </div>
+
+                            <div class="form-group col-md-2 wow fadeInRight">
+
+                                @Html.DropDownList("NegeriID", null, htmlAttributes: new { @class = "form-control newsletter-input" })
+
+
+                            </div>
+
+                            <div class="form-group col-md-2 wow fadeInRight">
+
+                                @Html.DropDownList("ListingTypeId", null, htmlAttributes: new { @class = "form-control newsletter-input" })
+
+
+
+
+                            </div>
+
+                            <div class="form-group col-md-4">
+
+
+                                <div class="input-group wow fadeInRight">
+                                    @Html.EditorFor(model => model.FirstOrDefault().search.Address, new { htmlAttributes = new { @class = "form-control newsletter-input", @placeholder = "Enter Location Name" } })
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-inverse btn-hg" type="submit" name="submit">Search</button>
+                                    </span>
+                                </div>
+
+
+
+                            </div>
+
+                        </div><!-- /row -->
+
+
+                        <div class="row">
+
+                            <div class="form-group col-md-12 wow fadeInRight">
+
+
+                                <button class="btn btn-danger">Go To Advance Search</button>
+
+
+
+                            </div>
+
+                        </div><!-- /row -->
+
+
+                    </div><!-- /container -->
+
+
+                </div>
+            }
+
+
+
+            
+
+            <div class="row">
+
+
+
+                <div class="col-lg-9">
+                    <h2 id="forms-example">Auction Properties in Malaysia for "@ViewBag.enterLocation" (@Model.Count().ToString() Results Found)</h2>
+                    @foreach (var item in Model)
+                    {
+                        <div class="media">
+                         
+                            <hr>
+                            <a class="pull-left" href="javascript:;">
+                                @if (item.listing.imageUrl == null)
+                                {
+                                    
+                                    <img class="media-object-large" src="@MyConstant.property_img_default_url@item.listing.PropertyTypeId@MyConstant.file_jpg" alt="">
+                                }
+                                else
+                                {
+                                    <img class="media-object-large" src="@item.listing.imageUrl" alt="">
+                                }
+                                
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading">
+                                    @item.listing.UnitNo @item.listing.Address1 @item.listing.Poskod @item.listing.Bandar.Nama @item.listing.Negeri.Nama
+                                </h4>
+                                <h2>RM @item.listing.Price</h2>
+                                <p>
+                                    @item.listing.Size (Sq.ft)
+                                </p>
+                                <p>
+                                    @item.listing.AuctionDate
+                                </p>
+                               <br />
+                                @Html.ActionLink("Read More", "Details", new { id = item.listing.Id, address = @ViewBag.enterLocation }, htmlAttributes: new { @class = "btn btn-danger right" })
+                               
+                            </div>
+                        </div>
+                    }
+
+
+                    <br />
+                    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+                    @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="blog-side-item">
+                        <div class="category">
+                            <h3>
+                                Categories
+                            </h3>
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a href="javascript:;">
+                                        <i class="fa fa-angle-right pr-10">
+                                        </i>
+                                        Animals
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">
+                                        <i class="fa fa-angle-right pr-10">
+                                        </i>
+                                        Landscape
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">
+                                        <i class="fa fa-angle-right pr-10">
+                                        </i>
+                                        Portait
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">
+                                        <i class="fa fa-angle-right pr-10">
+                                        </i>
+                                        Wild Life
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">
+                                        <i class="fa fa-angle-right pr-10">
+                                        </i>
+                                        Video
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="blog-post">
+                            <h3>
+                                Latest Blog Post
+                            </h3>
+                            <div class="media">
+                             
+                                <div class="media-body">
+                                    <h5 class="media-heading">
+                                        <a href="javascript:;">
+                                            02 May 2014
+                                        </a>
+                                    </h5>
+                                    <p>
+                                        Donec id elit non mi porta gravida at eget metus amet int
+                                    </p>
+                                </div>
+                            </div>
+                           
+                          
+                        </div>
+
+                        <div class="tags">
+                            <h3>
+                                Tags
+                            </h3>
+                            <ul class="tag">
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-tags pr-5">
+                                        </i>
+                                        flat
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-tags pr-5">
+                                        </i>
+                                        clean
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-tags pr-5">
+                                        </i>
+                                        admin
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-tags pr-5">
+                                        </i>
+                                        UI
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-tags pr-5">
+                                        </i>
+                                        responsive
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-tags pr-5">
+                                        </i>
+                                        Web Design
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-tags pr-5">
+                                        </i>
+                                        UIX
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-tags pr-5">
+                                        </i>
+                                        Blog
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-tags pr-5">
+                                        </i>
+                                        flat Admin
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-tags pr-5">
+                                        </i>
+                                        Dashboard
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+
+                        <div class="archive">
+                            <h3>
+                                Archive
+                            </h3>
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a href="javascript:;">
+                                        <i class="fa fa-angle-double-right pr-10">
+                                        </i>
+                                        May 2014
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">
+                                        <i class="fa fa-angle-double-right pr-10">
+                                        </i>
+                                        April 2014
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">
+                                        <i class="fa fa-angle-double-right pr-10">
+                                        </i>
+                                        March 2014
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">
+                                        <i class="fa fa-angle-double-right pr-10">
+                                        </i>
+                                        February 2014
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">
+                                        <i class="fa fa-angle-double-right pr-10">
+                                        </i>
+                                        January 2014
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
