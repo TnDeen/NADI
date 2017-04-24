@@ -4395,6 +4395,18 @@
     <Content Include="Content\img\1.png" />
     <Content Include="Content\img\2.png" />
     <Content Include="Content\img\3.png" />
+    <Content Include="Content\img\Bank\11.jpg" />
+    <Content Include="Content\img\Bank\12.jpg" />
+    <Content Include="Content\img\Bank\13.jpg" />
+    <Content Include="Content\img\Bank\14.jpg" />
+    <Content Include="Content\img\Bank\15.jpg" />
+    <Content Include="Content\img\Bank\17.jpg" />
+    <Content Include="Content\img\Bank\18.jpg" />
+    <Content Include="Content\img\Bank\19.jpg" />
+    <Content Include="Content\img\Bank\20.jpg" />
+    <Content Include="Content\img\Bank\21.jpg" />
+    <Content Include="Content\img\Bank\22.jpg" />
+    <Content Include="Content\img\Bank\25.jpg" />
     <Content Include="Content\img\bg_direction_nav.png" />
     <Content Include="Content\img\blog\blog-thumb-1.jpg" />
     <Content Include="Content\img\blog\blog-thumb-2.jpg" />
@@ -4458,6 +4470,7 @@
     <Content Include="Content\img\portfolios\web\2.jpg" />
     <Content Include="Content\img\portfolios\web\3.jpg" />
     <Content Include="Content\img\portfolios\web\4.jpg" />
+    <Content Include="Content\img\pos-rumah-lelong-300x229.png" />
     <Content Include="Content\img\product1.jpg" />
     <Content Include="Content\img\product2.jpg" />
     <Content Include="Content\img\property-type\default\1.jpg" />

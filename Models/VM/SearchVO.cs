@@ -17,5 +17,7 @@ namespace MVC5.Models.VM
         public string MaxPrice { get; set; }
         public string MinSize { get; set; }
         public string MaxSize { get; set; }
+
+        public List<ListingVO> listing { get; set; }
     }
 }

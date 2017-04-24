@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MVC5.Common;
+using MVC5.Models.VM;
 
 namespace MVC5.Controllers
 {
@@ -11,11 +12,18 @@ namespace MVC5.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Laman Utama";
+            
             ViewBag.PropertyTypeId = new SelectList(db.Sak.ToList().Where(a => a.SkId == 8).OrderBy(o => o.Nama), "Id", "Nama");
             ViewBag.NegeriID = new SelectList(db.Sak.ToList().Where(a => a.SkId == 7).OrderBy(o => o.Nama), "Id", "Nama");
             ViewBag.ListingTypeId = new SelectList(db.Sak.Where(a => a.SkId == 9).OrderBy(o => o.Nama), "Id", "Nama");
-            return View("Index", "~/Views/Shared/_LayoutHome.cshtml");
+
+            
+            var list = (from t in db.Transactions
+                          select new ListingVO { listing = t }).Take(4);
+
+            SearchVO svo = new SearchVO();
+            svo.listing = list.ToList();
+            return View(svo);
         }
 
         [Authorize]
