@@ -124,7 +124,7 @@
                                     @item.listing.AuctionDate
                                 </p>
                                <br />
-                                @Html.ActionLink("Read More", "Details", new { id = item.listing.Id, address = @ViewBag.enterLocation }, htmlAttributes: new { @class = "btn btn-danger right" })
+                                @Html.ActionLink("Read More", "Details", new { id = item.listing.Id, address = item.search.Address }, htmlAttributes: new { @class = "btn btn-danger right" })
                                
                             </div>
                         </div>
