@@ -70,7 +70,7 @@ namespace MVC5.Controllers
                     break;
             }
 
-            int pageSize = 5;
+            int pageSize = 15;
             int pageNumber = (page ?? 1);
             List<ListingVO> nwlist = new List<ListingVO>();
             foreach (ListingVO ls in alltran)
@@ -79,7 +79,7 @@ namespace MVC5.Controllers
                 nwlist.Add(ls);
             }
 
-            
+            ViewBag.listSize = nwlist.Count();
 
             return View(nwlist.ToPagedList(pageNumber, pageSize));
         }
