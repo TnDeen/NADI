@@ -209,6 +209,7 @@
     <Compile Include="Controllers\ExceptionController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JsonDemoController.cs" />
     <Compile Include="Controllers\ListingController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TransactionController.cs" />
@@ -4958,6 +4959,7 @@
     <Folder Include="Areas\Employer\Views\Shared\" />
     <Folder Include="Content\img\banner\" />
     <Folder Include="Context\" />
+    <Folder Include="Views\JsonDemo\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
