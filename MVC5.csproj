@@ -369,6 +369,7 @@
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Models\VM\EmailVO.cs" />
     <Compile Include="Models\VM\FileVO.cs" />
+    <Compile Include="Models\VM\ListingSimpleVO.cs" />
     <Compile Include="Models\VM\ListingVO.cs" />
     <Compile Include="Models\VM\SearchVO.cs" />
     <Compile Include="Models\VM\TableVO.cs" />
@@ -4947,6 +4948,7 @@
     <Content Include="Views\Shared\_LoginPartialHome.cshtml" />
     <Content Include="Views\Listing\Index.cshtml" />
     <Content Include="Views\Listing\Details.cshtml" />
+    <Content Include="Views\JsonDemo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
@@ -4959,7 +4961,6 @@
     <Folder Include="Areas\Employer\Views\Shared\" />
     <Folder Include="Content\img\banner\" />
     <Folder Include="Context\" />
-    <Folder Include="Views\JsonDemo\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

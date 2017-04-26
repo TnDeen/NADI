@@ -1,10 +1,12 @@
 ﻿using MVC5.Common;
 using MVC5.Models;
+using MVC5.Models.VM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace MVC5.Controllers
 {
@@ -29,11 +31,14 @@ namespace MVC5.Controllers
             return Json(users, JsonRequestBehavior.AllowGet);
         }
 
-        public class ListingSimpleVO
+        [HttpPost]
+        public JsonResult UpdateUsersDetail(string usersJson)
         {
-            public int? PropertyTypeId { get; set; }
-            public string UnitNo { get; set; }
-            public int? NegeriId { get; set; }
+            var js = new JavaScriptSerializer();
+            ListingSimpleVO[] user = js.Deserialize<ListingSimpleVO[]>(usersJson);
+            Console.Write("Success!");
+            //TODO: user now contains the details, you can do required operations  
+            return Json("User Details are updated");
         }
     }
 }
