@@ -9,169 +9,175 @@
 <script>
     var btn = document.getElementById('btn');
     var clipboard = new Clipboard('.btn');
-    clipboard.on('success', function(e) {
+    clipboard.on('success', function (e) {
         console.log(e);
     });
-    clipboard.on('error', function(e) {
+    clipboard.on('error', function (e) {
         console.log(e);
     });
 </script>
 
-<div class="row">
-    <div class="col-md-12 col-sm-12">
-        <div class="content-page">
-
-            
-
-            <div class="blog-tags margin-bottom-20">
-                <h2>Akaun Ahli (@Model.CurrentUser.NomborAhli - @Model.accstatus)</h2>
-                @if (Model.Pencadang != null)
-                {
-                    <h4>Pencadang : @Model.Pencadang.NomborAhli - No. Tel : @Model.Pencadang.NoTelBim</h4>
-                }
-                
-                <ul>
-                    @*<li><a href="/Manage/Edit/@Model.CurrentUser.Id"><i class="fa fa-tags"></i>Kemaskini Maklumat</a></li>*@
-                    <li><a href="/Manage/ApplyMembership"><i class="fa fa-tags"></i>Permohonan Keahlian</a></li>
-
-
-                    
-                    @if (Model.HasPassword)
-                    {
-                        <li><a href="/Manage/ChangePassword"><i class="fa fa-tags"></i>Tukar Kata Laluan</a></li>                    }
-                    else
-                    {
-                        <li><a href="/Manage/SetPassword"><i class="fa fa-tags"></i>Set Kata Laluan</a></li>
-                    }
-
-                    <li>
-                        <a href="/Transaction/MessageList">
-                            <i class="fa fa-tags"></i>Notifikasi <span class="badge badge-danger">
-                                @Model.totalMessage
-                            </span>
-                        </a>
-                    </li>
-                    
-                    
-
-                    
-                </ul>
-            </div>
-
-            
-
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="dashboard-stat blue-madison">
-                        <div class="visual">
-                            <i class="fa fa-comments"></i>
-                        </div>
-                        <div class="details">
-                            <div class="number">
-                                @Html.DisplayFor(model => model.accumulativePoint)
-                            </div>
-                            <div class="desc">
-                                Accumulative Points
-                            </div>
-                        </div>
-                        <a class="more" href="#">
-                            MYR
-                        </a>
-                    </div>
-                </div>
-
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="dashboard-stat purple-plum">
-                    <div class="visual">
-                        <i class="fa fa-globe"></i>
-                    </div>
-                    <div class="details">
-                        <div class="number">
-                            @Html.DisplayFor(model => model.potentialPoint)
-                        </div>
-                        <div class="desc">
-                            Pre-Active Points
-                        </div>
-                    </div>
-                    <a class="more" href="#">
-                        MYR 
-                    </a>
-                </div>
-            </div>
-
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="dashboard-stat red-intense">
-                        <div class="visual">
-                            <i class="fa fa-bar-chart-o"></i>
-                        </div>
-                        <div class="details">
-                            <div class="number">
-                                @Html.DisplayFor(model => model.wallet)
-                            </div>
-                            <div class="desc">
-                                Active Points
-                            </div>
-                        </div>
-                        <a class="more" href="#">
-                           MYR
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="dashboard-stat green-haze">
-                        <div class="visual">
-                            <i class="fa fa-shopping-cart"></i>
-                        </div>
-                        <div class="details">
-                            <div class="number">
-                                @Html.DisplayFor(model => model.totalChild)
-                            </div>
-                            <div class="desc">
-                                Registerer
-                            </div>
-                        </div>
-                        <a class="more" href="/Transaction/Index">
-                            View more <i class="m-icon-swapright m-icon-white"></i>
-                        </a>
-                    </div>
-                </div>
-               
-            </div>
-
-
-
-    </div>
-    </div>
-
-
-
-
-
-<div class="row">
-    <div class="col-md-12 col-sm-12">
-        <div class="content-page">
-            <!-- BEGIN SAMPLE TABLE PORTLET-->
-            <div class="portlet box red">
-                <div class="portlet-title">
-                    <div class="caption">
-                        <i class="fa fa-cogs"></i>User Link
-                    </div>
-                </div>
-                <div class="portlet-body">
-                    <div class="input-group">
-                        <span class="input-group-btn">
-                            <button id="btn" class="btn red" data-clipboard-target="#foo">Copy Link</button>
-                        </span>
-                        <input id="foo" type="text" class="form-control" value="@Model.userLink">
-                    </div>
-                    
-                   
-                        <img src="/Manage/BarcodeImage" />
-                   
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-
+<div class="container">
 
     
+        <div class="col-lg-12">
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="content-page">
+
+
+
+                        <div class="blog-tags margin-bottom-20">
+                            <h2>Akaun Ahli (@Model.CurrentUser.NomborAhli - @Model.accstatus)</h2>
+                            @if (Model.Pencadang != null)
+                {
+                <h4>Pencadang : @Model.Pencadang.NomborAhli - No. Tel : @Model.Pencadang.NoTelBim</h4>
+                }
+
+                            <ul>
+                                @*<li><a href="/Manage/Edit/@Model.CurrentUser.Id"><i class="fa fa-tags"></i>Kemaskini Maklumat</a></li>*@
+                                <li><a href="/Manage/ApplyMembership"><i class="fa fa-tags"></i>Permohonan Keahlian</a></li>
+
+
+
+                                @if (Model.HasPassword)
+                    {
+                    <li><a href="/Manage/ChangePassword"><i class="fa fa-tags"></i>Tukar Kata Laluan</a></li>                    }
+                    else
+                    {
+                    <li><a href="/Manage/SetPassword"><i class="fa fa-tags"></i>Set Kata Laluan</a></li>
+                    }
+
+                                <li>
+                                    <a href="/Transaction/MessageList">
+                                        <i class="fa fa-tags"></i>Notifikasi <span class="badge badge-danger">
+                                            @Model.totalMessage
+                                        </span>
+                                    </a>
+                                </li>
+
+
+
+
+                            </ul>
+                        </div>
+
+
+
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="dashboard-stat blue-madison">
+                                <div class="visual">
+                                    <i class="fa fa-comments"></i>
+                                </div>
+                                <div class="details">
+                                    <div class="number">
+                                        @Html.DisplayFor(model => model.accumulativePoint)
+                                    </div>
+                                    <div class="desc">
+                                        Accumulative Points
+                                    </div>
+                                </div>
+                                <a class="more" href="#">
+                                    MYR
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="dashboard-stat purple-plum">
+                                <div class="visual">
+                                    <i class="fa fa-globe"></i>
+                                </div>
+                                <div class="details">
+                                    <div class="number">
+                                        @Html.DisplayFor(model => model.potentialPoint)
+                                    </div>
+                                    <div class="desc">
+                                        Pre-Active Points
+                                    </div>
+                                </div>
+                                <a class="more" href="#">
+                                    MYR
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="dashboard-stat red-intense">
+                                <div class="visual">
+                                    <i class="fa fa-bar-chart-o"></i>
+                                </div>
+                                <div class="details">
+                                    <div class="number">
+                                        @Html.DisplayFor(model => model.wallet)
+                                    </div>
+                                    <div class="desc">
+                                        Active Points
+                                    </div>
+                                </div>
+                                <a class="more" href="#">
+                                    MYR
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="dashboard-stat green-haze">
+                                <div class="visual">
+                                    <i class="fa fa-shopping-cart"></i>
+                                </div>
+                                <div class="details">
+                                    <div class="number">
+                                        @Html.DisplayFor(model => model.totalChild)
+                                    </div>
+                                    <div class="desc">
+                                        Registerer
+                                    </div>
+                                </div>
+                                <a class="more" href="/Transaction/Index">
+                                    View more <i class="m-icon-swapright m-icon-white"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+
+
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="content-page">
+                        <!-- BEGIN SAMPLE TABLE PORTLET-->
+                        <div class="portlet box red">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="fa fa-cogs"></i>User Link
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <button id="btn" class="btn red" data-clipboard-target="#foo">Copy Link</button>
+                                    </span>
+                                    <input id="foo" type="text" class="form-control" value="@Model.userLink">
+                                </div>
+
+
+                                <img src="/Manage/BarcodeImage" />
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            </div>
+    </div>

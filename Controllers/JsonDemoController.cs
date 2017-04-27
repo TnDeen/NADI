@@ -36,7 +36,7 @@ namespace MVC5.Controllers
         {
             var js = new JavaScriptSerializer();
             ListingSimpleVO[] user = js.Deserialize<ListingSimpleVO[]>(usersJson);
-            Console.Write("Success!");
+            Console.WriteLine("Success!");
             //TODO: user now contains the details, you can do required operations  
             return Json("User Details are updated");
         }

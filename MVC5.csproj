@@ -364,6 +364,7 @@
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\RefDataEntity.cs" />
     <Compile Include="Models\SAK.cs" />
+    <Compile Include="Models\SeoFriendlyRoute.cs" />
     <Compile Include="Models\SistemId.cs" />
     <Compile Include="Models\SK.cs" />
     <Compile Include="Models\Transaction.cs" />

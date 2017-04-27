@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVC5.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -19,6 +20,17 @@ namespace MVC5
             //    url: "Manage/{action}",
             //    defaults: new { controller = "Manage", action = "Index"}
             //);
+
+            routes.Add("ListingDetails", new SeoFriendlyRoute("property-for-auction/Details/{id}",
+            new RouteValueDictionary(new { controller = "Listing", action = "Details" }),
+            new MvcRouteHandler()));
+
+            routes.MapRoute(
+                name: "Listing",
+                url: "property-for-auction/{action}/{id}",
+                defaults: new { controller = "Listing", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "MVC5.Controllers" }
+            );
 
             routes.MapRoute(
                 name: "Default",
