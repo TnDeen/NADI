@@ -1,0 +1,136 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Net;
+using System.Web;
+using System.Web.Mvc;
+using MVC5.Models;
+
+namespace MVC5.Controllers
+{
+    public class SAKController : Controller
+    {
+        private ApplicationDbContext db = new ApplicationDbContext();
+
+        // GET: SAK
+        public ActionResult Index()
+        {
+            var sak = db.Sak.Include(s => s.Parent).Include(s => s.Sk);
+            return View(sak.ToList());
+        }
+
+        // GET: SAK/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            SAK sAK = db.Sak.Find(id);
+            if (sAK == null)
+            {
+                return HttpNotFound();
+            }
+            return View(sAK);
+        }
+
+        // GET: SAK/Create
+        public ActionResult Create()
+        {
+            ViewBag.ParentId = new SelectList(db.Sak, "Id", "Nama");
+            ViewBag.SkId = new SelectList(db.Sk, "Id", "Nama");
+            return View();
+        }
+
+        // POST: SAK/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,ParentId,SkId,Nama,Kod,Perihal,StatusActive,DateCreated,CreateDate,CreateBy,DateUpdated,LastUpdated,LastUpdatedBy")] SAK sAK)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Sak.Add(sAK);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.ParentId = new SelectList(db.Sak, "Id", "Nama", sAK.ParentId);
+            ViewBag.SkId = new SelectList(db.Sk, "Id", "Nama", sAK.SkId);
+            return View(sAK);
+        }
+
+        // GET: SAK/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            SAK sAK = db.Sak.Find(id);
+            if (sAK == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.ParentId = new SelectList(db.Sak, "Id", "Nama", sAK.ParentId);
+            ViewBag.SkId = new SelectList(db.Sk, "Id", "Nama", sAK.SkId);
+            return View(sAK);
+        }
+
+        // POST: SAK/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,ParentId,SkId,Nama,Kod,Perihal,StatusActive,DateCreated,CreateDate,CreateBy,DateUpdated,LastUpdated,LastUpdatedBy")] SAK sAK)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(sAK).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.ParentId = new SelectList(db.Sak, "Id", "Nama", sAK.ParentId);
+            ViewBag.SkId = new SelectList(db.Sk, "Id", "Nama", sAK.SkId);
+            return View(sAK);
+        }
+
+        // GET: SAK/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            SAK sAK = db.Sak.Find(id);
+            if (sAK == null)
+            {
+                return HttpNotFound();
+            }
+            return View(sAK);
+        }
+
+        // POST: SAK/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            SAK sAK = db.Sak.Find(id);
+            db.Sak.Remove(sAK);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+    }
+}
