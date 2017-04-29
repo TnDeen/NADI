@@ -58,6 +58,12 @@ namespace MVC5.Models
 
         public string imageUrl { get; set; }
 
+        public string alamatFull()
+        {
+            string almt = string.Format("{0}-{1}-{2}", Id, Address1,Negeri.Nama);  
+            return almt;
+        }
+
         public string GenerateSlug()
         {
             string phrase = string.Format("{0}-{1}", Id, Address1);

@@ -208,6 +208,7 @@
     <Compile Include="Common\MyConstant.cs" />
     <Compile Include="Common\PartialCacheAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AffiliateComissionsController.cs" />
     <Compile Include="Controllers\ExceptionController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -215,7 +216,9 @@
     <Compile Include="Controllers\ListingadminController.cs" />
     <Compile Include="Controllers\ListingController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MembershipRequestsController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\PosRequestsController.cs" />
     <Compile Include="Controllers\SakController.cs" />
     <Compile Include="Controllers\SkController.cs" />
     <Compile Include="Controllers\TransactionController.cs" />
@@ -365,10 +368,6 @@
     <Compile Include="Migrations\201704291832237_addcomissiontbl.cs" />
     <Compile Include="Migrations\201704291832237_addcomissiontbl.Designer.cs">
       <DependentUpon>201704291832237_addcomissiontbl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704291835283_addmembershiptbl.cs" />
-    <Compile Include="Migrations\201704291835283_addmembershiptbl.Designer.cs">
-      <DependentUpon>201704291835283_addmembershiptbl.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -4987,6 +4986,21 @@
     <Content Include="Views\Sk\Details.cshtml" />
     <Content Include="Views\Sk\Edit.cshtml" />
     <Content Include="Views\Sk\Index.cshtml" />
+    <Content Include="Views\MembershipRequests\Create.cshtml" />
+    <Content Include="Views\MembershipRequests\Delete.cshtml" />
+    <Content Include="Views\MembershipRequests\Details.cshtml" />
+    <Content Include="Views\MembershipRequests\Edit.cshtml" />
+    <Content Include="Views\MembershipRequests\Index.cshtml" />
+    <Content Include="Views\PosRequests\Create.cshtml" />
+    <Content Include="Views\PosRequests\Delete.cshtml" />
+    <Content Include="Views\PosRequests\Details.cshtml" />
+    <Content Include="Views\PosRequests\Edit.cshtml" />
+    <Content Include="Views\PosRequests\Index.cshtml" />
+    <Content Include="Views\AffiliateComissions\Create.cshtml" />
+    <Content Include="Views\AffiliateComissions\Delete.cshtml" />
+    <Content Include="Views\AffiliateComissions\Details.cshtml" />
+    <Content Include="Views\AffiliateComissions\Edit.cshtml" />
+    <Content Include="Views\AffiliateComissions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
@@ -5115,9 +5129,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704291832237_addcomissiontbl.resx">
       <DependentUpon>201704291832237_addcomissiontbl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704291835283_addmembershiptbl.resx">
-      <DependentUpon>201704291835283_addmembershiptbl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
