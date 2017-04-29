@@ -212,10 +212,12 @@
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JsonDemoController.cs" />
+    <Compile Include="Controllers\ListingadminController.cs" />
     <Compile Include="Controllers\ListingController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\SAKController.cs" />
-    <Compile Include="Controllers\SKController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\SakController.cs" />
+    <Compile Include="Controllers\SkController.cs" />
     <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -356,6 +358,10 @@
     <Compile Include="Migrations\201704232052565_addimgurlcol.Designer.cs">
       <DependentUpon>201704232052565_addimgurlcol.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704291645235_addnewstbl.cs" />
+    <Compile Include="Migrations\201704291645235_addnewstbl.Designer.cs">
+      <DependentUpon>201704291645235_addnewstbl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseEntity.cs" />
@@ -365,6 +371,7 @@
     <Compile Include="Models\IdentityContext.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\News.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\RefDataEntity.cs" />
     <Compile Include="Models\SAK.cs" />
@@ -4924,12 +4931,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Student\Student.cshtml" />
-    <Content Include="Views\Student\Index.cshtml" />
-    <Content Include="Views\Student\Create.cshtml" />
-    <Content Include="Views\Student\Details.cshtml" />
-    <Content Include="Views\Student\Delete.cshtml" />
-    <Content Include="Views\Student\Edit.cshtml" />
     <Content Include="Views\Exception\NotFound.cshtml" />
     <Content Include="Views\Account\Success.cshtml" />
     <Content Include="Views\Shared\_BlogListPartial.cshtml" />
@@ -4954,16 +4955,27 @@
     <Content Include="Views\Listing\Index.cshtml" />
     <Content Include="Views\Listing\Details.cshtml" />
     <Content Include="Views\JsonDemo\Index.cshtml" />
-    <Content Include="Views\SAK\Create.cshtml" />
-    <Content Include="Views\SAK\Delete.cshtml" />
-    <Content Include="Views\SAK\Details.cshtml" />
-    <Content Include="Views\SAK\Edit.cshtml" />
-    <Content Include="Views\SAK\Index.cshtml" />
-    <Content Include="Views\SK\Create.cshtml" />
-    <Content Include="Views\SK\Delete.cshtml" />
-    <Content Include="Views\SK\Details.cshtml" />
-    <Content Include="Views\SK\Edit.cshtml" />
-    <Content Include="Views\SK\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Listingadmin\Create.cshtml" />
+    <Content Include="Views\Listingadmin\Delete.cshtml" />
+    <Content Include="Views\Listingadmin\Details.cshtml" />
+    <Content Include="Views\Listingadmin\Edit.cshtml" />
+    <Content Include="Views\Listingadmin\Index.cshtml" />
+    <Content Include="Views\News\Create.cshtml" />
+    <Content Include="Views\News\Delete.cshtml" />
+    <Content Include="Views\News\Details.cshtml" />
+    <Content Include="Views\News\Edit.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\Sak\Create.cshtml" />
+    <Content Include="Views\Sak\Delete.cshtml" />
+    <Content Include="Views\Sak\Details.cshtml" />
+    <Content Include="Views\Sak\Edit.cshtml" />
+    <Content Include="Views\Sak\Index.cshtml" />
+    <Content Include="Views\Sk\Create.cshtml" />
+    <Content Include="Views\Sk\Delete.cshtml" />
+    <Content Include="Views\Sk\Details.cshtml" />
+    <Content Include="Views\Sk\Edit.cshtml" />
+    <Content Include="Views\Sk\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
@@ -5086,6 +5098,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704232052565_addimgurlcol.resx">
       <DependentUpon>201704232052565_addimgurlcol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704291645235_addnewstbl.resx">
+      <DependentUpon>201704291645235_addnewstbl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

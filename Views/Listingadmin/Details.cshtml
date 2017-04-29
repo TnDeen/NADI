@@ -1,0 +1,227 @@
+﻿@model MVC5.Models.Listing
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Listing</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AuctionBank.Nama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AuctionBank.Nama)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AuctionType.Nama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AuctionType.Nama)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bandar.Nama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bandar.Nama)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Negeri.Nama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Negeri.Nama)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PropertyType.Nama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PropertyType.Nama)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UnitNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnitNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Poskod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Poskod)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Size)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Size)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AuctionDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AuctionDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AuctionTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AuctionTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AuctionVenue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AuctionVenue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AuctionNeer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AuctionNeer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lawyer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lawyer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Assignor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Assignor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.imageUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.imageUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateUpdated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateUpdated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastUpdated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastUpdated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastUpdatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastUpdatedBy)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MVC5.Models.SK>
+﻿@model IEnumerable<MVC5.Models.News>
 
 @{
     ViewBag.Title = "Index";
@@ -13,19 +13,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Parent.Nama)
+            @Html.DisplayNameFor(model => model.Header)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Nama)
+            @Html.DisplayNameFor(model => model.Content)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Kod)
+            @Html.DisplayNameFor(model => model.Link)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Perihal)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StatusActive)
+            @Html.DisplayNameFor(model => model.active)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DateCreated)
@@ -51,19 +48,16 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Parent.Nama)
+            @Html.DisplayFor(modelItem => item.Header)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Nama)
+            @Html.DisplayFor(modelItem => item.Content)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Kod)
+            @Html.DisplayFor(modelItem => item.Link)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Perihal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StatusActive)
+            @Html.DisplayFor(modelItem => item.active)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DateCreated)

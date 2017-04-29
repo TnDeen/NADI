@@ -10,112 +10,107 @@ using MVC5.Models;
 
 namespace MVC5.Controllers
 {
-    public class SkController : Controller
+    public class NewsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Sk
+        // GET: News
         public ActionResult Index()
         {
-            var sk = db.Sk.Include(s => s.Parent);
-            return View(sk.ToList());
+            return View(db.News.ToList());
         }
 
-        // GET: Sk/Details/5
+        // GET: News/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SK sK = db.Sk.Find(id);
-            if (sK == null)
+            News news = db.News.Find(id);
+            if (news == null)
             {
                 return HttpNotFound();
             }
-            return View(sK);
+            return View(news);
         }
 
-        // GET: Sk/Create
+        // GET: News/Create
         public ActionResult Create()
         {
-            ViewBag.ParentId = new SelectList(db.Sk, "Id", "Nama");
             return View();
         }
 
-        // POST: Sk/Create
+        // POST: News/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ParentId,Nama,Kod,Perihal,StatusActive,DateCreated,CreateDate,CreateBy,DateUpdated,LastUpdated,LastUpdatedBy")] SK sK)
+        public ActionResult Create([Bind(Include = "Id,Header,Content,Link,active,DateCreated,CreateDate,CreateBy,DateUpdated,LastUpdated,LastUpdatedBy")] News news)
         {
             if (ModelState.IsValid)
             {
-                db.Sk.Add(sK);
+                db.News.Add(news);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ParentId = new SelectList(db.Sk, "Id", "Nama", sK.ParentId);
-            return View(sK);
+            return View(news);
         }
 
-        // GET: Sk/Edit/5
+        // GET: News/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SK sK = db.Sk.Find(id);
-            if (sK == null)
+            News news = db.News.Find(id);
+            if (news == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ParentId = new SelectList(db.Sk, "Id", "Nama", sK.ParentId);
-            return View(sK);
+            return View(news);
         }
 
-        // POST: Sk/Edit/5
+        // POST: News/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ParentId,Nama,Kod,Perihal,StatusActive,DateCreated,CreateDate,CreateBy,DateUpdated,LastUpdated,LastUpdatedBy")] SK sK)
+        public ActionResult Edit([Bind(Include = "Id,Header,Content,Link,active,DateCreated,CreateDate,CreateBy,DateUpdated,LastUpdated,LastUpdatedBy")] News news)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(sK).State = EntityState.Modified;
+                db.Entry(news).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ParentId = new SelectList(db.Sk, "Id", "Nama", sK.ParentId);
-            return View(sK);
+            return View(news);
         }
 
-        // GET: Sk/Delete/5
+        // GET: News/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SK sK = db.Sk.Find(id);
-            if (sK == null)
+            News news = db.News.Find(id);
+            if (news == null)
             {
                 return HttpNotFound();
             }
-            return View(sK);
+            return View(news);
         }
 
-        // POST: Sk/Delete/5
+        // POST: News/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            SK sK = db.Sk.Find(id);
-            db.Sk.Remove(sK);
+            News news = db.News.Find(id);
+            db.News.Remove(news);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

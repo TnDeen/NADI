@@ -10,18 +10,18 @@ using MVC5.Models;
 
 namespace MVC5.Controllers
 {
-    public class SAKController : Controller
+    public class SakController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: SAK
+        // GET: Sak
         public ActionResult Index()
         {
             var sak = db.Sak.Include(s => s.Parent).Include(s => s.Sk);
             return View(sak.ToList());
         }
 
-        // GET: SAK/Details/5
+        // GET: Sak/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,7 +36,7 @@ namespace MVC5.Controllers
             return View(sAK);
         }
 
-        // GET: SAK/Create
+        // GET: Sak/Create
         public ActionResult Create()
         {
             ViewBag.ParentId = new SelectList(db.Sak, "Id", "Nama");
@@ -44,7 +44,7 @@ namespace MVC5.Controllers
             return View();
         }
 
-        // POST: SAK/Create
+        // POST: Sak/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -63,7 +63,7 @@ namespace MVC5.Controllers
             return View(sAK);
         }
 
-        // GET: SAK/Edit/5
+        // GET: Sak/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -80,7 +80,7 @@ namespace MVC5.Controllers
             return View(sAK);
         }
 
-        // POST: SAK/Edit/5
+        // POST: Sak/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -98,7 +98,7 @@ namespace MVC5.Controllers
             return View(sAK);
         }
 
-        // GET: SAK/Delete/5
+        // GET: Sak/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -113,7 +113,7 @@ namespace MVC5.Controllers
             return View(sAK);
         }
 
-        // POST: SAK/Delete/5
+        // POST: Sak/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

@@ -1,62 +1,47 @@
-﻿@model MVC5.Models.SAK
+﻿@model MVC5.Models.News
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Delete";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Delete</h2>
 
+<h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>SAK</h4>
+    <h4>News</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Parent.Nama)
+            @Html.DisplayNameFor(model => model.Header)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Parent.Nama)
+            @Html.DisplayFor(model => model.Header)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Sk.Nama)
+            @Html.DisplayNameFor(model => model.Content)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Sk.Nama)
+            @Html.DisplayFor(model => model.Content)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Nama)
+            @Html.DisplayNameFor(model => model.Link)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Nama)
+            @Html.DisplayFor(model => model.Link)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Kod)
+            @Html.DisplayNameFor(model => model.active)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Kod)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Perihal)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Perihal)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.StatusActive)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.StatusActive)
+            @Html.DisplayFor(model => model.active)
         </dd>
 
         <dt>
@@ -108,8 +93,13 @@
         </dd>
 
     </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

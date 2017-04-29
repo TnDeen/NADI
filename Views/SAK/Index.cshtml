@@ -2,109 +2,99 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
+<h2>Index</h2>
 
-<div class="container">
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Parent.Nama)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sk.Nama)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nama)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kod)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Perihal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StatusActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateUpdated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastUpdated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastUpdatedBy)
+        </th>
+        <th></th>
+    </tr>
 
-    <div class="row">
-        <div class="col-lg-12">
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Parent.Nama)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sk.Nama)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nama)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kod)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Perihal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StatusActive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateCreated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateUpdated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastUpdated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastUpdatedBy)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
 
-            <h2>Index</h2>
-
-            <p>
-                @Html.ActionLink("Create New", "Create")
-            </p>
-            <table class="table">
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Parent.Nama)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Sk.Nama)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Nama)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Kod)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Perihal)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.StatusActive)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.DateCreated)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CreateDate)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CreateBy)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.DateUpdated)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.LastUpdated)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.LastUpdatedBy)
-                    </th>
-                    <th></th>
-                </tr>
-
-                @foreach (var item in Model)
-                {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Parent.Nama)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Sk.Nama)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Nama)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Kod)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Perihal)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.StatusActive)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DateCreated)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CreateDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CreateBy)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DateUpdated)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LastUpdated)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LastUpdatedBy)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { onclick = "return confirm('Confirm Delete?');" })
-                    </td>
-                </tr>
-                }
-
-            </table>
-        </div>
-    </div>
-</div>
+</table>
