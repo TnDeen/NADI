@@ -125,7 +125,7 @@ namespace MVC5.Common
 
             string year = DateTime.Now.Year.ToString();
             StringBuilder sb = new StringBuilder();
-            sb.Append("NADI");
+            sb.Append(MyConstant.member_code);
             sb.Append(year);
             string kod = sb.ToString();
             counter = db.SistemCounter.Where(a => a.Kod.Equals(kod)).FirstOrDefault();
@@ -135,7 +135,8 @@ namespace MVC5.Common
                 int num = counter.runningNumber + 1;
                 counter.runningNumber = num;
                 curnumber = counter.runningNumber.ToString("D4");
-            } else
+            }
+            else
             {
                 curnumber = 1.ToString("D4");
                 counter = new SistemId();
@@ -149,6 +150,35 @@ namespace MVC5.Common
             
             
             return kod + curnumber;
+        }
+
+        public int updateListingView(int id)
+        {
+            SistemId counter = null;
+            int num = 0;
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append(MyConstant.listing_count_code);
+            sb.Append(id.ToString());
+            string kod = sb.ToString();
+            counter = db.SistemCounter.Where(a => a.Kod.Equals(kod)).FirstOrDefault();
+
+            if (counter != null)
+            {
+                num = counter.runningNumber + 1;
+                counter.runningNumber = num;
+            }
+            else
+            {
+                num = 1;
+                counter = new SistemId();
+                counter.Kod = kod;
+                counter.runningNumber = num;
+                db.SistemCounter.Add(counter);
+
+            }
+            db.SaveChanges();
+            return num;
         }
 
         public ApplicationUser findUserbyId(string id)

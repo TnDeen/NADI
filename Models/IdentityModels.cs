@@ -76,6 +76,7 @@ namespace MVC5.Models
 
         public virtual ICollection<File> Files { get; set; }
         public virtual ICollection<FilePath> FilePaths { get; set; }
+        public virtual ICollection<AffiliateComission> AffiliateComission { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -97,6 +98,9 @@ namespace MVC5.Models
         public DbSet<SK> Sk { get; set; }
         public DbSet<Message> SystemMessage { get; set; }
         public DbSet<News> News { get; set; }
+        public DbSet<MembershipRequest> MembershipRequest { get; set; }
+        public DbSet<PosRequest> PosRequest { get; set; }
+        public DbSet<AffiliateComission> AffiliateComission { get; set; }
         public DbSet<SistemId> SistemCounter { get; set; }
         public DbSet<Listing> Transactions { get; set; }
         public DbSet<File> Files { get; set; }
