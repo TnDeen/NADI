@@ -46,7 +46,7 @@ namespace MVC5.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Header,Content,Link,active,DateCreated,CreateDate,CreateBy,DateUpdated,LastUpdated,LastUpdatedBy")] News news)
+        public ActionResult Create([Bind(Include = "Id,Header,Content,Link,active,CreateDate,CreateBy,LastUpdated,LastUpdatedBy")] News news)
         {
             if (ModelState.IsValid)
             {

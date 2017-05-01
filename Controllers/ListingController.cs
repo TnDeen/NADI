@@ -100,7 +100,10 @@ namespace MVC5.Controllers
             var listing = db.Transactions.Where(a => a.Id == id).FirstOrDefault();
             vo.listing = listing;
             vo.imgUrl = MyConstant.property_img_default_url + listing.PropertyTypeId + MyConstant.file_jpg;
-            
+            var news = db.News.Take(5);
+            vo.NewsList = news.ToList();
+
+
             ViewBag.ListingViewCount = updateListingView(listing.Id);
 
             SearchVO searchvo = new SearchVO();

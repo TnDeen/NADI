@@ -351,7 +351,9 @@ namespace MVC5.Controllers
                             String aucBank = workSheet.Cells[rowIterator, 11].Value.ToString();
 
                             String venue = workSheet.Cells[rowIterator, 12].Value.ToString();
-                            String time = workSheet.Cells[rowIterator, 13].Value.ToString();
+                            String timeRaw = workSheet.Cells[rowIterator, 13].Value.ToString();
+                            DateTime strdate = Convert.ToDateTime(timeRaw);
+                            String time = strdate.ToString("hh:mm tt");
                             String aucneer = workSheet.Cells[rowIterator, 14].Value.ToString();
                             String lawyer = workSheet.Cells[rowIterator, 15].Value.ToString();
                             String asignor = workSheet.Cells[rowIterator, 16].Value.ToString();

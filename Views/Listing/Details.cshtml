@@ -96,8 +96,16 @@
 
 
                 <div class="col-lg-9 ">
-                    <h2 id="forms-example">@Model.listing.Address1</h2>
-                    <h4>@Model.listing.PropertyType.Nama (@ViewBag.ListingViewCount Views)</h4>
+                    <h2 id="forms-example">
+                        @if (Request.IsAuthenticated)
+                        {@Model.listing.UnitNo}  @Model.listing.Address1 @Model.listing.Poskod @Model.listing.Bandar.Nama @Model.listing.Negeri.Nama
+                    </h2>
+                    @if (!Request.IsAuthenticated)
+                    {
+                        @Html.ActionLink("View FullAddress", "Register", "Account")
+                    }
+
+                    <h4>@Model.listing.PropertyType.Nama (<i class="fa fa-eye"></i> @ViewBag.ListingViewCount Views)</h4>
                     <div class="blog-item">
                         <div class="row">
 
@@ -133,7 +141,7 @@
                                                 Auction Date
                                             </td>
                                             <td>
-                                                <strong>RM @Model.listing.AuctionDate</strong>
+                                                <strong>@Model.listing.AuctionDate.Value.ToShortDateString()</strong>
                                             </td>
                                         </tr>
                                         <tr>
@@ -142,14 +150,6 @@
                                             </td>
                                             <td>
                                                 <strong>RM @Model.listing.Size (Sq.ft)</strong>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Auction Price
-                                            </td>
-                                            <td>
-                                                <strong>RM @Model.listing.Price</strong>
                                             </td>
                                         </tr>
                                         <tr>
@@ -170,78 +170,162 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                                <br />
+                                <div class="col-md-6">
 
+                                    @Html.ActionLink("Appoint Agent", "Register", "Account", null, htmlAttributes: new { @class = "btn btn-danger btn-block" })
+                                </div>
+                                <div class="col-md-6">
+
+                                    @Html.ActionLink("Buy POS", "Register", "Account", null, htmlAttributes: new { @class = "btn btn-primary btn-block" })
+                                </div>
                             </div>
                         </div>
                         <div class="row">
 
                             <div class="col-lg-12 col-sm-12">
                                 <h1>
-                                    Premium Info
+                                    Premium Info 
                                 </h1>
-                                <table class="table">
+                               
+                                @if (Model.Subscribe)
+                                {
+                                    <table class="table">
+                                     
 
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                Type of Auction
-                                            </td>
-                                            <td>
-                                                <strong>RM @Model.listing.AuctionType.Nama</strong>
-                                            </td>
-                                        </tr>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    Type of Auction
+                                                </td>
+                                                <td>
+                                                    <strong>RM @Model.listing.AuctionType.Nama</strong>
+                                                </td>
+                                            </tr>
 
-                                        <tr>
-                                            <td>
-                                                Auction Bank
-                                            </td>
-                                            <td>
-                                                <strong>@Model.listing.AuctionBank.Nama</strong>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Auction Venue
-                                            </td>
-                                            <td>
-                                                <strong>@Model.listing.AuctionVenue</strong>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Auction Time
-                                            </td>
-                                            <td>
-                                                <strong>@Model.listing.AuctionTime</strong>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Auctioneer
-                                            </td>
-                                            <td>
-                                                <strong>@Model.listing.AuctionNeer</strong>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Lawyer
-                                            </td>
-                                            <td>
-                                                <strong>@Model.listing.Lawyer</strong>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Assignor
-                                            </td>
-                                            <td>
-                                                <strong>@Model.listing.Assignor</strong>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                              @Html.ActionLink("Go Back", "Index", "Listing", new { address = Model.search.Address }, htmlAttributes: new { @class = "btn btn-danger right" })
+                                            <tr>
+                                                <td>
+                                                    Auction Bank
+                                                </td>
+                                                <td>
+                                                    <strong>@Model.listing.AuctionBank.Nama</strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Auction Venue
+                                                </td>
+                                                <td>
+                                                    <strong>@Model.listing.AuctionVenue</strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Auction Time
+                                                </td>
+                                                <td>
+                                                    <strong>@Model.listing.AuctionTime</strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Auctioneer
+                                                </td>
+                                                <td>
+                                                    <strong>@Model.listing.AuctionNeer</strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Lawyer
+                                                </td>
+                                                <td>
+                                                    <strong>@Model.listing.Lawyer</strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Assignor
+                                                </td>
+                                                <td>
+                                                    <strong>@Model.listing.Assignor</strong>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                }
+                                else
+                                {
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <td>@Html.ActionLink("Upgrade To VIP", "Register", "Account", null, htmlAttributes: new { @class = "btn btn-primary btn-sm" })</td>
+                                                <td></td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    Type of Auction
+                                                </td>
+                                                <td>
+                                                    <strong>VIP Member Only</strong>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    Auction Bank
+                                                </td>
+                                                <td>
+                                                    <strong>VIP Member Only</strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Auction Venue
+                                                </td>
+                                                <td>
+                                                    <strong>VIP Member Only</strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Auction Time
+                                                </td>
+                                                <td>
+                                                    <strong>VIP Member Only</strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Auctioneer
+                                                </td>
+                                                <td>
+                                                    <strong>VIP Member Only</strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Lawyer
+                                                </td>
+                                                <td>
+                                                    <strong>VIP Member Only</strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Assignor
+                                                </td>
+                                                <td>
+                                                    <strong>VIP Member Only</strong>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                }
+                                
+                                @Html.ActionLink("Go Back", "Index", "Listing", new { address = Model.search.Address }, htmlAttributes: new { @class = "btn btn-danger right" })
 
                             </div>
                         </div>
@@ -253,190 +337,32 @@
 
                 <div class="col-lg-3">
                     <div class="blog-side-item">
-                        <div class="category">
-                            <h3>
-                                Categories
-                            </h3>
-                            <ul class="list-unstyled">
-                                <li>
-                                    <a href="javascript:;">
-                                        <i class="fa fa-angle-right pr-10">
-                                        </i>
-                                        Animals
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;">
-                                        <i class="fa fa-angle-right pr-10">
-                                        </i>
-                                        Landscape
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;">
-                                        <i class="fa fa-angle-right pr-10">
-                                        </i>
-                                        Portait
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;">
-                                        <i class="fa fa-angle-right pr-10">
-                                        </i>
-                                        Wild Life
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;">
-                                        <i class="fa fa-angle-right pr-10">
-                                        </i>
-                                        Video
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                        
 
                         <div class="blog-post">
                             <h3>
-                                Latest Blog Post
+                                <i class="fa fa-bullhorn"></i> Announcement
+                                
                             </h3>
-                            <div class="media">
-
-                                <div class="media-body">
-                                    <h5 class="media-heading">
-                                        <a href="javascript:;">
-                                            02 May 2014
-                                        </a>
-                                    </h5>
-                                    <p>
-                                        Donec id elit non mi porta gravida at eget metus amet int
-                                    </p>
+                            
+                               @foreach (var item in Model.NewsList)
+                               {
+                                <div class="media">
+                                    <div class="media-body">
+                                        <h5 class="media-heading">
+                                            <strong>@item.DateCreated.ToShortDateString()</strong>
+                                        </h5>
+                                        <p>
+                                            @item.Content
+                                        </p>
+                                        <a href="@item.Link" target="_blank">Read More</a>
+                                    </div>
                                 </div>
-                            </div>
+                               }
+
+                              
 
 
-                        </div>
-
-                        <div class="tags">
-                            <h3>
-                                Tags
-                            </h3>
-                            <ul class="tag">
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-tags pr-5">
-                                        </i>
-                                        flat
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-tags pr-5">
-                                        </i>
-                                        clean
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-tags pr-5">
-                                        </i>
-                                        admin
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-tags pr-5">
-                                        </i>
-                                        UI
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-tags pr-5">
-                                        </i>
-                                        responsive
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-tags pr-5">
-                                        </i>
-                                        Web Design
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-tags pr-5">
-                                        </i>
-                                        UIX
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-tags pr-5">
-                                        </i>
-                                        Blog
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-tags pr-5">
-                                        </i>
-                                        flat Admin
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-tags pr-5">
-                                        </i>
-                                        Dashboard
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-
-
-                        <div class="archive">
-                            <h3>
-                                Archive
-                            </h3>
-                            <ul class="list-unstyled">
-                                <li>
-                                    <a href="javascript:;">
-                                        <i class="fa fa-angle-double-right pr-10">
-                                        </i>
-                                        May 2014
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;">
-                                        <i class="fa fa-angle-double-right pr-10">
-                                        </i>
-                                        April 2014
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;">
-                                        <i class="fa fa-angle-double-right pr-10">
-                                        </i>
-                                        March 2014
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;">
-                                        <i class="fa fa-angle-double-right pr-10">
-                                        </i>
-                                        February 2014
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;">
-                                        <i class="fa fa-angle-double-right pr-10">
-                                        </i>
-                                        January 2014
-                                    </a>
-                                </li>
-                            </ul>
                         </div>
 
 

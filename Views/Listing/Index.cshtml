@@ -120,14 +120,14 @@
                                 <div class="media">
                                     <div class="media-body">
                                         <h4 class="media-heading">
-                                            @item.listing.UnitNo @item.listing.Address1 @item.listing.Poskod @item.listing.Bandar.Nama @item.listing.Negeri.Nama
+                                           @if (Request.IsAuthenticated) {@item.listing.UnitNo}  @item.listing.Address1 @item.listing.Poskod @item.listing.Bandar.Nama @item.listing.Negeri.Nama
                                         </h4>
                                         <h2>RM @item.listing.Price</h2>
                                         <p>
                                             @item.listing.Size (Sq.ft)
                                         </p>
                                         <p>
-                                            @item.listing.AuctionDate
+                                            @item.listing.AuctionDate.Value.ToShortDateString()
                                         </p>
                                         <br />
                                         @Html.ActionLink("Read More", "Details", new { id = item.listing.GenerateSlug(), address = item.search.Address }, htmlAttributes: new { @class = "btn btn-danger right" })
