@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MVC5.Models.SAK>
+﻿@model IEnumerable<MVC5.Models.MemberPackage>
 
 @{
     ViewBag.Title = "Index";
@@ -13,22 +13,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Parent.Nama)
+            @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Sk.Nama)
+            @Html.DisplayNameFor(model => model.ContentFree)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Nama)
+            @Html.DisplayNameFor(model => model.FreeMember)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Kod)
+            @Html.DisplayNameFor(model => model.ContentVip)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Perihal)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StatusActive)
+            @Html.DisplayNameFor(model => model.VipMember)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DateCreated)
@@ -54,22 +51,19 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Parent.Nama)
+            @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Sk.Nama)
+            @Html.DisplayFor(modelItem => item.ContentFree)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Nama)
+            @Html.DisplayFor(modelItem => item.FreeMember)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Kod)
+            @Html.DisplayFor(modelItem => item.ContentVip)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Perihal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StatusActive)
+            @Html.DisplayFor(modelItem => item.VipMember)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DateCreated)
@@ -98,6 +92,3 @@
 }
 
 </table>
-<p>
-    @Html.ActionLink("Back to SK", "Index", "Sk")
-</p>

@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
+@using MVC5.Common
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
@@ -13,7 +14,11 @@
                 <span class="sr-only">Toggle Dropdown</span>
             </button>
             <ul class="dropdown-menu" role="menu">
-                <li><a href="Manage/Index">Dashboard</a></li>
+                <li>@Html.ActionLink("Dashboard", "Index", "Manage")</li>
+              
+                    @Html.Partial("MenuAdmin")
+                
+                
                 <li><a href="javascript:document.getElementById('logoutForm').submit()">Logout</a></li>
             </ul>
         </div>

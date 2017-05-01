@@ -216,6 +216,7 @@
     <Compile Include="Controllers\ListingadminController.cs" />
     <Compile Include="Controllers\ListingController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MemberPackagesController.cs" />
     <Compile Include="Controllers\MembershipRequestsController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\PosRequestsController.cs" />
@@ -369,6 +370,14 @@
     <Compile Include="Migrations\201704291832237_addcomissiontbl.Designer.cs">
       <DependentUpon>201704291832237_addcomissiontbl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705011450480_addpackagetbl.cs" />
+    <Compile Include="Migrations\201705011450480_addpackagetbl.Designer.cs">
+      <DependentUpon>201705011450480_addpackagetbl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705011517132_chagecolpaackage.cs" />
+    <Compile Include="Migrations\201705011517132_chagecolpaackage.Designer.cs">
+      <DependentUpon>201705011517132_chagecolpaackage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AffiliateComission.cs" />
@@ -379,6 +388,7 @@
     <Compile Include="Models\IdentityContext.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MemberPackage.cs" />
     <Compile Include="Models\MembershipRequest.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\Message.cs" />
@@ -5001,6 +5011,15 @@
     <Content Include="Views\AffiliateComissions\Details.cshtml" />
     <Content Include="Views\AffiliateComissions\Edit.cshtml" />
     <Content Include="Views\AffiliateComissions\Index.cshtml" />
+    <Content Include="Views\MemberPackages\Create.cshtml" />
+    <Content Include="Views\MemberPackages\Delete.cshtml" />
+    <Content Include="Views\MemberPackages\Details.cshtml" />
+    <Content Include="Views\MemberPackages\Edit.cshtml" />
+    <Content Include="Views\MemberPackages\Index.cshtml" />
+    <Content Include="Views\MemberPackages\BuyPackage.cshtml" />
+    <Content Include="Views\Shared\Menu.cshtml" />
+    <Content Include="Views\MembershipRequests\Purchase.cshtml" />
+    <Content Include="Views\Shared\MenuAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
@@ -5129,6 +5148,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704291832237_addcomissiontbl.resx">
       <DependentUpon>201704291832237_addcomissiontbl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705011450480_addpackagetbl.resx">
+      <DependentUpon>201705011450480_addpackagetbl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705011517132_chagecolpaackage.resx">
+      <DependentUpon>201705011517132_chagecolpaackage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

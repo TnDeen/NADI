@@ -57,88 +57,17 @@
                                     </a>
                                 </li>
 
+                                @Html.Partial("MenuAdmin")
 
-
+                                
+                                
 
                             </ul>
                         </div>
 
 
 
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                            <div class="dashboard-stat blue-madison">
-                                <div class="visual">
-                                    <i class="fa fa-comments"></i>
-                                </div>
-                                <div class="details">
-                                    <div class="number">
-                                        @Html.DisplayFor(model => model.accumulativePoint)
-                                    </div>
-                                    <div class="desc">
-                                        Accumulative Points
-                                    </div>
-                                </div>
-                                <a class="more" href="#">
-                                    MYR
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                            <div class="dashboard-stat purple-plum">
-                                <div class="visual">
-                                    <i class="fa fa-globe"></i>
-                                </div>
-                                <div class="details">
-                                    <div class="number">
-                                        @Html.DisplayFor(model => model.potentialPoint)
-                                    </div>
-                                    <div class="desc">
-                                        Pre-Active Points
-                                    </div>
-                                </div>
-                                <a class="more" href="#">
-                                    MYR
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                            <div class="dashboard-stat red-intense">
-                                <div class="visual">
-                                    <i class="fa fa-bar-chart-o"></i>
-                                </div>
-                                <div class="details">
-                                    <div class="number">
-                                        @Html.DisplayFor(model => model.wallet)
-                                    </div>
-                                    <div class="desc">
-                                        Active Points
-                                    </div>
-                                </div>
-                                <a class="more" href="#">
-                                    MYR
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                            <div class="dashboard-stat green-haze">
-                                <div class="visual">
-                                    <i class="fa fa-shopping-cart"></i>
-                                </div>
-                                <div class="details">
-                                    <div class="number">
-                                        @Html.DisplayFor(model => model.totalChild)
-                                    </div>
-                                    <div class="desc">
-                                        Registerer
-                                    </div>
-                                </div>
-                                <a class="more" href="/Transaction/Index">
-                                    View more <i class="m-icon-swapright m-icon-white"></i>
-                                </a>
-                            </div>
-                        </div>
+                       
 
                     </div>
 
@@ -156,11 +85,7 @@
                     <div class="content-page">
                         <!-- BEGIN SAMPLE TABLE PORTLET-->
                         <div class="portlet box red">
-                            <div class="portlet-title">
-                                <div class="caption">
-                                    <i class="fa fa-cogs"></i>User Link
-                                </div>
-                            </div>
+                           
                             <div class="portlet-body">
                                 <div class="input-group">
                                     <span class="input-group-btn">

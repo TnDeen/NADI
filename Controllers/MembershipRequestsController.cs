@@ -136,5 +136,37 @@ namespace MVC5.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+        // GET: MembershipRequests/Create
+        [Authorize]
+        public ActionResult Purchase()
+        {
+            ViewBag.IntroducerId = new SelectList(idb.Users, "Id", "NomborAhli");
+            ViewBag.PackageTypeId = new SelectList(db.Sak, "Id", "Nama");
+            ViewBag.UserId = new SelectList(idb.Users, "Id", "NomborAhli");
+            return View();
+        }
+
+        // POST: MembershipRequests/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Purchase([Bind(Include = "Id,UserId,IntroducerId,PackageTypeId,TarikhSah,TarikhTamat,StatusActive,DateCreated,CreateDate,CreateBy,DateUpdated,LastUpdated,LastUpdatedBy")] MembershipRequest membershipRequest)
+        {
+            if (ModelState.IsValid)
+            {
+                db.MembershipRequest.Add(membershipRequest);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.IntroducerId = new SelectList(idb.Users, "Id", "NomborAhli", membershipRequest.IntroducerId);
+            ViewBag.PackageTypeId = new SelectList(db.Sak, "Id", "Nama", membershipRequest.PackageTypeId);
+            ViewBag.UserId = new SelectList(idb.Users, "Id", "NomborAhli", membershipRequest.UserId);
+            return View(membershipRequest);
+        }
     }
 }

@@ -10,120 +10,109 @@ using MVC5.Models;
 
 namespace MVC5.Controllers
 {
-    public class SakController : Controller
+    public class MemberPackagesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Sak
-        public ActionResult Index(int? skId)
+        // GET: MemberPackages
+        public ActionResult Index()
         {
-            var sak = db.Sak.Include(s => s.Parent).Include(s => s.Sk);
-            if (skId != null)
-            {
-                sak = sak.Where(a => a.SkId == skId);
-            }
-            return View(sak.ToList());
+            return View(db.MemberPackage.ToList());
         }
 
-        // GET: Sak/Details/5
+        // GET: MemberPackages/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SAK sAK = db.Sak.Find(id);
-            if (sAK == null)
+            MemberPackage memberPackage = db.MemberPackage.Find(id);
+            if (memberPackage == null)
             {
                 return HttpNotFound();
             }
-            return View(sAK);
+            return View(memberPackage);
         }
 
-        // GET: Sak/Create
+        // GET: MemberPackages/Create
         public ActionResult Create()
         {
-            ViewBag.ParentId = new SelectList(db.Sak, "Id", "Nama");
-            ViewBag.SkId = new SelectList(db.Sk, "Id", "Nama");
             return View();
         }
 
-        // POST: Sak/Create
+        // POST: MemberPackages/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ParentId,SkId,Nama,Kod,Perihal,StatusActive,DateCreated,CreateDate,CreateBy,DateUpdated,LastUpdated,LastUpdatedBy")] SAK sAK)
+        public ActionResult Create([Bind(Include = "Id,Title,ContentFree,FreeMember,ContentVip,VipMember,CreateDate,CreateBy,LastUpdated,LastUpdatedBy")] MemberPackage memberPackage)
         {
             if (ModelState.IsValid)
             {
-                db.Sak.Add(sAK);
+                memberPackage.DateCreated = DateTime.Now;
+                memberPackage.DateUpdated = DateTime.Now;
+                db.MemberPackage.Add(memberPackage);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ParentId = new SelectList(db.Sak, "Id", "Nama", sAK.ParentId);
-            ViewBag.SkId = new SelectList(db.Sk, "Id", "Nama", sAK.SkId);
-            return View(sAK);
+            return View(memberPackage);
         }
 
-        // GET: Sak/Edit/5
+        // GET: MemberPackages/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SAK sAK = db.Sak.Find(id);
-            if (sAK == null)
+            MemberPackage memberPackage = db.MemberPackage.Find(id);
+            if (memberPackage == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ParentId = new SelectList(db.Sak, "Id", "Nama", sAK.ParentId);
-            ViewBag.SkId = new SelectList(db.Sk, "Id", "Nama", sAK.SkId);
-            return View(sAK);
+            return View(memberPackage);
         }
 
-        // POST: Sak/Edit/5
+        // POST: MemberPackages/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ParentId,SkId,Nama,Kod,Perihal,StatusActive,DateCreated,CreateDate,CreateBy,DateUpdated,LastUpdated,LastUpdatedBy")] SAK sAK)
+        public ActionResult Edit([Bind(Include = "Id,Title,ContentFree,FreeMember,ContentVip,VipMember,DateCreated,CreateDate,CreateBy,DateUpdated,LastUpdated,LastUpdatedBy")] MemberPackage memberPackage)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(sAK).State = EntityState.Modified;
+                db.Entry(memberPackage).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ParentId = new SelectList(db.Sak, "Id", "Nama", sAK.ParentId);
-            ViewBag.SkId = new SelectList(db.Sk, "Id", "Nama", sAK.SkId);
-            return View(sAK);
+            return View(memberPackage);
         }
 
-        // GET: Sak/Delete/5
+        // GET: MemberPackages/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SAK sAK = db.Sak.Find(id);
-            if (sAK == null)
+            MemberPackage memberPackage = db.MemberPackage.Find(id);
+            if (memberPackage == null)
             {
                 return HttpNotFound();
             }
-            return View(sAK);
+            return View(memberPackage);
         }
 
-        // POST: Sak/Delete/5
+        // POST: MemberPackages/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            SAK sAK = db.Sak.Find(id);
-            db.Sak.Remove(sAK);
+            MemberPackage memberPackage = db.MemberPackage.Find(id);
+            db.MemberPackage.Remove(memberPackage);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -135,6 +124,11 @@ namespace MVC5.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult BuyPackage()
+        {
+            return View(db.MemberPackage.ToList());
         }
     }
 }
