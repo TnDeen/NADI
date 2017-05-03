@@ -78,10 +78,11 @@ namespace MVC5.Controllers
             {
                 ls.search = new SearchVO { Address = searchString };
                 var basePath = Server.MapPath("~/Content/img/property-type/" + ls.listing.Id);
-                var path = Path.Combine(basePath, "default" + ".jpg");
-                if (Directory.Exists(path))
+                string filename = "default" + ".jpg";
+                var path = Path.Combine(basePath, filename);
+                if (System.IO.File.Exists(path))
                 {
-                    ls.imgUrl = "path";
+                    ls.imgUrl = MyConstant.property_img_base_url + ls.listing.Id + "/" + filename;
                 }
                 
                 nwlist.Add(ls);
@@ -107,7 +108,14 @@ namespace MVC5.Controllers
             ListingVO vo = new ListingVO();
             var listing = db.Transactions.Where(a => a.Id == id).FirstOrDefault();
             vo.listing = listing;
-            vo.imgUrl = MyConstant.property_img_default_url + listing.PropertyTypeId + MyConstant.file_jpg;
+
+            var basePath = Server.MapPath("~/Content/img/property-type/" + listing.Id);
+            string filename = "default" + ".jpg";
+            var path = Path.Combine(basePath, filename);
+            if (System.IO.File.Exists(path))
+            {
+                vo.imgUrl = MyConstant.property_img_base_url + listing.Id + "/" + filename;
+            }
             var news = db.News.Take(5);
             vo.NewsList = news.ToList();
 

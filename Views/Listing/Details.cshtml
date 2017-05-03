@@ -111,13 +111,13 @@
 
                             <div class="col-lg-6 col-sm-6">
                                 <div class="blog-img">
-                                    @if (Model.listing.imageUrl == null)
+                                    @if (Model.imgUrl == null)
                                     {
                                         <img src="~/Content/img/property-type/default/@Model.listing.PropertyTypeId@MyConstant.file_jpg" alt="" />
                                     }
                                     else
                                     {
-                                        <img src="~/Content/img/property-type/@Model.listing.imageUrl" alt="" />
+                                        <img src="~/Content/img/property-type/@Model.listing.Id/default.jpg" alt="" />
                                     }
 
                                 </div>

@@ -103,14 +103,14 @@
                             <div class="col-lg-5 col-sm-5">
                                 <div class="media">
                                     <a class="pull-left" href="javascript:;">
-                                        @if (item.listing.imageUrl == null)
+                                        @if (item.imgUrl == null)
                                         {
 
                                             <img class="media-object-large" src="@MyConstant.property_img_default_url@item.listing.PropertyTypeId@MyConstant.file_jpg" alt="">
                                         }
                                         else
                                         {
-                                            <img class="media-object-large" src="@item.listing.imageUrl" alt="">
+                                            <img class="media-object-large" src="@item.imgUrl" alt="">
                                         }
 
                                     </a>
@@ -135,7 +135,7 @@
                                         {
                                             @Html.ActionLink("Edit", "Edit", "Listingadmin", new { id = item.listing.Id }, null)
                                             @Html.ActionLink("Details", "Details", "Listingadmin", new { id = item.listing.Id }, null)
-                                            @Html.ActionLink("Delete", "Delete", "Listingadmin", new { id = item.listing.Id }, null)
+                                            @Html.ActionLink("Delete", "Delete", "Listingadmin", new { id = item.listing.Id }, new { onclick = "return confirm('Confirm delete?');" })
                                         }
 
                                     </div>
