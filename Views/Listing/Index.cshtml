@@ -131,6 +131,12 @@
                                         </p>
                                         <br />
                                         @Html.ActionLink("Read More", "Details", new { id = item.listing.GenerateSlug(), address = item.search.Address }, htmlAttributes: new { @class = "btn btn-danger right" })
+                                        @if (User.IsInRole(MyConstant.Role_Admin))
+                                        {
+                                            @Html.ActionLink("Edit", "Edit", "Listingadmin", new { id = item.listing.Id }, null)
+                                            @Html.ActionLink("Details", "Details", "Listingadmin", new { id = item.listing.Id }, null)
+                                            @Html.ActionLink("Delete", "Delete", "Listingadmin", new { id = item.listing.Id }, null)
+                                        }
 
                                     </div>
                                 </div>

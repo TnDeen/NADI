@@ -118,6 +118,34 @@ namespace MVC5.Common
             return result;
         }
 
+        public Boolean validateSkKod(string kod)
+        {
+            Boolean result = false;
+            if (kod != null)
+            {
+                var sk = db.Sk.Where(a => a.Kod.Equals(kod)).FirstOrDefault();
+                if (sk != null)
+                {
+                    result = true;
+                }
+            }
+            return result;
+        }
+
+        public Boolean validateSakKod(string kod)
+        {
+            Boolean result = false;
+            if (kod != null)
+            {
+                var sk = db.Sak.Where(a => a.Kod.Equals(kod)).FirstOrDefault();
+                if (sk != null)
+                {
+                    result = true;
+                }
+            }
+            return result;
+        }
+
         public string generateNoAhli()
         {
             SistemId counter = null;

@@ -311,6 +311,8 @@ C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\System.Web.WebPages.dll
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\System.Web.WebPages.Razor.dll
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\WebGrease.dll
+C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\EntityFramework.xml
+C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\EntityFramework.SqlServer.xml
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\EPPlus.xml
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\Gma.QrCodeNet.Encoding.pdb
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\Gma.QrCodeNet.Encoding.xml
@@ -326,8 +328,6 @@ C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\System.Web.WebPages.Deployment.xml
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\System.Web.WebPages.Razor.xml
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\Antlr3.Runtime.pdb
-C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\EntityFramework.xml
-C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\EntityFramework.SqlServer.xml
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\Microsoft.AspNet.Identity.Core.xml
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\Microsoft.AspNet.Identity.Owin.xml
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\bin\Microsoft.AspNet.Identity.EntityFramework.xml
@@ -374,11 +374,10 @@ C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.Migrations.resettransactiontbl.resources
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.Migrations.chgecolposkod.resources
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.Migrations.addimgurlcol.resources
-C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.csproj.GenerateResource.Cache
-C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.dll
-C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.pdb
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.Migrations.addnewstbl.resources
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.Migrations.addcomissiontbl.resources
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.Migrations.addpackagetbl.resources
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.Migrations.chagecolpaackage.resources
-C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.csprojResolveAssemblyReference.cache
+C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.csproj.GenerateResource.Cache
+C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.dll
+C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.pdb

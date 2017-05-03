@@ -7,12 +7,12 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MVC5.Models;
+using MVC5.Common;
 
 namespace MVC5.Controllers
 {
-    public class SkController : Controller
+    public class SkController : BaseController
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Sk
         public ActionResult Index()
@@ -48,8 +48,14 @@ namespace MVC5.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ParentId,Nama,Kod,Perihal,StatusActive,DateCreated,CreateDate,CreateBy,DateUpdated,LastUpdated,LastUpdatedBy")] SK sK)
+        public ActionResult Create([Bind(Include = "Id,Nama,Kod,Perihal,StatusActive,CreateDate,CreateBy,LastUpdated,LastUpdatedBy")] SK sK)
         {
+            if (validateSkKod(sK.Kod))
+            {
+
+                ModelState.AddModelError("", "Kod Telah Wujud! Sila Gunakan Kod Lain.");
+                return View(sK);
+            }
             if (ModelState.IsValid)
             {
                 db.Sk.Add(sK);

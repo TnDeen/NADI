@@ -4,6 +4,7 @@ using MVC5.Models.VM;
 using PagedList;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -76,6 +77,13 @@ namespace MVC5.Controllers
             foreach (ListingVO ls in alltran)
             {
                 ls.search = new SearchVO { Address = searchString };
+                var basePath = Server.MapPath("~/Content/img/property-type/" + ls.listing.Id);
+                var path = Path.Combine(basePath, "default" + ".jpg");
+                if (Directory.Exists(path))
+                {
+                    ls.imgUrl = "path";
+                }
+                
                 nwlist.Add(ls);
             }
 

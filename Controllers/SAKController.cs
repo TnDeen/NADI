@@ -7,12 +7,12 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MVC5.Models;
+using MVC5.Common;
 
 namespace MVC5.Controllers
 {
-    public class SakController : Controller
+    public class SakController : BaseController
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Sak
         public ActionResult Index(int? skId)
@@ -53,13 +53,19 @@ namespace MVC5.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ParentId,SkId,Nama,Kod,Perihal,StatusActive,DateCreated,CreateDate,CreateBy,DateUpdated,LastUpdated,LastUpdatedBy")] SAK sAK)
+        public ActionResult Create([Bind(Include = "Id,SkId,Nama,Kod,Perihal,StatusActive,CreateDate,CreateBy,LastUpdated,LastUpdatedBy")] SAK sAK)
         {
+            if (validateSakKod(sAK.Kod))
+            {
+
+                ModelState.AddModelError("", "Kod Telah Wujud! Sila Gunakan Kod Lain.");
+                return View(sAK);
+            }
             if (ModelState.IsValid)
             {
                 db.Sak.Add(sAK);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Sk");
             }
 
             ViewBag.ParentId = new SelectList(db.Sak, "Id", "Nama", sAK.ParentId);
