@@ -7,255 +7,342 @@
 }
 
 <!-- Sequence Modern Slider -->
+<div id="da-slider" class="da-slider">
+    
+    <div class="da-slide">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <h2>
+                        <i>CLEAN &amp; FRESH</i>
+                        <br>
+                        <i>RESPONSIVE</i>
+                        <br>
+                        <i>DESIGN</i>
+                    </h2>
+                    <p>
+                        <i>Lorem ipsum dolor amet</i>
+                        <br />
+                        <i>veniam omnis</i>
+                    </p>
+                    <a href="#" class="btn btn-danger btn-lg da-link">
+                        Read more
+                    </a>
+                    <div class="da-img">
+                        <img src="~/Content/img/parallax-slider/images/2.png" alt="image01" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="da-slide">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>
+                        <i>RESPONSIVE VIDEO</i>
+                        <br />
+                        <i>SUPPORT AND</i>
+                        <br />
+                        <i>MANY MORE</i>
+                    </h2>
+                    <p>
+                        <i>Lorem ipsum dolor amet</i>
+                        <br />
+                        <i>tempor incididunt ut</i>
+                    </p>
+                    <a href="#" class="btn btn-info btn-lg da-link">
+                        Read more
+                    </a>
+                    <div class="da-img">
+                        <img src="~/Content/img/parallax-slider/images/3.png" alt="image01" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="da-slide">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>
+                        <i>USING BEST WEB</i>
+                        </br>
+                        <i>SOLUTIONS WITH</i>
+                        </br>
+                        <i>HTML5/CSS3</i>
+                    </h2>
+                    <p>
+                        <i>Lorem ipsum dolor amet</i>
+                        <br />
+                        <i>tempor incididunt ut</i>
+                        <br />
+                        <i>veniam omnis </i>
+                    </p>
+                    <a href="#" class="btn btn-info btn-lg da-link">
+                        Read more
+                    </a>
+                    <div class="da-img">
+                        <img src="~/Content/img/parallax-slider/images/1.png" alt="image01" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="da-arrows">
+        <span class="da-arrows-prev">
+        </span>
+        <span class="da-arrows-next">
+        </span>
+    </nav>
+</div>
+
+<!-- Search Form -->
 @using (Html.BeginForm("Index", "Listing", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-<div id="newsletter-faq" style="margin-top:0px !important;">
 
 
-    <div class="container">
-        <div class="row">
 
-            <div class="col-md-12">
-                <p class="lead wow fadeInLeft">Find Property Auctions In Malaysia</p>
-            </div>
+    <div class="bg-gray" style="padding-top:20px;">
 
 
-            <div class="form-group col-md-12">
+        <div class="container">
+            <div class="row">
 
-
-                <div class="input-group wow fadeInRight">
-                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control newsletter-input", @placeholder = "Enter Location Name" } })
-                    <span class="input-group-btn">
-                        <button class="btn btn-inverse btn-hg" type="submit" name="submit">Search</button>
-                    </span>
+                <div class="col-md-12">
+                    <p class="lead wow fadeInLeft">Find Property Auctions In Malaysia</p>
                 </div>
 
 
-
-            </div>
-
-        </div><!-- /row -->
-
-        <div class="row">
+                <div class="form-group col-md-12">
 
 
-
-
-            <div class="form-group col-md-6 wow fadeInRight">
-
-                        @Html.DropDownList("PropertyTypeId", null, htmlAttributes: new { @class = "form-control newsletter-input" })
-         
-
-            </div>
-
-            <div class="form-group col-md-3 wow fadeInRight">
-
-                        @Html.DropDownList("NegeriID", null, htmlAttributes: new { @class = "form-control newsletter-input" })
-       
-
-            </div>
-
-            <div class="form-group col-md-3 wow fadeInRight">
-
-                        @Html.DropDownList("ListingTypeId", null, htmlAttributes: new { @class = "form-control newsletter-input" })
-          
+                    <div class="input-group wow fadeInRight">
+                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control newsletter-input", @placeholder = "Enter Location Name" } })
+                        <span class="input-group-btn">
+                            <button class="btn btn-inverse btn-hg" type="submit" name="submit">Search</button>
+                        </span>
+                    </div>
 
 
 
-            </div>
+                </div>
 
-        </div><!-- /row -->
+            </div><!-- /row -->
 
-        <div class="row">
-
-            <div class="form-group col-md-3 wow fadeInRight">
-
-                @Html.EditorFor(model => model.MinPrice, new { htmlAttributes = new { @class = "form-control newsletter-input", @placeholder = "Min Price (MYR)" } })
-
-
-            </div>
-
-            <div class="form-group col-md-3 wow fadeInRight">
-
-                @Html.EditorFor(model => model.MaxPrice, new { htmlAttributes = new { @class = "form-control newsletter-input", @placeholder = "Max Price (MYR)" } })
-
-
-            </div>
-
-            <div class="form-group col-md-3 wow fadeInRight">
-
-
-                @Html.EditorFor(model => model.MinSize, new { htmlAttributes = new { @class = "form-control newsletter-input", @placeholder = "Min Area (Sq.ft)" } })
-
-
-
-            </div>
-
-            <div class="form-group col-md-3 wow fadeInRight">
-
-                @Html.EditorFor(model => model.MaxSize, new { htmlAttributes = new { @class = "form-control newsletter-input", @placeholder = "Max Area (Sq.ft)" } })
+            <div class="row">
 
 
 
 
-            </div>
+                <div class="form-group col-md-6 wow fadeInRight">
 
-        </div><!-- /row -->
-
-        <div class="row">
-
-            <div class="form-group col-md-12 wow fadeInRight">
+                    @Html.DropDownList("PropertyTypeId", null, htmlAttributes: new { @class = "form-control newsletter-input" })
 
 
-                <button class="btn btn-danger">Go To Advance Search</button>
+                </div>
+
+                <div class="form-group col-md-3 wow fadeInRight">
+
+                    @Html.DropDownList("NegeriID", null, htmlAttributes: new { @class = "form-control newsletter-input" })
+
+
+                </div>
+
+                <div class="form-group col-md-3 wow fadeInRight">
+
+                    @Html.DropDownList("ListingTypeId", null, htmlAttributes: new { @class = "form-control newsletter-input" })
 
 
 
-            </div>
 
-        </div><!-- /row -->
+                </div>
+
+            </div><!-- /row -->
+
+            <div class="row">
+
+                <div class="form-group col-md-3 wow fadeInRight">
+
+                    @Html.EditorFor(model => model.MinPrice, new { htmlAttributes = new { @class = "form-control newsletter-input", @placeholder = "Min Price (MYR)" } })
 
 
-    </div><!-- /container -->
+                </div>
+
+                <div class="form-group col-md-3 wow fadeInRight">
+
+                    @Html.EditorFor(model => model.MaxPrice, new { htmlAttributes = new { @class = "form-control newsletter-input", @placeholder = "Max Price (MYR)" } })
 
 
-</div>
+                </div>
+
+                <div class="form-group col-md-3 wow fadeInRight">
+
+
+                    @Html.EditorFor(model => model.MinSize, new { htmlAttributes = new { @class = "form-control newsletter-input", @placeholder = "Min Area (Sq.ft)" } })
+
+
+
+                </div>
+
+                <div class="form-group col-md-3 wow fadeInRight">
+
+                    @Html.EditorFor(model => model.MaxSize, new { htmlAttributes = new { @class = "form-control newsletter-input", @placeholder = "Max Area (Sq.ft)" } })
+
+
+
+
+                </div>
+
+            </div><!-- /row -->
+
+            <div class="row">
+
+                <div class="form-group col-md-12 wow fadeInRight">
+
+
+                    <button class="btn btn-danger">Go To Advance Search</button>
+
+
+
+                </div>
+
+            </div><!-- /row -->
+
+
+        </div><!-- /container -->
+
+
+    </div>
 }
 
 <div class="container" id="tourpackages-carousel">
 
+    
+
     <div class="row">
-        <div class="col-lg-6">
-            <div class="about-carousel wow fadeInLeft" style="margin-bottom:30px;">
-                <div id="myCarousel" class="carousel slide">
-                    <!-- Carousel items -->
-                    <div class="carousel-inner">
-                        <div class="active item">
-                            <img src="~/Content/img/service3.jpg" alt="">
-                            <div class="carousel-caption">
-                                <p>
-                                    Lorem ipsum dolor sit amet.
-                                </p>
-                            </div>
+
+        <div class="text-center feature-head wow fadeInDown">
+            <h1 class="">
+                Find Property Auctions In Malaysia
+            </h1>
+
+        </div>
+        <!--tab start-->
+        <section class="tab wow fadeInLeft">
+            <header class="panel-heading tab-bg-dark-navy-blue">
+                <ul class="nav nav-tabs nav-justified ">
+                    <li class="active">
+                        <a data-toggle="tab" href="#hotlisting">
+                            Hot Listing
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#latestlisting">
+                            Latest Listing
+                        </a>
+                    </li>
+                </ul>
+            </header>
+            <div class="panel-body">
+                <div class="tab-content tasi-tab">
+                    <div id="hotlisting" class="tab-pane fade in active">
+                        <h2>Hot Auction in Malaysia</h2>
+                        <hr />
+                        <div class="profile">
+                            @foreach (var item in Model.listing)
+            {
+                                <div class="col-xs-12 col-sm-6 col-md-3">
+                                    <div class="thumbnail wow fadeInUp" data-wow-delay=".1s">
+                                        @if (item.listing.imageUrl == null)
+                                        {
+
+                                            <img src="@MyConstant.property_img_default_url@item.listing.PropertyTypeId@MyConstant.file_jpg" alt="">
+                                        }
+                                        else
+                                        {
+                                            <img src="@item.listing.imageUrl" alt="">
+                                        }
+                                        <div class="caption">
+                                            <strong>
+                                                @item.listing.Address1 @item.listing.Poskod @item.listing.Bandar.Nama @item.listing.Negeri.Nama
+                                            </strong>
+                                            <strong>
+                                                RM @item.listing.Price
+                                            </strong>
+                                            <hr />
+                                            @Html.ActionLink("Read More", "Details", "Listing", new { id = item.listing.Id }, htmlAttributes: new { @class = "btn btn-danger right" })
+
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+
+
+
+
+
+
+
                         </div>
-                        <div class="item">
-                            <img src="~/Content/img/service2.jpg" alt="">
-                            <div class="carousel-caption">
-                                <p>
-                                    Blanditiis praesentium voluptatum
-                                </p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <img src="~/Content/img/service5.jpg" alt="">
-                            <div class="carousel-caption">
-                                <p>
-                                    Blanditiis praesentium voluptatum
-                                </p>
-                            </div>
-                        </div>
+                        
+                        
                     </div>
-                    <!-- Carousel nav -->
-                    <a class="carousel-control left" href="#myCarousel" data-slide="prev">
-                        <i class="fa fa-angle-left">
-                        </i>
-                    </a>
-                    <a class="carousel-control right" href="#myCarousel" data-slide="next">
-                        <i class="fa fa-angle-right">
-                        </i>
-                    </a>
+                    <div id="latestlisting" class="tab-pane fade">
+                        <h2>Latest Auction in Malaysia</h2>
+                        <hr />
+                        <div class="profile">
+                            @foreach (var item in Model.listing)
+            {
+                                <div class="col-xs-12 col-sm-6 col-md-3">
+                                    <div class="thumbnail wow fadeInUp" data-wow-delay=".1s">
+                                        @if (item.listing.imageUrl == null)
+                                        {
+
+                                            <img src="@MyConstant.property_img_default_url@item.listing.PropertyTypeId@MyConstant.file_jpg" alt="">
+                                        }
+                                        else
+                                        {
+                                            <img src="@item.listing.imageUrl" alt="">
+                                        }
+                                        <div class="caption">
+                                            <strong>
+                                                @item.listing.Address1 @item.listing.Poskod @item.listing.Bandar.Nama @item.listing.Negeri.Nama
+                                            </strong>
+                                            <strong>
+                                                RM @item.listing.Price
+                                            </strong>
+                                            <hr />
+                                            @Html.ActionLink("Read More", "Details", "Listing", new { id = item.listing.Id }, htmlAttributes: new { @class = "btn btn-danger right" })
+
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+
+
+
+
+
+
+
+                        </div>
+                        
+                    </div>
+                    
                 </div>
             </div>
-        </div>
-        <div class="col-lg-6">
-            <!--testimonial start-->
-            <div class="about-testimonial boxed-style about-flexslider ">
-                <section class="slider wow fadeInRight">
-                    <div class="flexslider">
-                        <ul class="slides about-flex-slides">
-                            <li>
-                                <div class="about-testimonial-image ">
-                                    <img alt="" src="~/Content/img/person_1.png">
-                                </div>
-                                <a class="about-testimonial-author" href="#">
-                                    Russel Reagan
-                                </a>
-                                <span class="about-testimonial-company">
-                                    CCD Realestate
-                                </span>
-                                <div class="about-testimonial-content">
-                                    <p class="about-testimonial-quote">
-                                        Donec ut purus sed tortor malesuada venenatis eget eget lorem. Nullam tempor lectus a ligula lobortis pretium. Donec ut purus sed tortor malesuada venenatis eget eget lorem.
-                                    </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="about-testimonial-image ">
-                                    <img alt="" src="~/Content/img/person_2.png">
-                                </div>
-                                <a class="about-testimonial-author" href="#">
-                                    Steven gerrard
-                                </a>
-                                <span class="about-testimonial-company">
-                                    Molt BVG
-                                </span>
-                                <div class="about-testimonial-content">
-                                    <p class="about-testimonial-quote">
-                                        Pellentesque et pulvinar enim. Quisque at tempor ligula. Maecenas augue ante, euismod vitae egestas sit amet, accumsan eu nulla. Nullam tempor lectus a ligula lobortis pretium. Donec ut purus sed tortor malesuada venenatis eget eget lorem.
-                                    </p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </section>
-            </div>
-            <!--testimonial end-->
-        </div>
-    </div>
+        </section>
+        <!--tab end-->
 
-    <div class="row">
-        <div class="col-lg-12">
-            <h2>Latest Auction in Malaysia</h2>
-            <hr />
-        </div>
-            <div class="profile">
-                @foreach (var item in Model.listing)
-            {
-                    <div class="col-xs-12 col-sm-6 col-md-3">
-                        <div class="thumbnail wow fadeInUp" data-wow-delay=".1s">
-                            @if (item.listing.imageUrl == null)
-                            {
-
-                                <img src="@MyConstant.property_img_default_url@item.listing.PropertyTypeId@MyConstant.file_jpg" alt="">
-                            }
-                            else
-                            {
-                                <img src="@item.listing.imageUrl" alt="">
-                            }
-                            <div class="caption">
-                                <strong>
-                                    @item.listing.Address1 @item.listing.Poskod @item.listing.Bandar.Nama @item.listing.Negeri.Nama
-                                </strong>
-                                <strong>
-                                    RM @item.listing.Price
-                                </strong>
-                                <hr />
-                                @Html.ActionLink("Read More", "Details", "Listing", new { id = item.listing.Id }, htmlAttributes: new { @class = "btn btn-danger right" })
-
-                            </div>
-                        </div>
-                    </div>
-                }
-
-
-
-
-
-
-
-
-            </div>
-            <!-- End row -->
 
         </div>
         

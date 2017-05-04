@@ -65,19 +65,6 @@
                         </div><!-- /row -->
 
 
-                        <div class="row">
-
-                            <div class="form-group col-md-12 wow fadeInRight">
-
-
-                                <button class="btn btn-danger" type="submit" name="submit">Go To Advance Search</button>
-
-
-
-                            </div>
-
-                        </div><!-- /row -->
-
 
                     </div><!-- /container -->
 
@@ -373,3 +360,29 @@
         </div>
     </div>
 </div>
+
+<input type="text" class="form-control" name="amount" value="@Model.listing.Price" onkeyup="loanCalculater()">
+<input type="text" class="form-control" name="interest" value="4.5" onkeyup="loanCalculater()">
+<input type="text" class="form-control" name="years" value="30" onkeyup="loanCalculater()">
+<input type="text" class="form-control" readonly="readonly" name="monthly-payment">
+
+<script>
+
+    window.onload = function () {
+        loanCalculater();
+    };
+
+    function loanCalculater() {
+        var amount = $('input[name="amount"]').val();
+        var interest = $('input[name="interest"]').val();
+        var years = $('input[name="years"]').val();
+        if (amount && interest && years) {
+            var rate = interest / 1200;
+            var months = years * 12;
+            var payment = ((amount * rate) / (1 - Math.pow((1 + rate), -months))).toFixed(2);
+            $('input[name="monthly-payment"]').val(payment);
+        } else {
+            $('input[name="monthly-payment"]').val(0);
+        }
+    }
+</script>

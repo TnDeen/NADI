@@ -796,12 +796,22 @@ ul.about-flex-slides { margin-left: 0 }
     padding: 30px 0;
     margin-bottom: 40px;
 }
+
+.breadcrumbs-menu {
+    margin-bottom:0px !important; 
+    padding:10px 0; 
+    background-color:white; 
+    font-size: 22px;
+    font-weight: 400;
+}
+
 .breadcrumb {
     margin-bottom: 0;
     background: none;
 }
-.breadcrumb li a { color: #d10c0c }
-.breadcrumb li.active { color: #fff }
+.breadcrumb li a { color: #000000 }
+.breadcrumb li a:hover { color: #d10c0c }
+.breadcrumb li.active { color: #d10c0c }
 .breadcrumbs h1 {
     font-size: 24px;
     font-weight: 600;

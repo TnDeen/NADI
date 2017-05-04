@@ -381,3 +381,4 @@ C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.csproj.GenerateResource.Cache
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.dll
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.pdb
+C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.csprojResolveAssemblyReference.cache
