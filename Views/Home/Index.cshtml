@@ -6,6 +6,20 @@
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
 }
 
+<!--breadcrumbs start-->
+<div class="breadcrumbs-menu">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12">
+                <ol class="pull-left nav navbar-nav">
+                    @Html.Partial("MainMenu")
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<!--breadcrumbs end-->
+
 <!-- Sequence Modern Slider -->
 <div id="da-slider" class="da-slider">
     
@@ -14,21 +28,7 @@
             <div class="row">
                 <div class="col-md-12">
 
-                    <h2>
-                        <i>CLEAN &amp; FRESH</i>
-                        <br>
-                        <i>RESPONSIVE</i>
-                        <br>
-                        <i>DESIGN</i>
-                    </h2>
-                    <p>
-                        <i>Lorem ipsum dolor amet</i>
-                        <br />
-                        <i>veniam omnis</i>
-                    </p>
-                    <a href="#" class="btn btn-danger btn-lg da-link">
-                        Read more
-                    </a>
+                   
                     <div class="da-img">
                         <img src="~/Content/img/parallax-slider/images/2.png" alt="image01" />
                     </div>
@@ -42,21 +42,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>
-                        <i>RESPONSIVE VIDEO</i>
-                        <br />
-                        <i>SUPPORT AND</i>
-                        <br />
-                        <i>MANY MORE</i>
-                    </h2>
-                    <p>
-                        <i>Lorem ipsum dolor amet</i>
-                        <br />
-                        <i>tempor incididunt ut</i>
-                    </p>
-                    <a href="#" class="btn btn-info btn-lg da-link">
-                        Read more
-                    </a>
+                    
                     <div class="da-img">
                         <img src="~/Content/img/parallax-slider/images/3.png" alt="image01" />
                     </div>
@@ -70,23 +56,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>
-                        <i>USING BEST WEB</i>
-                        </br>
-                        <i>SOLUTIONS WITH</i>
-                        </br>
-                        <i>HTML5/CSS3</i>
-                    </h2>
-                    <p>
-                        <i>Lorem ipsum dolor amet</i>
-                        <br />
-                        <i>tempor incididunt ut</i>
-                        <br />
-                        <i>veniam omnis </i>
-                    </p>
-                    <a href="#" class="btn btn-info btn-lg da-link">
-                        Read more
-                    </a>
+                  
                     <div class="da-img">
                         <img src="~/Content/img/parallax-slider/images/1.png" alt="image01" />
                     </div>
@@ -109,7 +79,7 @@
 
 
 
-    <div class="bg-gray" style="padding-top:20px;">
+    <div class="bg-gray col-lg-6" style="padding-top:20px; position:absolute; top:220px; left:60px; z-index:999999;">
 
 
         <div class="container">
@@ -119,43 +89,33 @@
                     <p class="lead wow fadeInLeft">Find Property Auctions In Malaysia</p>
                 </div>
 
+                <div class="form-group col-md-12 wow fadeInRight">
 
-                <div class="form-group col-md-12">
-
-
-                    <div class="input-group wow fadeInRight">
-                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control newsletter-input", @placeholder = "Enter Location Name" } })
-                        <span class="input-group-btn">
-                            <button class="btn btn-inverse btn-hg" type="submit" name="submit">Search</button>
-                        </span>
-                    </div>
-
+                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control newsletter-input", @placeholder = "Enter Location Name" } })
 
 
                 </div>
 
-            </div><!-- /row -->
-
-            <div class="row">
+            
 
 
 
 
-                <div class="form-group col-md-6 wow fadeInRight">
+                <div class="form-group col-md-12 wow fadeInRight">
 
                     @Html.DropDownList("PropertyTypeId", null, htmlAttributes: new { @class = "form-control newsletter-input" })
 
 
                 </div>
 
-                <div class="form-group col-md-3 wow fadeInRight">
+                <div class="form-group col-md-6 wow fadeInRight">
 
                     @Html.DropDownList("NegeriID", null, htmlAttributes: new { @class = "form-control newsletter-input" })
 
 
                 </div>
 
-                <div class="form-group col-md-3 wow fadeInRight">
+                <div class="form-group col-md-6 wow fadeInRight">
 
                     @Html.DropDownList("ListingTypeId", null, htmlAttributes: new { @class = "form-control newsletter-input" })
 
@@ -164,9 +124,7 @@
 
                 </div>
 
-            </div><!-- /row -->
-
-            <div class="row">
+           
 
                 <div class="form-group col-md-3 wow fadeInRight">
 
@@ -200,6 +158,17 @@
 
                 </div>
 
+                <div class="form-group col-md-12 wow fadeInRight">
+
+                    @Html.EditorFor(model => model.AuctionDate, new { htmlAttributes = new { @class = "form-control newsletter-input", @placeholder = "Auction Date)" } })
+
+
+
+
+                </div>
+
+                
+
             </div><!-- /row -->
 
             <div class="row">
@@ -207,7 +176,7 @@
                 <div class="form-group col-md-12 wow fadeInRight">
 
 
-                    <button class="btn btn-danger">Go To Advance Search</button>
+                    <button class="btn btn-danger btn-block btn-lg" type="submit" name="submit">Find Auction Property</button>
 
 
 
@@ -345,6 +314,26 @@
 
 
         </div>
+    <div class="row">
+        <div class="text-center feature-head wow fadeInDown" style="padding-bottom:20px;">
+            <div class="col-md-4">
+
+                @Html.ActionLink("Our Newsletter", "Register", "Account", null, htmlAttributes: new { @class = "btn btn-danger btn-block btn-lg" })
+            </div>
+            <div class="col-md-4">
+
+                @Html.ActionLink("Get Mobile", "Register", "Account", null, htmlAttributes: new { @class = "btn btn-success btn-block btn-lg" })
+            </div>
+            <div class="col-md-4">
+
+                @Html.ActionLink("Contact Us", "Register", "Account", null, htmlAttributes: new { @class = "btn btn-primary btn-block btn-lg" })
+            </div>
+            
+        </div>
+        
+      
+        
+    </div>
         
     <!-- End container -->
 </div>
