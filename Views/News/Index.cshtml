@@ -13,6 +13,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.newsType.Nama)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Header)
         </th>
         <th>
@@ -23,6 +26,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.active)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.featured)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DateCreated)
@@ -48,6 +54,9 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.newsType.Nama)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Header)
         </td>
         <td>
@@ -58,6 +67,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.active)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.featured)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DateCreated)

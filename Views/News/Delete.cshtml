@@ -13,6 +13,14 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.newsType.Nama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.newsType.Nama)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Header)
         </dt>
 
@@ -42,6 +50,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.active)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.featured)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.featured)
         </dd>
 
         <dt>

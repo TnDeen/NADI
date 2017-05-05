@@ -98,6 +98,7 @@ namespace MVC5.Models
         public DbSet<SK> Sk { get; set; }
         public DbSet<Message> SystemMessage { get; set; }
         public DbSet<News> News { get; set; }
+        public DbSet<Article> Article { get; set; }
         public DbSet<MemberPackage> MemberPackage { get; set; }
         public DbSet<MembershipRequest> MembershipRequest { get; set; }
         public DbSet<PosRequest> PosRequest { get; set; }

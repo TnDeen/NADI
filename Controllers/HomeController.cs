@@ -35,9 +35,16 @@ namespace MVC5.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            var article = db.Article.Where(a => a.articleType.Kod.Equals("ARTCL_TYPE_ABOUT")).FirstOrDefault();
 
-            return View();
+            return View(article);
+        }
+
+        public ActionResult Article(string articleKod)
+        {
+            var article = db.Article.Where(a => a.articleType.Kod.Equals(articleKod)).FirstOrDefault();
+
+            return View(article);
         }
 
         public ActionResult Contact()

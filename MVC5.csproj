@@ -209,6 +209,7 @@
     <Compile Include="Common\PartialCacheAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AffiliateComissionsController.cs" />
+    <Compile Include="Controllers\ArticlesController.cs" />
     <Compile Include="Controllers\ExceptionController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -378,9 +379,18 @@
     <Compile Include="Migrations\201705011517132_chagecolpaackage.Designer.cs">
       <DependentUpon>201705011517132_chagecolpaackage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705050902271_addarticetbl.cs" />
+    <Compile Include="Migrations\201705050902271_addarticetbl.Designer.cs">
+      <DependentUpon>201705050902271_addarticetbl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705050932355_addcolimgurl.cs" />
+    <Compile Include="Migrations\201705050932355_addcolimgurl.Designer.cs">
+      <DependentUpon>201705050932355_addcolimgurl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AffiliateComission.cs" />
+    <Compile Include="Models\Article.cs" />
     <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\FilePath.cs" />
@@ -4400,9 +4410,6 @@
     <Content Include="Content\css\seq-slider\apple-style\apple-style\scripts\jquery.sequence-min.js" />
     <Content Include="Content\css\seq-slider\apple-style\apple-style\scripts\jquery.sequence.js" />
     <Content Include="Content\css\seq-slider\apple-style\apple-style\sequencejs-options.apple-style.js" />
-    <Content Include="Content\css\seq-slider\apple-style\license-free-theme.txt" />
-    <Content Include="Content\css\seq-slider\apple-style\readme-free.txt" />
-    <Content Include="Content\css\seq-slider\apple-style\release-history.txt" />
     <Content Include="Content\css\seq-slider\apple-style\sequence-apple-style.jpg" />
     <Content Include="Content\css\seq-slider\apple-style\__MACOSX\._readme-free.txt" />
     <Content Include="Content\css\seq-slider\apple-style\__MACOSX\._sequence-apple-style.jpg" />
@@ -4876,8 +4883,10 @@
     <Content Include="Content\css\seq-slider\apple-style\__MACOSX\apple-style\css\._.DS_Store" />
     <Content Include="Content\css\seq-slider\apple-style\__MACOSX\apple-style\scripts\._.DS_Store" />
     <Content Include="Content\css\seq-slider\apple-style\__MACOSX\apple-style\scss\._.DS_Store" />
-    <None Include="Properties\PublishProfiles\nadikebangsaan.com - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\nadikebangsaan.com - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\jomrumahlelong.com - FTP %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\jomrumahlelong.com - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\jomrumahlelong.com - Web Deploy %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\jomrumahlelong.com - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\clipboard.js" />
     <Content Include="Scripts\clipboard.min.js" />
@@ -5235,11 +5244,6 @@
     <Content Include="Views\Listingadmin\Details.cshtml" />
     <Content Include="Views\Listingadmin\Edit.cshtml" />
     <Content Include="Views\Listingadmin\Index.cshtml" />
-    <Content Include="Views\News\Create.cshtml" />
-    <Content Include="Views\News\Delete.cshtml" />
-    <Content Include="Views\News\Details.cshtml" />
-    <Content Include="Views\News\Edit.cshtml" />
-    <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\Sak\Create.cshtml" />
     <Content Include="Views\Sak\Delete.cshtml" />
     <Content Include="Views\Sak\Details.cshtml" />
@@ -5276,6 +5280,17 @@
     <Content Include="Views\Shared\MenuAdmin.cshtml" />
     <Content Include="Views\Shared\MainMenu.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\tinymce_jquery_full.cshtml" />
+    <Content Include="Views\News\Create.cshtml" />
+    <Content Include="Views\News\Delete.cshtml" />
+    <Content Include="Views\News\Details.cshtml" />
+    <Content Include="Views\News\Edit.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\Articles\Create.cshtml" />
+    <Content Include="Views\Articles\Delete.cshtml" />
+    <Content Include="Views\Articles\Details.cshtml" />
+    <Content Include="Views\Articles\Edit.cshtml" />
+    <Content Include="Views\Articles\Index.cshtml" />
+    <Content Include="Views\Home\Article.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
@@ -5410,6 +5425,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705011517132_chagecolpaackage.resx">
       <DependentUpon>201705011517132_chagecolpaackage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705050902271_addarticetbl.resx">
+      <DependentUpon>201705050902271_addarticetbl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705050932355_addcolimgurl.resx">
+      <DependentUpon>201705050932355_addcolimgurl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
