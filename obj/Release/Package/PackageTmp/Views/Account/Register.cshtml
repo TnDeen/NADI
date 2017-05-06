@@ -1,0 +1,74 @@
+﻿@model MVC5.Models.RegisterViewModel
+@using MVC5.Models
+@{
+    ViewBag.Title = "Daftar Keahlian";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <div class="container">
+        <h2>Sign Up (Free)</h2>
+        <h4>Sign Up now to view full address with unit/lot numbers</h4>
+        <div class="row">
+            <div class="col-lg-12">
+                @Html.AntiForgeryToken()
+
+                <hr />
+                @if (ViewBag.shownotification != null && ViewBag.shownotification == true)
+                {
+                    <div class="alert alert-warning alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                        <strong>Amaran!</strong> @ViewBag.errormsg
+                    </div>
+                }
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email / Username" })
+                        <br />
+                        <span class="label label-danger">
+                            Sila gunakan alamat emel yang sah!
+                        </span>
+                        <br />
+                        <br />
+                        Tiada Emel? <a href="https://accounts.google.com/SignUp" target="_blank">Klik untuk daftar akaun emel di google</a>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm Password" })
+                    </div>
+                </div>
+                @Html.HiddenFor(m => m.Introducer)
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" class="btn btn-success" value="Sign Up" />
+
+                        <hr />
+                        <p>
+                           Go Back To @Html.ActionLink("Login!", "Login")
+                        </p>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+       </div>
+         }
+

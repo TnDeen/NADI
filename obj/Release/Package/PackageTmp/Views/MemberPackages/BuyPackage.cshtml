@@ -1,0 +1,195 @@
+﻿@model IEnumerable<MVC5.Models.MemberPackage>
+@{
+    ViewBag.Title = "BuyPackage";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+
+<div class="gray-bg price-container">
+    <div class="page-header" style="padding-top:5px;">
+        <h1 class="text-center">
+            <span class="wow flipInX">
+                Pricing and Plans
+            </span>
+
+            <small class="wow flipInX">
+                Simple and clear, no hidden fees ,cancel at anytime.
+            </small>
+
+        </h1>
+    </div>
+    <div class="section first">
+        <div class="container">
+
+           
+
+            <div class="row">
+                <div class="price-two-container">
+               
+                    <div class="col-md-6">
+                        <div class="pricing-table-two wow fadeInUp">
+                            <div class="inner">
+                                <div class="title">
+                                    <button class="btn btn-success btn-lg">FREE MEMBER</button>
+                                </div>
+                                <p class="desc">
+                                    Perfect for those who getting started with our app.
+                                </p>
+                               
+                                <ul class="items">
+                                    @foreach (var item in Model)
+                                    {
+                                        if (item.FreeMember)
+                                        {
+                                            <li class="available">
+                                                <div class="icon-holder">
+                                                    <i class="fa fa-check text-success">
+                                                    </i>
+                                                </div>
+                                                <div class="desc">
+                                                    <span class="text-black">
+                                                        @if (item.ContentFree != null)
+                                                        {
+                                                            <p>@item.Title - @item.ContentFree</p>
+                                                        }
+                                                        else
+                                                        {
+                                                            @item.Title
+
+                                                        }
+                                                    </span>
+
+                                                </div>
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li>
+                                                <div class="icon-holder">
+                                                    <i class="fa fa-times text-error ">
+                                                    </i>
+                                                </div>
+                                                <div class="desc">
+                                                    <span class="text-black">
+                                                        
+                                                        @if (item.ContentFree != null)
+                                                        {
+                                                            <p>@item.Title - @item.ContentFree</p>
+                                                        } else
+                                                        {
+                                                            @item.Title
+
+                                                        }
+                                                    </span>
+
+                                                </div>
+                                            </li>
+                                        }
+                                    }
+                                    
+                                    
+
+                                    
+                                    
+
+                                    
+
+                                </ul>
+                                <div class="price-actions">
+                                    @if (Request.IsAuthenticated)
+                                    {
+                                        <button class="btn btn-success btn-lg">Already Sign Up</button>
+                                    }
+                                    else
+                                    {
+                                        @Html.ActionLink("Sign Up", "Register", "Account",null, htmlAttributes : new { @class = "btn btn-success btn-lg" })
+                                    }
+                                    
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="pricing-table-two highlighted wow fadeInUp">
+                            <div class="inner">
+                                <div class="title">
+                                    <button class="btn btn-primary btn-lg">VIP MEMBER</button>
+                                </div>
+                                <p class="desc">
+                                    Perfect for those who getting started with our app.
+                                </p>
+                               
+                                <ul class="items">
+                                    @foreach (var item in Model)
+                                    {
+                                        if (item.VipMember)
+                                        {
+                                            <li class="available">
+                                                <div class="icon-holder">
+                                                    <i class="fa fa-check text-success">
+                                                    </i>
+                                                </div>
+                                                <div class="desc">
+                                                    <span class="text-black">
+                                                        @if (item.ContentVip != null)
+                                                        {
+                                                            <p>@item.Title - @item.ContentVip</p>
+                                                        }
+                                                        else
+                                                        {
+                                                            @item.Title
+
+                                                        }
+                                                    </span>
+
+                                                </div>
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li>
+                                                <div class="icon-holder">
+                                                    <i class="fa fa-times text-error ">
+                                                    </i>
+                                                </div>
+                                                <div class="desc">
+                                                    <span class="text-black">
+
+                                                        @if (item.ContentVip != null)
+                                                        {
+                                                            <p>@item.Title - @item.ContentVip</p>
+                                                        }
+                                                        else
+                                                        {
+                                                            @item.Title
+
+                                                        }
+                                                    </span>
+
+                                                </div>
+                                            </li>
+                                        }
+                                    }
+
+                                </ul>
+                                <div class="price-actions">
+                                    @Html.ActionLink("Subscribe", "Create", "MembershipRequests", null,htmlAttributes: new { @class = "btn btn-primary btn-lg" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="clearfix">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+

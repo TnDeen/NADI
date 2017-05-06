@@ -14,7 +14,8 @@ namespace MVC5.Common
         public const String Role_Vendor = "Vendor";
         public const String Role_User = "User";
         //public const String Base_Url = "http://www.jomrumahlelong.com";
-        public const String Base_Url = "http://localhost:44300";
+        //public const String Base_Url = "http://localhost:44300";
+        public const String Base_Url = "http://jomrumah.w24.wh-2.com/myapp";
         public const String Web_Name = "jomrumahlelong.com";
         public const String app_admin_email = "salehuddin.ptsb@gmail.com";
         public const String last_office_noTel = "03 8080 0524";

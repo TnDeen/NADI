@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Success";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title.</h2>
+<p>@ViewBag.callbackUrl</p>
+<a href="@ViewBag.callbackUrl">Click This Link or scan To Get Point</a>
+<div> 
+    <img src="/Transaction/BarcodeImage?barcodeText=@ViewBag.callbackUrl" />
+</div>
+

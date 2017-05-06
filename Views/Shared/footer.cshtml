@@ -1,0 +1,53 @@
+﻿@using MVC5.Common
+<!--footer start-->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-sm-4 address wow fadeInUp" data-wow-duration="2s" data-wow-delay=".1s">
+                <h1>
+                    ABOUT @MyConstant.Web_Name
+                </h1>
+                @Html.Action("Test", "Home")
+            </div>
+
+            <div class="col-lg-4 col-sm-4">
+                <div class="page-footer wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s">
+                    <h1>
+                        Our Company
+                    </h1>
+                    <ul class="page-footer-list">
+                        @Html.Partial("MainMenu")
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-4">
+                <div class="text-footer wow fadeInUp" data-wow-duration="2s" data-wow-delay=".7s">
+                    <div class="page-footer wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s">
+                        <h1>
+                            Site Map
+                        </h1>
+                        <ul class="page-footer-list">
+                            @Html.Partial("Menu")
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- footer end -->
+<!--small footer start -->
+<footer class="footer-small">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="copyright">
+                    <p>&copy; Copyright @DateTime.Now.Year - @MyConstant.Web_Name | @Html.ActionLink("Terms", "Article", "Home", new { articleKod = "ARTCL_TYPE_TERMS" }, new { @style = "color:#fff" }) | @Html.ActionLink("Fees", "Article", "Home", new { articleKod = "ARTCL_TYPE_FEES" }, new { @style = "color:#fff" }) | @Html.ActionLink("Privacy", "Article", "Home", new { articleKod = "ARTCL_TYPE_PRIVACY" }, new { @style = "color:#fff" })</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--small footer end-->

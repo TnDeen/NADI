@@ -1,0 +1,524 @@
+﻿@model MVC5.Models.VM.SearchVO
+@using MVC5.Common
+
+@{
+    ViewBag.Title = "Perisytiharan Jualan Lelongan Malaysia";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<!--breadcrumbs start-->
+<div class="breadcrumbs-menu">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12">
+                <ol class="pull-left nav navbar-nav">
+                    @Html.Partial("MainMenu")
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<!--breadcrumbs end-->
+
+<!-- Sequence Modern Slider -->
+<div id="da-slider" class="da-slider">
+    
+    <div class="da-slide">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+
+                   
+                    <div class="da-img">
+                        <img src="~/Content/img/parallax-slider/images/2.png" alt="image01" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="da-slide">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    
+                    <div class="da-img">
+                        <img src="~/Content/img/parallax-slider/images/3.png" alt="image01" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="da-slide">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                  
+                    <div class="da-img">
+                        <img src="~/Content/img/parallax-slider/images/1.png" alt="image01" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="da-arrows">
+        <span class="da-arrows-prev">
+        </span>
+        <span class="da-arrows-next">
+        </span>
+    </nav>
+</div>
+
+<!-- Search Form -->
+@using (Html.BeginForm("Index", "Listing", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+
+
+    <div class="bg-gray col-lg-6" style="padding-top:20px; position:absolute; top:220px; left:60px; z-index:999999;">
+
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-12">
+                    <p class="lead wow fadeInLeft">Find Property Auctions In Malaysia</p>
+                </div>
+
+                <div class="form-group col-md-12 wow fadeInRight">
+
+                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control newsletter-input", @placeholder = "Enter Location Name" } })
+
+
+                </div>
+
+            
+
+
+
+
+                <div class="form-group col-md-12 wow fadeInRight">
+
+                    @Html.DropDownList("PropertyTypeId", null, htmlAttributes: new { @class = "form-control newsletter-input" })
+
+
+                </div>
+
+                <div class="form-group col-md-6 wow fadeInRight">
+
+                    @Html.DropDownList("NegeriID", null, htmlAttributes: new { @class = "form-control newsletter-input" })
+
+
+                </div>
+
+                <div class="form-group col-md-6 wow fadeInRight">
+
+                    @Html.DropDownList("ListingTypeId", null, htmlAttributes: new { @class = "form-control newsletter-input" })
+
+
+
+
+                </div>
+
+           
+
+                <div class="form-group col-md-3 wow fadeInRight">
+
+                    @Html.EditorFor(model => model.MinPrice, new { htmlAttributes = new { @class = "form-control newsletter-input", @placeholder = "Min Price (MYR)" } })
+
+
+                </div>
+
+                <div class="form-group col-md-3 wow fadeInRight">
+
+                    @Html.EditorFor(model => model.MaxPrice, new { htmlAttributes = new { @class = "form-control newsletter-input", @placeholder = "Max Price (MYR)" } })
+
+
+                </div>
+
+                <div class="form-group col-md-3 wow fadeInRight">
+
+
+                    @Html.EditorFor(model => model.MinSize, new { htmlAttributes = new { @class = "form-control newsletter-input", @placeholder = "Min Area (Sq.ft)" } })
+
+
+
+                </div>
+
+                <div class="form-group col-md-3 wow fadeInRight">
+
+                    @Html.EditorFor(model => model.MaxSize, new { htmlAttributes = new { @class = "form-control newsletter-input", @placeholder = "Max Area (Sq.ft)" } })
+
+
+
+
+                </div>
+
+                <div class="form-group col-md-12 wow fadeInRight">
+
+                    @Html.EditorFor(model => model.AuctionDate, new { htmlAttributes = new { @class = "form-control newsletter-input", @placeholder = "Auction Date)" } })
+
+
+
+
+                </div>
+
+                
+
+            </div><!-- /row -->
+
+            <div class="row">
+
+                <div class="form-group col-md-12 wow fadeInRight">
+
+
+                    <button class="btn btn-danger btn-block btn-lg" type="submit" name="submit">Find Auction Property</button>
+
+
+
+                </div>
+
+            </div><!-- /row -->
+
+
+        </div><!-- /container -->
+
+
+    </div>
+}
+
+<div class="container" id="tourpackages-carousel">
+
+    
+
+    <div class="row">
+
+        <div class="text-center feature-head wow fadeInDown">
+            <h1 class="">
+                Find Property Auctions In Malaysia
+            </h1>
+
+        </div>
+        <!--tab start-->
+        <section class="tab wow fadeInLeft">
+            <header class="panel-heading tab-bg-dark-navy-blue">
+                <ul class="nav nav-tabs nav-justified ">
+                    <li class="active">
+                        <a data-toggle="tab" href="#hotlisting">
+                            Hot Listing
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#latestlisting">
+                            Latest Listing
+                        </a>
+                    </li>
+                </ul>
+            </header>
+            <div class="panel-body">
+                <div class="tab-content tasi-tab">
+                    <div id="hotlisting" class="tab-pane fade in active">
+                        <h2>Hot Auction in Malaysia</h2>
+                        <hr />
+                        <div class="profile">
+                            @foreach (var item in Model.listing)
+            {
+                                <div class="col-xs-12 col-sm-6 col-md-3">
+                                    <div class="thumbnail wow fadeInUp" data-wow-delay=".1s">
+                                        @if (item.listing.imageUrl == null)
+                                        {
+
+                                            <img src="@MyConstant.property_img_default_url@item.listing.PropertyTypeId@MyConstant.file_jpg" alt="">
+                                        }
+                                        else
+                                        {
+                                            <img src="@item.listing.imageUrl" alt="">
+                                        }
+                                        <div class="caption">
+                                            <strong>
+                                                @item.listing.Address1 @item.listing.Poskod @item.listing.Bandar.Nama @item.listing.Negeri.Nama
+                                            </strong>
+                                            <strong>
+                                                RM @item.listing.Price
+                                            </strong>
+                                            <hr />
+                                            @Html.ActionLink("Read More", "Details", "Listing", new { id = item.listing.Id }, htmlAttributes: new { @class = "btn btn-danger right" })
+
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+
+
+
+
+
+
+
+                        </div>
+                        
+                        
+                    </div>
+                    <div id="latestlisting" class="tab-pane fade">
+                        <h2>Latest Auction in Malaysia</h2>
+                        <hr />
+                        <div class="profile">
+                            @foreach (var item in Model.listing)
+            {
+                                <div class="col-xs-12 col-sm-6 col-md-3">
+                                    <div class="thumbnail wow fadeInUp" data-wow-delay=".1s">
+                                        @if (item.listing.imageUrl == null)
+                                        {
+
+                                            <img src="@MyConstant.property_img_default_url@item.listing.PropertyTypeId@MyConstant.file_jpg" alt="">
+                                        }
+                                        else
+                                        {
+                                            <img src="@item.listing.imageUrl" alt="">
+                                        }
+                                        <div class="caption">
+                                            <strong>
+                                                @item.listing.Address1 @item.listing.Poskod @item.listing.Bandar.Nama @item.listing.Negeri.Nama
+                                            </strong>
+                                            <strong>
+                                                RM @item.listing.Price
+                                            </strong>
+                                            <hr />
+                                            @Html.ActionLink("Read More", "Details", "Listing", new { id = item.listing.Id }, htmlAttributes: new { @class = "btn btn-danger right" })
+
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+
+
+
+
+
+
+
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        <!--tab end-->
+
+
+        </div>
+    <div class="row">
+        <div class="text-center feature-head wow fadeInDown" style="padding-bottom:20px;">
+            <div class="col-md-4">
+
+                @Html.ActionLink("Our Newsletter", "Register", "Account", null, htmlAttributes: new { @class = "btn btn-danger btn-block btn-lg" })
+            </div>
+            <div class="col-md-4">
+
+                @Html.ActionLink("Get Mobile", "Register", "Account", null, htmlAttributes: new { @class = "btn btn-success btn-block btn-lg" })
+            </div>
+            <div class="col-md-4">
+
+                @Html.ActionLink("Contact Us", "Register", "Account", null, htmlAttributes: new { @class = "btn btn-primary btn-block btn-lg" })
+            </div>
+            
+        </div>
+        
+      
+        
+    </div>
+        
+    <!-- End container -->
+</div>
+
+
+<!--property start-->
+<div class="property gray-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-sm-6 text-center wow fadeInLeft">
+                <img src="~/Content/img/tab1.png" alt="">
+            </div>
+            <div class="col-lg-6 col-sm-6 wow fadeInRight">
+                <h1>
+                    Apa Itu POS?
+                </h1>
+                <hr>
+                <h3>
+                    Perisytiharan Jualan, Proclamation of Sales (POS) merupakan dokumen yang dikeluarkan sebelum satu-satu unit hartanah dilelongkan.
+                </h3>
+                <h3>
+                    Dokumen ini mengandungi maklumat LENGKAP hartanah seperti :-
+                </h3>
+                <p>
+                    <i class="fa fa-check fa-lg pr-10">
+                    </i>
+                    Alamat Unit yang hendak dilelongkan
+                </p>
+                <p>
+                    <i class="fa fa-check fa-lg pr-10">
+                    </i>
+                    Lokasi lelongan diadakan
+                </p>
+                <p>
+                    <i class="fa fa-check fa-lg pr-10">
+                    </i>
+                    Terma lelongan
+                </p>
+                <p>
+                    <i class="fa fa-check fa-lg pr-10">
+                    </i>
+                    Harga buka (Reserved Price)
+                </p>
+                <p>
+                    <i class="fa fa-check fa-lg pr-10">
+                    </i>
+                    Penyelesaian tempoh baki pembelian rumah
+                </p>
+                <hr>
+                @Html.ActionLink("Request POS", "Create", "PosRequests", null, new { @class = "btn btn-purchase" })
+            </div>
+        </div>
+    </div>
+</div>
+<!--property end-->
+
+
+
+
+
+
+
+<!-- service end -->
+<div class="hr">
+    <span class="hr-inner"></span>
+</div>
+
+<div class="container">
+    <div class="row mar-b-50 our-clients">
+        <div class="col-md-3">
+            <h2>
+                Auction Banks
+            </h2>
+            <p>
+                Our Auction Banks & Institutions
+            </p>
+        </div>
+        <div class="col-md-9">
+            <div class="outside">
+                <p>
+                    <span id="slider-prev">
+                    </span>
+                    |
+                    <span id="slider-next">
+                    </span>
+                </p>
+            </div>
+
+            <ul class="bxslider1 clients-list">
+                <li>
+                    <a href="#">
+                        <img src="~/Content/img/Bank/11.jpg" alt="" />
+
+                        <img src="~/Content/img/Bank/11.jpg" class="color-img" alt="" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="~/Content/img/Bank/12.jpg" alt="" />
+
+                        <img src="~/Content/img/Bank/12.jpg" class="color-img" alt="" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="~/Content/img/Bank/13.jpg" alt="" />
+
+                        <img src="~/Content/img/Bank/13.jpg" class="color-img" alt="" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="~/Content/img/Bank/14.jpg" alt="" />
+
+                        <img src="~/Content/img/Bank/14.jpg" class="color-img" alt="" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="~/Content/img/Bank/15.jpg" alt="" />
+
+                        <img src="~/Content/img/Bank/15.jpg" class="color-img" alt="" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="~/Content/img/Bank/17.jpg" alt="" />
+
+                        <img src="~/Content/img/Bank/17.jpg" class="color-img" alt="" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="~/Content/img/Bank/18.jpg" alt="" />
+
+                        <img src="~/Content/img/Bank/18.jpg" class="color-img" alt="" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="~/Content/img/Bank/19.jpg" alt="" />
+
+                        <img src="~/Content/img/Bank/19.jpg" class="color-img" alt="" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="~/Content/img/Bank/20.jpg" alt="" />
+
+                        <img src="~/Content/img/Bank/20.jpg" class="color-img" alt="" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="~/Content/img/Bank/21.jpg" alt="" />
+
+                        <img src="~/Content/img/Bank/21.jpg" class="color-img" alt="" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="~/Content/img/Bank/22.jpg" alt="" />
+
+                        <img src="~/Content/img/Bank/22.jpg" class="color-img" alt="" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="~/Content/img/Bank/25.jpg" alt="" />
+
+                        <img src="~/Content/img/Bank/25.jpg" class="color-img" alt="" />
+                    </a>
+                </li>
+
+            </ul>
+
+
+        </div>
+    </div>
+    <!-- END CLIENTS -->
+</div>
+
+
+
+
+<!--container end-->
+
+
