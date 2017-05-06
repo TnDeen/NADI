@@ -32,6 +32,8 @@ namespace MVC5.Models
         [Display(Name = "Account Status")]
         public string accstatus { get; set; }
 
+        public MembershipRequest accType { get; set; }
+
         public string userLink { get; set; }
         public string TarikhTamatKeahlian { get; set; }
         

@@ -40,7 +40,7 @@ namespace MVC5.Controllers
         // GET: Articles/Create
         public ActionResult Create()
         {
-            ViewBag.articleTypeId = new SelectList(db.Sak, "Id", "Nama");
+            ViewBag.articleTypeId = new SelectList(db.Sak.Where(a => a.Sk.Kod.Equals("ARTCL_TYPE")), "Id", "Nama");
             return View();
         }
 

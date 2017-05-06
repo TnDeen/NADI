@@ -47,8 +47,11 @@ namespace MVC5.Controllers
 
             ViewBag.CurrentFilter = searchString;
 
+            var news = (from n in db.News
+                       select n).Take(5);
+
             var alltran = from t in db.Transactions
-                          select new ListingVO { listing = t };
+                          select new ListingVO { listing = t, NewsList = news.ToList() };
             if (!String.IsNullOrEmpty(searchString))
             {
                 alltran = alltran.Where(s => s.listing.Address1.Contains(searchString)
@@ -73,6 +76,7 @@ namespace MVC5.Controllers
 
             int pageSize = 15;
             int pageNumber = (page ?? 1);
+            
             List<ListingVO> nwlist = new List<ListingVO>();
             foreach (ListingVO ls in alltran)
             {
@@ -84,7 +88,6 @@ namespace MVC5.Controllers
                 {
                     ls.imgUrl = MyConstant.property_img_base_url + ls.listing.Id + "/" + filename;
                 }
-                
                 nwlist.Add(ls);
             }
 

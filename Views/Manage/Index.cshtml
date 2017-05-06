@@ -19,90 +19,103 @@
 
 <div class="container">
 
-    
-        <div class="col-lg-12">
 
-            <div class="row">
-                <div class="col-md-12 col-sm-12">
-                    <div class="content-page">
+  
 
-
-
-                        <div class="blog-tags margin-bottom-20">
-                            <h2>Akaun Ahli (@Model.CurrentUser.NomborAhli - @Model.accstatus)</h2>
-                            @if (Model.Pencadang != null)
-                {
-                <h4>Pencadang : @Model.Pencadang.NomborAhli - No. Tel : @Model.Pencadang.NoTelBim</h4>
-                }
-
-                            <ul>
-                                @*<li><a href="/Manage/Edit/@Model.CurrentUser.Id"><i class="fa fa-tags"></i>Kemaskini Maklumat</a></li>*@
-                                <li><a href="/Manage/ApplyMembership"><i class="fa fa-tags"></i>Permohonan Keahlian</a></li>
-
-
-
-                                @if (Model.HasPassword)
-                    {
-                    <li><a href="/Manage/ChangePassword"><i class="fa fa-tags"></i>Tukar Kata Laluan</a></li>                    }
-                    else
-                    {
-                    <li><a href="/Manage/SetPassword"><i class="fa fa-tags"></i>Set Kata Laluan</a></li>
-                    }
-
-                                <li>
-                                    <a href="/Transaction/MessageList">
-                                        <i class="fa fa-tags"></i>Notifikasi <span class="badge badge-danger">
-                                            @Model.totalMessage
-                                        </span>
-                                    </a>
-                                </li>
-
-                                @Html.Partial("MenuAdmin")
-
-                                
-                                
-
-                            </ul>
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="blog-item">
+                    <div class="row">
+                        <div class="col-lg-10 col-sm-10">
+                            <h2><i class="fa fa-user"></i> Profile </h2>
+                        </div>
                         </div>
 
-
-
-                       
-
-                    </div>
-
-
-
-                </div>
-            </div>
-
-
-
-
-
-            <div class="row">
-                <div class="col-md-12 col-sm-12">
-                    <div class="content-page">
-                        <!-- BEGIN SAMPLE TABLE PORTLET-->
-                        <div class="portlet box red">
-                           
-                            <div class="portlet-body">
-                                <div class="input-group">
-                                    <span class="input-group-btn">
-                                        <button id="btn" class="btn red" data-clipboard-target="#foo">Copy Link</button>
-                                    </span>
-                                    <input id="foo" type="text" class="form-control" value="@Model.userLink">
+                    <div class="row">
+                        <div class="col-lg-10 col-sm-10">
+                            <h4><i class="fa fa-envelope"></i> @Model.CurrentUser.Email </h4>
+                            @if (Model.accType != null)
+                            {
+                                <h4><i class="fa fa-certificate"></i> @Model.accType.PackageType.Nama </h4>
+                                <h4><i class="fa fa-calendar"></i> Valid Until : @Model.accType.TarikhTamat</h4>
+                            }
+                            else
+                            {
+                                <h4><i class="fa fa-certificate"></i> Free Account </h4>
+                            }
+                            @if (Model.HasPassword)
+                            {
+                                <a href="/Manage/ChangePassword"><i class="fa fa-tags"></i>Tukar Kata Laluan</a>                 }
+                            else
+                            {
+                                <a href="/Manage/SetPassword"><i class="fa fa-tags"></i>Set Kata Laluan</a>
+                            }
+                            <hr />
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">Application</h3>
                                 </div>
-
-
-                                <img src="/Manage/BarcodeImage" />
-
+                                <div class="box-body">
+                                    
+                                    
+                                    <a class="btn btn-app" href="/Transaction/MessageList">
+                                        <span class="badge bg-yellow">@Model.totalMessage</span>
+                                        <i class="fa fa-bullhorn"></i> Notifications
+                                    </a>
+                                    <a class="btn btn-app">
+                                        <span class="badge bg-green">300</span>
+                                        <i class="fa fa-barcode"></i> Pos Request
+                                    </a>
+                                    <a class="btn btn-app">
+                                        <span class="badge bg-purple">891</span>
+                                        <i class="fa fa-users"></i> Membership
+                                    </a>
+                                    <a class="btn btn-app">
+                                        <span class="badge bg-teal">67</span>
+                                        <i class="fa fa-inbox"></i> Appoint Agent
+                                    </a>
+                                    <a class="btn btn-app">
+                                        <span class="badge bg-red">531</span>
+                                        <i class="fa fa-heart-o"></i> My Auction
+                                    </a>
+                                </div><!-- /.box-body -->
                             </div>
+
                         </div>
                     </div>
+
+             
+                    </div>
+                </div>
+
+            <div class="col-lg-3">
+                <div class="blog-side-item">
+                    <div class="category">
+
+                            <img src="/Manage/BarcodeImage" />
+
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button id="btn" class="btn red" data-clipboard-target="#foo">Copy Link</button>
+                                </span>
+                                <input id="foo" type="text" class="form-control" value="@Model.userLink">
+                            </div>
+                       
+                        <hr />
+                    </div>
+
                 </div>
             </div>
 
+            
+        </div>
 
-            </div>
-    </div>
+
+
+
+
+  
+
+
+    
+</div>

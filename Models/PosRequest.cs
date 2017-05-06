@@ -8,7 +8,7 @@ using System.Web;
 
 namespace MVC5.Models
 {
-    public class PosRequest :BaseEntity
+    public class PosRequest : BaseUser
     {
         [Key]
         public int Id { get; set; }

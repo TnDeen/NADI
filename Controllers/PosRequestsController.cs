@@ -39,9 +39,9 @@ namespace MVC5.Controllers
         // GET: PosRequests/Create
         public ActionResult Create()
         {
-            ViewBag.IntroducerId = new SelectList(idb.Users, "Id", "NomborAhli");
+            ViewBag.IntroducerId = new SelectList(db.Users, "Id", "NomborAhli");
             ViewBag.ListingId = new SelectList(db.Transactions, "Id", "UnitNo");
-            ViewBag.UserId = new SelectList(idb.Users, "Id", "NomborAhli");
+            ViewBag.UserId = new SelectList(db.Users, "Id", "NomborAhli");
             return View();
         }
 
@@ -50,19 +50,20 @@ namespace MVC5.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,UserId,IntroducerId,ListingId,TarikhSah,TarikhTamat,StatusActive,DateCreated,CreateDate,CreateBy,DateUpdated,LastUpdated,LastUpdatedBy")] PosRequest posRequest)
+        public ActionResult Create([Bind(Include = "Id,TarikhSah,TarikhTamat,StatusActive,nama,ic,contact,address,CreateDate,CreateBy,LastUpdated,LastUpdatedBy")] PosRequest posRequest)
         {
             if (ModelState.IsValid)
             {
+                posRequest.UserId = findCurrentUserId();
                 db.PosRequest.Add(posRequest);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IntroducerId = new SelectList(idb.Users, "Id", "NomborAhli", posRequest.IntroducerId);
+            ViewBag.IntroducerId = new SelectList(db.Users, "Id", "NomborAhli", posRequest.IntroducerId);
             ViewBag.ListingId = new SelectList(db.Transactions, "Id", "UnitNo", posRequest.ListingId);
-            ViewBag.UserId = new SelectList(idb.Users, "Id", "NomborAhli", posRequest.UserId);
-            return View(posRequest);
+            ViewBag.UserId = new SelectList(db.Users, "Id", "NomborAhli", posRequest.UserId);
+            return RedirectToAction("Index", "Manage");
         }
 
         // GET: PosRequests/Edit/5
@@ -77,9 +78,9 @@ namespace MVC5.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IntroducerId = new SelectList(idb.Users, "Id", "NomborAhli", posRequest.IntroducerId);
+            ViewBag.IntroducerId = new SelectList(db.Users, "Id", "NomborAhli", posRequest.IntroducerId);
             ViewBag.ListingId = new SelectList(db.Transactions, "Id", "UnitNo", posRequest.ListingId);
-            ViewBag.UserId = new SelectList(idb.Users, "Id", "NomborAhli", posRequest.UserId);
+            ViewBag.UserId = new SelectList(db.Users, "Id", "NomborAhli", posRequest.UserId);
             return View(posRequest);
         }
 
@@ -88,7 +89,7 @@ namespace MVC5.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,UserId,IntroducerId,ListingId,TarikhSah,TarikhTamat,StatusActive,DateCreated,CreateDate,CreateBy,DateUpdated,LastUpdated,LastUpdatedBy")] PosRequest posRequest)
+        public ActionResult Edit([Bind(Include = "Id,UserId,IntroducerId,ListingId,TarikhSah,TarikhTamat,StatusActive,nama,ic,contact,address,DateCreated,CreateDate,CreateBy,DateUpdated,LastUpdated,LastUpdatedBy")] PosRequest posRequest)
         {
             if (ModelState.IsValid)
             {
@@ -96,9 +97,9 @@ namespace MVC5.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IntroducerId = new SelectList(idb.Users, "Id", "NomborAhli", posRequest.IntroducerId);
+            ViewBag.IntroducerId = new SelectList(db.Users, "Id", "NomborAhli", posRequest.IntroducerId);
             ViewBag.ListingId = new SelectList(db.Transactions, "Id", "UnitNo", posRequest.ListingId);
-            ViewBag.UserId = new SelectList(idb.Users, "Id", "NomborAhli", posRequest.UserId);
+            ViewBag.UserId = new SelectList(db.Users, "Id", "NomborAhli", posRequest.UserId);
             return View(posRequest);
         }
 

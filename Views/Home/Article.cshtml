@@ -13,41 +13,49 @@
 
 <div class="container">
     <!--breadcrumbs start-->
-    <ul class="breadcrumb">
+    <ul class="breadcrumb" style="padding-top:30px;">
         <li><a href="index.html">Home</a></li>
         <li class="active">@Model.Header</li>
     </ul>
     <!--breadcrumbs end-->
     <hr />
     <div class="row">
+        
         <!--blog start-->
         <div class="col-lg-9">
+            <h2>@Model.Header</h2>
             <div class="blog-item">
-                @if (Model.imgUrl != null)
-                {
-                    <div class="row">
-                       
-                        <div class="col-lg-10 col-sm-10">
+                <div class="row">
+                    <div class="col-lg-2 col-sm-2">
+                        <div class="date-wrap">
+                            <span class="date">
+                                @Model.DateCreated.Day
+                            </span>
+                            <span class="month">
+                                @Model.CreateDate.Value.ToString("MMMM") @Model.CreateDate.Value.ToString("yyyy")
+                            </span>
+                        </div>
 
+                    </div>
 
+                    <div class="col-lg-10 col-sm-10">
+
+                        @if (Model.imgUrl != null)
+                        {
                             <div class="blog-img gs">
                                 <img src="~/Content/img/article/@Model.Id/@Model.imgUrl" alt="" />
                             </div>
-
-
-
-                        </div>
-                    </div>
-                }
-                
-                <div class="row">
-                  
-                    <div class="col-lg-10 col-sm-10" style="padding-top:20px;">
+                            <hr />
+                        }
+                        
                         @Html.Raw(Model.Content)
-                       
+
 
                     </div>
                 </div>
+               
+                
+               
             </div>
 
         </div>
@@ -56,186 +64,16 @@
             <div class="blog-side-item">
                 <div class="category">
                     <h3>
-                        Categories
+                        Page Link
                     </h3>
                     <ul class="list-unstyled">
                         @Html.Partial("MainMenu")
                     </ul>
                 </div>
 
-                <div class="blog-post">
-                    <h3>
-                        Latest Blog Post
-                    </h3>
-                    <div class="media">
-                        <a class="pull-left gs" href="javascript:;">
-                            <img class=" " src="img/blog/blog-thumb-1.jpg" alt="">
-                        </a>
-                        <div class="media-body">
-                            <h5 class="media-heading">
-                                <a href="javascript:;">
-                                    02 May 2014
-                                </a>
-                            </h5>
-                            <p>
-                                Donec id elit non mi porta gravida at eget metus amet int
-                            </p>
-                        </div>
-                    </div>
-                    <div class="media">
-                        <a class="pull-left gs" href="javascript:;">
-                            <img class=" " src="img/blog/blog-thumb-2.jpg" alt="">
-                        </a>
-                        <div class="media-body">
-                            <h5 class="media-heading">
-                                <a href="javascript:;">
-                                    02 May 2014
-                                </a>
-                            </h5>
-                            <p>
-                                Donec id elit non mi porta gravida at eget metus amet int
-                            </p>
-                        </div>
-                    </div>
-                    <div class="media">
-                        <a class="pull-left gs" href="javascript:;">
-                            <img class=" " src="img/blog/blog-thumb-3.jpg" alt="">
-                        </a>
-                        <div class="media-body">
-                            <h5 class="media-heading">
-                                <a href="javascript:;">
-                                    02 May 2014
-                                </a>
-                            </h5>
-                            <p>
-                                Donec id elit non mi porta gravida at eget metus amet int
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                
 
-                <div class="tags">
-                    <h3>
-                        Tags
-                    </h3>
-                    <ul class="tag">
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-tags pr-5">
-                                </i>
-                                flat
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-tags pr-5">
-                                </i>
-                                clean
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-tags pr-5">
-                                </i>
-                                admin
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-tags pr-5">
-                                </i>
-                                UI
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-tags pr-5">
-                                </i>
-                                responsive
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-tags pr-5">
-                                </i>
-                                Web Design
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-tags pr-5">
-                                </i>
-                                UIX
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-tags pr-5">
-                                </i>
-                                Blog
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-tags pr-5">
-                                </i>
-                                flat Admin
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-tags pr-5">
-                                </i>
-                                Dashboard
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-
-                <div class="archive">
-                    <h3>
-                        Archive
-                    </h3>
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="javascript:;">
-                                <i class="fa fa-angle-double-right pr-10">
-                                </i>
-                                May 2014
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <i class="fa fa-angle-double-right pr-10">
-                                </i>
-                                April 2014
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <i class="fa fa-angle-double-right pr-10">
-                                </i>
-                                March 2014
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <i class="fa fa-angle-double-right pr-10">
-                                </i>
-                                February 2014
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <i class="fa fa-angle-double-right pr-10">
-                                </i>
-                                January 2014
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
+              
 
             </div>
         </div>

@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Delete";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
 }
 
 <h2>Delete</h2>
@@ -58,6 +58,38 @@
 
         <dd>
             @Html.DisplayFor(model => model.StatusActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nama)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.contact)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.contact)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.address)
         </dd>
 
         <dt>

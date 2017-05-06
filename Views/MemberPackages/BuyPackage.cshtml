@@ -23,7 +23,7 @@
 
            
 
-            <div class="row ">
+            <div class="row">
                 <div class="price-two-container">
                
                     <div class="col-md-6">
@@ -35,15 +35,7 @@
                                 <p class="desc">
                                     Perfect for those who getting started with our app.
                                 </p>
-                                <p class="desc text-error">
-                                    <a href="#" class="text-error">
-                                        Details
-                                    </a>
-                                    |
-                                    <a href="#" class="text-error">
-                                        Licensing help
-                                    </a>
-                                </p>
+                               
                                 <ul class="items">
                                     @foreach (var item in Model)
                                     {
@@ -128,15 +120,7 @@
                                 <p class="desc">
                                     Perfect for those who getting started with our app.
                                 </p>
-                                <p class="desc text-error">
-                                    <a href="#" class="text-error">
-                                        Details
-                                    </a>
-                                    |
-                                    <a href="#" class="text-error">
-                                        Licensing help
-                                    </a>
-                                </p>
+                               
                                 <ul class="items">
                                     @foreach (var item in Model)
                                     {
@@ -191,7 +175,7 @@
 
                                 </ul>
                                 <div class="price-actions">
-                                    @Html.ActionLink("Subscribe", "Purchase", "MembershipRequests", null,htmlAttributes: new { @class = "btn btn-primary btn-lg" })
+                                    @Html.ActionLink("Subscribe", "Create", "MembershipRequests", null,htmlAttributes: new { @class = "btn btn-primary btn-lg" })
                                 </div>
                             </div>
                         </div>

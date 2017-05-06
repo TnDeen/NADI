@@ -209,7 +209,9 @@
     <Compile Include="Common\PartialCacheAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AffiliateComissionsController.cs" />
+    <Compile Include="Controllers\AppointAgentsController.cs" />
     <Compile Include="Controllers\ArticlesController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\ExceptionController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -219,6 +221,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MemberPackagesController.cs" />
     <Compile Include="Controllers\MembershipRequestsController.cs" />
+    <Compile Include="Controllers\MenusController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\PosRequestsController.cs" />
     <Compile Include="Controllers\SakController.cs" />
@@ -387,11 +390,25 @@
     <Compile Include="Migrations\201705050932355_addcolimgurl.Designer.cs">
       <DependentUpon>201705050932355_addcolimgurl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705051555132_addmenutbl.cs" />
+    <Compile Include="Migrations\201705051555132_addmenutbl.Designer.cs">
+      <DependentUpon>201705051555132_addmenutbl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705051850459_addcolbaseuser.cs" />
+    <Compile Include="Migrations\201705051850459_addcolbaseuser.Designer.cs">
+      <DependentUpon>201705051850459_addcolbaseuser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705061631272_addappointagent.cs" />
+    <Compile Include="Migrations\201705061631272_addappointagent.Designer.cs">
+      <DependentUpon>201705061631272_addappointagent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AffiliateComission.cs" />
+    <Compile Include="Models\AppointAgent.cs" />
     <Compile Include="Models\Article.cs" />
     <Compile Include="Models\BaseEntity.cs" />
+    <Compile Include="Models\BaseUser.cs" />
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\FilePath.cs" />
     <Compile Include="Models\FileType.cs" />
@@ -400,6 +417,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MemberPackage.cs" />
     <Compile Include="Models\MembershipRequest.cs" />
+    <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\PosRequest.cs" />
@@ -5254,16 +5272,6 @@
     <Content Include="Views\Sk\Details.cshtml" />
     <Content Include="Views\Sk\Edit.cshtml" />
     <Content Include="Views\Sk\Index.cshtml" />
-    <Content Include="Views\MembershipRequests\Create.cshtml" />
-    <Content Include="Views\MembershipRequests\Delete.cshtml" />
-    <Content Include="Views\MembershipRequests\Details.cshtml" />
-    <Content Include="Views\MembershipRequests\Edit.cshtml" />
-    <Content Include="Views\MembershipRequests\Index.cshtml" />
-    <Content Include="Views\PosRequests\Create.cshtml" />
-    <Content Include="Views\PosRequests\Delete.cshtml" />
-    <Content Include="Views\PosRequests\Details.cshtml" />
-    <Content Include="Views\PosRequests\Edit.cshtml" />
-    <Content Include="Views\PosRequests\Index.cshtml" />
     <Content Include="Views\AffiliateComissions\Create.cshtml" />
     <Content Include="Views\AffiliateComissions\Delete.cshtml" />
     <Content Include="Views\AffiliateComissions\Details.cshtml" />
@@ -5276,7 +5284,6 @@
     <Content Include="Views\MemberPackages\Index.cshtml" />
     <Content Include="Views\MemberPackages\BuyPackage.cshtml" />
     <Content Include="Views\Shared\Menu.cshtml" />
-    <Content Include="Views\MembershipRequests\Purchase.cshtml" />
     <Content Include="Views\Shared\MenuAdmin.cshtml" />
     <Content Include="Views\Shared\MainMenu.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\tinymce_jquery_full.cshtml" />
@@ -5291,6 +5298,29 @@
     <Content Include="Views\Articles\Edit.cshtml" />
     <Content Include="Views\Articles\Index.cshtml" />
     <Content Include="Views\Home\Article.cshtml" />
+    <Content Include="Views\Menus\Create.cshtml" />
+    <Content Include="Views\Menus\Delete.cshtml" />
+    <Content Include="Views\Menus\Details.cshtml" />
+    <Content Include="Views\Menus\Edit.cshtml" />
+    <Content Include="Views\Menus\Index.cshtml" />
+    <Content Include="Views\Home\Blog.cshtml" />
+    <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\MembershipRequests\Create.cshtml" />
+    <Content Include="Views\MembershipRequests\Delete.cshtml" />
+    <Content Include="Views\MembershipRequests\Details.cshtml" />
+    <Content Include="Views\MembershipRequests\Edit.cshtml" />
+    <Content Include="Views\MembershipRequests\Index.cshtml" />
+    <Content Include="Views\PosRequests\Create.cshtml" />
+    <Content Include="Views\PosRequests\Delete.cshtml" />
+    <Content Include="Views\PosRequests\Details.cshtml" />
+    <Content Include="Views\PosRequests\Edit.cshtml" />
+    <Content Include="Views\PosRequests\Index.cshtml" />
+    <Content Include="Views\Home\FAQ.cshtml" />
+    <Content Include="Views\AppointAgents\Create.cshtml" />
+    <Content Include="Views\AppointAgents\Delete.cshtml" />
+    <Content Include="Views\AppointAgents\Details.cshtml" />
+    <Content Include="Views\AppointAgents\Edit.cshtml" />
+    <Content Include="Views\AppointAgents\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
@@ -5431,6 +5461,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705050932355_addcolimgurl.resx">
       <DependentUpon>201705050932355_addcolimgurl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705051555132_addmenutbl.resx">
+      <DependentUpon>201705051555132_addmenutbl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705051850459_addcolbaseuser.resx">
+      <DependentUpon>201705051850459_addcolbaseuser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705061631272_addappointagent.resx">
+      <DependentUpon>201705061631272_addappointagent.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

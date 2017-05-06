@@ -8,7 +8,7 @@ using System.Web;
 
 namespace MVC5.Models
 {
-    public class MembershipRequest : BaseEntity
+    public class MembershipRequest : BaseUser
     {
         [Key]
         public int Id { get; set; }

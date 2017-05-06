@@ -62,6 +62,11 @@ namespace MVC5.Common
             db.SaveChanges();
         }
 
+        public string findCurrentUserId()
+        {
+            return idb.Users.Where(a => a.UserName.Equals(User.Identity.Name)).FirstOrDefault().Id;
+        }
+
         public string findNoAhliById(string id)
         {
             string noAhli = null;

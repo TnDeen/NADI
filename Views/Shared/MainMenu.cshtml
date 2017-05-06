@@ -1,18 +1,60 @@
-﻿<li>
+﻿@using MVC5.Common
+<li>
     @Html.ActionLink("Auction Procedures", "Article", "Home", new { articleKod = "ARTCL_TYPE_AUC_PRCDRS" }, null)
 </li>
 <li>
-    @Html.ActionLink("About  Us", "Article", "Home", new { articleKod = "ARTCL_TYPE_ABOUT" }, null)
+    @Html.ActionLink("Partner With Us", "Article", "Home", new { articleKod = "ARTCL_TYPE_PARTNER" }, null)
 </li>
-<li><a href="#">Features</a></li>
+
 <li class="dropdown">
     <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover="dropdown" data-toggle="dropdown" href="#">
-        Blog <i class="fa fa-angle-down"></i>
+        Our Service <i class="fa fa-angle-down"></i>
     </a>
 
     <ul class="dropdown-menu">
         <li>
-            <a href="blog.html">Blog</a>
+            @Html.ActionLink("Request POS", "Create", "PosRequests")
+        </li>
+        <li>
+            @Html.ActionLink("Appoint Agent", "Create", "AppointAgents")
+        </li>
+    </ul>
+</li>
+
+<li class="dropdown">
+    <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover="dropdown" data-toggle="dropdown" href="#">
+        Customer Support (@MyConstant.last_office_noTel) <i class="fa fa-angle-down"></i>
+    </a>
+
+    <ul class="dropdown-menu">
+        <li>
+            @Html.ActionLink("FAQ", "FAQ", "Home")
+        </li>
+    </ul>
+</li>
+
+<li class="dropdown">
+    <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover="dropdown" data-toggle="dropdown" href="#">
+        Membership <i class="fa fa-angle-down"></i>
+    </a>
+
+    <ul class="dropdown-menu">
+        <li>
+            @Html.ActionLink("Buy Package", "BuyPackage", "MemberPackages")
+        </li>
+        <li>
+            @Html.ActionLink("Free Membership", "Register", "Account")
+        </li>
+    </ul>
+</li>
+<li class="dropdown">
+    <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover="dropdown" data-toggle="dropdown" href="#">
+        News <i class="fa fa-angle-down"></i>
+    </a>
+
+    <ul class="dropdown-menu">
+        <li>
+            @Html.ActionLink("Auction Fair", "BuyPackage", "MemberPackages")
         </li>
     </ul>
 </li>

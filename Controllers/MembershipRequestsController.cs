@@ -39,9 +39,9 @@ namespace MVC5.Controllers
         // GET: MembershipRequests/Create
         public ActionResult Create()
         {
-            ViewBag.IntroducerId = new SelectList(idb.Users, "Id", "NomborAhli");
-            ViewBag.PackageTypeId = new SelectList(db.Sak, "Id", "Nama");
-            ViewBag.UserId = new SelectList(idb.Users, "Id", "NomborAhli");
+            ViewBag.IntroducerId = new SelectList(db.Users, "Id", "NomborAhli");
+            ViewBag.PackageTypeId = new SelectList(db.Sak.Where(a => a.Sk.Kod.Equals("MMBRSHP_TYPE")), "Id", "Nama");
+            ViewBag.UserId = new SelectList(db.Users, "Id", "NomborAhli");
             return View();
         }
 
@@ -50,19 +50,20 @@ namespace MVC5.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,UserId,IntroducerId,PackageTypeId,TarikhSah,TarikhTamat,StatusActive,DateCreated,CreateDate,CreateBy,DateUpdated,LastUpdated,LastUpdatedBy")] MembershipRequest membershipRequest)
+        public ActionResult Create([Bind(Include = "Id,UserId,IntroducerId,PackageTypeId,TarikhSah,TarikhTamat,nama,ic,contact,address,CreateDate,CreateBy,LastUpdated,LastUpdatedBy")] MembershipRequest membershipRequest)
         {
             if (ModelState.IsValid)
             {
+                membershipRequest.UserId = findCurrentUserId();
                 db.MembershipRequest.Add(membershipRequest);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IntroducerId = new SelectList(idb.Users, "Id", "NomborAhli", membershipRequest.IntroducerId);
+            ViewBag.IntroducerId = new SelectList(db.Users, "Id", "NomborAhli", membershipRequest.IntroducerId);
             ViewBag.PackageTypeId = new SelectList(db.Sak, "Id", "Nama", membershipRequest.PackageTypeId);
-            ViewBag.UserId = new SelectList(idb.Users, "Id", "NomborAhli", membershipRequest.UserId);
-            return View(membershipRequest);
+            ViewBag.UserId = new SelectList(db.Users, "Id", "NomborAhli", membershipRequest.UserId);
+            return RedirectToAction("Index","Manage");
         }
 
         // GET: MembershipRequests/Edit/5
@@ -77,9 +78,9 @@ namespace MVC5.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IntroducerId = new SelectList(idb.Users, "Id", "NomborAhli", membershipRequest.IntroducerId);
+            ViewBag.IntroducerId = new SelectList(db.Users, "Id", "NomborAhli", membershipRequest.IntroducerId);
             ViewBag.PackageTypeId = new SelectList(db.Sak, "Id", "Nama", membershipRequest.PackageTypeId);
-            ViewBag.UserId = new SelectList(idb.Users, "Id", "NomborAhli", membershipRequest.UserId);
+            ViewBag.UserId = new SelectList(db.Users, "Id", "NomborAhli", membershipRequest.UserId);
             return View(membershipRequest);
         }
 
@@ -88,7 +89,7 @@ namespace MVC5.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,UserId,IntroducerId,PackageTypeId,TarikhSah,TarikhTamat,StatusActive,DateCreated,CreateDate,CreateBy,DateUpdated,LastUpdated,LastUpdatedBy")] MembershipRequest membershipRequest)
+        public ActionResult Edit([Bind(Include = "Id,UserId,IntroducerId,PackageTypeId,TarikhSah,TarikhTamat,StatusActive,nama,ic,contact,address,DateCreated,CreateDate,CreateBy,DateUpdated,LastUpdated,LastUpdatedBy")] MembershipRequest membershipRequest)
         {
             if (ModelState.IsValid)
             {
@@ -96,9 +97,9 @@ namespace MVC5.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IntroducerId = new SelectList(idb.Users, "Id", "NomborAhli", membershipRequest.IntroducerId);
+            ViewBag.IntroducerId = new SelectList(db.Users, "Id", "NomborAhli", membershipRequest.IntroducerId);
             ViewBag.PackageTypeId = new SelectList(db.Sak, "Id", "Nama", membershipRequest.PackageTypeId);
-            ViewBag.UserId = new SelectList(idb.Users, "Id", "NomborAhli", membershipRequest.UserId);
+            ViewBag.UserId = new SelectList(db.Users, "Id", "NomborAhli", membershipRequest.UserId);
             return View(membershipRequest);
         }
 
@@ -135,38 +136,6 @@ namespace MVC5.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
-
-
-        // GET: MembershipRequests/Create
-        [Authorize]
-        public ActionResult Purchase()
-        {
-            ViewBag.IntroducerId = new SelectList(idb.Users, "Id", "NomborAhli");
-            ViewBag.PackageTypeId = new SelectList(db.Sak, "Id", "Nama");
-            ViewBag.UserId = new SelectList(idb.Users, "Id", "NomborAhli");
-            return View();
-        }
-
-        // POST: MembershipRequests/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize]
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Purchase([Bind(Include = "Id,UserId,IntroducerId,PackageTypeId,TarikhSah,TarikhTamat,StatusActive,DateCreated,CreateDate,CreateBy,DateUpdated,LastUpdated,LastUpdatedBy")] MembershipRequest membershipRequest)
-        {
-            if (ModelState.IsValid)
-            {
-                db.MembershipRequest.Add(membershipRequest);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.IntroducerId = new SelectList(idb.Users, "Id", "NomborAhli", membershipRequest.IntroducerId);
-            ViewBag.PackageTypeId = new SelectList(db.Sak, "Id", "Nama", membershipRequest.PackageTypeId);
-            ViewBag.UserId = new SelectList(idb.Users, "Id", "NomborAhli", membershipRequest.UserId);
-            return View(membershipRequest);
         }
     }
 }

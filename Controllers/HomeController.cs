@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using MVC5.Common;
 using MVC5.Models.VM;
+using MVC5.Models;
 
 namespace MVC5.Controllers
 {
@@ -40,11 +41,38 @@ namespace MVC5.Controllers
             return View(article);
         }
 
-        public ActionResult Article(string articleKod)
+        public ActionResult Article(string articleKod, int? id)
         {
-            var article = db.Article.Where(a => a.articleType.Kod.Equals(articleKod)).FirstOrDefault();
+            Article article = null;
+            if (articleKod == null && id != null)
+            {
+                article = db.Article.Where(a => a.Id == id).FirstOrDefault();
+            } else
+            {
+                article = db.Article.Where(a => a.articleType.Kod.Equals(articleKod)).FirstOrDefault();
+            }
+            
 
             return View(article);
+        }
+
+        public string Test(string articleKod, int? id)
+        {
+            var article = db.Article.Where(a => a.articleType.Kod.Equals("ARTCL_TYPE_ABOUT")).FirstOrDefault();
+
+            return article.Content;
+        }
+
+        public ActionResult FAQ()
+        {
+            return View(db.Article.Where(a => a.articleType.Kod.Equals("ARTCL_TYPE_FAQ")).ToList());
+        }
+
+        public ActionResult Blog()
+        {
+            ViewBag.Message = "Blog";
+
+            return View();
         }
 
         public ActionResult Contact()

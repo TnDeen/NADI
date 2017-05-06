@@ -246,7 +246,7 @@
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <td>@Html.ActionLink("Upgrade To VIP", "Register", "Account", null, htmlAttributes: new { @class = "btn btn-primary btn-sm" })</td>
+                                                <td>@Html.ActionLink("Upgrade To VIP", "BuyPackage", "MemberPackages", null, htmlAttributes: new { @class = "btn btn-primary btn-sm" })</td>
                                                 <td></td>
                                             </tr>
                                         </thead>
@@ -312,11 +312,37 @@
                                     </table>
                                 }
                                 
-                                @Html.ActionLink("Go Back", "Index", "Listing", new { address = Model.search.Address }, htmlAttributes: new { @class = "btn btn-danger right" })
+                                
 
                             </div>
                         </div>
-                    </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-sm-12">
+                                
+                                <h2><i class="fa fa-calculator"></i> Loan Calculator</h2>
+                                <hr />
+                                <div class="form-group col-md-4">Loan Amount
+                                    <input type="text" class="form-control" name="amount" value="@Model.listing.Price" onkeyup="loanCalculater()">
+                                    </div>
+                                <div class="form-group col-md-4">Interest Rate
+                                    <input type="text" class="form-control" name="interest" value="4.5" onkeyup="loanCalculater()">
+                                </div>
+                                <div class="form-group col-md-4">Loan Term
+                                    <input type="text" class="form-control" name="years" value="30" onkeyup="loanCalculater()">
+                                </div>
+                                <div class="form-group col-md-4">Monthly Payment
+                                    <input type="text" class="form-control" readonly="readonly" name="monthly-payment">
+                                </div>
+                                    
+                                    
+                                   
+                                   
+                                </div>
+                                
+                            </div>
+                       
+                        </div>
+                    @Html.ActionLink("Go Back", "Index", "Listing", new { address = Model.search.Address }, htmlAttributes: new { @class = "btn btn-danger right" })
 
                 </div>
 
@@ -324,7 +350,14 @@
 
                 <div class="col-lg-3">
                     <div class="blog-side-item">
-                        
+                        <div class="category">
+                            <h3>
+                                <i class="fa fa-gavel"></i> Page Link
+                            </h3>
+                            <ul class="list-unstyled">
+                                @Html.Partial("MainMenu")
+                            </ul>
+                        </div>
 
                         <div class="blog-post">
                             <h3>
@@ -361,10 +394,7 @@
     </div>
 </div>
 
-<input type="text" class="form-control" name="amount" value="@Model.listing.Price" onkeyup="loanCalculater()">
-<input type="text" class="form-control" name="interest" value="4.5" onkeyup="loanCalculater()">
-<input type="text" class="form-control" name="years" value="30" onkeyup="loanCalculater()">
-<input type="text" class="form-control" readonly="readonly" name="monthly-payment">
+
 
 <script>
 

@@ -383,3 +383,6 @@ C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.pdb
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.Migrations.addarticetbl.resources
 C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.Migrations.addcolimgurl.resources
+C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.Migrations.addmenutbl.resources
+C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.Migrations.addcolbaseuser.resources
+C:\Users\salehudin\Documents\Visual Studio 2015\Projects\Lelong_Engine\MVC5\obj\Debug\MVC5.Migrations.addappointagent.resources
