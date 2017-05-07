@@ -249,7 +249,7 @@ namespace MVC5.Controllers
             var result = await UserManager.ConfirmEmailAsync(userId, code);
             var user = UserManager.FindById(userId);
             sendMail("Nadi Kebangsaan Membership Approve", "Congratulation! Your Membership has been Accpeted.", user.Email);
-            sendMail("Nadi Kebangsaan Membership Added", "admin approve membership of user " + user.Email, MyConstant.app_admin_email);
+            sendMail("Nadi Kebangsaan Membership Added", "admin approve membership of user " + user.Email, MyConstant.user_admin_email);
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 

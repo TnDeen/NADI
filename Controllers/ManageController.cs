@@ -641,7 +641,7 @@ namespace MVC5.Controllers
                new { userId = userID, code = code }, protocol: Request.Url.Scheme);
             //await UserManager.SendEmailAsync(userID, subject,
             //   "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-            sendMail(subject, "Please confirm to approve this account by clicking <a href=\'" + callbackUrl + "\'>here</a>", MyConstant.app_admin_email);
+            sendMail(subject, "Please confirm to approve this account by clicking <a href=\'" + callbackUrl + "\'>here</a>", MyConstant.user_admin_email);
             return callbackUrl;
         }
 

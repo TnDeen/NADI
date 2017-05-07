@@ -11,6 +11,7 @@ using MVC5.Common;
 
 namespace MVC5.Controllers
 {
+    [Authorize]
     public class AppointAgentsController : BaseController
     {
 

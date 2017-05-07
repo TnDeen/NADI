@@ -11,6 +11,7 @@ using MVC5.Common;
 
 namespace MVC5.Controllers
 {
+    [Authorize]
     public class PosRequestsController : BaseController
     {
 
@@ -57,7 +58,8 @@ namespace MVC5.Controllers
                 posRequest.UserId = findCurrentUserId();
                 db.PosRequest.Add(posRequest);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                sendMail("Pos Request", "Post Request From Client", MyConstant.user_admin_email);
+                return RedirectToAction("Index", "Manage");
             }
 
             ViewBag.IntroducerId = new SelectList(db.Users, "Id", "NomborAhli", posRequest.IntroducerId);
