@@ -30,6 +30,6 @@ else
 
    
             <li>@Html.ActionLink("Free Sign Up", "Register", "Account", new { area = "" }, htmlAttributes: new { id = "registerLink" })</li>
-            <li>@Html.ActionLink("Login", "Login", "Account", new { area = "" }, htmlAttributes: new { id = "loginLink" })</li>
+            <li>@Html.ActionLink("Login", "Login", "Account", new { area = "", returnUrl = Request.Url.AbsoluteUri }, htmlAttributes: new { id = "loginLink" })</li>
    
 }
