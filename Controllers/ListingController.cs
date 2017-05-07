@@ -54,8 +54,18 @@ namespace MVC5.Controllers
                           select new ListingVO { listing = t, NewsList = news.ToList() };
             if (!String.IsNullOrEmpty(searchString))
             {
-                alltran = alltran.Where(s => s.listing.Address1.Contains(searchString)
-                                       || s.listing.UnitNo.Contains(searchString));
+                alltran = alltran.Where(s => s.listing.Address1.Contains(searchString));
+            }
+
+
+            if (search.PropertyTypeId != null && search.getCode(search.PropertyTypeId))
+            {
+                alltran = alltran.Where(s => s.listing.PropertyTypeId == search.PropertyTypeId);
+            }
+
+            if (search.NegeriId != null && search.getCode(search.NegeriId))
+            {
+                alltran = alltran.Where(s => s.listing.NegeriId == search.NegeriId);
             }
 
             switch (sortOrder)

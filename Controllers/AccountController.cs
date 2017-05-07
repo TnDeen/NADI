@@ -225,7 +225,7 @@ namespace MVC5.Controllers
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
 
-                    return Redirect("/Manage/Index");
+                    return RedirectToAction("Index", "Manage");
                 }
 
 

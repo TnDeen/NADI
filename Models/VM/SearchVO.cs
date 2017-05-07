@@ -8,8 +8,10 @@ namespace MVC5.Models.VM
 {
     public class SearchVO
     {
+        protected ApplicationDbContext db = new ApplicationDbContext();
+
         public string Address { get; set; }
-        
+
         public int? PropertyTypeId { get; set; }
         public int? NegeriId { get; set; }
         public int? ListingTypeId { get; set; }
@@ -25,5 +27,23 @@ namespace MVC5.Models.VM
         public DateTime? AuctionDate { get; set; }
 
         public List<ListingVO> listing { get; set; }
+
+
+        public bool getCode(int? id)
+        {
+            string nama = db.Sak.Where(a => a.Id == id).FirstOrDefault().Nama;
+            return !nama.Contains("All");
+        }
+
+        public string getNama(int? id)
+        {
+            string nama = "";
+            if (id != null)
+            {
+                nama = db.Sak.Where(a => a.Id == id).FirstOrDefault().Nama;
+            }
+             
+            return nama;
+        }
     }
 }

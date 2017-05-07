@@ -21,7 +21,8 @@ namespace MVC5.Common
         public const String wasapApiContact = "https://api.whatsapp.com/send?phone=";
         public const String user_support_email = "support@" + Web_Name;
         public const String user_admin_email = "admin@" + Web_Name;
-        public const String email_smtp = "mail." + Web_Name;
+        //public const String email_smtp = "mail." + Web_Name;
+        public const String email_smtp = "m04.internetmailserver.net";
         public const Boolean enableEmail = false;
 
 
