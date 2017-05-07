@@ -56,13 +56,6 @@ namespace MVC5.Controllers
             return View(article);
         }
 
-        public string Test(string articleKod, int? id)
-        {
-            var article = db.Article.Where(a => a.articleType.Kod.Equals("ARTCL_TYPE_ABOUT")).FirstOrDefault();
-
-            return article.Content;
-        }
-
         public ActionResult FAQ()
         {
             return View(db.Article.Where(a => a.articleType.Kod.Equals("ARTCL_TYPE_FAQ")).ToList());

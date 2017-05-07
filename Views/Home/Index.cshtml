@@ -233,7 +233,7 @@
                                         @if (item.listing.imageUrl == null)
                                         {
 
-                                            <img src="myapp/@MyConstant.property_img_default_url@item.listing.PropertyTypeId@MyConstant.file_jpg" alt="">
+                                            <img src="@Html.Action("GetImageUrl", "Home", new { id = item.listing.PropertyTypeId})" alt="">
                                         }
                                         else
                                         {
@@ -276,7 +276,7 @@
                                         @if (item.listing.imageUrl == null)
                                         {
 
-                                            <img src="myapp/@MyConstant.property_img_default_url@item.listing.PropertyTypeId@MyConstant.file_jpg" alt="">
+                                            <img src="@Html.Action("GetImageUrl", "Home", new { id = item.listing.PropertyTypeId})" alt="">
                                         }
                                         else
                                         {

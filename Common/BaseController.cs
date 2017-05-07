@@ -237,6 +237,37 @@ namespace MVC5.Common
             return db.Users.Where(a => a.Email.Equals(email)).FirstOrDefault();
         }
 
-        
+        public string GetArticleContent(string articleKod)
+        {
+            var article = db.Article.Where(a => a.articleType.Kod.Equals("ARTCL_TYPE_ABOUT")).FirstOrDefault();
+
+            return article.Content;
+        }
+
+        public string GetBaseUrl()
+        {
+            string vra = Request.Url.ToString();
+            string baseurl = "";
+            if (vra.Contains("localhost"))
+            {
+                baseurl = MyConstant.Base_Url_local;
+            } else
+            {
+                baseurl = MyConstant.Base_Url;
+            }
+            return baseurl;
+        }
+
+        public string GetImageUrl(string id)
+        {
+            return GetBaseUrl() + MyConstant.property_img_default_url + id + MyConstant.file_jpg;
+        }
+
+        public string GenerateCallbackUrl()
+        {
+            return Url.Action("ResetPassword", "Account", new { userId = "1", code = "1" }, protocol: Request.Url.Scheme);
+        }
+
+
     }
 }
