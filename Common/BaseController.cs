@@ -39,20 +39,23 @@ namespace MVC5.Common
             string vra = Request.Url.ToString();
             if (!vra.Contains("localhost"))
             {
+                string template = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
+                string from = ConfigurationManager.AppSettings["mailAccount"];
                 //create the mail message 
                 MailMessage mail = new MailMessage();
 
                 //set the addresses 
-                mail.From = new MailAddress(MyConstant.user_admin_email);
+                mail.From = new MailAddress(from);
                 mail.To.Add(recipient);
 
                 //set the content 
                 mail.Subject = subject;
-                mail.Body = body;
+                mail.Body = string.Format(template, from, from, body);
+                mail.IsBodyHtml = true;
                 //send the message 
                 SmtpClient smtp = new SmtpClient(MyConstant.email_smtp, 587);
 
-                NetworkCredential Credentials = new NetworkCredential(ConfigurationManager.AppSettings["mailAccount"], ConfigurationManager.AppSettings["mailPassword"]);
+                NetworkCredential Credentials = new NetworkCredential(from, ConfigurationManager.AppSettings["mailPassword"]);
                 smtp.Credentials = Credentials;
                 smtp.Send(mail);
             }
