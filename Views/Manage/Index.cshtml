@@ -45,10 +45,10 @@
                             }
                             @if (Model.HasPassword)
                             {
-                                <a href="/Manage/ChangePassword"><i class="fa fa-tags"></i>Tukar Kata Laluan</a>                 }
+                                <i class="fa fa-tags"></i>  @Html.ActionLink("Tukar Kata Laluan", "ChangePassword", "Manage")}
                             else
                             {
-                                <a href="/Manage/SetPassword"><i class="fa fa-tags"></i>Set Kata Laluan</a>
+                                <i class="fa fa-tags"></i>  @Html.ActionLink("Set Kata Laluan", "SetPassword", "Manage")}
                             }
                             <hr />
                             <div class="box">

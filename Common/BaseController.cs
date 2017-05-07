@@ -2,6 +2,7 @@
 using MVC5.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -38,15 +39,24 @@ namespace MVC5.Common
             string vra = Request.Url.ToString();
             if (!vra.Contains("localhost"))
             {
-                var client = new SmtpClient("smtp.mail.yahoo.com", 587)
-            {
-                Credentials = new NetworkCredential("jomrumahlelong@yahoo.com", "jomrumahyahoo1@"),
-                EnableSsl = true
-            };
-            
-                client.Send("jomrumahlelong@yahoo.com", recipient, subject, body);
+                //create the mail message 
+                MailMessage mail = new MailMessage();
+
+                //set the addresses 
+                mail.From = new MailAddress(MyConstant.user_admin_email);
+                mail.To.Add(recipient);
+
+                //set the content 
+                mail.Subject = subject;
+                mail.Body = body;
+                //send the message 
+                SmtpClient smtp = new SmtpClient(MyConstant.email_smtp, 587);
+
+                NetworkCredential Credentials = new NetworkCredential(ConfigurationManager.AppSettings["mailAccount"], ConfigurationManager.AppSettings["mailPassword"]);
+                smtp.Credentials = Credentials;
+                smtp.Send(mail);
             }
-            
+
         }
 
         public void sendNotification(string toUser, String subjext, String message)
