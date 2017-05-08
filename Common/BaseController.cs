@@ -44,23 +44,27 @@ namespace MVC5.Common
             Boolean enableEmail = true;
             if (enableEmail)
             {
-                string template = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
-                if (templateKod != null)
-                {
-                    template = db.Article.Where(a => a.articleType.Kod.Equals(templateKod)).FirstOrDefault().Content;
-                }
                 
                 string from = ConfigurationManager.AppSettings["mailAccount"];
+                string fromName = "Jomrumahlelong";
+                string template = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
+                string content = string.Format(template, from, fromName, body);
+
+                if (templateKod != null)
+                {
+                    content = populateDataTemplate(templateKod, body, recipient);
+                }
+
                 //create the mail message 
                 MailMessage mail = new MailMessage();
 
                 //set the addresses 
-                mail.From = new MailAddress(from);
+                mail.From = new MailAddress(from, fromName);
                 mail.To.Add(recipient);
 
                 //set the content 
                 mail.Subject = subject;
-                mail.Body = string.Format(template, from, from, body);
+                mail.Body = content;
                 mail.IsBodyHtml = true;
                 //send the message 
                 SmtpClient smtp = new SmtpClient(MyConstant.email_smtp, 587);
@@ -70,6 +74,13 @@ namespace MVC5.Common
                 smtp.Send(mail);
             }
 
+        }
+
+        private string populateDataTemplate(string templateKod, string body, string recipient)
+        {
+            string content = db.Article.Where(a => a.articleType.Kod.Equals(templateKod)).FirstOrDefault().Content;
+           
+            return string.Format(content, body, recipient);
         }
 
         public void sendNotification(string toUser, String subjext, String message)
