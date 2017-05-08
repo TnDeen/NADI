@@ -223,7 +223,7 @@ namespace MVC5.Controllers
                 {
                     UserManager.AddToRole(user.Id, MyConstant.Role_User);
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-
+                    sendMail("Jom Rumah Lelong Registration", "Congratulation! Your Registration has been Accepted.", user.Email);
 
                     return RedirectToAction("Index", "Manage");
                 }

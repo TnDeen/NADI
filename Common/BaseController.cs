@@ -33,13 +33,23 @@ namespace MVC5.Common
                 return HttpContext.GetOwinContext().Authentication;
             }
         }
-
         public void sendMail(string subject, string body, string recipient)
         {
+            sendMail(subject, body, recipient, null);
+        }
+
+        public void sendMail(string subject, string body, string recipient, string templateKod)
+        {
             string vra = Request.Url.ToString();
-            if (!vra.Contains("localhost"))
+            Boolean enableEmail = true;
+            if (enableEmail)
             {
                 string template = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
+                if (templateKod != null)
+                {
+                    template = db.Article.Where(a => a.articleType.Kod.Equals(templateKod)).FirstOrDefault().Content;
+                }
+                
                 string from = ConfigurationManager.AppSettings["mailAccount"];
                 //create the mail message 
                 MailMessage mail = new MailMessage();
