@@ -4419,6 +4419,9 @@
     <Content Include="Content\img\1.png" />
     <Content Include="Content\img\2.png" />
     <Content Include="Content\img\3.png" />
+    <Content Include="Content\img\article\1\default.jpg" />
+    <Content Include="Content\img\article\2\default.jpg" />
+    <Content Include="Content\img\article\3\default.jpg" />
     <Content Include="Content\img\Bank\11.jpg" />
     <Content Include="Content\img\Bank\12.jpg" />
     <Content Include="Content\img\Bank\13.jpg" />
@@ -4851,9 +4854,7 @@
     <Content Include="Content\assets\font-awesome\scss\_spinning.scss" />
     <Content Include="Content\assets\font-awesome\scss\_stacked.scss" />
     <Content Include="Content\assets\font-awesome\scss\_variables.scss" />
-    <None Include="Properties\PublishProfiles\jomrumahlelong.com - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\jomrumahlelong.com - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\jomrumahlelong.com - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\jomrumahlelong.com - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\clipboard.js" />

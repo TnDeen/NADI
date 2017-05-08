@@ -13,16 +13,16 @@ namespace MVC5.Common
         public const String Role_Admin = "Admin";
         public const String Role_Vendor = "Vendor";
         public const String Role_User = "User";
-        //public const String Base_Url = "http://www.jomrumahlelong.com/myapp/";
+        public const String Base_Url = "http://www.jomrumahlelong.com/";
         public const String Base_Url_local = "http://localhost:44300/";
-        public const String Base_Url = "http://jomrumah.w24.wh-2.com/myapp/";
+        //public const String Base_Url = "http://jomrumah.w24.wh-2.com/myapp/";
         public const String Web_Name = "jomrumahlelong.com";
         public const String last_office_noTel = "03 8080 0524";
         public const String wasapApiContact = "https://api.whatsapp.com/send?phone=";
         public const String user_support_email = "support@" + Web_Name;
         public const String user_admin_email = "admin@" + Web_Name;
-        //public const String email_smtp = "mail." + Web_Name;
-        public const String email_smtp = "m04.internetmailserver.net";
+        public const String email_smtp = "mail." + Web_Name;
+        //public const String email_smtp_temp = "m04.internetmailserver.net";
         public const Boolean enableEmail = false;
 
 
