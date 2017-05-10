@@ -14,10 +14,10 @@ namespace MVC5.Controllers
     public class ListingController : BaseController
     {
         // GET: Listing
-        public ActionResult Index(string sortOrder, int? page, SearchVO search, string address, int? propertyType, int? state, int? type, string minPrice, string maxPrice, string minArea, string maxArea, DateTime? aucDt)
+        public ActionResult Index(string sortOrder, int? page, ListingVO listingVo, SearchVO search, string address, int? propertyType, int? state, int? type, string minPrice, string maxPrice, string minArea, string maxArea, DateTime? aucDt)
         {
 
-            List<ListingVO> nwlist = searchAuction(sortOrder, search, address, propertyType, state, type, minPrice, maxPrice, minArea, maxArea, aucDt);
+            List<ListingVO> nwlist = searchAuction(sortOrder, listingVo, search, address, propertyType, state, type, minPrice, maxPrice, minArea, maxArea, aucDt);
             if (nwlist.Count() == 0)
             {
                 return RedirectToAction("Search", "Home");

@@ -37,7 +37,7 @@ namespace MVC5.Common
             }
         }
 
-        public List<ListingVO> searchAuction(string sortOrder, SearchVO search, string address, int? propertyType, int? state, int? type, string minPrice, string maxPrice, string minArea, string maxArea, DateTime? aucDt)
+        public List<ListingVO> searchAuction(string sortOrder, ListingVO listingVo, SearchVO search, string address, int? propertyType, int? state, int? type, string minPrice, string maxPrice, string minArea, string maxArea, DateTime? aucDt)
         {
 
             ViewBag.CurrentSort = sortOrder;
@@ -77,18 +77,18 @@ namespace MVC5.Common
             }
 
             //property type
-            if (search.PropertyTypeId != null && search.ValidateAllType(search.PropertyTypeId))
+            if (listingVo.PropertyTypeId != null && listingVo.ValidateAllType(listingVo.PropertyTypeId))
             {
-                ViewBag.enterLocation = ViewBag.enterLocation + " " + search.getNama(search.PropertyTypeId);
-                ViewBag.propertyType = search.PropertyTypeId;
-                alltran = alltran.Where(s => s.listing.PropertyTypeId == search.PropertyTypeId);
+                ViewBag.enterLocation = ViewBag.enterLocation + " type " + listingVo.getNama(listingVo.PropertyTypeId);
+                ViewBag.propertyType = listingVo.PropertyTypeId;
+                alltran = alltran.Where(s => s.listing.PropertyTypeId == listingVo.PropertyTypeId);
             }
             //negeri
-            if (search.NegeriId != null && search.ValidateAllType(search.NegeriId))
+            if (listingVo.NegeriId != null && listingVo.ValidateAllType(listingVo.NegeriId))
             {
-                ViewBag.enterLocation = ViewBag.enterLocation + " " + search.getNama(search.NegeriId);
-                ViewBag.state = search.NegeriId;
-                alltran = alltran.Where(s => s.listing.NegeriId == search.NegeriId);
+                ViewBag.enterLocation = ViewBag.enterLocation + " at " + listingVo.getNama(listingVo.NegeriId);
+                ViewBag.state = listingVo.NegeriId;
+                alltran = alltran.Where(s => s.listing.NegeriId == listingVo.NegeriId);
             }
             
             //min price
@@ -122,12 +122,7 @@ namespace MVC5.Common
                 alltran = alltran.Where(s => s.listing.Size <= mxs);
             }
 
-            //auction date
-            if (search.AuctionDate != null)
-            {
-                ViewBag.aucDt = search.AuctionDate.Value.Date;
-                alltran = alltran.Where(s => s.listing.AuctionDate.Value.Date == search.AuctionDate.Value.Date);
-            }
+            // date filter remove to back due to linq datetime issue
             // end filter
 
             switch (sortOrder)
@@ -149,11 +144,11 @@ namespace MVC5.Common
             List<ListingVO> nwlist = new List<ListingVO>();
             List<ListingVO> curlist = alltran.ToList();
             //listing type
-            if (search.ListingTypeId != null)
+            if (listingVo.ListingTypeId != null)
             {
-                ViewBag.enterLocation = ViewBag.enterLocation + " " + search.getNama(search.ListingTypeId);
-                ViewBag.type = search.ListingTypeId;
-                string kod = search.getKod(search.ListingTypeId);
+                ViewBag.enterLocation = ViewBag.enterLocation + " " + listingVo.getNama(search.ListingTypeId);
+                ViewBag.type = listingVo.ListingTypeId;
+                string kod = listingVo.getKod(listingVo.ListingTypeId);
                 DateTime today = DateTime.Now;
                 switch (kod)
                 {
@@ -171,8 +166,15 @@ namespace MVC5.Common
                 }
 
             }
-            
-            
+
+            //auction date
+            if (search.AuctionDate != null)
+            {
+                ViewBag.aucDt = search.AuctionDate.Value.Date;
+                curlist.RemoveAll(a => a.listing.AuctionDate == null || a.listing.AuctionDate.Value.Date != DateTime.Now.Date);
+            }
+
+
             if (curlist.Any())
             {
                 
