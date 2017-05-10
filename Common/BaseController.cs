@@ -1,8 +1,11 @@
 ﻿using Microsoft.Owin.Security;
 using MVC5.Models;
+using MVC5.Models.VM;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -33,6 +36,163 @@ namespace MVC5.Common
                 return HttpContext.GetOwinContext().Authentication;
             }
         }
+
+        public List<ListingVO> searchAuction(string sortOrder, SearchVO search, string address, int? propertyType, int? state, int? type, string minPrice, string maxPrice, string minArea, string maxArea, DateTime? aucDt)
+        {
+
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+            if (search == null)
+            {
+                search = new SearchVO();
+                search.Address = address;
+                search.PropertyTypeId = propertyType;
+                search.NegeriId = state;
+                search.ListingTypeId = type;
+                search.MinPrice = minPrice;
+                search.MaxPrice = maxPrice;
+                search.MinSize = minArea;
+                search.MaxSize = maxArea;
+                search.AuctionDate = aucDt;
+            }
+
+            ViewBag.PropertyTypeId = new SelectList(db.Sak.ToList().Where(a => a.SkId == 8).OrderBy(o => o.Nama), "Id", "Nama", search.PropertyTypeId);
+            ViewBag.NegeriID = new SelectList(db.Sak.ToList().Where(a => a.SkId == 7).OrderBy(o => o.Nama), "Id", "Nama", search.NegeriId);
+            ViewBag.ListingTypeId = new SelectList(db.Sak.Where(a => a.SkId == 9).OrderBy(o => o.Nama), "Id", "Nama", search.ListingTypeId);
+
+            var news = (from n in db.News
+                        select n).Take(5);
+
+            var alltran = from t in db.Transactions
+                          select new ListingVO { listing = t, NewsList = news.ToList() };
+            // start filter
+            // location
+            ViewBag.enterLocation = "";
+            if (!String.IsNullOrEmpty(search.Address))
+            {
+                ViewBag.enterLocation = search.Address;
+                ViewBag.address = search.Address;
+                alltran = alltran.Where(s => s.listing.Address1.Contains(search.Address));
+            }
+
+            //property type
+            if (search.PropertyTypeId != null && search.ValidateAllType(search.PropertyTypeId))
+            {
+                ViewBag.enterLocation = ViewBag.enterLocation + " " + search.getNama(search.PropertyTypeId);
+                ViewBag.propertyType = search.PropertyTypeId;
+                alltran = alltran.Where(s => s.listing.PropertyTypeId == search.PropertyTypeId);
+            }
+            //negeri
+            if (search.NegeriId != null && search.ValidateAllType(search.NegeriId))
+            {
+                ViewBag.enterLocation = ViewBag.enterLocation + " " + search.getNama(search.NegeriId);
+                ViewBag.state = search.NegeriId;
+                alltran = alltran.Where(s => s.listing.NegeriId == search.NegeriId);
+            }
+            
+            //min price
+            if (search.MinPrice != null)
+            {
+                ViewBag.minPrice = search.MinPrice;
+                decimal mp = decimal.Parse(search.MinPrice);
+                alltran = alltran.Where(s => s.listing.Price >= mp);
+            }
+
+            //max price
+            if (search.MaxPrice != null)
+            {
+                ViewBag.maxPrice = search.MaxPrice;
+                decimal mxp = decimal.Parse(search.MaxPrice);
+                alltran = alltran.Where(s => s.listing.Price <= mxp);
+            }
+            //min area
+            if (search.MinSize != null)
+            {
+                ViewBag.minArea = search.MinSize;
+                decimal ms = decimal.Parse(search.MinSize);
+                alltran = alltran.Where(s => s.listing.Size >= ms);
+            }
+
+            //max area
+            if (search.MaxSize != null)
+            {
+                ViewBag.maxArea = search.MaxSize;
+                decimal mxs = decimal.Parse(search.MaxSize);
+                alltran = alltran.Where(s => s.listing.Size <= mxs);
+            }
+
+            //auction date
+            if (search.AuctionDate != null)
+            {
+                ViewBag.aucDt = search.AuctionDate.Value.Date;
+                alltran = alltran.Where(s => s.listing.AuctionDate.Value.Date == search.AuctionDate.Value.Date);
+            }
+            // end filter
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    alltran = alltran.OrderByDescending(s => s.listing.Address1);
+                    break;
+                case "Date":
+                    alltran = alltran.OrderBy(s => s.listing.AuctionDate);
+                    break;
+                case "date_desc":
+                    alltran = alltran.OrderByDescending(s => s.listing.AuctionDate);
+                    break;
+                default:  // Name ascending 
+                    alltran = alltran.OrderBy(s => s.listing.Address1);
+                    break;
+            }
+
+            List<ListingVO> nwlist = new List<ListingVO>();
+            List<ListingVO> curlist = alltran.ToList();
+            //listing type
+            if (search.ListingTypeId != null)
+            {
+                ViewBag.enterLocation = ViewBag.enterLocation + " " + search.getNama(search.ListingTypeId);
+                ViewBag.type = search.ListingTypeId;
+                string kod = search.getKod(search.ListingTypeId);
+                DateTime today = DateTime.Now;
+                switch (kod)
+                {
+                    case MyConstant.LSTNG_TYPE_ACTIVE:
+                        curlist.RemoveAll(a => a.listing.AuctionDate == null || a.listing.AuctionDate.Value.Date < DateTime.Now.Date);
+                        break;
+                    case MyConstant.LSTNG_TYPE_EXPRD:
+                        curlist.RemoveAll(a => a.listing.AuctionDate == null || a.listing.AuctionDate.Value.Date >= DateTime.Now.Date);
+                        break;
+                    case MyConstant.LSTNG_TYPE_PENDING:
+                        curlist.RemoveAll(a => a.listing.AuctionDate != null);
+                        break;
+                    default:
+                        break;
+                }
+
+            }
+            
+            
+            if (curlist.Any())
+            {
+                
+                foreach (ListingVO ls in curlist)
+                {
+                    ls.search = search;
+                    var basePath = Server.MapPath("~/Content/img/property-type/" + ls.listing.Id);
+                    string filename = "default" + ".jpg";
+                    var path = Path.Combine(basePath, filename);
+                    if (System.IO.File.Exists(path))
+                    {
+                        ls.imgUrl = MyConstant.property_img_base_url + ls.listing.Id + "/" + filename;
+                    }
+                    nwlist.Add(ls);
+                }
+            }
+
+            return nwlist;
+        }
+
         public void sendMail(string subject, string body, string recipient)
         {
             sendMail(subject, body, recipient, null);

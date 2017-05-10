@@ -80,7 +80,8 @@
 
 
                 <div class="col-lg-9">
-                    <h2 id="forms-example">Auction Properties in Malaysia for "@ViewBag.enterLocation" (@ViewBag.listSize Results Found)</h2>
+                    <h2 id="forms-example">Auction Properties in Malaysia (@ViewBag.listSize Results Found)</h2>
+
                     @foreach (var item in Model)
                     {
 
@@ -113,7 +114,11 @@
                                             @item.listing.Size (Sq.ft)
                                         </p>
                                         <p>
-                                            @item.listing.AuctionDate.Value.ToShortDateString()
+                                            @if (item.listing.AuctionDate != null)
+                                            {
+                                                @item.listing.AuctionDate.Value.ToShortDateString()
+                                            }
+                                            
                                         </p>
                                         <br />
                                         @Html.ActionLink("Read More", "Details", new { id = item.listing.GenerateSlug(), address = item.search.Address }, htmlAttributes: new { @class = "btn btn-danger right" })
@@ -136,7 +141,7 @@
                             Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
                             @Html.PagedListPager(Model, page => Url.Action("Index",
-    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    new { page, sortOrder = ViewBag.CurrentSort, address = ViewBag.address, propertyType = ViewBag.propertyType, state = ViewBag.state, type = ViewBag.type, minPrice = ViewBag.minPrice, maxPrice = ViewBag.maxPrice, minArea = ViewBag.minArea, maxArea = ViewBag.maxArea, aucDt = ViewBag.aucDt }))
 
                         </div>
 

@@ -34,6 +34,12 @@ namespace MVC5.Common
         public const String file_jpg = ".jpg";
 
 
+        //listing type
+        public const String LSTNG_TYPE_ACTIVE = "LSTNG_TYPE_01";
+        public const String LSTNG_TYPE_EXPRD = "LSTNG_TYPE_02";
+        public const String LSTNG_TYPE_PENDING = "LSTNG_TYPE_PNDNG";
+
+
         public const String SK_NEGERI = "NEGERI";
         public const String NEGERI_JHR = "01";
         public const String NEGERI_KDH = "02";

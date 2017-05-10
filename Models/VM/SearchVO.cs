@@ -29,10 +29,15 @@ namespace MVC5.Models.VM
         public List<ListingVO> listing { get; set; }
 
 
-        public bool getCode(int? id)
+        public bool ValidateAllType(int? id)
         {
             string nama = db.Sak.Where(a => a.Id == id).FirstOrDefault().Nama;
             return !nama.Contains("All");
+        }
+
+        public string getKod(int? id)
+        {
+            return db.Sak.Where(a => a.Id == id).FirstOrDefault().Kod;
         }
 
         public string getNama(int? id)
