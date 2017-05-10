@@ -42,6 +42,10 @@ namespace MVC5.Models
         public ApplicationUser CurrentUser { get; set; }
         public ApplicationUser Pencadang { get; set; }
         public ICollection<ApplicationUser> ChildList { get; set; }
+
+        public ICollection<PosRequest> PosRequest { get; set; }
+        public ICollection<AppointAgent> AppointAgent { get; set; }
+        public ICollection<MembershipRequest> MembershipRequest { get; set; }
     }
 
     public class ManageLoginsViewModel

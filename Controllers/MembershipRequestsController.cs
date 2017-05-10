@@ -18,8 +18,18 @@ namespace MVC5.Controllers
         // GET: MembershipRequests
         public ActionResult Index()
         {
-            var membershipRequest = db.MembershipRequest.Include(m => m.Introducer).Include(m => m.PackageType).Include(m => m.User);
-            return View(membershipRequest.ToList());
+            List<MembershipRequest> membershipRequest = null;
+            if (User.IsInRole(MyConstant.Role_Admin))
+            {
+                membershipRequest = db.MembershipRequest.Include(m => m.Introducer).Include(m => m.PackageType).Include(m => m.User).ToList();
+            }
+            else
+            {
+                var userId = findCurrentUserId();
+                membershipRequest = db.MembershipRequest.Where(a => a.UserId.Equals(userId)).Include(m => m.Introducer).Include(m => m.PackageType).Include(m => m.User).ToList();
+            }
+            
+            return View(membershipRequest);
         }
 
         // GET: MembershipRequests/Details/5

@@ -101,6 +101,9 @@ namespace MVC5.Controllers
 
                 HasPassword = HasPassword(),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
+                PosRequest = db.PosRequest.Where(a => a.UserId.Equals(userId)).ToList(),
+                AppointAgent = db.AppointAgent.Where(a => a.UserId.Equals(userId)).ToList(),
+                MembershipRequest = db.MembershipRequest.Where(a => a.UserId.Equals(userId)).ToList(),
                 userLink = userlink,
                 accumulativePoint = acp,
                 potentialPoint = pap,

@@ -18,8 +18,18 @@ namespace MVC5.Controllers
         // GET: AppointAgents
         public ActionResult Index()
         {
-            var appointAgent = db.AppointAgent.Include(a => a.Introducer).Include(a => a.Listing).Include(a => a.User);
-            return View(appointAgent.ToList());
+            List<AppointAgent> appointAgent = null;
+            if (User.IsInRole(MyConstant.Role_Admin))
+            {
+                appointAgent = db.AppointAgent.Include(a => a.Introducer).Include(a => a.Listing).Include(a => a.User).ToList();
+            }
+            else
+            {
+                var userId = findCurrentUserId();
+                appointAgent = db.AppointAgent.Where(a => a.UserId.Equals(userId)).Include(a => a.Introducer).Include(a => a.Listing).Include(a => a.User).ToList();
+            }
+            
+            return View(appointAgent);
         }
 
         // GET: AppointAgents/Details/5

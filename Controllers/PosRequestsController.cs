@@ -18,8 +18,17 @@ namespace MVC5.Controllers
         // GET: PosRequests
         public ActionResult Index()
         {
-            var posRequest = db.PosRequest.Include(p => p.Introducer).Include(p => p.Listing).Include(p => p.User);
-            return View(posRequest.ToList());
+            List<PosRequest> posRequest = null;
+            if (User.IsInRole(MyConstant.Role_Admin))
+            {
+                posRequest = db.PosRequest.Include(p => p.Introducer).Include(p => p.Listing).Include(p => p.User).ToList();
+            } else
+            {
+                var userId = findCurrentUserId();
+                posRequest = db.PosRequest.Where(a => a.UserId.Equals(userId)).Include(p => p.Introducer).Include(p => p.Listing).Include(p => p.User).ToList();
+            }
+            
+            return View(posRequest);
         }
 
         // GET: PosRequests/Details/5

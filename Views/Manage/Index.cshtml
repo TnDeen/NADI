@@ -62,20 +62,20 @@
                                         <span class="badge bg-yellow">@Model.totalMessage</span>
                                         <i class="fa fa-bullhorn"></i> Notifications
                                     </a>
-                                    <a class="btn btn-app">
-                                        <span class="badge bg-green">300</span>
+                                    <a class="btn btn-app" href="/PosRequests/Index">
+                                        <span class="badge bg-green">@Model.PosRequest.Count()</span>
                                         <i class="fa fa-barcode"></i> Pos Request
                                     </a>
-                                    <a class="btn btn-app">
-                                        <span class="badge bg-purple">891</span>
+                                    <a class="btn btn-app" href="/MembershipRequests/Index">
+                                        <span class="badge bg-purple">@Model.MembershipRequest.Count()</span>
                                         <i class="fa fa-users"></i> Membership
                                     </a>
-                                    <a class="btn btn-app">
-                                        <span class="badge bg-teal">67</span>
+                                    <a class="btn btn-app" href="/AppointAgents/Index">
+                                        <span class="badge bg-teal">@Model.AppointAgent.Count()</span>
                                         <i class="fa fa-inbox"></i> Appoint Agent
                                     </a>
-                                    <a class="btn btn-app">
-                                        <span class="badge bg-red">531</span>
+                                    <a class="btn btn-app" href="#">
+                                        <span class="badge bg-red">0</span>
                                         <i class="fa fa-heart-o"></i> My Auction
                                     </a>
                                 </div><!-- /.box-body -->
