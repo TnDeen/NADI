@@ -27,6 +27,7 @@ namespace MVC5.Models.VM
         public DateTime? AuctionDate { get; set; }
 
         public List<ListingVO> listing { get; set; }
+        public List<ListingVO> listingHot { get; set; }
 
 
         //public bool ValidateAllType(int? id)
@@ -47,7 +48,7 @@ namespace MVC5.Models.VM
         //    {
         //        nama = db.Sak.Where(a => a.Id == id).FirstOrDefault().Nama;
         //    }
-             
+
         //    return nama;
         //}
     }

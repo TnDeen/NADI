@@ -22,8 +22,26 @@ namespace MVC5.Controllers
             var list = (from t in db.Transactions
                           select new ListingVO { listing = t }).Take(4);
 
+            var hotId = (from t in db.SistemCounter
+                         where t.Kod.Contains("LSTGCOUNT")
+                         orderby t.runningNumber descending
+                         select t.Kod).Take(4);
+
+            List<string> kod = hotId.ToList();
+            List<int> ids = new List<int>();
+            foreach (var n in kod)
+            {
+                string[] arr = n.Split('-');
+                ids.Add(int.Parse(arr[1]));
+            }
+
+            var listHot = (from t in db.Transactions
+                           where ids.Contains(t.Id)
+                        select new ListingVO { listing = t }).Take(4);
+
             SearchVO svo = new SearchVO();
             svo.listing = list.ToList();
+            svo.listingHot = listHot.ToList();
             return View(svo);
         }
 

@@ -390,6 +390,7 @@ namespace MVC5.Common
 
             StringBuilder sb = new StringBuilder();
             sb.Append(MyConstant.listing_count_code);
+            sb.Append('-');
             sb.Append(id.ToString());
             string kod = sb.ToString();
             counter = db.SistemCounter.Where(a => a.Kod.Equals(kod)).FirstOrDefault();
