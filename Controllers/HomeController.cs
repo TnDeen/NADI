@@ -81,5 +81,13 @@ namespace MVC5.Controllers
             ViewBag.Title = "Site Offline";
             return View("Offline", "~/Views/Shared/_LayoutOffline.cshtml");
         }
+
+        public ActionResult Search()
+        {
+            ViewBag.PropertyTypeId = new SelectList(db.Sak.ToList().Where(a => a.SkId == 8).OrderBy(o => o.Nama), "Id", "Nama");
+            ViewBag.NegeriID = new SelectList(db.Sak.ToList().Where(a => a.SkId == 7).OrderBy(o => o.Nama), "Id", "Nama");
+            ViewBag.ListingTypeId = new SelectList(db.Sak.Where(a => a.SkId == 9).OrderBy(o => o.Nama), "Id", "Nama");
+            return View();
+        }
     }
 }

@@ -20,7 +20,7 @@ namespace MVC5.Controllers
             List<ListingVO> nwlist = searchAuction(sortOrder, search, address, propertyType, state, type, minPrice, maxPrice, minArea, maxArea, aucDt);
             if (nwlist.Count() == 0)
             {
-                return RedirectToAction("NotFound", "Exception");
+                return RedirectToAction("Search", "Home");
             }
             int pageSize = 15;
             int pageNumber = (page ?? 1);

@@ -190,6 +190,8 @@ namespace MVC5.Common
                 }
             }
 
+            ViewBag.listSize = nwlist.Count();
+
             return nwlist;
         }
 
