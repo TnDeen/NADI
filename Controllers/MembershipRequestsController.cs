@@ -140,6 +140,21 @@ namespace MVC5.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "Admin")]
+        public void updateMembership(int id, Boolean status, string useremel)
+        {
+            db.MembershipRequest.Where(t => t.Id == id).ToList().ForEach(x => x.StatusActive = status);
+            db.SaveChanges();
+            if (status)
+            {
+                sendMail("Membership Apporove!", "Congratulations " + useremel + "! Your membership have been approve. Enjoy the privilege of VIP package.", useremel);
+            }  else
+            {
+                sendMail("Subcription Ended!", "Hi " + useremel + ", Your subcription has ended. Please renew to Enjoy the privilege of VIP package.", useremel);
+            }
+            
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

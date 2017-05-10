@@ -205,7 +205,7 @@ namespace MVC5.Common
         public void sendMail(string subject, string body, string recipient, string templateKod)
         {
             string vra = Request.Url.ToString();
-            Boolean enableEmail = true;
+            Boolean enableEmail = false;
             if (enableEmail)
             {
                 
