@@ -22,17 +22,21 @@ namespace MVC5.Controllers
             var list = (from t in db.Transactions
                           select new ListingVO { listing = t }).Take(4);
 
-            var hotId = (from t in db.SistemCounter
+            var hotId = from t in db.SistemCounter
                          where t.Kod.Contains("LSTGCOUNT")
                          orderby t.runningNumber descending
-                         select t.Kod).Take(4);
+                         select t.Kod;
 
             List<string> kod = hotId.ToList();
             List<int> ids = new List<int>();
             foreach (var n in kod)
             {
                 string[] arr = n.Split('-');
-                ids.Add(int.Parse(arr[1]));
+                if (arr[1] != null)
+                {
+                    ids.Add(int.Parse(arr[1]));
+                }
+                
             }
 
             var listHot = (from t in db.Transactions
