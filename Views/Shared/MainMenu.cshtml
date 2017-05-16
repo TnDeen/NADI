@@ -1,5 +1,8 @@
 ﻿@using MVC5.Common
 <li>
+    @Html.ActionLink("Property", "Index", "Listing")
+</li>
+<li>
     @Html.ActionLink("Auction Procedures", "Article", "Home", new { articleKod = "ARTCL_TYPE_AUC_PRCDRS" }, null)
 </li>
 <li>
@@ -23,7 +26,7 @@
 
 <li class="dropdown">
     <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover="dropdown" data-toggle="dropdown" href="#">
-        Customer Support (@MyConstant.last_office_noTel) <i class="fa fa-angle-down"></i>
+        Customer Support<i class="fa fa-angle-down"></i>
     </a>
 
     <ul class="dropdown-menu">

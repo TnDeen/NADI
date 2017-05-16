@@ -10,10 +10,11 @@
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     <div class="container">
-        <h2>Sign Up (Free)</h2>
-        <h4>Sign Up now to view full address with unit/lot numbers</h4>
+        
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-6 col-lg-offset-3">
+                <h2>Sign Up (Free)</h2>
+                <h4>Sign Up now to view full address with unit/lot numbers</h4>
                 @Html.AntiForgeryToken()
 
                 <hr />

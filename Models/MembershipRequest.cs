@@ -22,6 +22,7 @@ namespace MVC5.Models
         public virtual ApplicationUser Introducer { get; set; }
 
         [ForeignKey("PackageType")]
+        [Display(Name = "Package Type")]
         public int? PackageTypeId { get; set; }
         public virtual SAK PackageType { get; set; }
 

@@ -5275,6 +5275,7 @@
     <Content Include="Views\Shared\footer.cshtml" />
     <Content Include="Views\Shared\header.cshtml" />
     <Content Include="Views\Shared\_LayoutEmpty.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
