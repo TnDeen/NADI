@@ -5,91 +5,101 @@
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
 }
 
-<h2>Index</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Membership Application</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Introducer.NomborAhli)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PackageType.Nama)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.User.NomborAhli)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TarikhSah)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TarikhTamat)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StatusActive)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nama)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ic)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.contact)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.address)
-        </th>
-        <th></th>
-    </tr>
+            <table class="table">
+                <tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Introducer.NomborAhli)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PackageType.Nama)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.User.NomborAhli)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TarikhSah)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TarikhTamat)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StatusActive)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.nama)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ic)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.contact)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.address)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id }) |
-            @if (User.IsInRole(MyConstant.Role_Admin))
-            {
-                @Html.ActionLink("Cancel", "updateMembership", new { id = item.Id, status = false, item.User.UserName })
-            @Html.ActionLink("Approve", "updateMembership", new { id = item.Id, status = true, item.User.UserName })
-            }
-            
+                    <th>
+                        @Html.DisplayNameFor(model => model.PackageType.Nama)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.User.NomborAhli)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TarikhSah)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TarikhTamat)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StatusActive)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.nama)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ic)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.contact)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.address)
+                    </th>
+                    <th></th>
+                </tr>
 
-        </td>
-    </tr>
-}
+                @foreach (var item in Model)
+                {
+                    <tr>
 
-</table>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PackageType.Nama)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User.NomborAhli)
+                        </td>
+                        <td>
+                            @if (item.TarikhSah != null)
+                            {
+                                @item.TarikhSah.Value.ToShortDateString()
+                            }
+                           
+                        </td>
+                        <td>
+                            @if (item.TarikhSah != null)
+                            {
+                               @item.TarikhTamat.Value.ToShortDateString()
+                            }
+                            
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StatusActive)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.nama)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ic)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.contact)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.address)
+                        </td>
+                        <td>
+                            
+                            @if (User.IsInRole(MyConstant.Role_Admin))
+                            {
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) <span>|</span>
+                                @Html.ActionLink("Details", "Details", new { id = item.Id }) <span>|</span>
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id }) <span>|</span>
+                                @Html.ActionLink("Cancel", "updateMembership", new { id = item.Id, status = false, useremel = item.User.UserName }) <span>|</span>
+                                @Html.ActionLink("Approve", "updateMembership", new { id = item.Id, status = true, useremel = item.User.UserName })
+                            }
+
+
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
+

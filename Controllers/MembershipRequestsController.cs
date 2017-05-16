@@ -61,11 +61,22 @@ namespace MVC5.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,UserId,IntroducerId,PackageTypeId,TarikhSah,TarikhTamat,nama,ic,contact,address,CreateDate,CreateBy,LastUpdated,LastUpdatedBy")] MembershipRequest membershipRequest)
+        public ActionResult Create([Bind(Include = "Id,UserId,IntroducerId,PackageTypeId,TarikhSah,TarikhTamat,StatusActive,nama,ic,contact,address,CreateDate,CreateBy,LastUpdated,LastUpdatedBy")] MembershipRequest membershipRequest)
         {
+            
             if (ModelState.IsValid)
             {
+
+                if (!membershipRequest.StatusActive)
+                {
+                    ViewBag.IntroducerId = new SelectList(db.Users, "Id", "NomborAhli");
+                    ViewBag.PackageTypeId = new SelectList(db.Sak.Where(a => a.Sk.Kod.Equals("MMBRSHP_TYPE")), "Id", "Nama", membershipRequest.PackageTypeId);
+                    ModelState.AddModelError("", "Sila Terima Terma dan Syarat!");
+                    return View(membershipRequest);
+                }
+
                 membershipRequest.UserId = findCurrentUserId();
+                membershipRequest.StatusActive = false;
                 db.MembershipRequest.Add(membershipRequest);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -141,18 +152,34 @@ namespace MVC5.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        public void updateMembership(int id, Boolean status, string useremel)
+        public ActionResult updateMembership(int id, Boolean status, string useremel)
         {
-            db.MembershipRequest.Where(t => t.Id == id).ToList().ForEach(x => x.StatusActive = status);
-            db.SaveChanges();
+            
+            
+            DateTime today = DateTime.Now;
+            MembershipRequest membershipRequest = db.MembershipRequest.Where(t => t.Id == id).FirstOrDefault();
+            db.Entry(membershipRequest).State = EntityState.Modified;
+            
+            
             if (status)
             {
+                membershipRequest.StatusActive = true;
+                membershipRequest.TarikhSah = today;
+                string valid = membershipRequest.PackageType.Perihal;
+                DateTime expired = today.AddMonths(int.Parse(valid));
+                membershipRequest.TarikhTamat = expired;
                 sendMail("Membership Apporove!", "Congratulations " + useremel + "! Your membership have been approve. Enjoy the privilege of VIP package.", useremel);
             }  else
             {
+                membershipRequest.StatusActive = false;
+                membershipRequest.TarikhSah = null;
+                membershipRequest.TarikhTamat = null;
                 sendMail("Subcription Ended!", "Hi " + useremel + ", Your subcription has ended. Please renew to Enjoy the privilege of VIP package.", useremel);
             }
-            
+
+            db.SaveChanges();
+            return RedirectToAction("Index");
+
         }
 
         protected override void Dispose(bool disposing)

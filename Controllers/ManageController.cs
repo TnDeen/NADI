@@ -116,7 +116,7 @@ namespace MVC5.Controllers
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
-                accType = db.MembershipRequest.Where(a => a.StatusActive && a.UserId == curuser.Id).FirstOrDefault(),
+                accType = db.MembershipRequest.Where(a => a.StatusActive && a.UserId.Equals(userId)).FirstOrDefault(),
                 CurrentUser = curuser,
                 Pencadang = curuser.Parent,
                 ChildList = idb.Users.Where(a => a.ParentId.Equals(userId)).ToList()
