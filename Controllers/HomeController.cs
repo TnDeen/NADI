@@ -111,5 +111,20 @@ namespace MVC5.Controllers
             ViewBag.ListingTypeId = new SelectList(db.Sak.Where(a => a.SkId == 9).OrderBy(o => o.Nama), "Id", "Nama");
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Contact(Message message)
+        {
+            if (message != null)
+            {
+                ApplicationUser admin = findUserbyEmail(MyConstant.user_admin_email);
+                message.Recipient = admin.Id;
+                db.SystemMessage.Add(message);
+                db.SaveChanges();
+                sendMail(message.Subject, message.Perihal, admin.Email);
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
     }
 }

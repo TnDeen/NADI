@@ -425,7 +425,7 @@ namespace MVC5.Common
 
         public string GetArticleContent(string articleKod)
         {
-            var article = db.Article.Where(a => a.articleType.Kod.Equals("ARTCL_TYPE_ABOUT")).FirstOrDefault();
+            var article = db.Article.Where(a => a.articleType.Kod.Equals(articleKod)).FirstOrDefault();
 
             return article.Content;
         }

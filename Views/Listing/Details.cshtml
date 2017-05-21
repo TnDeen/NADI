@@ -327,7 +327,7 @@
                                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta, eligendi doloribus sunt minus amet sit debitis repellat. Consectetur, culpa itaque odio similique suscipit
                                         </p>
                                         
-                                        @Html.ActionLink("Contact Agent", "Create", "AppointAgents", null, htmlAttributes: new { @class = "btn btn-success btn-block" })
+                                        @Html.ActionLink("Contact Agent", "Create", "AppointAgents", new { id = Model.listing.Id }, htmlAttributes: new { @class = "btn btn-success btn-block" })
                                       <br />
                                          <p class="text-center">
                                             <a href="@MyConstant.wasapApiContact" target="_blank">
@@ -361,7 +361,7 @@
                                     
                                 </div>
                                 <div class="col-md-4">
-                                    @Html.ActionLink("Request POS", "Create", "PosRequests", null, htmlAttributes: new { @class = "btn btn-primary btn-block btn-lg" })
+                                    @Html.ActionLink("Request POS", "Create", "PosRequests", new { id = Model.listing.Id }, htmlAttributes: new { @class = "btn btn-primary btn-block btn-lg" })
                                 </div>
 
                             </div>
