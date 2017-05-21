@@ -51,9 +51,7 @@ namespace MVC5.Controllers
         public ActionResult Create(string userId)
         {
             MembershipRequest mr = new MembershipRequest();
-            ViewBag.IntroducerId = new SelectList(db.Users, "Id", "NomborAhli");
             ViewBag.PackageTypeId = new SelectList(db.Sak.Where(a => a.Sk.Kod.Equals("MMBRSHP_TYPE")), "Id", "Nama");
-            ViewBag.UserId = new SelectList(db.Users, "Id", "NomborAhli");
             mr.Introducer = finduserBynoAhli(userId);
             return View(mr);
         }
@@ -63,7 +61,7 @@ namespace MVC5.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,UserId,IntroducerId,Introducer,PackageTypeId,TarikhSah,TarikhTamat,StatusActive,nama,ic,contact,address,CreateDate,CreateBy,LastUpdated,LastUpdatedBy")] MembershipRequest membershipRequest)
+        public ActionResult Create([Bind(Include = "Id,Introducer,PackageTypeId,TarikhSah,TarikhTamat,StatusActive,nama,ic,contact,address,CreateDate,CreateBy,LastUpdated,LastUpdatedBy")] MembershipRequest membershipRequest)
         {
             
             if (ModelState.IsValid)
@@ -71,13 +69,13 @@ namespace MVC5.Controllers
 
                 if (!membershipRequest.StatusActive)
                 {
-                    ViewBag.IntroducerId = new SelectList(db.Users, "Id", "NomborAhli");
                     ViewBag.PackageTypeId = new SelectList(db.Sak.Where(a => a.Sk.Kod.Equals("MMBRSHP_TYPE")), "Id", "Nama", membershipRequest.PackageTypeId);
                     ModelState.AddModelError("", "Sila Terima Terma dan Syarat!");
                     return View(membershipRequest);
                 }
 
                 membershipRequest.UserId = findCurrentUserId();
+                membershipRequest.Introducer = findUserbyId(membershipRequest.Introducer.Id);
                 membershipRequest.StatusActive = false;
                 db.MembershipRequest.Add(membershipRequest);
                 db.SaveChanges();
