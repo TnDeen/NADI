@@ -52,8 +52,13 @@ namespace MVC5.Controllers
             }
             var news = db.News.Take(5);
             vo.NewsList = news.ToList();
-            string userid = findCurrentUserId();
-            vo.Subscribe = db.MembershipRequest.Where(a => a.UserId.Equals(userid) && a.StatusActive).Any();
+            if (User.Identity.IsAuthenticated)
+            {
+                string userid = findCurrentUserId();
+                vo.Subscribe = db.MembershipRequest.Where(a => a.UserId.Equals(userid) && a.StatusActive).Any();
+
+            }
+            
 
 
             ViewBag.ListingViewCount = updateListingView(listing.Id);

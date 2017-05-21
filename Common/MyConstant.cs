@@ -18,6 +18,7 @@ namespace MVC5.Common
         //public const String Base_Url = "http://jomrumah.w24.wh-2.com/myapp/";
         public const String Web_Name = "jomrumahlelong.com";
         public const String last_office_noTel = "012 836 9219";
+        public const String agent_noTel = "011 836 9219";
         public const String wasapApiContact = "https://api.whatsapp.com/send?phone=60128369219";
         public const String user_support_email = "support@" + Web_Name;
         public const String user_admin_email = "admin@" + Web_Name;
