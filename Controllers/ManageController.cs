@@ -73,7 +73,7 @@ namespace MVC5.Controllers
 
             var userId = User.Identity.GetUserId();
             ApplicationUser curuser = UserManager.FindById(userId);
-            var userlink = Url.Action("Register", "Account",
+            var userlink = Url.Action("Create", "MembershipRequests",
                new { userId = curuser.NomborAhli }, protocol: Request.Url.Scheme);
             decimal? acp = 0;
             decimal? pap = 0;

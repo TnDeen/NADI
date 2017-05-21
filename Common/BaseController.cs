@@ -302,6 +302,20 @@ namespace MVC5.Common
             return parentId;
         }
 
+        public ApplicationUser finduserBynoAhli(string noAhli)
+        {
+            ApplicationUser parent = null;
+            if (noAhli != null)
+            {
+                var user = db.Users.Where(a => a.NomborAhli.Equals(noAhli)).FirstOrDefault();
+                if (user != null)
+                {
+                    parent = user;
+                }
+            }
+            return parent;
+        }
+
         public Boolean validateNoAhli(string noAhli)
         {
             Boolean result = false;

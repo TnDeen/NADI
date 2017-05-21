@@ -48,12 +48,14 @@ namespace MVC5.Controllers
         }
 
         // GET: MembershipRequests/Create
-        public ActionResult Create()
+        public ActionResult Create(string userId)
         {
+            MembershipRequest mr = new MembershipRequest();
             ViewBag.IntroducerId = new SelectList(db.Users, "Id", "NomborAhli");
             ViewBag.PackageTypeId = new SelectList(db.Sak.Where(a => a.Sk.Kod.Equals("MMBRSHP_TYPE")), "Id", "Nama");
             ViewBag.UserId = new SelectList(db.Users, "Id", "NomborAhli");
-            return View();
+            mr.Introducer = finduserBynoAhli(userId);
+            return View(mr);
         }
 
         // POST: MembershipRequests/Create
@@ -61,7 +63,7 @@ namespace MVC5.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,UserId,IntroducerId,PackageTypeId,TarikhSah,TarikhTamat,StatusActive,nama,ic,contact,address,CreateDate,CreateBy,LastUpdated,LastUpdatedBy")] MembershipRequest membershipRequest)
+        public ActionResult Create([Bind(Include = "Id,UserId,IntroducerId,Introducer,PackageTypeId,TarikhSah,TarikhTamat,StatusActive,nama,ic,contact,address,CreateDate,CreateBy,LastUpdated,LastUpdatedBy")] MembershipRequest membershipRequest)
         {
             
             if (ModelState.IsValid)

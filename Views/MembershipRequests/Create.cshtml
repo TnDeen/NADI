@@ -15,8 +15,9 @@
         <h4>@ViewBag.Title</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        
-
+        @Html.HiddenFor(model => model.Introducer)
+        <strong>Introducer :</strong> @Html.DisplayFor(model => model.Introducer.NomborAhli)
+        <hr />
         <div class="form-group">
             @Html.LabelFor(model => model.PackageTypeId, "Package Type", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
