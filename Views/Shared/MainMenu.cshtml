@@ -1,6 +1,6 @@
 ﻿@using MVC5.Common
 <li>
-    @Html.ActionLink("Property", "Index", "Listing")
+    @Html.ActionLink("Property", "IndexLink", "Listing", new { propertyType = 32, state = 33 , type = 22}, null)
 </li>
 <li>
     @Html.ActionLink("Auction Procedures", "Article", "Home", new { articleKod = "ARTCL_TYPE_AUC_PRCDRS" }, null)

@@ -57,6 +57,15 @@ namespace MVC5.Common
                 search.AuctionDate = aucDt;
             }
 
+            if (listingVo == null)
+            {
+                listingVo = new ListingVO();
+                listingVo.search = search;
+                listingVo.PropertyTypeId = propertyType;
+                listingVo.NegeriId = state;
+                listingVo.ListingTypeId = type;
+            }
+
             ViewBag.PropertyTypeId = new SelectList(db.Sak.ToList().Where(a => a.SkId == 8).OrderBy(o => o.Nama), "Id", "Nama", search.PropertyTypeId);
             ViewBag.NegeriID = new SelectList(db.Sak.ToList().Where(a => a.SkId == 7).OrderBy(o => o.Nama), "Id", "Nama", search.NegeriId);
             ViewBag.ListingTypeId = new SelectList(db.Sak.Where(a => a.SkId == 9).OrderBy(o => o.Nama), "Id", "Nama", search.ListingTypeId);

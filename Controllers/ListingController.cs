@@ -27,6 +27,19 @@ namespace MVC5.Controllers
             return View(nwlist.ToPagedList(pageNumber, pageSize));
         }
 
+        public ActionResult IndexLink(string sortOrder, int? page, string address, int? propertyType, int? state, int? type, string minPrice, string maxPrice, string minArea, string maxArea, DateTime? aucDt)
+        {
+
+            List<ListingVO> nwlist = searchAuction(sortOrder, null, null, address, propertyType, state, type, minPrice, maxPrice, minArea, maxArea, aucDt);
+            if (nwlist.Count() == 0)
+            {
+                return RedirectToAction("Search", "Home");
+            }
+            int pageSize = 15;
+            int pageNumber = (page ?? 1);
+            return View("Index",nwlist.ToPagedList(pageNumber, pageSize));
+        }
+
         public String PropertyImage(String id)
         {
             return MyConstant.property_img_default_url + id;
