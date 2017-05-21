@@ -55,7 +55,9 @@ namespace MVC5.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 string userid = findCurrentUserId();
-                vo.Subscribe = db.MembershipRequest.Where(a => a.UserId.Equals(userid) && a.StatusActive).Any();
+                List<MembershipRequest> mtype = db.MembershipRequest.Where(a => a.StatusActive && a.UserId.Equals(userid)).ToList();
+                mtype.RemoveAll(a => a.TarikhTamat.Value.Date <= DateTime.Now.Date);
+                vo.Subscribe = mtype.Any();
 
             }
             

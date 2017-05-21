@@ -36,13 +36,14 @@
                             <h4><i class="fa fa-envelope"></i> @Model.CurrentUser.Email </h4>
                             @if (Model.accType != null)
                             {
-                                <h4><i class="fa fa-certificate"></i> @Model.accType.PackageType.Nama </h4>
-                                <h4><i class="fa fa-calendar"></i> Valid Until : @Model.accType.TarikhTamat</h4>
+                                <h4><i class="fa fa-certificate"></i> @Model.accType.PackageType.Nama - @Model.accstatus</h4>
+                                <h4><i class="fa fa-calendar"></i> Valid Until : @Model.accType.TarikhTamat.Value.ToShortDateString()</h4>
                             }
                             else
                             {
                                 <h4><i class="fa fa-certificate"></i> Free Account </h4>
                             }
+                            
                             @if (Model.HasPassword)
                             {
                                 <i class="fa fa-tags"></i>  @Html.ActionLink("Tukar Kata Laluan", "ChangePassword", "Manage")

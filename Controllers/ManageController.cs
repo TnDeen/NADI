@@ -91,7 +91,9 @@ namespace MVC5.Controllers
             }
             acp = pap + ap;
             string status = "Not Active";
-            if (curuser.EmailConfirmed)
+            List<MembershipRequest> mtype = db.MembershipRequest.Where(a => a.StatusActive && a.UserId.Equals(userId)).ToList();
+            mtype.RemoveAll(a => a.TarikhTamat.Value.Date <= DateTime.Now.Date);
+            if (mtype.Any())
             {
                 status = "Active";
             }
