@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using MVC5.Models;
 using MVC5.Common;
+using MVC5.Models.VM;
 
 namespace MVC5.Controllers
 {
@@ -38,7 +39,7 @@ namespace MVC5.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PosRequest posRequest = db.PosRequest.Find(id);
+            PosRequest posRequest = db.PosRequest.Where(a => a.Id == id).Include(async => async.Listing).FirstOrDefault();
             if (posRequest == null)
             {
                 return HttpNotFound();
@@ -47,12 +48,23 @@ namespace MVC5.Controllers
         }
 
         // GET: PosRequests/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
+            PosRequest pr = new PosRequest();
             ViewBag.IntroducerId = new SelectList(db.Users, "Id", "NomborAhli");
             ViewBag.ListingId = new SelectList(db.Transactions, "Id", "UnitNo");
             ViewBag.UserId = new SelectList(db.Users, "Id", "NomborAhli");
-            return View();
+
+            if (id != null)
+            {
+                Listing lstg = db.Transactions.Where(a => a.Id == id).FirstOrDefault();
+                if (lstg != null)
+                {
+                    pr.Listing = lstg;
+                }
+                
+            }
+            return View(pr);
         }
 
         // POST: PosRequests/Create
@@ -60,7 +72,7 @@ namespace MVC5.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,TarikhSah,TarikhTamat,StatusActive,nama,ic,contact,address,CreateDate,CreateBy,LastUpdated,LastUpdatedBy")] PosRequest posRequest)
+        public ActionResult Create([Bind(Include = "Id,TarikhSah,TarikhTamat,ListingId, Listing,StatusActive,nama,ic,contact,address,CreateDate,CreateBy,LastUpdated,LastUpdatedBy")] PosRequest posRequest)
         {
             if (ModelState.IsValid)
             {

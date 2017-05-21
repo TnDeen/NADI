@@ -128,7 +128,7 @@
                     <div class="row">
 
                         <div class="form-group col-md-12 wow fadeInRight">
-
+                            @Html.LabelFor(model => model.AuctionDate, htmlAttributes: new { @class = "control-label" })
                             @Html.EditorFor(model => model.AuctionDate, new { htmlAttributes = new { @class = "form-control newsletter-input", @placeholder = "Auction Date)" } })
 
                         </div>

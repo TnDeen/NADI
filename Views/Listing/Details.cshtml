@@ -164,7 +164,7 @@
                                 </div>
                                 <div class="col-md-6">
 
-                                    @Html.ActionLink("Request POS", "Create", "PosRequests", null, htmlAttributes: new { @class = "btn btn-primary btn-block" })
+                                    @Html.ActionLink("Request POS", "Create", "PosRequests", new { id = Model.listing.Id}, htmlAttributes: new { @class = "btn btn-primary btn-block" })
                                 </div>
                             </div>
                         </div>

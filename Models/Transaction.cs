@@ -18,6 +18,8 @@ namespace MVC5.Models
         public virtual SAK PropertyType { get; set; }
 
         public string UnitNo { get; set; }
+
+        [Display(Name = "Location")]
         public string Address1 { get; set; }
         public string Address2 { get; set; }
         public string Address3 { get; set; }

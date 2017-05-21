@@ -320,11 +320,11 @@ ul.dropdown-menu { border: none }
     border-width: 0;
     border-radius: 0;
 }
-.panel-heading .nav > li > a { color: #fff }
+.panel-heading .nav > li > a { color: #6f6f6f; background: #f4f4f4; }
 .panel-heading .nav > li.active > a,
 .panel-heading .nav > li > a:hover {
-    color: #6f6f6f;
-    background: #f4f4f4;
+    color: #ffffff;
+    background: #d10c0c;
 }
 .panel-heading .nav > li:first-child.active > a,
 .panel-heading .nav > li:first-child > a:hover { }
@@ -1784,7 +1784,7 @@ ul#filters > .active > span {
 .panel-heading {
     border-top-right-radius: 1px;
     border-top-left-radius: 1px;
-    background-color: #d10c0c;
+    background-color: #f4f4f4;
     border: none;
 }
 .panel-info>.panel-heading {

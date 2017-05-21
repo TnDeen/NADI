@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <h2>Details</h2>
@@ -11,13 +11,7 @@
     <h4>PosRequest</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Introducer.NomborAhli)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Introducer.NomborAhli)
-        </dd>
+        
 
         <dt>
             @Html.DisplayNameFor(model => model.Listing.UnitNo)
