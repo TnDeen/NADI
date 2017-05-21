@@ -83,6 +83,11 @@ namespace MVC5.Controllers
             return View(db.Article.Where(a => a.articleType.Kod.Equals("ARTCL_TYPE_FAQ")).ToList());
         }
 
+        public ActionResult News()
+        {
+            return View(db.News.ToList());
+        }
+
         public ActionResult Blog()
         {
             ViewBag.Message = "Blog";
