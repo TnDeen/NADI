@@ -2750,6 +2750,13 @@ p { text-align: left }
     -moz-border-radius: 50%;
     border-radius: 50%;
 }
+.bg-custom {
+    padding-top:10px; 
+    position:absolute; 
+    top:215px; 
+    left:60px; 
+    z-index:999999;
+}
 /* Background colors */
 .bg-red,
 .bg-yellow,
