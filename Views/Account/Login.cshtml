@@ -48,7 +48,7 @@
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
                             <p>
-                                Don't have an account!  @Html.ActionLink("Sign Up Here, It's Free", "Register")
+                                Don't have an account!  @Html.ActionLink("Sign Up Here, It's Free", "Register", "Account",new { ReturnUrl = ViewBag.ReturnUrl } ,null)
                             </p>
 
                             <p>

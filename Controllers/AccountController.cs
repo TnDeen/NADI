@@ -171,9 +171,9 @@ namespace MVC5.Controllers
         //
         // GET: /Account/Register
         [AllowAnonymous]
-        public ActionResult Register(string userId)
+        public ActionResult Register(string userId, string returnUrl)
         {
-
+            ViewBag.ReturnUrl = returnUrl;
             if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Manage");
@@ -194,7 +194,7 @@ namespace MVC5.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model, string returnUrl)
         {
 
             if (validateUserByEmail(model.Email))
@@ -224,8 +224,9 @@ namespace MVC5.Controllers
                     UserManager.AddToRole(user.Id, MyConstant.Role_User);
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                     sendMail("Jom Rumah Lelong Registration", "Congratulation! Your Registration has been Accepted.", user.Email, "ARTCL_TYPE_EML_RGSTR_TMPLT");
+                    sendMail("Jom Rumah Lelong Registration", "User " + user.Email + "Register with Us!", MyConstant.user_admin_email);
 
-                    return RedirectToAction("Index", "Manage");
+                    return RedirectToLocal(returnUrl);
                 }
 
 

@@ -120,14 +120,14 @@ namespace MVC5.Controllers
         public ActionResult MessageList()
         {
             ApplicationUser user = UserManager.FindByEmail(User.Identity.Name);
-            return View(db.SystemMessage.ToList().Where(c => c.Recipient.Equals(user.Id)).OrderBy(c => c.DateCreated));
+            return View(db.SystemMessage.ToList().Where(c => c.Recipient.Equals(user.Email)).OrderBy(c => c.DateCreated));
         }
 
         public ActionResult ReadMessage(int id, bool activate)
         {
             db.SystemMessage.Where(t => t.Id.Equals(id)).ToList().ForEach(x => x.ReadStatus = true);
             db.SaveChanges();
-            return RedirectToAction("MessageList", "Manage");
+            return RedirectToAction("MessageList", "Transaction");
         }
 
         // GET: Transaction

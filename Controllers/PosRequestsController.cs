@@ -79,7 +79,8 @@ namespace MVC5.Controllers
                 posRequest.UserId = findCurrentUserId();
                 db.PosRequest.Add(posRequest);
                 db.SaveChanges();
-                sendMail("Pos Request", "Post Request From Client", MyConstant.user_admin_email);
+                sendMail("Pos Request", "Post Request From Client " + User.Identity.Name, MyConstant.user_admin_email);
+                sendNotification(MyConstant.user_admin_email, "Pos Request", "Post Request From Client " + User.Identity.Name);
                 return RedirectToAction("Index", "Manage");
             }
 

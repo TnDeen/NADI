@@ -68,6 +68,8 @@ namespace MVC5.Controllers
                 appointAgent.UserId = findCurrentUserId();
                 db.AppointAgent.Add(appointAgent);
                 db.SaveChanges();
+                sendMail("Appoint Agent", "Appoint Agent Request From Client" + User.Identity.Name, MyConstant.user_admin_email);
+                sendNotification(MyConstant.user_admin_email, "Appoint Agent", "Appoint Agent Request From Client " + User.Identity.Name);
                 return RedirectToAction("Index");
             }
 

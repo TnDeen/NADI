@@ -79,6 +79,7 @@ namespace MVC5.Controllers
                 membershipRequest.StatusActive = false;
                 db.MembershipRequest.Add(membershipRequest);
                 db.SaveChanges();
+                sendMail("Membership Request","User " + User.Identity.Name + "Apply for Membership!" ,MyConstant.user_admin_email);
                 return RedirectToAction("Index");
             }
 
@@ -168,6 +169,7 @@ namespace MVC5.Controllers
                 string valid = membershipRequest.PackageType.Perihal;
                 DateTime expired = today.AddMonths(int.Parse(valid));
                 membershipRequest.TarikhTamat = expired;
+                sendNotification(useremel, "Membership Apporove!", "Congratulations " + useremel + "! Your membership have been approve. Enjoy the privilege of VIP package.");
                 sendMail("Membership Apporove!", "Congratulations " + useremel + "! Your membership have been approve. Enjoy the privilege of VIP package.", useremel);
             }  else
             {
@@ -175,6 +177,7 @@ namespace MVC5.Controllers
                 membershipRequest.TarikhSah = null;
                 membershipRequest.TarikhTamat = null;
                 sendMail("Subcription Ended!", "Hi " + useremel + ", Your subcription has ended. Please renew to Enjoy the privilege of VIP package.", useremel);
+                sendNotification(useremel, "Subcription Ended!", "Hi " + useremel + ", Your subcription has ended. Please renew to Enjoy the privilege of VIP package.");
             }
 
             db.SaveChanges();

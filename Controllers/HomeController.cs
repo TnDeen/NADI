@@ -122,11 +122,8 @@ namespace MVC5.Controllers
         {
             if (message != null)
             {
-                ApplicationUser admin = findUserbyEmail(MyConstant.user_admin_email);
-                message.Recipient = admin.Id;
-                db.SystemMessage.Add(message);
-                db.SaveChanges();
-                sendMail(message.Subject, message.Perihal, admin.Email);
+                sendNotification(MyConstant.user_admin_email, message.Subject, message.Perihal, message.Sender);
+                sendMail(message.Subject, message.Perihal, MyConstant.user_admin_email);
                 return RedirectToAction("Index");
             }
             return View();

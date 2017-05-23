@@ -97,7 +97,7 @@ namespace MVC5.Controllers
             {
                 status = "Active";
             }
-
+            ViewBag.curPoint = db.MembershipRequest.Where(a => a.IntroducerId.Equals(curuser.Id) && a.StatusActive).ToList().Count();
             var model = new IndexViewModel
             {
 
@@ -111,7 +111,7 @@ namespace MVC5.Controllers
                 potentialPoint = pap,
                 wallet = ap,
                 accstatus = status,
-                totalMessage = db.SystemMessage.Where(t => t.Recipient.Equals(curuser.Id) && !t.ReadStatus).Count(),
+                totalMessage = db.SystemMessage.Where(t => t.Recipient.Equals(curuser.Email) && !t.ReadStatus).Count(),
                 tarikhPenginapan = String.Format("{0:M/d/yyyy}", curuser.tarikhPenginapan),
                 TarikhTamatKeahlian = String.Format("{0:M/d/yyyy}", curuser.TarikhTamatAhli),
                 totalChild = db.Transactions.Where(a => a.Address1.Equals(userId)).Count(),

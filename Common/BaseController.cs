@@ -258,11 +258,15 @@ namespace MVC5.Common
 
         public void sendNotification(string toUser, String subjext, String message)
         {
-            ApplicationUser admin = findUserbyEmail(MyConstant.user_admin_email);
+            sendNotification(toUser, subjext, message, MyConstant.user_admin_email);
+        }
+
+        public void sendNotification(string toUser, String subjext, String message, string fromUser)
+        {
             Message msg = new Message();
             msg.Subject = subjext;
             msg.Perihal = message;
-            msg.Sender = admin.Id;
+            msg.Sender = fromUser;
             msg.Recipient = toUser;
             msg.ReadStatus = false;
             db.SystemMessage.Add(msg);
