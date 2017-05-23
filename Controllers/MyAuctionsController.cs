@@ -18,7 +18,7 @@ namespace MVC5.Controllers
         // GET: MyAuctions
         public ActionResult Index()
         {
-            return View(db.MyAuction.ToList());
+            return View(db.MyAuction.Where(a => a.CreateBy.Equals(User.Identity.Name)).ToList());
         }
 
         // GET: MyAuctions/Details/5
@@ -51,6 +51,15 @@ namespace MVC5.Controllers
         {
             if (ModelState.IsValid)
             {
+                string email = User.Identity.Name;
+                myAuction.CreateBy = email;
+                myAuction.LastUpdatedBy = email;
+                if (myAuction.AuctionDate != null)
+                {
+                    DateTime auc = myAuction.AuctionDate.Value;
+                    DateTime expired = auc.AddMonths(3);
+                    myAuction.DueDate = expired;
+                }
                 db.MyAuction.Add(myAuction);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -79,11 +88,20 @@ namespace MVC5.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Unit,Address,AuctionDate,DueDate,SoldPrice,ReservePrice,SelfBid,AppointAgent,Status,DateCreated,CreateDate,CreateBy,DateUpdated,LastUpdated,LastUpdatedBy")] MyAuction myAuction)
+        public ActionResult Edit([Bind(Include = "Id,Unit,Address,AuctionDate,SoldPrice,ReservePrice,SelfBid,AppointAgent,Status")] MyAuction myAuction)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(myAuction).State = EntityState.Modified;
+                string email = User.Identity.Name;
+                myAuction.CreateBy = email;
+                myAuction.LastUpdatedBy = email;
+                if (myAuction.AuctionDate != null)
+                {
+                    DateTime auc = myAuction.AuctionDate.Value;
+                    DateTime expired = auc.AddMonths(3);
+                    myAuction.DueDate = expired;
+                }
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
