@@ -105,6 +105,8 @@ namespace MVC5.Models
         public DbSet<PosRequest> PosRequest { get; set; }
         public DbSet<AppointAgent> AppointAgent { get; set; }
         public DbSet<AffiliateComission> AffiliateComission { get; set; }
+        public DbSet<MyAuction> MyAuction { get; set; }
+        public DbSet<NewsLetterSubscription> NewsLetterSubscription { get; set; }
         public DbSet<SistemId> SistemCounter { get; set; }
         public DbSet<Listing> Transactions { get; set; }
         public DbSet<File> Files { get; set; }

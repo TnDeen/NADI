@@ -222,7 +222,9 @@
     <Compile Include="Controllers\MemberPackagesController.cs" />
     <Compile Include="Controllers\MembershipRequestsController.cs" />
     <Compile Include="Controllers\MenusController.cs" />
+    <Compile Include="Controllers\MyAuctionsController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\NewsLetterSubscriptionsController.cs" />
     <Compile Include="Controllers\PosRequestsController.cs" />
     <Compile Include="Controllers\SakController.cs" />
     <Compile Include="Controllers\SkController.cs" />
@@ -402,6 +404,10 @@
     <Compile Include="Migrations\201705061631272_addappointagent.Designer.cs">
       <DependentUpon>201705061631272_addappointagent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705231836405_addnewletter.cs" />
+    <Compile Include="Migrations\201705231836405_addnewletter.Designer.cs">
+      <DependentUpon>201705231836405_addnewletter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AffiliateComission.cs" />
@@ -418,8 +424,10 @@
     <Compile Include="Models\MemberPackage.cs" />
     <Compile Include="Models\MembershipRequest.cs" />
     <Compile Include="Models\Menu.cs" />
+    <Compile Include="Models\MyAuction.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\NewsLetterSubscription.cs" />
     <Compile Include="Models\PosRequest.cs" />
     <Compile Include="Models\RefDataEntity.cs" />
     <Compile Include="Models\SAK.cs" />
@@ -5280,6 +5288,16 @@
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Shared\_LayoutCenter.cshtml" />
     <Content Include="Views\Home\News.cshtml" />
+    <Content Include="Views\NewsLetterSubscriptions\Create.cshtml" />
+    <Content Include="Views\NewsLetterSubscriptions\Delete.cshtml" />
+    <Content Include="Views\NewsLetterSubscriptions\Details.cshtml" />
+    <Content Include="Views\NewsLetterSubscriptions\Edit.cshtml" />
+    <Content Include="Views\NewsLetterSubscriptions\Index.cshtml" />
+    <Content Include="Views\MyAuctions\Create.cshtml" />
+    <Content Include="Views\MyAuctions\Delete.cshtml" />
+    <Content Include="Views\MyAuctions\Details.cshtml" />
+    <Content Include="Views\MyAuctions\Edit.cshtml" />
+    <Content Include="Views\MyAuctions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
@@ -5430,6 +5448,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705061631272_addappointagent.resx">
       <DependentUpon>201705061631272_addappointagent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705231836405_addnewletter.resx">
+      <DependentUpon>201705231836405_addnewletter.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
