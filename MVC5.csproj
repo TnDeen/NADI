@@ -4448,6 +4448,8 @@
     <Content Include="Content\img\clients\newlogo6.png" />
     <Content Include="Content\img\hilidayvoucher.jpg" />
     <Content Include="Content\img\ipadwhite.png" />
+    <Content Include="Content\img\jomrumalogo.ico" />
+    <Content Include="Content\img\jomrumalogo.png" />
     <Content Include="Content\img\kadahli.jpg" />
     <Content Include="Content\img\Last-logo.png" />
     <Content Include="Content\img\lelongpos.ico" />

@@ -49,7 +49,7 @@ p { line-height: 22px }
     font-size: 30px;
     font-weight: 100;
     line-height: 30px;
-    margin-top: 30px;
+    margin-top: 5px;
     padding: 0;
 }
 .navbar-brand span { color: #d10c0c }
@@ -2755,7 +2755,7 @@ p { text-align: left }
     position:absolute; 
     top:215px; 
     left:60px; 
-    z-index:999999;
+    z-index:999;
 }
 /* Background colors */
 .bg-red,
