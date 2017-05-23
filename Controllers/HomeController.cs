@@ -20,6 +20,7 @@ namespace MVC5.Controllers
 
             
             var list = (from t in db.Transactions
+                        orderby t.CreateDate descending
                           select new ListingVO { listing = t }).Take(4);
 
             var hotId = from t in db.SistemCounter

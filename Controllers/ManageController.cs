@@ -98,6 +98,7 @@ namespace MVC5.Controllers
                 status = "Active";
             }
             ViewBag.curPoint = db.MembershipRequest.Where(a => a.IntroducerId.Equals(curuser.Id) && a.StatusActive).ToList().Count();
+            ViewBag.MyAuction = db.MyAuction.Where(a => a.CreateBy.Equals(curuser.Email)).ToList().Count();
             var model = new IndexViewModel
             {
 
