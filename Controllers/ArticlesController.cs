@@ -84,7 +84,7 @@ namespace MVC5.Controllers
         [HttpPost]
         [ValidateInput(false)]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Header,Content,Link,active,featured,articleTypeId,DateCreated,CreateDate,CreateBy,DateUpdated,LastUpdated,LastUpdatedBy")] Article article, FormCollection formCollection)
+        public ActionResult Edit([Bind(Include = "Id,Header,Content,Link,active,featured,articleTypeId,DateCreated,CreateDate,CreateBy,DateUpdated,LastUpdated,LastUpdatedBy")] Article article, FormCollection formCollection, string summernote)
         {
             if (ModelState.IsValid)
             {
@@ -110,6 +110,7 @@ namespace MVC5.Controllers
                 }
 
                 article.imgUrl = newfilename;
+                article.Content = summernote;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
