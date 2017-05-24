@@ -141,7 +141,7 @@
                             <br />
                             Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-                            @Html.PagedListPager(Model, page => Url.Action("Index",
+                            @Html.PagedListPager(Model, page => Url.Action("IndexLink",
     new { page, sortOrder = ViewBag.CurrentSort, address = ViewBag.address, propertyType = ViewBag.propertyType, state = ViewBag.state, type = ViewBag.type, minPrice = ViewBag.minPrice, maxPrice = ViewBag.maxPrice, minArea = ViewBag.minArea, maxArea = ViewBag.maxArea, aucDt = ViewBag.aucDt }))
 
                         </div>
