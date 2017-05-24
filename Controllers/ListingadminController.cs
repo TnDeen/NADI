@@ -13,6 +13,7 @@ using OfficeOpenXml;
 
 namespace MVC5.Controllers
 {
+    [Authorize(Roles = "Manager, Admin")]
     public class ListingadminController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

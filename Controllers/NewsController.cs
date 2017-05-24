@@ -10,6 +10,7 @@ using MVC5.Models;
 
 namespace MVC5.Controllers
 {
+    [Authorize(Roles ="Manager, Admin")]
     public class NewsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
