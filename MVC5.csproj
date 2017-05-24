@@ -4902,7 +4902,6 @@
     <Content Include="Scripts\superfish.js" />
     <Content Include="Scripts\tinymce\jquery.tinymce.js" />
     <Content Include="Scripts\tinymce\langs\en.js" />
-    <Content Include="Scripts\tinymce\license.txt" />
     <Content Include="Scripts\tinymce\plugins\advhr\css\advhr.css" />
     <Content Include="Scripts\tinymce\plugins\advhr\editor_plugin.js" />
     <Content Include="Scripts\tinymce\plugins\advhr\editor_plugin_src.js" />
