@@ -62,6 +62,7 @@ namespace MVC5.Controllers
         // GET: /Manage/Index
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
+            //sendMail("test newsletter", "", MyConstant.user_admin_email, "ARTCL_TYPE_EML_NWSLTR_TMPLT");
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
                 : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."

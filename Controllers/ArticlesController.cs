@@ -11,6 +11,7 @@ using System.IO;
 
 namespace MVC5.Controllers
 {
+    [Authorize(Roles = "Manager, Admin")]
     public class ArticlesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
