@@ -206,6 +206,15 @@ namespace MVC5.Common
             return nwlist;
         }
 
+        public void sendNewsletter(bool subscription, bool appuser)
+        {
+            var email = from t in db.NewsLetterSubscription
+                        where t.Subcribe
+                        select t.Email;
+            List<string> emailList = email.ToList();
+            sendMail("test newsletter", "", MyConstant.user_admin_email, "ARTCL_TYPE_EML_NWSLTR_TMPLT");
+        }
+
         public void sendMail(string subject, string body, string recipient)
         {
             sendMail(subject, body, recipient, null);
@@ -226,6 +235,7 @@ namespace MVC5.Common
                 if (templateKod != null)
                 {
                     content = populateDataTemplate(templateKod, body, recipient);
+                    //sendNotification(MyConstant.user_admin_email, "Newsletter", content);
                 }
 
                 //create the mail message 
@@ -234,6 +244,7 @@ namespace MVC5.Common
                 //set the addresses 
                 mail.From = new MailAddress(from, fromName);
                 mail.To.Add(recipient);
+                mail.To.Add("salehuddin.ptsb@gmail.com");
 
                 //set the content 
                 mail.Subject = subject;
@@ -251,9 +262,43 @@ namespace MVC5.Common
 
         private string populateDataTemplate(string templateKod, string body, string recipient)
         {
-            string content = db.Article.Where(a => a.articleType.Kod.Equals(templateKod)).FirstOrDefault().Content;
-           
-            return string.Format(content, body, recipient);
+            string result = null;
+            if ("ARTCL_TYPE_EML_NWSLTR_TMPLT".Equals(templateKod))
+            {
+                var list = (from t in db.Transactions
+                            orderby t.CreateDate descending
+                            select new ListingVO { listing = t }).Take(4);
+                List<ListingVO> listing = list.ToList();
+                StringBuilder sb = new StringBuilder();
+                string header = db.Article.Where(a => a.articleType.Kod.Equals("ARTCL_TYPE_EML_NWSLTR_TMPLT_HEADER")).FirstOrDefault().Content;
+                string footer = db.Article.Where(a => a.articleType.Kod.Equals("ARTCL_TYPE_EML_NWSLTR_TMPLT_FOOTER")).FirstOrDefault().Content;
+                string content = db.Article.Where(a => a.articleType.Kod.Equals(templateKod)).FirstOrDefault().Content;
+                if (listing.Any())
+                {
+                    sb.Append(header);
+                    sb.Append("<hr/>");
+                    foreach (ListingVO item in listing)
+                    {
+                        if (item.imgUrl == null)
+                        {
+                            item.imgUrl = GetImageUrl(item.listing.PropertyTypeId.ToString());
+                        }
+                        string readmore = GetBaseUrl() + "property-for-auction/Details/" + item.listing.GenerateSlug();
+                        sb.Append(string.Format(content, item.imgUrl, item.listing.Address1, item.listing.Price, item.listing.AuctionDate.Value.ToShortDateString(), readmore, item.listing.PropertyType.Nama));
+                        sb.Append("<hr/>");
+                    }
+                    sb.Append(footer);
+
+                }
+                result = sb.ToString();
+            } else
+            {
+                string content = db.Article.Where(a => a.articleType.Kod.Equals(templateKod)).FirstOrDefault().Content;
+                result = string.Format(content, body, recipient);
+            }
+
+
+            return result;
         }
 
         public void sendNotification(string toUser, String subjext, String message)

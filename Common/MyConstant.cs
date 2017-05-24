@@ -11,6 +11,7 @@ namespace MVC5.Common
         public const String slash = "/";
         public const String ConfirmCusCode = "CCC";
         public const String Role_Admin = "Admin";
+        public const String Role_Manager = "Manager";
         public const String Role_Vendor = "Vendor";
         public const String Role_User = "User";
         public const String Base_Url = "http://www.jomrumahlelong.com/";
