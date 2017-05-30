@@ -206,6 +206,28 @@ namespace MVC5.Common
             return nwlist;
         }
 
+        public string readIntroducerCookies(string userId)
+        {
+            string introducerId = null;
+            if (userId != null)
+            {
+                introducerId = userId;
+                HttpCookie cookie = new HttpCookie("Introducer");
+                cookie.Values["IntroducerId"] = userId;
+                Response.SetCookie(cookie); //SetCookie() is used for update the cookie.
+            }
+            else
+            {
+                HttpCookie cookie = Request.Cookies["Introducer"];
+                if (cookie != null)
+                {
+                    introducerId = Server.HtmlEncode(cookie.Values["IntroducerId"]);
+                }
+
+            }
+            return introducerId;
+        }
+
         public void sendNewsletter(bool subscription, bool appuser)
         {
             var email = from t in db.NewsLetterSubscription

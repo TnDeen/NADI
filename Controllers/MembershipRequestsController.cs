@@ -52,7 +52,9 @@ namespace MVC5.Controllers
         {
             MembershipRequest mr = new MembershipRequest();
             ViewBag.PackageTypeId = new SelectList(db.Sak.Where(a => a.Sk.Kod.Equals("MMBRSHP_TYPE")), "Id", "Nama");
-            mr.Introducer = finduserBynoAhli(userId);
+
+            string introducerId = readIntroducerCookies(userId);
+            mr.Introducer = finduserBynoAhli(introducerId);
             return View(mr);
         }
 
