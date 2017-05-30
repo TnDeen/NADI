@@ -160,7 +160,7 @@
                                 <br />
                                 <div class="col-md-6">
 
-                                    @Html.ActionLink("Appoint Agent", "Create", "AppointAgents", null, htmlAttributes: new { @class = "btn btn-danger btn-block" })
+                                    @Html.ActionLink("Appoint Agent", "Create", "AppointAgents", new { id = Model.listing.Id }, htmlAttributes: new { @class = "btn btn-danger btn-block" })
                                 </div>
                                 <div class="col-md-6">
 

@@ -48,12 +48,22 @@ namespace MVC5.Controllers
         }
 
         // GET: AppointAgents/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
+            AppointAgent aa = new AppointAgent();
+            if (id != null)
+            {
+                Listing lstg = db.Transactions.Where(a => a.Id == id).FirstOrDefault();
+                if (lstg != null)
+                {
+                    aa.Listing = lstg;
+                }
+
+            }
             ViewBag.IntroducerId = new SelectList(db.Users, "Id", "NomborAhli");
-            ViewBag.ListingId = new SelectList(db.Transactions, "Id", "UnitNo");
+            ViewBag.ListingId = new SelectList(db.Transactions, "Id", "UnitNo", aa.Listing.Id);
             ViewBag.UserId = new SelectList(db.Users, "Id", "NomborAhli");
-            return View();
+            return View(aa);
         }
 
         // POST: AppointAgents/Create
@@ -61,7 +71,7 @@ namespace MVC5.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,TarikhSah,TarikhTamat,StatusActive,nama,ic,contact,address,CreateDate,CreateBy,LastUpdated,LastUpdatedBy")] AppointAgent appointAgent)
+        public ActionResult Create([Bind(Include = "Id,TarikhSah,ListingId,TarikhTamat,StatusActive,nama,ic,contact,address,CreateDate,CreateBy,LastUpdated,LastUpdatedBy")] AppointAgent appointAgent)
         {
             if (ModelState.IsValid)
             {
@@ -70,7 +80,7 @@ namespace MVC5.Controllers
                 db.SaveChanges();
                 sendMail("Appoint Agent", "Appoint Agent Request From Client" + User.Identity.Name, MyConstant.user_admin_email);
                 sendNotification(MyConstant.user_admin_email, "Appoint Agent", "Appoint Agent Request From Client " + User.Identity.Name);
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Manage");
             }
 
             ViewBag.IntroducerId = new SelectList(db.Users, "Id", "NomborAhli", appointAgent.IntroducerId);

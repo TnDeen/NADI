@@ -51,10 +51,6 @@ namespace MVC5.Controllers
         public ActionResult Create(int? id)
         {
             PosRequest pr = new PosRequest();
-            ViewBag.IntroducerId = new SelectList(db.Users, "Id", "NomborAhli");
-            ViewBag.ListingId = new SelectList(db.Transactions, "Id", "UnitNo");
-            ViewBag.UserId = new SelectList(db.Users, "Id", "NomborAhli");
-
             if (id != null)
             {
                 Listing lstg = db.Transactions.Where(a => a.Id == id).FirstOrDefault();
@@ -62,8 +58,13 @@ namespace MVC5.Controllers
                 {
                     pr.Listing = lstg;
                 }
-                
+
             }
+            ViewBag.IntroducerId = new SelectList(db.Users, "Id", "NomborAhli");
+            ViewBag.ListingId = new SelectList(db.Transactions, "Id", "UnitNo", pr.Listing.Id);
+            ViewBag.UserId = new SelectList(db.Users, "Id", "NomborAhli");
+
+            
             return View(pr);
         }
 
@@ -72,7 +73,7 @@ namespace MVC5.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,TarikhSah,TarikhTamat,ListingId, Listing,StatusActive,nama,ic,contact,address,CreateDate,CreateBy,LastUpdated,LastUpdatedBy")] PosRequest posRequest)
+        public ActionResult Create([Bind(Include = "Id,TarikhSah,TarikhTamat,ListingId,StatusActive,nama,ic,contact,address,CreateDate,CreateBy,LastUpdated,LastUpdatedBy")] PosRequest posRequest)
         {
             if (ModelState.IsValid)
             {

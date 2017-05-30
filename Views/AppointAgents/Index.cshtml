@@ -11,6 +11,9 @@
             <h2>Appoint Agent List</h2>
             <table class="table">
                 <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Listing.Address1)
+                    </th>
                     
                     <th>
                         @Html.DisplayNameFor(model => model.StatusActive)
@@ -33,6 +36,9 @@
                 @foreach (var item in Model)
                 {
                     <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Listing.Address1)
+                        </td>
                         
                         <td>
                             @Html.DisplayFor(modelItem => item.StatusActive)
