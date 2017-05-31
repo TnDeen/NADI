@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -57,6 +58,9 @@ namespace MVC5.Models
         public string AuctionNeer{ get; set; }
         public string Lawyer { get; set; }
         public string Assignor { get; set; }
+
+        [DefaultValue(false)]
+        public Boolean featured { get; set; }
 
         public string imageUrl { get; set; }
 

@@ -408,6 +408,10 @@
     <Compile Include="Migrations\201705231836405_addnewletter.Designer.cs">
       <DependentUpon>201705231836405_addnewletter.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705311511022_addFeaturedcol.cs" />
+    <Compile Include="Migrations\201705311511022_addFeaturedcol.Designer.cs">
+      <DependentUpon>201705311511022_addFeaturedcol.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AffiliateComission.cs" />
@@ -5451,6 +5455,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705231836405_addnewletter.resx">
       <DependentUpon>201705231836405_addnewletter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705311511022_addFeaturedcol.resx">
+      <DependentUpon>201705311511022_addFeaturedcol.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

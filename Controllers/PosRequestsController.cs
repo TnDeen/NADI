@@ -61,7 +61,7 @@ namespace MVC5.Controllers
 
             }
             ViewBag.IntroducerId = new SelectList(db.Users, "Id", "NomborAhli");
-            ViewBag.ListingId = new SelectList(db.Transactions, "Id", "UnitNo", pr.Listing.Id);
+            ViewBag.ListingId = new SelectList(db.Transactions, "Id", "UnitNo", id);
             ViewBag.UserId = new SelectList(db.Users, "Id", "NomborAhli");
 
             
