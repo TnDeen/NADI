@@ -225,8 +225,13 @@ namespace MVC5.Controllers
 
                             String venue = workSheet.Cells[rowIterator, 12].Value.ToString();
                             String timeRaw = workSheet.Cells[rowIterator, 13].Value.ToString();
-                            DateTime strdate = Convert.ToDateTime(timeRaw);
-                            String time = strdate.ToString("hh:mm tt");
+                            String time = timeRaw;
+                            if (!timeRaw.Contains("Pending"))
+                            {
+                                DateTime strdate = Convert.ToDateTime(timeRaw);
+                                time = strdate.ToString("hh:mm tt");
+                            }
+                            
                             String aucneer = workSheet.Cells[rowIterator, 14].Value.ToString();
                             String lawyer = workSheet.Cells[rowIterator, 15].Value.ToString();
                             String asignor = workSheet.Cells[rowIterator, 16].Value.ToString();
@@ -239,7 +244,7 @@ namespace MVC5.Controllers
                             tran.UnitNo = unitNo;
                             tran.Address1 = Address1;
                             tran.Poskod = Convert.ToInt32(poskod);
-                            tran.BandarId = db.Sak.Where(a => a.Nama.Equals(bandar)).Select(a => a.Id).FirstOrDefault();
+                            //tran.BandarId = db.Sak.Where(a => a.Nama.Equals(bandar)).Select(a => a.Id).FirstOrDefault();
                             tran.NegeriId = db.Sak.Where(a => a.Nama.Equals(negeri)).Select(a => a.Id).FirstOrDefault();
                             tran.Size = decimal.Parse(area);
                             tran.Price = decimal.Parse(price);
