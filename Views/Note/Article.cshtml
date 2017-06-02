@@ -1,0 +1,142 @@
+﻿@model MVC5.Models.VM.ArticleVO
+@using MVC5.Common
+
+@{
+    ViewBag.Title = "Perisytiharan Jualan Lelongan Malaysia";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+
+
+
+
+
+<div class="container">
+    <!--breadcrumbs start-->
+    <ul class="breadcrumb" style="padding-top:30px;">
+        <li><a href="index.html">Home</a></li>
+        <li class="active">@Model.article.Header</li>
+    </ul>
+    <!--breadcrumbs end-->
+    <hr />
+    <div class="row">
+
+        <!--blog start-->
+        <div class="col-lg-9">
+            <h2>@Model.article.Header</h2>
+            <div class="blog-item">
+                <div class="row">
+
+
+                    <div class="col-lg-10 col-sm-10">
+
+                        @if (Model.article.imgUrl != null)
+                        {
+                            <div class="blog-img gs">
+                                <img src="~/Content/img/article/@Model.article.Id/@Model.article.imgUrl" alt="" />
+                            </div>
+                            <hr />
+                        }
+
+                        @Html.Raw(Model.article.Content)
+
+                        <hr />
+
+                        @if (Request.IsAuthenticated)
+                        {
+                            <div class="media">
+                                <h3>
+                                    Comments
+                                </h3>
+
+                                @foreach (var item in Model.commentList)
+                                {
+                                    <hr>
+                                    <a class="pull-left" href="javascript:;">
+                                        <img class="media-object" src="~/Content/img/fpo_avatar.png" alt="">
+                                    </a>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">
+                                            @item.User.Email
+                                            <span>
+                                                |
+                                            </span>
+                                            <span>
+                                                @item.CreateDate.Value.ToShortDateString()
+                                            </span>
+                                        </h4>
+                                        <br />
+                                        @Html.Raw(item.Content)
+                                        <br />
+                                    </div>
+
+                                }
+
+                                @using (Html.BeginForm("Create", "Note", new { articleId = ViewBag.articleId, UserId = ViewBag.UserId }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                    <div class="post-comment">
+                                        <h3 class="skills">
+                                            Post Comments
+                                        </h3>
+
+                                        <div class="col-lg-12">
+                                            <textarea placeholder="Message" rows="8" class="form-control" name="content"></textarea>
+                                        </div>
+
+                                        
+                                        <br />
+                                        <p>
+                                            <button type="submit" class="btn btn-info pull-right">
+                                                Post Comment
+                                            </button>
+                                        </p>
+
+                                    </div>
+                                }
+                            </div><!--end media-->
+
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Subscribe to view this section", "BuyPackage", "MemberPackages", null, new { @class = "btn btn-primary" })
+                        }
+
+
+                    </div>
+                </div>
+
+                <div class="row">
+
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3">
+            <div class="blog-side-item">
+                <div class="category">
+                    <h3>
+                        Page Link
+                    </h3>
+                    <ul class="list-unstyled">
+                        @Html.Partial("MainMenu")
+                    </ul>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+</div>

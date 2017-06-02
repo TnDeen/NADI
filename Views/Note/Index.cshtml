@@ -1,0 +1,92 @@
+﻿@model PagedList.IPagedList<MVC5.Models.VM.ListingVO>
+@using MVC5.Common
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+
+<div class="container">
+    <!--breadcrumbs start-->
+    <ul class="breadcrumb" style="padding-top:30px;">
+        <li><a href="index.html">Home</a></li>
+        <li class="active">Blog List</li>
+    </ul>
+    <!--breadcrumbs end-->
+    <hr />
+    <div class="row">
+
+        <!--blog start-->
+        <div class="col-lg-9">
+            @foreach (var item in Model)
+            {
+                <div class="blog-item">
+                    <h2>@item.article.Header</h2>
+                    <div class="row">
+                        <div class="col-lg-2 col-sm-2">
+                            <div class="date-wrap">
+                                <span class="date">
+                                    @item.article.DateCreated.Day
+                                </span>
+                                <span class="month">
+                                    @item.article.CreateDate.Value.ToString("MMMM") @item.article.CreateDate.Value.ToString("yyyy")
+                                </span>
+                            </div>
+
+                        </div>
+                        
+
+                        <div class="col-lg-10 col-sm-10">
+
+
+                           @if (item.imgUrl != null)
+                           {
+                            <div class="blog-img gs">
+                                <img src="~/Content/img/article/@item.article.Id/@item.article.imgUrl" alt="" />
+                            </div>
+                            <hr />
+                           }
+
+                            @Html.Raw(item.article.Content)
+                            <br />
+                            <br />
+                            @Html.ActionLink("Continue Reading", "Article", "Note", new { id = item.article.Id }, new { @class = "btn btn-primary" })
+                        </div>
+
+                      
+                    </div>
+
+
+
+                </div>
+            }
+            <br />
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+            @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort }))
+
+        </div>
+
+        <div class="col-lg-3">
+            <div class="blog-side-item">
+                <div class="category">
+                    <h3>
+                        Page Link
+                    </h3>
+                    <ul class="list-unstyled">
+                        @Html.Partial("MainMenu")
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+

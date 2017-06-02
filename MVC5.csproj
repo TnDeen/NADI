@@ -212,6 +212,7 @@
     <Compile Include="Controllers\AppointAgentsController.cs" />
     <Compile Include="Controllers\ArticlesController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\ExceptionController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -225,6 +226,7 @@
     <Compile Include="Controllers\MyAuctionsController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\NewsLetterSubscriptionsController.cs" />
+    <Compile Include="Controllers\NoteController.cs" />
     <Compile Include="Controllers\PosRequestsController.cs" />
     <Compile Include="Controllers\SakController.cs" />
     <Compile Include="Controllers\SkController.cs" />
@@ -412,6 +414,14 @@
     <Compile Include="Migrations\201705311511022_addFeaturedcol.Designer.cs">
       <DependentUpon>201705311511022_addFeaturedcol.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706021809550_addcommenttbl.cs" />
+    <Compile Include="Migrations\201706021809550_addcommenttbl.Designer.cs">
+      <DependentUpon>201706021809550_addcommenttbl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706021830478_addcontentcolcommment.cs" />
+    <Compile Include="Migrations\201706021830478_addcontentcolcommment.Designer.cs">
+      <DependentUpon>201706021830478_addcontentcolcommment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AffiliateComission.cs" />
@@ -419,6 +429,7 @@
     <Compile Include="Models\Article.cs" />
     <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\BaseUser.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\FilePath.cs" />
     <Compile Include="Models\FileType.cs" />
@@ -439,6 +450,7 @@
     <Compile Include="Models\SistemId.cs" />
     <Compile Include="Models\SK.cs" />
     <Compile Include="Models\Transaction.cs" />
+    <Compile Include="Models\VM\ArticleVO.cs" />
     <Compile Include="Models\VM\EmailVO.cs" />
     <Compile Include="Models\VM\FileVO.cs" />
     <Compile Include="Models\VM\ListingSimpleVO.cs" />
@@ -4458,6 +4470,7 @@
     <Content Include="Content\img\blog\img8.jpg" />
     <Content Include="Content\img\clients\graylogo6.png" />
     <Content Include="Content\img\clients\newlogo6.png" />
+    <Content Include="Content\img\fpo_avatar.png" />
     <Content Include="Content\img\hilidayvoucher.jpg" />
     <Content Include="Content\img\ipadwhite.png" />
     <Content Include="Content\img\jomrumalogo.ico" />
@@ -5302,6 +5315,13 @@
     <Content Include="Views\MyAuctions\Details.cshtml" />
     <Content Include="Views\MyAuctions\Edit.cshtml" />
     <Content Include="Views\MyAuctions\Index.cshtml" />
+    <Content Include="Views\Note\Article.cshtml" />
+    <Content Include="Views\Note\Index.cshtml" />
+    <Content Include="Views\Comments\Create.cshtml" />
+    <Content Include="Views\Comments\Delete.cshtml" />
+    <Content Include="Views\Comments\Details.cshtml" />
+    <Content Include="Views\Comments\Edit.cshtml" />
+    <Content Include="Views\Comments\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
@@ -5458,6 +5478,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705311511022_addFeaturedcol.resx">
       <DependentUpon>201705311511022_addFeaturedcol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706021809550_addcommenttbl.resx">
+      <DependentUpon>201706021809550_addcommenttbl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706021830478_addcontentcolcommment.resx">
+      <DependentUpon>201706021830478_addcontentcolcommment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
