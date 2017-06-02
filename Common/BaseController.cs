@@ -206,6 +206,12 @@ namespace MVC5.Common
             return nwlist;
         }
 
+        public string trimString(string str)
+        {
+            string newstr = str.Trim();
+            return newstr;
+        }
+
         public void sendNewsletter(bool subscription, bool appuser)
         {
             var email = from t in db.NewsLetterSubscription

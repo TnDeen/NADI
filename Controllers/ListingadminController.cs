@@ -14,7 +14,7 @@ using OfficeOpenXml;
 namespace MVC5.Controllers
 {
     [Authorize(Roles = "Manager, Admin")]
-    public class ListingadminController : Controller
+    public class ListingadminController : BaseController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
@@ -243,11 +243,11 @@ namespace MVC5.Controllers
                             tran.PropertyTypeId = db.Sak.Where(a => a.Nama.Equals(pType)).Select(a => a.Id).FirstOrDefault();
                             tran.UnitNo = unitNo;
                             tran.Address1 = Address1;
-                            tran.Poskod = Convert.ToInt32(poskod);
+                            tran.Poskod = Convert.ToInt32(trimString(poskod));
                             //tran.BandarId = db.Sak.Where(a => a.Nama.Equals(bandar)).Select(a => a.Id).FirstOrDefault();
                             tran.NegeriId = db.Sak.Where(a => a.Nama.Equals(negeri)).Select(a => a.Id).FirstOrDefault();
-                            tran.Size = decimal.Parse(area);
-                            tran.Price = decimal.Parse(price);
+                            tran.Size = decimal.Parse(trimString(area));
+                            tran.Price = decimal.Parse(trimString(price));
                             tran.AuctionDate = DateUtil.convertStringToDate(aucDate);
                             tran.AuctionTypeId = db.Sak.Where(a => a.Kod.Equals(aucType)).Select(a => a.Id).FirstOrDefault();
                             tran.AuctionBankId = db.Sak.Where(a => a.Kod.Equals(aucBank)).Select(a => a.Id).FirstOrDefault();
