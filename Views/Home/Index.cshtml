@@ -206,7 +206,7 @@
         <!--tab start-->
         <section class="tab wow fadeInLeft">
             <header class="panel-heading tab-bg-dark-navy-blue">
-                <ul class="nav nav-tabs">
+                <ul class="nav nav-tabs nav-justified">
                     <li class="active">
                         <a data-toggle="tab" href="#hotlisting">
                             Hot Listing
@@ -215,6 +215,11 @@
                     <li>
                         <a data-toggle="tab" href="#latestlisting">
                             Latest Listing
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#featuredlisting">
+                            Featured Listing
                         </a>
                     </li>
                 </ul>
@@ -306,6 +311,49 @@
                         </div>
 
                     </div>
+                    
+                    <div id="featuredlisting" class="tab-pane fade">
+                        <h2>Featured Auction in Malaysia</h2>
+                        <hr />
+                        <div class="profile">
+                            @foreach (var item in Model.listingFeatured)
+            {
+                                <div class="col-xs-12 col-sm-6 col-md-3">
+                                    <div class="thumbnail wow fadeInUp" data-wow-delay=".1s">
+                                        @if (item.listing.imageUrl == null)
+                                        {
+
+                                            <img src="@Html.Action("GetImageUrl", "Home", new { id = item.listing.PropertyTypeId})" alt="">
+                                        }
+                                        else
+                                        {
+                                            <img src="@item.listing.imageUrl" alt="">
+                                        }
+                                        <div class="caption">
+                                            <strong>
+                                                @item.listing.Address1 @item.listing.Poskod @item.listing.Bandar.Nama @item.listing.Negeri.Nama
+                                            </strong>
+                                            <strong>
+                                                RM @item.listing.Price
+                                            </strong>
+                                            <hr />
+                                            @Html.ActionLink("Read More", "Details", "Listing", new { id = item.listing.Id }, htmlAttributes: new { @class = "btn btn-danger right" })
+
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+
+
+
+
+
+
+
+                        </div>
+
+                    </div>
 
                 </div>
             </div>
@@ -321,7 +369,7 @@
     <!-- End container -->
 </div>
 
-<div id="newsletter-faq">
+<div id="newsletter-faq hide-mobile">
 
 
     <div class="container">

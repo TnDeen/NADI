@@ -28,6 +28,7 @@ namespace MVC5.Models.VM
 
         public List<ListingVO> listing { get; set; }
         public List<ListingVO> listingHot { get; set; }
+        public List<ListingVO> listingFeatured { get; set; }
 
 
         //public bool ValidateAllType(int? id)

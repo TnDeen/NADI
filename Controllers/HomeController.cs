@@ -23,6 +23,11 @@ namespace MVC5.Controllers
                         orderby t.CreateDate descending
                           select new ListingVO { listing = t }).Take(4);
 
+            var listFeatured = (from t in db.Transactions
+                                where t.featured
+                        orderby t.CreateDate descending
+                        select new ListingVO { listing = t }).Take(4);
+
             var hotId = from t in db.SistemCounter
                          where t.Kod.Contains("LSTGCOUNT")
                          orderby t.runningNumber descending
@@ -46,6 +51,7 @@ namespace MVC5.Controllers
 
             SearchVO svo = new SearchVO();
             svo.listing = list.ToList();
+            svo.listingFeatured = listFeatured.ToList();
             svo.listingHot = listHot.ToList();
             return View(svo);
         }

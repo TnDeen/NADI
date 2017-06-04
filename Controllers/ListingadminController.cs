@@ -98,7 +98,7 @@ namespace MVC5.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,PropertyTypeId,UnitNo,Address1,Address2,Address3,Address4,Poskod,BandarId,NegeriId,Size,Price,AuctionDate,AuctionTime,AuctionTypeId,AuctionBankId,AuctionVenue,AuctionNeer,Lawyer,Assignor,imageUrl,DateCreated,CreateDate,CreateBy,DateUpdated,LastUpdated,LastUpdatedBy")] Listing listing, FormCollection formCollection)
+        public ActionResult Edit([Bind(Include = "Id,PropertyTypeId,featured,UnitNo,Address1,Address2,Address3,Address4,Poskod,BandarId,NegeriId,Size,Price,AuctionDate,AuctionTime,AuctionTypeId,AuctionBankId,AuctionVenue,AuctionNeer,Lawyer,Assignor,imageUrl,DateCreated,CreateDate,CreateBy,DateUpdated,LastUpdated,LastUpdatedBy")] Listing listing, FormCollection formCollection)
         {
             if (ModelState.IsValid)
             {
