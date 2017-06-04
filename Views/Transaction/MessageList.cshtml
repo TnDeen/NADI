@@ -13,7 +13,9 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-
+                        <th>
+                            Date
+                        </th>
 
                         <th>
                             Subject
@@ -32,6 +34,10 @@
                     @foreach (var item in Model)
                     {
                         <tr>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateCreated)
+                            </td>
 
                             <td>
                                 @Html.DisplayFor(modelItem => item.Subject)

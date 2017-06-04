@@ -236,19 +236,40 @@ namespace MVC5.Common
 
         public void sendNewsletter(bool subscription, bool appuser)
         {
-            var email = from t in db.NewsLetterSubscription
-                        where t.Subcribe
-                        select t.Email;
-            List<string> emailList = email.ToList();
-            sendMail("test newsletter", "", MyConstant.user_admin_email, "ARTCL_TYPE_EML_NWSLTR_TMPLT");
+
+            List<string> emailList = new List<string>();
+
+            if (subscription)
+            {
+                var email = from t in db.NewsLetterSubscription
+                            where t.Subcribe
+                            select t.Email;
+                emailList.AddRange(email.ToList());
+            }
+               
+            
+
+            if (appuser)
+            {
+                var emailUser = from t in db.Users
+                            select t.Email;
+                emailList.AddRange(emailUser.ToList());
+            }
+
+            populateEmailData(MyConstant .Web_Name + " Hot Deals!", "", MyConstant.user_admin_email, "ARTCL_TYPE_EML_NWSLTR_TMPLT", emailList);
         }
 
         public void sendMail(string subject, string body, string recipient)
         {
-            sendMail(subject, body, recipient, null);
+            populateEmailData(subject, body, recipient, null, null);
         }
 
         public void sendMail(string subject, string body, string recipient, string templateKod)
+        {
+            populateEmailData(subject, body, recipient, templateKod, null);
+        }
+
+        public void populateEmailData(string subject, string body, string recipient, string templateKod, List<string> emailList)
         {
             string vra = Request.Url.ToString();
             Boolean enableEmail = true;
@@ -263,27 +284,40 @@ namespace MVC5.Common
                 if (templateKod != null)
                 {
                     content = populateDataTemplate(templateKod, body, recipient);
-                    //sendNotification(MyConstant.user_admin_email, "Newsletter", content);
                 }
 
-                //create the mail message 
-                MailMessage mail = new MailMessage();
+                List<string> finalList = new List<string>();
+                finalList.Add(recipient);
+                finalList.AddRange(emailList);
 
-                //set the addresses 
-                mail.From = new MailAddress(from, fromName);
-                mail.To.Add(recipient);
-                mail.To.Add("salehuddin.ptsb@gmail.com");
+                if (finalList.Any())
+                {
+                    foreach(string email in finalList)
+                    {
+                        //create the mail message 
+                        MailMessage mail = new MailMessage();
 
-                //set the content 
-                mail.Subject = subject;
-                mail.Body = content;
-                mail.IsBodyHtml = true;
-                //send the message 
-                SmtpClient smtp = new SmtpClient(MyConstant.email_smtp, 587);
+                        //set the addresses 
+                        mail.From = new MailAddress(from, fromName);
+                        mail.To.Add(email);
 
-                NetworkCredential Credentials = new NetworkCredential(from, ConfigurationManager.AppSettings["mailPassword"]);
-                smtp.Credentials = Credentials;
-                smtp.Send(mail);
+                        //set the content 
+                        mail.Subject = subject;
+                        mail.Body = content;
+                        mail.IsBodyHtml = true;
+                        //send the message 
+                        SmtpClient smtp = new SmtpClient(MyConstant.email_smtp, 587);
+
+                        NetworkCredential Credentials = new NetworkCredential(from, ConfigurationManager.AppSettings["mailPassword"]);
+                        smtp.Credentials = Credentials;
+                        smtp.Send(mail);
+
+                        // for testing purpose
+                        sendNotification(email, subject, content);
+                    }
+                }
+
+                
             }
 
         }

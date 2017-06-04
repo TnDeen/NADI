@@ -103,6 +103,13 @@ namespace MVC5.Controllers
             return View();
         }
 
+        public ActionResult ComingSoon()
+        {
+            ViewBag.Title = "Coming Soon!";
+            ViewBag.Message = "Mobile apps for android going to be release in short time.";
+            return View("Success");
+        }
+
         public ActionResult Offline()
         {
             ViewBag.totalregister = db.Users.Count();

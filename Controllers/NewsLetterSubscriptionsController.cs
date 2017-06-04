@@ -7,13 +7,25 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MVC5.Models;
+using MVC5.Common;
 
 namespace MVC5.Controllers
 {
     [Authorize(Roles ="Admin")]
-    public class NewsLetterSubscriptionsController : Controller
+    public class NewsLetterSubscriptionsController : BaseController
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+
+        public ActionResult SendNewsletterToSubcription()
+        {
+            sendNewsletter(true, false);
+            return RedirectToAction("Success", "Home", new { message = "NewsLetter Sent!" });
+        }
+
+        public ActionResult SendNewsletterToUser()
+        {
+            sendNewsletter(false, true);
+            return RedirectToAction("Success", "Home", new { message = "NewsLetter Sent!" });
+        }
 
         // GET: NewsLetterSubscriptions
         public ActionResult Index()
