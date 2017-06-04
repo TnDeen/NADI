@@ -607,6 +607,24 @@ namespace MVC5.Common
             return Url.Action("ResetPassword", "Account", new { userId = "1", code = "1" }, protocol: Request.Url.Scheme);
         }
 
+        public void saveFile(HttpPostedFileBase file, string location, string filename)
+        {
+            if ((file != null) && (file.ContentLength > 0) && !string.IsNullOrEmpty(file.FileName))
+            {
+                string fileName = file.FileName;
+                string extension = Path.GetExtension(fileName);
+                string newfilename = filename + extension;
+                var basePath = Server.MapPath(location);
+                var path = Path.Combine(basePath, newfilename);
+                if (!Directory.Exists(basePath))
+                {
+                    Directory.CreateDirectory(basePath);
+                }
+                file.SaveAs(path);
+            }
+            
+        }
+
 
     }
 }

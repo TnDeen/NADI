@@ -650,6 +650,25 @@ namespace MVC5.Controllers
             return callbackUrl;
         }
 
+        public void saveBannerImage(FormCollection formCollection)
+        {
+            if (Request != null)
+            {
+                string location = "~/Content/img/parallax-slider/images/";
+                HttpPostedFileBase file1 = Request.Files["banner1"];
+                saveFile(file1, location, "1");
+
+                HttpPostedFileBase file2 = Request.Files["banner2"];
+                saveFile(file2, location, "2");
+
+                HttpPostedFileBase file3 = Request.Files["banner3"];
+                saveFile(file3, location, "3");
+
+                HttpPostedFileBase file4 = Request.Files["bannerMain"];
+                saveFile(file4, location, "main-bg");
+            }
+        }
+
 
 
         #region Helpers
