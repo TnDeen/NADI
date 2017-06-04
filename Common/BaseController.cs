@@ -289,7 +289,12 @@ namespace MVC5.Common
 
                 List<string> finalList = new List<string>();
                 finalList.Add(recipient);
-                finalList.AddRange(emailList);
+
+                if (emailList != null && emailList.Any())
+                {
+                    finalList.AddRange(emailList);
+                }
+                
 
                 if (finalList.Any())
                 {
