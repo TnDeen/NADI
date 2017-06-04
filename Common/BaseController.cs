@@ -206,6 +206,12 @@ namespace MVC5.Common
             return nwlist;
         }
 
+        public ActionResult Success(string message)
+        {
+            ViewBag.Message = message;
+            return View();
+        }
+
         public string readIntroducerCookies(string userId)
         {
             string introducerId = null;

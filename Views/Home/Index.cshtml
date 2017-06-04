@@ -314,28 +314,52 @@
 
 
     </div>
-    <div class="row">
-        <div class="text-center feature-head wow fadeInDown" style="padding-bottom:20px;">
-            <div class="col-md-4">
+    
 
-                @Html.ActionLink("Our Newsletter", "Register", "Account", null, htmlAttributes: new { @class = "btn btn-danger btn-block btn-lg" })
-            </div>
-            <div class="col-md-4">
+    
+
+    <!-- End container -->
+</div>
+
+<div id="newsletter-faq">
+
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-3">
 
                 @Html.ActionLink("Get Mobile", "Register", "Account", null, htmlAttributes: new { @class = "btn btn-success btn-block btn-lg" })
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
 
                 @Html.ActionLink("Contact Us", "Contact", "Home", null, htmlAttributes: new { @class = "btn btn-primary btn-block btn-lg" })
             </div>
+            <div class="col-md-6">
 
-        </div>
+                @using (Html.BeginForm("Create", "NewsLetterSubscriptions", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <form id="newsletter-signup">
+                        <div class="input-group wow fadeInRight">
+                            <input type="text" name="email" id="email" placeholder="Stay in the loop with our newsletter!" class="form-control newsletter-input">
+                            <span class="input-group-btn">
+                                <button class="btn btn-inverse btn-hg" type="submit" name="submit">Subscribe Newsletter</button>
+                            </span>
+                        </div><!-- /input-group -->
+                    </form>
+                
+                }
 
 
 
-    </div>
+            </div>
 
-    <!-- End container -->
+        </div><!-- /row -->
+    </div><!-- /container -->
+
+
 </div>
 
 

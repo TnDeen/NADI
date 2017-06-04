@@ -48,13 +48,14 @@ namespace MVC5.Controllers
         [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Email,Subcribe,CreateDate,CreateBy,LastUpdated,LastUpdatedBy")] NewsLetterSubscription newsLetterSubscription)
+        public ActionResult Create([Bind(Include = "Id,Email,Subcribe,CreateDate,CreateBy,LastUpdated,LastUpdatedBy")] NewsLetterSubscription newsLetterSubscription, string email)
         {
             if (ModelState.IsValid)
             {
+                newsLetterSubscription.Subcribe = true;
                 db.NewsLetterSubscription.Add(newsLetterSubscription);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Success", "Home", new { message = "Newsletter Subcription Success!" });
             }
 
             return View(newsLetterSubscription);
