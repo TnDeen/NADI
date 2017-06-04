@@ -18,13 +18,13 @@ namespace MVC5.Controllers
         public ActionResult SendNewsletterToSubcription()
         {
             sendNewsletter(true, false);
-            return RedirectToAction("Success", "Home", new { message = "NewsLetter Sent!" });
+            return RedirectToAction("Success", "Home", new { title = "Succces!", message = "NewsLetter Sent!" });
         }
 
         public ActionResult SendNewsletterToUser()
         {
             sendNewsletter(false, true);
-            return RedirectToAction("Success", "Home", new { message = "NewsLetter Sent!" });
+            return RedirectToAction("Success", "Home", new { title = "Succces!", message = "NewsLetter Sent!" });
         }
 
         // GET: NewsLetterSubscriptions
@@ -67,7 +67,7 @@ namespace MVC5.Controllers
                 newsLetterSubscription.Subcribe = true;
                 db.NewsLetterSubscription.Add(newsLetterSubscription);
                 db.SaveChanges();
-                return RedirectToAction("Success", "Home", new { message = "Newsletter Subcription Success!" });
+                return RedirectToAction("Success", "Home", new { title = "Succces!",message = "Newsletter Subcription Success!" });
             }
 
             return View(newsLetterSubscription);

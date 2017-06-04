@@ -206,8 +206,9 @@ namespace MVC5.Common
             return nwlist;
         }
 
-        public ActionResult Success(string message)
+        public ActionResult Success(string title, string message)
         {
+            ViewBag.Title = title;
             ViewBag.Message = message;
             return View();
         }
@@ -313,7 +314,7 @@ namespace MVC5.Common
                         smtp.Send(mail);
 
                         // for testing purpose
-                        sendNotification(email, subject, content);
+                        //sendNotification(email, subject, content);
                     }
                 }
 
