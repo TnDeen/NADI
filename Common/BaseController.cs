@@ -381,6 +381,19 @@ namespace MVC5.Common
             db.SaveChanges();
         }
 
+        public bool findCurrentUserSubcription()
+        {
+            bool subcription = false;
+            string userId = findCurrentUserId();
+            List<MembershipRequest> mtype = db.MembershipRequest.Where(a => a.StatusActive && a.UserId.Equals(userId)).ToList();
+            mtype.RemoveAll(a => a.TarikhTamat.Value.Date <= DateTime.Now.Date);
+            if (mtype.Any())
+            {
+                subcription = true;
+            }
+            return subcription;
+        }
+
         public string findCurrentUserId()
         {
             return idb.Users.Where(a => a.UserName.Equals(User.Identity.Name)).FirstOrDefault().Id;

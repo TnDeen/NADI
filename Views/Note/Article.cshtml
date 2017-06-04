@@ -21,102 +21,117 @@
     <hr />
     <div class="row">
 
-        <!--blog start-->
-        <div class="col-lg-9">
-            <h2>@Model.article.Header</h2>
-            <div class="blog-item">
-                <div class="row">
 
 
-                    <div class="col-lg-10 col-sm-10">
+        @if (ViewBag.subcription)
+        {
+            <!--blog start-->
+            <div class="col-lg-9">
+                <h2>@Model.article.Header</h2>
+                <div class="blog-item">
+                    <div class="row">
 
-                        @if (Model.article.imgUrl != null)
-                        {
-                            <div class="blog-img gs">
-                                <img src="~/Content/img/article/@Model.article.Id/@Model.article.imgUrl" alt="" />
-                            </div>
+
+                        <div class="col-lg-10 col-sm-10">
+
+                            @if (Model.article.imgUrl != null)
+                            {
+                                <div class="blog-img gs">
+                                    <img src="~/Content/img/article/@Model.article.Id/@Model.article.imgUrl" alt="" />
+                                </div>
+                                <hr />
+                            }
+
+                            @Html.Raw(Model.article.Content)
+
                             <hr />
-                        }
 
-                        @Html.Raw(Model.article.Content)
+                            @if (Request.IsAuthenticated)
+                            {
+                                <div class="media">
+                                    <h3>
+                                        Comments
+                                    </h3>
 
-                        <hr />
-
-                        @if (Request.IsAuthenticated)
-                        {
-                            <div class="media">
-                                <h3>
-                                    Comments
-                                </h3>
-
-                                @foreach (var item in Model.commentList)
-                                {
-                                    <hr>
-                                    <a class="pull-left" href="javascript:;">
-                                        <img class="media-object" src="~/Content/img/fpo_avatar.png" alt="">
-                                    </a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading">
-                                            @item.User.Email
-                                            <span>
-                                                |
-                                            </span>
-                                            <span>
-                                                @item.CreateDate.Value.ToShortDateString()
-                                            </span>
-                                        </h4>
-                                        <br />
-                                        @Html.Raw(item.Content)
-                                        <br />
-                                    </div>
-
-                                }
-
-                                @using (Html.BeginForm("Create", "Note", new { articleId = ViewBag.articleId, UserId = ViewBag.UserId }, FormMethod.Post, new { enctype = "multipart/form-data" }))
-                                {
-                                    @Html.AntiForgeryToken()
-
-                                    <div class="post-comment">
-                                        <h3 class="skills">
-                                            Post Comments
-                                        </h3>
-
-                                        <div class="col-lg-12">
-                                            <textarea placeholder="Message" rows="8" class="form-control" name="content"></textarea>
+                                    @foreach (var item in Model.commentList)
+                                    {
+                                        <hr>
+                                        <a class="pull-left" href="javascript:;">
+                                            <img class="media-object" src="~/Content/img/fpo_avatar.png" alt="">
+                                        </a>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">
+                                                @item.User.Email
+                                                <span>
+                                                    |
+                                                </span>
+                                                <span>
+                                                    @item.CreateDate.Value.ToShortDateString()
+                                                </span>
+                                            </h4>
+                                            <br />
+                                            @Html.Raw(item.Content)
+                                            <br />
                                         </div>
 
-                                        
-                                        <br />
-                                        <p>
-                                            <button type="submit" class="btn btn-info pull-right">
-                                                Post Comment
-                                            </button>
-                                        </p>
+                                    }
 
-                                    </div>
-                                }
-                            </div><!--end media-->
+                                    @using (Html.BeginForm("Create", "Note", new { articleId = ViewBag.articleId, UserId = ViewBag.UserId }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                    {
+                                        @Html.AntiForgeryToken()
 
-                        }
-                        else
-                        {
-                            @Html.ActionLink("Subscribe to view this section", "BuyPackage", "MemberPackages", null, new { @class = "btn btn-primary" })
-                        }
+                                        <div class="post-comment">
+                                            <h3 class="skills">
+                                                Post Comments
+                                            </h3>
+
+                                            <div class="col-lg-12">
+                                                <textarea placeholder="Message" rows="8" class="form-control" name="content"></textarea>
+                                            </div>
+
+
+                                            <br />
+                                            <p>
+                                                <button type="submit" class="btn btn-info pull-right">
+                                                    Post Comment
+                                                </button>
+                                            </p>
+
+                                        </div>
+                                    }
+                                </div><!--end media-->
+
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Subscribe to view this section", "BuyPackage", "MemberPackages", null, new { @class = "btn btn-primary" })
+                            }
+
+
+                        </div>
+                    </div>
+
+                    <div class="row">
 
 
                     </div>
-                </div>
 
-                <div class="row">
 
 
                 </div>
-
-
 
             </div>
+        <!--blog End-->
 
-        </div>
+        }
+        else
+        {
+            <div class="col-lg-9">
+                <h3>This section is for Paid Member. Please Subscribe to have access.</h3>
+                <h4>Notes section contain tips and tricks regarding auction properties. Member can ask question and get response from agent.</h4>
+                @Html.ActionLink("Subscribe", "Create", "MembershipRequests", null, htmlAttributes: new { @class = "btn btn-primary btn-lg" })
+            </div>
+        }
 
         <div class="col-lg-3">
             <div class="blog-side-item">

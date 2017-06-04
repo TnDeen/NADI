@@ -68,6 +68,7 @@ namespace MVC5.Controllers
             }
 
             ViewBag.listSize = nwlist.Count();
+            ViewBag.subcription = findCurrentUserSubcription();
 
             return View(nwlist.ToPagedList(pageNumber, pageSize));
         }
@@ -86,6 +87,7 @@ namespace MVC5.Controllers
 
             ViewBag.articleId = article.Id;
             ViewBag.UserId = findCurrentUserId();
+            ViewBag.subcription = findCurrentUserSubcription();
 
             ArticleVO avo = new ArticleVO();
             avo.article = article;

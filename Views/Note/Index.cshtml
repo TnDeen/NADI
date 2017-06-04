@@ -8,68 +8,84 @@
 }
 
 
+
+
 <div class="container">
     <!--breadcrumbs start-->
     <ul class="breadcrumb" style="padding-top:30px;">
         <li><a href="index.html">Home</a></li>
-        <li class="active">Blog List</li>
+        <li class="active">Note List</li>
     </ul>
     <!--breadcrumbs end-->
     <hr />
     <div class="row">
 
-        <!--blog start-->
-        <div class="col-lg-9">
-            @foreach (var item in Model)
-            {
-                <div class="blog-item">
-                    <h2>@item.article.Header</h2>
-                    <div class="row">
-                        <div class="col-lg-2 col-sm-2">
-                            <div class="date-wrap">
-                                <span class="date">
-                                    @item.article.DateCreated.Day
-                                </span>
-                                <span class="month">
-                                    @item.article.CreateDate.Value.ToString("MMMM") @item.article.CreateDate.Value.ToString("yyyy")
-                                </span>
+        @if (ViewBag.subcription)
+        {
+             <!--blog start-->
+            <div class="col-lg-9">
+                @foreach (var item in Model)
+                {
+                    <div class="blog-item">
+                        <h2>@item.article.Header</h2>
+                        <div class="row">
+                            <div class="col-lg-2 col-sm-2">
+                                <div class="date-wrap">
+                                    <span class="date">
+                                        @item.article.DateCreated.Day
+                                    </span>
+                                    <span class="month">
+                                        @item.article.CreateDate.Value.ToString("MMMM") @item.article.CreateDate.Value.ToString("yyyy")
+                                    </span>
+                                </div>
+
                             </div>
 
-                        </div>
-                        
 
-                        <div class="col-lg-10 col-sm-10">
+                            <div class="col-lg-10 col-sm-10">
 
 
-                           @if (item.imgUrl != null)
-                           {
-                            <div class="blog-img gs">
-                                <img src="~/Content/img/article/@item.article.Id/@item.article.imgUrl" alt="" />
+                                @if (item.imgUrl != null)
+                                {
+                                    <div class="blog-img gs">
+                                        <img src="~/Content/img/article/@item.article.Id/@item.article.imgUrl" alt="" />
+                                    </div>
+                                    <hr />
+                                }
+
+                                @Html.Raw(item.article.Content)
+                                <br />
+                                <br />
+                                @Html.ActionLink("Continue Reading", "Article", "Note", new { id = item.article.Id }, new { @class = "btn btn-primary" })
                             </div>
-                            <hr />
-                           }
 
-                            @Html.Raw(item.article.Content)
-                            <br />
-                            <br />
-                            @Html.ActionLink("Continue Reading", "Article", "Note", new { id = item.article.Id }, new { @class = "btn btn-primary" })
+
                         </div>
 
-                      
+
+
                     </div>
+                }
+                <br />
+                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-
-
-                </div>
-            }
-            <br />
-            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-
-            @Html.PagedListPager(Model, page => Url.Action("Index",
+                @Html.PagedListPager(Model, page => Url.Action("Index",
     new { page, sortOrder = ViewBag.CurrentSort }))
 
-        </div>
+            </div>
+        <!--blog End-->
+        }
+        else
+        {
+            <div class="col-lg-9">
+                <h3>This section is for Paid Member. Please Subscribe to have access.</h3>
+                <h4>Notes section contain tips and tricks regarding auction properties. Member can ask question and get response from agent.</h4>
+                @Html.ActionLink("Subscribe", "Create", "MembershipRequests", null, htmlAttributes: new { @class = "btn btn-primary btn-lg" })
+            </div>
+            
+        }
 
+       
         <div class="col-lg-3">
             <div class="blog-side-item">
                 <div class="category">
